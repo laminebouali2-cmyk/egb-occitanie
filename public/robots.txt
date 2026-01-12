@@ -1,0 +1,6 @@
+# robots.txt for EGB Occitanie
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://egb-occitanie.fr/sitemap.xml
