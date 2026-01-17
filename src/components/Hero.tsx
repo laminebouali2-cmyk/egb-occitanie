@@ -2,276 +2,139 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { TextReveal, LineReveal } from "./Reveal";
-import { MagneticButton } from "./MagneticButton";
-import { durations, easings, springs } from "@/lib/animations";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
-
-  // Scroll progress pour le parallax
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  // Parallax transforms avec spring pour la fluidité
-  const backgroundY = useSpring(
-    useTransform(scrollYProgress, [0, 1], ["0%", "30%"]),
-    { stiffness: 100, damping: 30 }
-  );
-
-  const contentY = useSpring(
-    useTransform(scrollYProgress, [0, 1], ["0%", "15%"]),
-    { stiffness: 100, damping: 30 }
-  );
-
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  // Variants pour le stagger d'entrée
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 40,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: durations.slow,
-        ease: easings.easeOut,
-      },
-    },
-  };
-
-  const lineVariants = {
-    hidden: {
-      scaleX: 0,
-    },
-    visible: {
-      scaleX: 1,
-      transition: {
-        duration: durations.contemplative,
-        ease: easings.reveal,
-        delay: 0.8,
-      },
-    },
-  };
 
   return (
     <section
       ref={containerRef}
-      className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-neutral-900"
     >
-      {/* Background avec parallax */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: backgroundY }}
-      >
-        {/* Gradient de fond sophistiqué */}
+      {/* Background Image with parallax */}
+      <motion.div className="absolute inset-0" style={{ y }}>
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
-            background: `
-              radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 118, 0.15), transparent),
-              radial-gradient(ellipse 60% 30% at 80% 80%, rgba(168, 162, 158, 0.1), transparent),
-              linear-gradient(180deg, #fafaf9 0%, #f5f5f4 100%)
-            `,
+            backgroundImage: `url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070')`,
           }}
         />
-
-        {/* Lignes architecturales subtiles */}
-        <svg
-          className="absolute inset-0 w-full h-full opacity-[0.03]"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="grid"
-              width="100"
-              height="100"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 100 0 L 0 0 0 100"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.5"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/90 via-neutral-900/70 to-neutral-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-transparent to-transparent" />
       </motion.div>
 
-      {/* Content avec parallax inverse */}
-      <motion.div
-        className="container relative z-10"
-        style={{ y: contentY, opacity }}
-      >
-        <motion.div
-          className="max-w-4xl"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Ligne décorative */}
+      {/* Content */}
+      <motion.div className="container relative z-10 pt-32 pb-20" style={{ opacity }}>
+        <div className="max-w-3xl">
+          {/* Badge */}
           <motion.div
-            className="w-16 h-px bg-[var(--color-muted)] mb-8 origin-left"
-            variants={lineVariants}
-          />
-
-          {/* Overline */}
-          <motion.p
-            className="text-overline mb-6"
-            variants={itemVariants}
+            className="inline-flex items-center gap-3 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Construction & Bâtiment
-          </motion.p>
-
-          {/* Main Headline — word by word reveal */}
-          <motion.div variants={itemVariants}>
-            <h1 className="text-[var(--color-primary)] mb-4">
-              <TextReveal as="span" className="block" delay={0.4}>
-                Nous construisons
-              </TextReveal>
-            </h1>
-            <h1 className="text-[var(--color-secondary)] mb-8">
-              <TextReveal as="span" className="block" delay={0.6}>
-                ce qui dure
-              </TextReveal>
-            </h1>
+            <span className="w-12 h-px bg-white/40" />
+            <span className="text-sm font-medium text-white/70 tracking-widest uppercase">
+              Depuis 2009
+            </span>
           </motion.div>
 
-          {/* Subtitle avec reveal classique */}
+          {/* Headline */}
+          <motion.h1
+            className="text-white mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            Construire aujourd'hui,
+            <br />
+            <span className="text-white/60">pour demain</span>
+          </motion.h1>
+
+          {/* Subtitle */}
           <motion.p
-            className="text-lead max-w-xl mb-12"
-            variants={itemVariants}
+            className="text-xl md:text-2xl text-white/70 mb-10 max-w-xl leading-relaxed font-light"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             Entreprise générale de bâtiment en Occitanie.
-            <br />
-            Expertise technique, maîtrise des délais, excellence d&apos;exécution.
+            Construction neuve, rénovation et extension.
           </motion.p>
 
-          {/* CTAs avec magnetic effect */}
+          {/* CTAs */}
           <motion.div
             className="flex flex-col sm:flex-row gap-4"
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <MagneticButton
-              as="a"
-              href="/projets"
-              className="btn btn-primary"
-              strength={0.15}
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                Découvrir nos projets
-                <motion.svg
-                  className="w-4 h-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 4 }}
-                  transition={springs.smooth}
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
-                    clipRule="evenodd"
-                  />
-                </motion.svg>
-              </span>
-            </MagneticButton>
-
-            <MagneticButton
-              as="a"
-              href="/contact"
-              className="btn btn-outline group"
-              strength={0.15}
-            >
-              <span className="relative z-10">Nous contacter</span>
-            </MagneticButton>
+            <Link href="/projets" className="btn btn-white">
+              Voir nos réalisations
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <Link href="/contact" className="btn btn-outline border-white/30 text-white hover:bg-white hover:text-neutral-900">
+              Démarrer un projet
+            </Link>
           </motion.div>
-        </motion.div>
-      </motion.div>
+        </div>
 
-      {/* Scroll Indicator — contemplatif */}
-      <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: durations.slow, delay: 1.5, ease: easings.easeOut }}
-      >
+        {/* Stats bar */}
         <motion.div
-          className="flex flex-col items-center gap-3"
-          animate={{ y: [0, 8, 0] }}
-          transition={{
-            duration: 2.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          className="mt-20 pt-10 border-t border-white/10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
         >
-          <span className="text-[10px] text-[var(--color-muted)] tracking-[0.3em] uppercase font-light">
-            Explorer
-          </span>
-          <div className="relative w-px h-16">
-            <div className="absolute inset-0 bg-[var(--color-border)]" />
-            <motion.div
-              className="absolute top-0 left-0 w-full bg-[var(--color-primary)]"
-              initial={{ height: "0%", top: "0%" }}
-              animate={{
-                height: ["0%", "40%", "0%"],
-                top: ["0%", "30%", "100%"],
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            <Stat number="15" suffix="+" label="Années d'expérience" />
+            <Stat number="200" suffix="+" label="Projets réalisés" />
+            <Stat number="50" suffix="+" label="Collaborateurs" />
+            <Stat number="100" suffix="%" label="Clients satisfaits" />
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Corner accent — détail architectural */}
+      {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-0 right-0 w-32 h-32 pointer-events-none"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: durations.contemplative, delay: 1 }}
+        transition={{ duration: 0.6, delay: 1 }}
       >
-        <svg
-          className="w-full h-full text-[var(--color-border)]"
-          viewBox="0 0 100 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <motion.div
+          className="flex flex-col items-center gap-2 text-white/50"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <motion.path
-            d="M100 0 L100 100 L0 100"
-            stroke="currentColor"
-            strokeWidth="1"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{
-              duration: durations.contemplative,
-              delay: 1.2,
-              ease: easings.easeOut,
-            }}
-          />
-        </svg>
+          <span className="text-xs tracking-widest uppercase">Découvrir</span>
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </motion.div>
       </motion.div>
     </section>
+  );
+}
+
+function Stat({ number, suffix, label }: { number: string; suffix: string; label: string }) {
+  return (
+    <div>
+      <p className="text-3xl md:text-4xl font-light text-white mb-1">
+        {number}<span className="text-white/50">{suffix}</span>
+      </p>
+      <p className="text-sm text-white/50">{label}</p>
+    </div>
   );
 }

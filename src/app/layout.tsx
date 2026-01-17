@@ -2,32 +2,30 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { SmoothScroll } from "@/components/SmoothScroll";
-import { Cursor } from "@/components/Cursor";
-import { FilmGrainCSS } from "@/components/FilmGrain";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffffff",
+  themeColor: "#1a1a1a",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://egb-occitanie.fr"),
   title: {
-    default: "EGB Occitanie | Construction & Bâtiment Haut de Gamme",
+    default: "EGB Occitanie | Construction & Rénovation en Occitanie",
     template: "%s | EGB Occitanie",
   },
   description:
-    "Entreprise générale de bâtiment en Occitanie. Construction neuve, rénovation et extension. Expertise technique, maîtrise des délais, excellence d'exécution.",
+    "Entreprise générale de bâtiment en Occitanie. Construction neuve, rénovation et extension. Expertise technique, maîtrise des délais, excellence d'exécution depuis 15 ans.",
   keywords: [
     "construction Occitanie",
     "entreprise bâtiment Toulouse",
-    "constructeur maison",
-    "rénovation Occitanie",
+    "constructeur maison Occitanie",
+    "rénovation Toulouse",
     "extension maison",
-    "maître d'œuvre",
+    "maître d'œuvre Occitanie",
     "entreprise générale bâtiment",
+    "construction neuve Toulouse",
   ],
   authors: [{ name: "EGB Occitanie" }],
   creator: "EGB Occitanie",
@@ -42,21 +40,21 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://egb-occitanie.fr",
     siteName: "EGB Occitanie",
-    title: "EGB Occitanie | Construction & Bâtiment Haut de Gamme",
+    title: "EGB Occitanie | Construction & Rénovation en Occitanie",
     description:
-      "Entreprise générale de bâtiment en Occitanie. Construction neuve, rénovation et extension.",
+      "Entreprise générale de bâtiment en Occitanie. Construction neuve, rénovation et extension depuis 15 ans.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "EGB Occitanie - Construction Premium",
+        alt: "EGB Occitanie - Construction Premium en Occitanie",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EGB Occitanie | Construction & Bâtiment Haut de Gamme",
+    title: "EGB Occitanie | Construction & Rénovation",
     description:
       "Entreprise générale de bâtiment en Occitanie. Construction neuve, rénovation et extension.",
     images: ["/og-image.jpg"],
@@ -72,9 +70,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
 };
 
 export default function RootLayout({
@@ -89,32 +84,21 @@ export default function RootLayout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        {/* Preconnect to Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* Inter font — premium sans-serif */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
-        <SmoothScroll>
-          {/* Custom cursor — desktop only */}
-          <Cursor />
-
-          {/* Film grain overlay — subtle texture */}
-          <FilmGrainCSS opacity={0.03} />
-
-          {/* Site structure */}
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </SmoothScroll>
+      <body className="antialiased bg-white text-neutral-900">
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

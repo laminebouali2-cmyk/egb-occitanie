@@ -2,215 +2,108 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { Reveal, RevealContainer, RevealItem, ImageReveal, LineReveal } from "./Reveal";
-import { LineButton } from "./MagneticButton";
-import { durations, easings, springs } from "@/lib/animations";
+import { motion, useInView } from "framer-motion";
+
+const projects = [
+  {
+    title: "Villa Contemporaine",
+    category: "Construction neuve",
+    location: "Toulouse",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200",
+  },
+  {
+    title: "Rénovation Maison de Maître",
+    category: "Rénovation",
+    location: "Albi",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200",
+  },
+  {
+    title: "Extension Bois",
+    category: "Extension",
+    location: "Montauban",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200",
+  },
+];
 
 export function Maitrise() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-
-  // Parallax pour l'image
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const imageY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
-
-  const stats = [
-    { value: 15, suffix: "+", label: "Années d'expérience" },
-    { value: 200, suffix: "+", label: "Projets réalisés" },
-    { value: 100, suffix: "%", label: "Projets livrés" },
-  ];
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: durations.slow,
-        ease: easings.easeOut,
-      },
-    },
-  };
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={sectionRef} className="section bg-[var(--color-background)]">
+    <section ref={ref} className="section-dark section">
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Image avec reveal et parallax */}
-          <div className="relative">
-            <ImageReveal direction="left" className="aspect-[4/3] lg:aspect-[4/5]">
-              <motion.div
-                className="w-full h-full img-container"
-                style={{ y: imageY }}
-                data-cursor="image"
-              >
-                {/* Placeholder - Replace with actual project image */}
-                <div
-                  className="w-full h-full"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, #e7e5e4 0%, #a8a29e 100%)",
-                  }}
-                />
-              </motion.div>
-            </ImageReveal>
-
-            {/* Decorative frame */}
-            <motion.div
-              className="absolute -bottom-6 -right-6 w-32 h-32 hidden lg:block pointer-events-none"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: durations.slow, delay: 0.6, ease: easings.easeOut }}
-            >
-              <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
-                <motion.rect
-                  x="0"
-                  y="0"
-                  width="100"
-                  height="100"
-                  stroke="var(--color-border)"
-                  strokeWidth="1"
-                  initial={{ pathLength: 0 }}
-                  animate={isInView ? { pathLength: 1 } : {}}
-                  transition={{ duration: durations.contemplative, delay: 0.8, ease: easings.reveal }}
-                />
-              </svg>
-            </motion.div>
-          </div>
-
-          {/* Content */}
+        {/* Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-16 md:mb-20">
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
           >
-            {/* Line accent */}
-            <LineReveal className="w-12 mb-8 text-[var(--color-muted)]" delay={0} />
-
-            <motion.p className="text-overline mb-4" variants={itemVariants}>
-              Notre maîtrise
-            </motion.p>
-
-            <motion.h2 className="mb-6" variants={itemVariants}>
-              La rigueur au service
+            <span className="text-overline mb-4 block">Nos réalisations</span>
+            <h2>
+              La preuve par
               <br />
-              <span className="text-[var(--color-secondary)]">de vos projets</span>
-            </motion.h2>
-
-            <motion.p className="text-lead mb-10" variants={itemVariants}>
-              Chaque projet est une promesse tenue. De la conception à la
-              livraison, nous garantissons une exécution irréprochable, des
-              délais respectés et une qualité sans compromis.
-            </motion.p>
-
-            {/* Stats avec animation de compteur */}
-            <motion.div
-              className="grid grid-cols-3 gap-8 mb-10"
-              variants={itemVariants}
-            >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{
-                    duration: durations.slow,
-                    delay: 0.4 + index * 0.1,
-                    ease: easings.easeOut,
-                  }}
-                >
-                  <motion.p
-                    className="text-3xl md:text-4xl font-light text-[var(--color-primary)] mb-2 tabular-nums"
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                  >
-                    <CountUp
-                      value={stat.value}
-                      suffix={stat.suffix}
-                      isInView={isInView}
-                      delay={0.6 + index * 0.1}
-                    />
-                  </motion.p>
-                  <p className="text-sm text-[var(--color-text-muted)]">
-                    {stat.label}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <LineButton
-                href="/projets"
-                className="text-[var(--color-primary)] font-medium"
-              >
-                Voir nos réalisations
-              </LineButton>
-            </motion.div>
+              <span className="text-neutral-500">l'excellence</span>
+            </h2>
           </motion.div>
+
+          <motion.div
+            className="flex flex-col justify-end"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <p className="text-lg text-neutral-400 mb-8 leading-relaxed">
+              Chaque projet témoigne de notre savoir-faire. Des constructions pensées pour durer,
+              réalisées avec rigueur et passion.
+            </p>
+            <Link href="/projets" className="btn btn-white w-fit">
+              Tous nos projets
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+            >
+              <Link href="/projets" className="group block">
+                <div className="relative aspect-[3/4] overflow-hidden mb-4">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{ backgroundImage: `url('${project.image}')` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent" />
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-neutral-900/0 group-hover:bg-neutral-900/40 transition-colors duration-300 flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white font-medium flex items-center gap-2">
+                      Voir le projet
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <div>
+                  <span className="text-sm text-neutral-500">{project.category}</span>
+                  <h3 className="text-xl font-medium text-white mt-1">{project.title}</h3>
+                  <p className="text-sm text-neutral-500 mt-1">{project.location}</p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
-}
-
-// Composant CountUp interne
-function CountUp({
-  value,
-  suffix = "",
-  isInView,
-  delay = 0,
-}: {
-  value: number;
-  suffix?: string;
-  isInView: boolean;
-  delay?: number;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const hasAnimated = useRef(false);
-
-  if (isInView && !hasAnimated.current && ref.current) {
-    hasAnimated.current = true;
-    const duration = 2000;
-    const startTime = performance.now() + delay * 1000;
-
-    const animate = (currentTime: number) => {
-      if (currentTime < startTime) {
-        requestAnimationFrame(animate);
-        return;
-      }
-
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      const current = Math.round(value * eased);
-
-      if (ref.current) {
-        ref.current.textContent = current + suffix;
-      }
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }
-
-  return <span ref={ref}>0{suffix}</span>;
 }
