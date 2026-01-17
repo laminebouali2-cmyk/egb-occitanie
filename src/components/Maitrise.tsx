@@ -1,139 +1,216 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { Reveal, RevealContainer, RevealItem, ImageReveal, LineReveal } from "./Reveal";
+import { LineButton } from "./MagneticButton";
+import { durations, easings, springs } from "@/lib/animations";
 
 export function Maitrise() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
+  // Parallax pour l'image
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
 
   const stats = [
-    { value: "15+", label: "Années d'expérience" },
-    { value: "200+", label: "Projets réalisés" },
-    { value: "100%", label: "Projets livrés" },
+    { value: 15, suffix: "+", label: "Années d'expérience" },
+    { value: 200, suffix: "+", label: "Projets réalisés" },
+    { value: 100, suffix: "%", label: "Projets livrés" },
   ];
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: durations.slow,
+        ease: easings.easeOut,
+      },
+    },
+  };
 
   return (
     <section ref={sectionRef} className="section bg-[var(--color-background)]">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Image */}
-          <div
-            className={`relative aspect-[4/3] lg:aspect-[4/5] img-container transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-8"
-            }`}
-          >
-            {/* Placeholder - Replace with actual project image */}
-            <div
-              className="w-full h-full"
-              style={{
-                background:
-                  "linear-gradient(180deg, #d4d4d4 0%, #a3a3a3 100%)",
-              }}
-            />
-            {/* Decorative element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-[var(--color-border)] hidden lg:block" />
+          {/* Image avec reveal et parallax */}
+          <div className="relative">
+            <ImageReveal direction="left" className="aspect-[4/3] lg:aspect-[4/5]">
+              <motion.div
+                className="w-full h-full img-container"
+                style={{ y: imageY }}
+                data-cursor="image"
+              >
+                {/* Placeholder - Replace with actual project image */}
+                <div
+                  className="w-full h-full"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, #e7e5e4 0%, #a8a29e 100%)",
+                  }}
+                />
+              </motion.div>
+            </ImageReveal>
+
+            {/* Decorative frame */}
+            <motion.div
+              className="absolute -bottom-6 -right-6 w-32 h-32 hidden lg:block pointer-events-none"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: durations.slow, delay: 0.6, ease: easings.easeOut }}
+            >
+              <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
+                <motion.rect
+                  x="0"
+                  y="0"
+                  width="100"
+                  height="100"
+                  stroke="var(--color-border)"
+                  strokeWidth="1"
+                  initial={{ pathLength: 0 }}
+                  animate={isInView ? { pathLength: 1 } : {}}
+                  transition={{ duration: durations.contemplative, delay: 0.8, ease: easings.reveal }}
+                />
+              </svg>
+            </motion.div>
           </div>
 
           {/* Content */}
-          <div>
-            <p
-              className={`text-overline mb-4 transition-all duration-700 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
-            >
-              Notre maîtrise
-            </p>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            {/* Line accent */}
+            <LineReveal className="w-12 mb-8 text-[var(--color-muted)]" delay={0} />
 
-            <h2
-              className={`mb-6 transition-all duration-700 delay-100 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
-            >
+            <motion.p className="text-overline mb-4" variants={itemVariants}>
+              Notre maîtrise
+            </motion.p>
+
+            <motion.h2 className="mb-6" variants={itemVariants}>
               La rigueur au service
               <br />
-              de vos projets
-            </h2>
+              <span className="text-[var(--color-secondary)]">de vos projets</span>
+            </motion.h2>
 
-            <p
-              className={`text-lead mb-10 transition-all duration-700 delay-200 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
-            >
+            <motion.p className="text-lead mb-10" variants={itemVariants}>
               Chaque projet est une promesse tenue. De la conception à la
               livraison, nous garantissons une exécution irréprochable, des
               délais respectés et une qualité sans compromis.
-            </p>
+            </motion.p>
 
-            {/* Stats */}
-            <div
-              className={`grid grid-cols-3 gap-8 mb-10 transition-all duration-700 delay-300 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
+            {/* Stats avec animation de compteur */}
+            <motion.div
+              className="grid grid-cols-3 gap-8 mb-10"
+              variants={itemVariants}
             >
               {stats.map((stat, index) => (
-                <div key={index}>
-                  <p className="text-3xl md:text-4xl font-light text-[var(--color-primary)] mb-2">
-                    {stat.value}
-                  </p>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{
+                    duration: durations.slow,
+                    delay: 0.4 + index * 0.1,
+                    ease: easings.easeOut,
+                  }}
+                >
+                  <motion.p
+                    className="text-3xl md:text-4xl font-light text-[var(--color-primary)] mb-2 tabular-nums"
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+                  >
+                    <CountUp
+                      value={stat.value}
+                      suffix={stat.suffix}
+                      isInView={isInView}
+                      delay={0.6 + index * 0.1}
+                    />
+                  </motion.p>
                   <p className="text-sm text-[var(--color-text-muted)]">
                     {stat.label}
                   </p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            <Link
-              href="/projets"
-              className={`link-arrow text-[var(--color-primary)] transition-all duration-700 delay-400 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
-            >
-              Voir nos réalisations
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+            <motion.div variants={itemVariants}>
+              <LineButton
+                href="/projets"
+                className="text-[var(--color-primary)] font-medium"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </Link>
-          </div>
+                Voir nos réalisations
+              </LineButton>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
+}
+
+// Composant CountUp interne
+function CountUp({
+  value,
+  suffix = "",
+  isInView,
+  delay = 0,
+}: {
+  value: number;
+  suffix?: string;
+  isInView: boolean;
+  delay?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
+
+  if (isInView && !hasAnimated.current && ref.current) {
+    hasAnimated.current = true;
+    const duration = 2000;
+    const startTime = performance.now() + delay * 1000;
+
+    const animate = (currentTime: number) => {
+      if (currentTime < startTime) {
+        requestAnimationFrame(animate);
+        return;
+      }
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      const current = Math.round(value * eased);
+
+      if (ref.current) {
+        ref.current.textContent = current + suffix;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }
+
+  return <span ref={ref}>0{suffix}</span>;
 }

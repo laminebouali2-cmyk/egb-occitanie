@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { Cursor } from "@/components/Cursor";
+import { FilmGrainCSS } from "@/components/FilmGrain";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -86,23 +89,32 @@ export default function RootLayout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        {/* Preconnect to Google Fonts for optional font loading */}
+        {/* Preconnect to Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* Inter font - loaded via CSS for better performance control */}
+        {/* Inter font — premium sans-serif */}
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
       </head>
       <body className="antialiased">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <SmoothScroll>
+          {/* Custom cursor — desktop only */}
+          <Cursor />
+
+          {/* Film grain overlay — subtle texture */}
+          <FilmGrainCSS opacity={0.03} />
+
+          {/* Site structure */}
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

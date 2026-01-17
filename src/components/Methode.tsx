@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { LineReveal } from "./Reveal";
+import { durations, easings } from "@/lib/animations";
 
 const steps = [
   {
@@ -31,98 +34,199 @@ const steps = [
 
 export function Methode() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+  // Scroll progress pour la ligne de connexion
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end center"],
+  });
+
+  const lineProgress = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
-      { threshold: 0.15 }
-    );
+    },
+  };
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: durations.slow,
+        ease: easings.easeOut,
+      },
+    },
+  };
 
   return (
     <section ref={sectionRef} className="section bg-[var(--color-background)]">
       <div className="container">
         {/* Header */}
-        <div className="max-w-2xl mb-16 md:mb-24">
-          <p
-            className={`text-overline mb-4 transition-all duration-700 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
-          >
+        <motion.div
+          className="max-w-2xl mb-16 md:mb-24"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <LineReveal className="w-12 mb-8 text-[var(--color-muted)]" />
+
+          <motion.p className="text-overline mb-4" variants={itemVariants}>
             Notre méthode
-          </p>
-          <h2
-            className={`mb-6 transition-all duration-700 delay-100 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
-          >
+          </motion.p>
+
+          <motion.h2 className="mb-6" variants={itemVariants}>
             Un processus clair,
             <br />
-            des résultats prévisibles
-          </h2>
-          <p
-            className={`text-lead transition-all duration-700 delay-200 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
-          >
+            <span className="text-[var(--color-secondary)]">
+              des résultats prévisibles
+            </span>
+          </motion.h2>
+
+          <motion.p className="text-lead" variants={itemVariants}>
             Chaque projet suit une méthodologie éprouvée qui garantit qualité,
             transparence et sérénité.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {steps.map((step, index) => (
-            <div
-              key={step.number}
-              className={`relative transition-all duration-700 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${300 + index * 100}ms` }}
-            >
-              {/* Connecting Line (desktop only) */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-[var(--color-border)]" />
-              )}
+        {/* Steps avec ligne de progression */}
+        <div className="relative">
+          {/* Ligne de connexion animée (desktop) */}
+          <div className="hidden lg:block absolute top-6 left-0 right-0 h-px bg-[var(--color-border)]">
+            <motion.div
+              className="h-full bg-[var(--color-primary)] origin-left"
+              style={{ width: lineProgress }}
+            />
+          </div>
 
-              {/* Number */}
-              <div className="flex items-center gap-4 mb-6">
-                <span className="text-2xl font-light text-[var(--color-muted)]">
-                  {step.number}
-                </span>
-                <div className="w-2 h-2 rounded-full bg-[var(--color-primary)]" />
-              </div>
-
-              {/* Content */}
-              <h3 className="text-xl font-medium text-[var(--color-primary)] mb-3">
-                {step.title}
-              </h3>
-              <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                {step.description}
-              </p>
-            </div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {steps.map((step, index) => (
+              <StepCard
+                key={step.number}
+                step={step}
+                index={index}
+                isInView={isInView}
+                total={steps.length}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+// Composant étape avec animations premium
+function StepCard({
+  step,
+  index,
+  isInView,
+  total,
+}: {
+  step: (typeof steps)[0];
+  index: number;
+  isInView: boolean;
+  total: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const cardInView = useInView(cardRef, { once: true, amount: 0.5 });
+
+  return (
+    <motion.div
+      ref={cardRef}
+      className="relative"
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{
+        duration: durations.slow,
+        delay: 0.3 + index * 0.15,
+        ease: easings.easeOut,
+      }}
+    >
+      {/* Number avec dot animé */}
+      <div className="flex items-center gap-4 mb-6">
+        <motion.span
+          className="text-2xl font-light text-[var(--color-muted)]"
+          initial={{ opacity: 0 }}
+          animate={cardInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+        >
+          {step.number}
+        </motion.span>
+
+        {/* Dot avec pulse */}
+        <motion.div
+          className="relative"
+          initial={{ scale: 0 }}
+          animate={cardInView ? { scale: 1 } : {}}
+          transition={{
+            duration: 0.5,
+            delay: 0.3 + index * 0.1,
+            ease: easings.easeOut,
+          }}
+        >
+          <div className="w-3 h-3 rounded-full bg-[var(--color-primary)]" />
+          <motion.div
+            className="absolute inset-0 rounded-full bg-[var(--color-primary)]"
+            initial={{ scale: 1, opacity: 0.5 }}
+            animate={cardInView ? { scale: 2, opacity: 0 } : {}}
+            transition={{
+              duration: 1,
+              delay: 0.4 + index * 0.1,
+              ease: "easeOut",
+            }}
+          />
+        </motion.div>
+      </div>
+
+      {/* Content */}
+      <motion.h3
+        className="text-xl font-medium text-[var(--color-primary)] mb-3"
+        initial={{ opacity: 0, x: -10 }}
+        animate={cardInView ? { opacity: 1, x: 0 } : {}}
+        transition={{
+          duration: durations.normal,
+          delay: 0.4 + index * 0.1,
+          ease: easings.easeOut,
+        }}
+      >
+        {step.title}
+      </motion.h3>
+
+      <motion.p
+        className="text-sm text-[var(--color-text-secondary)] leading-relaxed"
+        initial={{ opacity: 0 }}
+        animate={cardInView ? { opacity: 1 } : {}}
+        transition={{
+          duration: durations.normal,
+          delay: 0.5 + index * 0.1,
+          ease: easings.easeOut,
+        }}
+      >
+        {step.description}
+      </motion.p>
+
+      {/* Ligne verticale vers le bas (mobile) */}
+      {index < total - 1 && (
+        <motion.div
+          className="md:hidden absolute left-[5px] top-12 w-px h-[calc(100%+2rem)] bg-[var(--color-border)]"
+          initial={{ scaleY: 0 }}
+          animate={cardInView ? { scaleY: 1 } : {}}
+          transition={{
+            duration: durations.slow,
+            delay: 0.3 + index * 0.1,
+            ease: easings.easeOut,
+          }}
+          style={{ transformOrigin: "top" }}
+        />
+      )}
+    </motion.div>
   );
 }
