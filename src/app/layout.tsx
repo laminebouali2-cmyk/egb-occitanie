@@ -2,30 +2,31 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1a1a1a",
+  themeColor: "#1C1917",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://egb-occitanie.fr"),
   title: {
-    default: "EGB Occitanie | Construction & Rénovation en Occitanie",
+    default: "EGB Occitanie | Construction Haut de Gamme à Toulouse",
     template: "%s | EGB Occitanie",
   },
   description:
-    "Entreprise générale de bâtiment en Occitanie. Construction neuve, rénovation et extension. Expertise technique, maîtrise des délais, excellence d'exécution depuis 15 ans.",
+    "Construction de villas, rénovation haut de gamme et extensions à Toulouse. L'excellence artisanale au service de vos projets d'exception en Occitanie.",
   keywords: [
-    "construction Occitanie",
-    "entreprise bâtiment Toulouse",
-    "constructeur maison Occitanie",
-    "rénovation Toulouse",
-    "extension maison",
-    "maître d'œuvre Occitanie",
-    "entreprise générale bâtiment",
-    "construction neuve Toulouse",
+    "construction villa Toulouse",
+    "rénovation haut de gamme Occitanie",
+    "constructeur maison luxe Toulouse",
+    "extension maison Toulouse",
+    "entreprise bâtiment premium",
+    "maître d'œuvre Toulouse",
+    "rénovation maison de maître",
+    "construction sur-mesure Occitanie",
   ],
   authors: [{ name: "EGB Occitanie" }],
   creator: "EGB Occitanie",
@@ -91,14 +92,20 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased bg-white text-neutral-900">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+      <body className="antialiased">
+        <SmoothScroll>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
