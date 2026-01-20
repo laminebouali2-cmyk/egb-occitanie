@@ -1,0 +1,525 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   EGB OCCITANIE — DESIGN SYSTEM V3
+   Premium Construction | Sophisticated & Warm
+   Inspired by: Tesla, Four Seasons, Tandem Co
+   ========================================================================== */
+
+:root {
+  /* Colors — Warm Stone Palette */
+  --color-stone-950: #1C1917;
+  --color-stone-900: #292524;
+  --color-stone-800: #44403C;
+  --color-stone-700: #57534E;
+  --color-stone-600: #78716C;
+  --color-stone-500: #A8A29E;
+  --color-stone-400: #D6D3D1;
+  --color-stone-300: #E7E5E4;
+  --color-stone-200: #F5F5F4;
+  --color-stone-100: #FAFAF9;
+  --color-white: #FFFFFF;
+
+  /* Accent — Warm Terracotta (subtle) */
+  --color-accent: #C2410C;
+  --color-accent-light: #EA580C;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --container-max: 1400px;
+  --section-padding: clamp(5rem, 12vw, 10rem);
+  --section-padding-sm: clamp(3rem, 8vw, 6rem);
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-fast: 0.3s;
+  --duration-normal: 0.5s;
+  --duration-slow: 0.8s;
+}
+
+@theme inline {
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-stone-900);
+  --font-sans: var(--font-sans);
+}
+
+/* ==========================================================================
+   BASE RESET
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-stone-800);
+  background: var(--color-white);
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY — Editorial & Refined
+   ========================================================================== */
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-stone-900);
+  letter-spacing: -0.01em;
+}
+
+h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--color-stone-900);
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+}
+
+h2 {
+  font-size: clamp(2.25rem, 5vw, 4rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+h4 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+}
+
+p {
+  color: var(--color-stone-600);
+  max-width: 65ch;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container { padding: 0 3rem; }
+}
+
+@media (min-width: 1280px) {
+  .container { padding: 0 4rem; }
+}
+
+.section {
+  padding: var(--section-padding) 0;
+}
+
+.section-sm {
+  padding: var(--section-padding-sm) 0;
+}
+
+/* ==========================================================================
+   BUTTONS — Sophisticated & Minimal
+   ========================================================================== */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  padding: 1.125rem 2.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--color-stone-900);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: var(--color-stone-950);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px -15px rgba(28, 25, 23, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-stone-900);
+  border: 1.5px solid var(--color-stone-300);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-stone-900);
+  background: var(--color-stone-900);
+  color: var(--color-white);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--color-stone-900);
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.btn-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-stone-900);
+  transition: width var(--duration-normal) var(--ease-out-expo);
+}
+
+.btn-text:hover::after {
+  width: 100%;
+}
+
+/* Button arrow animation */
+.btn svg,
+.btn .arrow {
+  width: 1.125rem;
+  height: 1.125rem;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.btn:hover svg,
+.btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   TEXT UTILITIES
+   ========================================================================== */
+
+.text-overline {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-stone-500);
+}
+
+.text-lead {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  line-height: 1.8;
+  color: var(--color-stone-600);
+}
+
+.text-large {
+  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+  line-height: 1.6;
+}
+
+.text-small {
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ==========================================================================
+   IMAGES & MEDIA
+   ========================================================================== */
+
+.img-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-stone-200);
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.img-container:hover img {
+  transform: scale(1.03);
+}
+
+.img-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.2s var(--ease-out-expo);
+}
+
+.img-reveal.revealed {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.card {
+  background: var(--color-white);
+  transition: transform var(--duration-normal) var(--ease-out-expo),
+              box-shadow var(--duration-normal) var(--ease-out-expo);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px -20px rgba(28, 25, 23, 0.12);
+}
+
+.card-flat {
+  background: var(--color-stone-100);
+  border: 1px solid var(--color-stone-200);
+}
+
+.card-flat:hover {
+  background: var(--color-white);
+  border-color: var(--color-stone-300);
+}
+
+/* ==========================================================================
+   DIVIDERS & DECORATIVE
+   ========================================================================== */
+
+.divider {
+  height: 1px;
+  background: var(--color-stone-200);
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 100%;
+  background: var(--color-stone-200);
+}
+
+/* Accent line */
+.accent-line {
+  width: 60px;
+  height: 2px;
+  background: var(--color-stone-900);
+}
+
+/* ==========================================================================
+   FORM ELEMENTS
+   ========================================================================== */
+
+input, textarea, select {
+  width: 100%;
+  padding: 1.125rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-stone-900);
+  background: var(--color-white);
+  border: 1.5px solid var(--color-stone-300);
+  border-radius: 0;
+  outline: none;
+  transition: border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-stone-900);
+  box-shadow: 0 0 0 4px rgba(28, 25, 23, 0.05);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-stone-400);
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-stone-700);
+}
+
+/* ==========================================================================
+   ANIMATIONS — Smooth & Refined
+   ========================================================================== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes revealLine {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ==========================================================================
+   SCROLL & INTERACTION
+   ========================================================================== */
+
+::selection {
+  background: var(--color-stone-900);
+  color: var(--color-white);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-stone-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-stone-500);
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 2px solid var(--color-stone-900);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+.bg-cream { background: var(--color-stone-100); }
+.bg-warm { background: var(--color-stone-200); }
+
+.text-stone-900 { color: var(--color-stone-900); }
+.text-stone-600 { color: var(--color-stone-600); }
+.text-stone-500 { color: var(--color-stone-500); }
+
+/* Grid utilities */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
