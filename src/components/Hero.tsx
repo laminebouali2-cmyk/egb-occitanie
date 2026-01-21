@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen flex items-end overflow-hidden"
+      className="relative h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image with Parallax */}
       <motion.div className="absolute inset-0" style={{ scale }}>
@@ -26,69 +26,71 @@ export function Hero() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             y,
-            backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070&auto=format&fit=crop')`,
           }}
         />
-        {/* Elegant warm gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-900/30 to-stone-900/10" />
+        {/* Lighter, more elegant gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-stone-900/20 to-stone-900/10" />
       </motion.div>
 
-      {/* Content */}
+      {/* Content - Centered */}
       <motion.div
-        className="relative z-10 container pb-16 md:pb-24 lg:pb-32"
+        className="relative z-10 container text-center"
         style={{ opacity }}
       >
-        <div className="max-w-4xl">
+        <div className="max-w-5xl mx-auto">
           {/* Overline */}
           <motion.div
-            className="flex items-center gap-4 mb-8"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-4 mb-10 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <span className="w-12 h-px bg-white/40" />
-            <span className="text-white/60 text-sm tracking-[0.25em] uppercase font-medium">
+            <span className="text-white/70 text-sm tracking-[0.25em] uppercase font-medium">
               Toulouse & Occitanie
             </span>
+            <span className="w-12 h-px bg-white/40" />
           </motion.div>
 
-          {/* Main Title - Editorial Style */}
+          {/* Main Title - Centered & Emotional */}
           <motion.h1
-            className="text-white mb-8 leading-[1.05]"
+            className="text-white mb-8 leading-[1.1] text-center"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            L&apos;art de bâtir
+            Nous construisons
             <br />
-            <span className="text-white/50">l&apos;exception</span>
+            <span className="text-white/60">ce qui dure</span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p
-            className="text-white/70 text-lg md:text-xl max-w-lg mb-12 leading-relaxed"
+            className="text-white/80 text-xl md:text-2xl max-w-3xl mx-auto mb-14 leading-relaxed font-light"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            Construction de villas, rénovations prestigieuses et extensions sur-mesure
-            pour une clientèle exigeante.
+            Maîtres d&apos;œuvre de vos projets d&apos;exception.
+            <br />
+            Construction, rénovation, extension en Occitanie.
           </motion.p>
 
-          {/* CTA Group */}
+          {/* CTA Group - Premium buttons */}
           <motion.div
-            className="flex flex-wrap items-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
           >
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-3 bg-white text-stone-900 px-8 py-4 font-medium transition-all duration-500 hover:bg-stone-100 hover:shadow-2xl hover:shadow-white/20"
+              className="group inline-flex items-center gap-3 bg-white text-stone-900 px-10 py-5 font-medium text-base transition-all duration-500 hover:bg-stone-50 hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.4)] hover:-translate-y-1"
             >
-              Discuter de votre projet
+              Démarrer votre projet
               <svg
-                className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1"
+                className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -103,11 +105,22 @@ export function Hero() {
             </Link>
             <Link
               href="/projets"
-              className="group inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors duration-300"
+              className="group inline-flex items-center gap-3 text-white/90 hover:text-white transition-all duration-300 px-10 py-5 border border-white/30 hover:border-white/60 hover:bg-white/5 backdrop-blur-sm"
             >
-              <span className="border-b border-white/30 group-hover:border-white transition-colors duration-300">
-                Découvrir nos réalisations
-              </span>
+              <span className="font-medium">Nos réalisations</span>
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
             </Link>
           </motion.div>
         </div>

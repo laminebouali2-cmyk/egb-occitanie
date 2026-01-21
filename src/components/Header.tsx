@@ -13,11 +13,15 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOnHero, setIsOnHero] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrollPos = window.scrollY;
+      setIsScrolled(scrollPos > 50);
+      setIsOnHero(scrollPos < window.innerHeight * 0.7); // On hero si dans les 70% du viewport
     };
+    handleScroll(); // Init
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -38,17 +42,17 @@ export function Header() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Background */}
+        {/* Background - always visible except on hero */}
         <motion.div
           className="absolute inset-0 bg-white/95 backdrop-blur-md"
           initial={{ opacity: 0 }}
-          animate={{ opacity: isScrolled ? 1 : 0 }}
+          animate={{ opacity: isOnHero ? 0 : 1 }}
           transition={{ duration: 0.3 }}
         />
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-px bg-stone-200"
           initial={{ opacity: 0 }}
-          animate={{ opacity: isScrolled ? 1 : 0 }}
+          animate={{ opacity: isOnHero ? 0 : 1 }}
           transition={{ duration: 0.3 }}
         />
 
@@ -67,14 +71,14 @@ export function Header() {
               >
                 <span
                   className={`text-xl font-medium tracking-tight transition-colors duration-300 ${
-                    isScrolled || isMobileMenuOpen ? 'text-stone-900' : 'text-white'
+                    isOnHero && !isMobileMenuOpen ? 'text-white' : 'text-stone-900'
                   }`}
                 >
                   EGB
                 </span>
                 <span
                   className={`text-xl ml-1.5 transition-colors duration-300 ${
-                    isScrolled || isMobileMenuOpen ? 'text-stone-400' : 'text-white/60'
+                    isOnHero && !isMobileMenuOpen ? 'text-white/60' : 'text-stone-400'
                   }`}
                 >
                   Occitanie
@@ -84,7 +88,7 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <motion.div
-              className="hidden md:flex items-center gap-10"
+              className="hidden md:flex items-center gap-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -94,22 +98,31 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={`relative text-sm font-medium tracking-wide transition-colors duration-300 group ${
-                    isScrolled ? 'text-stone-600 hover:text-stone-900' : 'text-white/80 hover:text-white'
+                    isOnHero ? 'text-white/80 hover:text-white' : 'text-stone-600 hover:text-stone-900'
                   }`}
                 >
                   {link.label}
                   <span className={`absolute -bottom-1 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${
-                    isScrolled ? 'bg-stone-900' : 'bg-white'
+                    isOnHero ? 'bg-white' : 'bg-stone-900'
                   }`} />
                 </Link>
               ))}
 
+              <a
+                href="tel:+33665015882"
+                className={`text-sm font-medium tracking-wide transition-colors duration-300 ${
+                  isOnHero ? 'text-white/90 hover:text-white' : 'text-stone-700 hover:text-stone-900'
+                }`}
+              >
+                06 65 01 58 82
+              </a>
+
               <Link
                 href="/contact"
-                className={`ml-4 px-6 py-3 text-sm font-medium transition-all duration-300 ${
-                  isScrolled
-                    ? 'bg-stone-900 text-white hover:bg-stone-800'
-                    : 'bg-white text-stone-900 hover:bg-stone-100'
+                className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
+                  isOnHero
+                    ? 'bg-white text-stone-900 hover:bg-stone-100'
+                    : 'bg-stone-900 text-white hover:bg-stone-800'
                 }`}
               >
                 Démarrer un projet
@@ -125,7 +138,7 @@ export function Header() {
               <div className="w-6 h-5 flex flex-col justify-between">
                 <motion.span
                   className={`block h-0.5 origin-left transition-colors duration-300 ${
-                    isScrolled || isMobileMenuOpen ? 'bg-stone-900' : 'bg-white'
+                    isOnHero && !isMobileMenuOpen ? 'bg-white' : 'bg-stone-900'
                   }`}
                   animate={{
                     rotate: isMobileMenuOpen ? 45 : 0,
@@ -135,7 +148,7 @@ export function Header() {
                 />
                 <motion.span
                   className={`block h-0.5 transition-colors duration-300 ${
-                    isScrolled || isMobileMenuOpen ? 'bg-stone-900' : 'bg-white'
+                    isOnHero && !isMobileMenuOpen ? 'bg-white' : 'bg-stone-900'
                   }`}
                   animate={{
                     opacity: isMobileMenuOpen ? 0 : 1,
@@ -144,7 +157,7 @@ export function Header() {
                 />
                 <motion.span
                   className={`block h-0.5 origin-left transition-colors duration-300 ${
-                    isScrolled || isMobileMenuOpen ? 'bg-stone-900' : 'bg-white'
+                    isOnHero && !isMobileMenuOpen ? 'bg-white' : 'bg-stone-900'
                   }`}
                   style={{ width: isMobileMenuOpen ? '100%' : '60%' }}
                   animate={{
@@ -235,13 +248,21 @@ export function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <p className="text-sm text-stone-400 mb-2">Contact</p>
-                <a
-                  href="mailto:contact@egb-occitanie.fr"
-                  className="text-sm text-stone-600 hover:text-stone-900 transition-colors"
-                >
-                  contact@egb-occitanie.fr
-                </a>
+                <p className="text-sm text-stone-400 mb-3">Contact</p>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="tel:+33665015882"
+                    className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-medium"
+                  >
+                    06 65 01 58 82
+                  </a>
+                  <a
+                    href="mailto:contact@egb-occitanie.fr"
+                    className="text-sm text-stone-600 hover:text-stone-900 transition-colors"
+                  >
+                    contact@egb-occitanie.fr
+                  </a>
+                </div>
               </motion.div>
             </div>
           </motion.div>
