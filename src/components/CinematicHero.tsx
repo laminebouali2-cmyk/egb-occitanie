@@ -163,7 +163,7 @@ export default function CinematicHero() {
         <canvas
           ref={canvasRef}
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ imageRendering: 'high-quality' }}
+          style={{ imageRendering: 'auto' }}
         />
 
         {/* Overlays cinématiques */}
