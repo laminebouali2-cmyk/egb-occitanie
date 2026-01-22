@@ -53,9 +53,9 @@ export default function ContactPage() {
                     Adresse
                   </h3>
                   <address className="not-italic text-[var(--color-text-secondary)] leading-relaxed">
-                    EGB Occitanie
+                    3 Rue de l'équipement
                     <br />
-                    Toulouse, Occitanie
+                    31320 Castanet-Tolosan
                     <br />
                     France
                   </address>
@@ -67,10 +67,10 @@ export default function ContactPage() {
                     Téléphone
                   </h3>
                   <a
-                    href="tel:+33500000000"
+                    href="tel:+33665015882"
                     className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
                   >
-                    05 00 00 00 00
+                    06 65 01 58 82
                   </a>
                 </div>
 

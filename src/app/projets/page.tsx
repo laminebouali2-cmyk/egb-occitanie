@@ -70,7 +70,7 @@ const projects = [
   },
 ];
 
-const categories = ["Tous", "Construction neuve", "Rénovation", "Extension"];
+const categories = ["Tous", "Construction neuve", "Rénovation", "Extension", "Sinistres"];
 
 export default function ProjetsPage() {
   return (

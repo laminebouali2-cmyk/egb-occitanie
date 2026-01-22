@@ -5,9 +5,9 @@ import { useRef } from 'react';
 import Link from 'next/link';
 
 const stats = [
-  { value: 'RGE', label: 'Artisans certifiés' },
+  { value: '5+', label: 'Architectes toulousains partenaires' },
+  { value: '0', label: 'Retard de chantier' },
   { value: '200+', label: 'Projets réalisés' },
-  { value: '98%', label: 'Clients satisfaits' },
 ];
 
 export function Introduction() {
