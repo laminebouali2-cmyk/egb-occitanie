@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { StructuredData } from "@/components/StructuredData";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -13,20 +14,24 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://egb-occitanie.fr"),
   title: {
-    default: "EGB Occitanie | Construction Haut de Gamme à Toulouse",
+    default: "EGB Occitanie | Construction Villa Toulouse - Rénovation Haut de Gamme Haute-Garonne",
     template: "%s | EGB Occitanie",
   },
   description:
-    "Construction de villas, rénovation haut de gamme et extensions à Toulouse. L'excellence artisanale au service de vos projets d'exception en Occitanie.",
+    "Constructeur villa neuve & rénovation haut de gamme à Toulouse. 15 ans d'expertise, 5+ architectes partenaires, 0 retard de chantier, garantie décennale. Devis gratuit sous 48h. Construction, rénovation, extension sur-mesure en Haute-Garonne.",
   keywords: [
-    "construction villa Toulouse",
-    "rénovation haut de gamme Occitanie",
-    "constructeur maison luxe Toulouse",
-    "extension maison Toulouse",
-    "entreprise bâtiment premium",
-    "maître d'œuvre Toulouse",
-    "rénovation maison de maître",
-    "construction sur-mesure Occitanie",
+    "construction villa toulouse",
+    "constructeur maison toulouse",
+    "rénovation toulouse",
+    "rénovation haut de gamme toulouse",
+    "construction neuve haute-garonne",
+    "extension maison toulouse",
+    "architecte toulouse",
+    "maître d'œuvre toulouse",
+    "entreprise bâtiment toulouse",
+    "villa sur-mesure toulouse",
+    "rénovation maison toulousaine",
+    "construction occitanie",
   ],
   authors: [{ name: "EGB Occitanie" }],
   creator: "EGB Occitanie",
@@ -41,23 +46,23 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://egb-occitanie.fr",
     siteName: "EGB Occitanie",
-    title: "EGB Occitanie | Construction & Rénovation en Occitanie",
+    title: "EGB Occitanie | Constructeur Villa & Rénovation Premium Toulouse",
     description:
-      "Entreprise générale de bâtiment en Occitanie. Construction neuve, rénovation et extension depuis 15 ans.",
+      "Spécialiste construction villa neuve et rénovation haut de gamme à Toulouse. 15 ans d'expertise, 5+ architectes, 0 retard, garantie décennale. Devis gratuit 48h.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "EGB Occitanie - Construction Premium en Occitanie",
+        alt: "EGB Occitanie - Constructeur Villa Premium Toulouse & Haute-Garonne",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EGB Occitanie | Construction & Rénovation",
+    title: "EGB Occitanie | Constructeur Villa Toulouse - Rénovation Premium",
     description:
-      "Entreprise générale de bâtiment en Occitanie. Construction neuve, rénovation et extension.",
+      "Construction villa neuve & rénovation haut de gamme à Toulouse. 15 ans d'expertise, 5+ architectes, 0 retard. Devis gratuit 48h.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -81,6 +86,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <StructuredData />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

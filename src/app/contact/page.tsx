@@ -2,9 +2,22 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact | Démarrer votre projet de construction",
+  title: "Contact EGB Occitanie | Devis Gratuit Sous 48h - Toulouse & Occitanie",
   description:
-    "Contactez EGB Occitanie pour votre projet de construction, rénovation ou extension. Devis gratuit et réponse sous 24h.",
+    "Contactez EGB Occitanie pour votre projet de construction, rénovation ou extension à Toulouse. Devis gratuit sous 48h, réponse garantie sous 24h. 15 ans d'expertise, 5+ architectes partenaires. ☎ 06 65 01 58 82",
+  keywords: [
+    "contact constructeur toulouse",
+    "devis construction toulouse",
+    "devis rénovation toulouse",
+    "contact egb occitanie",
+    "rdv constructeur toulouse",
+  ],
+  openGraph: {
+    title: "Contactez EGB Occitanie | Devis Gratuit Construction & Rénovation",
+    description:
+      "Devis gratuit sous 48h pour votre projet de construction ou rénovation à Toulouse. Réponse garantie sous 24h.",
+    url: "https://egb-occitanie.fr/contact",
+  },
 };
 
 export default function ContactPage() {
