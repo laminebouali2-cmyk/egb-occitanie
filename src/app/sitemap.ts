@@ -48,6 +48,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.92,
     },
     {
+      url: `${baseUrl}/construction-villa-castanet-tolosan`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.92,
+    },
+    {
+      url: `${baseUrl}/construction-villa-ramonville`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.92,
+    },
+    {
+      url: `${baseUrl}/construction-villa-balma`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.92,
+    },
+    {
+      url: `${baseUrl}/construction-villa-colomiers`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.92,
+    },
+    {
       url: `${baseUrl}/expertise`,
       lastModified: currentDate,
       changeFrequency: "monthly",
