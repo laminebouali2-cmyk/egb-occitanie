@@ -2,9 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Nos Projets | Réalisations Construction & Rénovation",
+  title: "Nos Réalisations | Portfolio Construction Villa & Rénovation Toulouse",
   description:
-    "Découvrez nos réalisations en construction neuve, rénovation et extension en Occitanie. Projets résidentiels et tertiaires livrés avec excellence.",
+    "200+ villas construites et rénovées à Toulouse et en Occitanie depuis 2008. Découvrez notre portfolio : construction neuve, rénovation haut de gamme, extension sur-mesure. Photos avant/après, témoignages clients.",
+  keywords: [
+    "réalisations construction toulouse",
+    "portfolio constructeur toulouse",
+    "photos villa toulouse",
+    "exemples construction occitanie",
+    "projets rénovation toulouse",
+    "avant après rénovation",
+  ],
+  openGraph: {
+    title: "Nos Réalisations | 200+ Projets Construction & Rénovation Toulouse",
+    description:
+      "Portfolio complet de nos constructions et rénovations à Toulouse : villas, maisons, extensions. 15 ans d'excellence.",
+    url: "https://egb-occitanie.fr/projets",
+  },
 };
 
 const projects = [
@@ -70,7 +84,7 @@ const projects = [
   },
 ];
 
-const categories = ["Tous", "Construction neuve", "Rénovation", "Extension"];
+const categories = ["Tous", "Construction neuve", "Rénovation", "Extension", "Sinistres"];
 
 export default function ProjetsPage() {
   return (

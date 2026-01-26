@@ -2,9 +2,22 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact | Démarrer votre projet de construction",
+  title: "Contact EGB Occitanie | Devis Gratuit Sous 48h - Toulouse & Occitanie",
   description:
-    "Contactez EGB Occitanie pour votre projet de construction, rénovation ou extension. Devis gratuit et réponse sous 24h.",
+    "Contactez EGB Occitanie pour votre projet de construction, rénovation ou extension à Toulouse. Devis gratuit sous 48h, réponse garantie sous 24h. 15 ans d'expertise, 5+ architectes partenaires. ☎ 06 65 01 58 82",
+  keywords: [
+    "contact constructeur toulouse",
+    "devis construction toulouse",
+    "devis rénovation toulouse",
+    "contact egb occitanie",
+    "rdv constructeur toulouse",
+  ],
+  openGraph: {
+    title: "Contactez EGB Occitanie | Devis Gratuit Construction & Rénovation",
+    description:
+      "Devis gratuit sous 48h pour votre projet de construction ou rénovation à Toulouse. Réponse garantie sous 24h.",
+    url: "https://egb-occitanie.fr/contact",
+  },
 };
 
 export default function ContactPage() {
@@ -53,9 +66,9 @@ export default function ContactPage() {
                     Adresse
                   </h3>
                   <address className="not-italic text-[var(--color-text-secondary)] leading-relaxed">
-                    EGB Occitanie
+                    3 Rue de l'équipement
                     <br />
-                    Toulouse, Occitanie
+                    31320 Castanet-Tolosan
                     <br />
                     France
                   </address>
@@ -67,10 +80,10 @@ export default function ContactPage() {
                     Téléphone
                   </h3>
                   <a
-                    href="tel:+33500000000"
+                    href="tel:+33665015882"
                     className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
                   >
-                    05 00 00 00 00
+                    06 65 01 58 82
                   </a>
                 </div>
 

@@ -74,15 +74,15 @@ export function Footer() {
               </h4>
               <nav className="flex flex-col gap-4">
                 {[
-                  { href: '/expertise/construction', label: 'Construction' },
-                  { href: '/expertise/renovation', label: 'Rénovation' },
-                  { href: '/expertise/extension', label: 'Extension' },
-                  { href: '/expertise/sinistres', label: 'Sinistres' },
+                  { href: '/expertise#construction', label: 'Construction' },
+                  { href: '/expertise#renovation', label: 'Rénovation' },
+                  { href: '/expertise#extension', label: 'Extension' },
+                  { href: '/expertise#sinistres', label: 'Sinistres' },
                 ].map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-stone-400 hover:text-white transition-colors duration-300"
+                    className="text-stone-400 hover:text-white transition-colors duration-300 block"
                   >
                     {link.label}
                   </Link>
@@ -98,14 +98,14 @@ export function Footer() {
               <address className="not-italic flex flex-col gap-4 text-stone-400">
                 <p>Toulouse & Occitanie</p>
                 <a
-                  href="tel:+33500000000"
-                  className="hover:text-white transition-colors duration-300"
+                  href="tel:+33665015882"
+                  className="hover:text-white transition-colors duration-300 block"
                 >
-                  05 00 00 00 00
+                  06 65 01 58 82
                 </a>
                 <a
                   href="mailto:contact@egb-occitanie.fr"
-                  className="hover:text-white transition-colors duration-300"
+                  className="hover:text-white transition-colors duration-300 block"
                 >
                   contact@egb-occitanie.fr
                 </a>

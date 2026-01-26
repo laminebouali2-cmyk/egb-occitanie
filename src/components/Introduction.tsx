@@ -5,9 +5,9 @@ import { useRef } from 'react';
 import Link from 'next/link';
 
 const stats = [
-  { value: '15+', label: 'Années d\'expertise' },
+  { value: '5+', label: 'Architectes toulousains partenaires' },
+  { value: '0', label: 'Retard de chantier' },
   { value: '200+', label: 'Projets réalisés' },
-  { value: '98%', label: 'Clients satisfaits' },
 ];
 
 export function Introduction() {
@@ -48,8 +48,9 @@ export function Introduction() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-lead">
-                Depuis plus de 15 ans, nous accompagnons une clientèle exigeante dans la réalisation
-                de projets d&apos;exception à Toulouse et en Occitanie.
+                Nous accompagnons une clientèle exigeante dans la réalisation de projets
+                d&apos;exception à Toulouse et en Occitanie. Chaque chantier porte notre signature :
+                qualité irréprochable, délais maîtrisés, finitions soignées.
               </p>
               <p>
                 Notre approche allie expertise technique pointue et écoute attentive de vos aspirations.
