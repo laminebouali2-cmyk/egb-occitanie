@@ -156,6 +156,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/calculateur-prix`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/mentions-legales`,
       lastModified: currentDate,
       changeFrequency: "yearly",
