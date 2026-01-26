@@ -90,48 +90,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.92,
     },
     {
-      url: `${baseUrl}/construction-villa-cugnaux`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.92,
-    },
-    {
-      url: `${baseUrl}/construction-villa-plaisance-du-touch`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.92,
-    },
-    {
-      url: `${baseUrl}/construction-villa-portet-sur-garonne`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.92,
-    },
-    {
-      url: `${baseUrl}/construction-villa-saint-orens`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.92,
-    },
-    {
-      url: `${baseUrl}/construction-villa-auzeville-tolosane`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.92,
-    },
-    {
-      url: `${baseUrl}/construction-villa-labege`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.92,
-    },
-    {
-      url: `${baseUrl}/construction-villa-escalquens`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.92,
-    },
-    {
       url: `${baseUrl}/expertise`,
       lastModified: currentDate,
       changeFrequency: "monthly",
