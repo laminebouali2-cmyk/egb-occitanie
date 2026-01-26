@@ -201,7 +201,7 @@ export default function RenovationEnergetiqueToulouse() {
                     <div className="bg-blue-900 text-white p-5 rounded">
                       <h4 className="font-semibold mb-2">Conditions éligibilité:</h4>
                       <ul className="text-sm space-y-1">
-                        <li>✓ Logement construit >15 ans</li>
+                        <li>✓ Logement construit &gt;15 ans</li>
                         <li>✓ Résidence principale</li>
                         <li>✓ Travaux par artisan RGE</li>
                         <li>✓ Devis accepté avant démarrage</li>

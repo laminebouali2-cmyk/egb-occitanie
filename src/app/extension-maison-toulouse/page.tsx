@@ -291,7 +291,7 @@ export default function ExtensionMaisonToulouse() {
                         <li>• Respect CES (Coefficient Emprise Sol) PLU</li>
                         <li>• Perte surface jardin</li>
                         <li>• Raccordement réseaux (élec, plomberie)</li>
-                        <li>• Permis construire si >20m²</li>
+                        <li>• Permis construire si &gt;20m²</li>
                       </ul>
                     </div>
                   </div>
@@ -434,7 +434,7 @@ export default function ExtensionMaisonToulouse() {
                         <li>✓ Lumière naturelle maximale</li>
                         <li>✓ Chantier rapide (2-4 semaines)</li>
                         <li>✓ Vue jardin panoramique</li>
-                        <li>✓ Déclaration préalable si <20m²</li>
+                        <li>✓ Déclaration préalable si &lt;20m²</li>
                       </ul>
                     </div>
                     <div className="bg-stone-50 p-5">
