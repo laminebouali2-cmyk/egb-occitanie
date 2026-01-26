@@ -57,7 +57,7 @@ export function Header() {
         />
 
         <div className="container relative">
-          <nav className="flex items-center justify-between h-20 md:h-24">
+          <nav className="flex items-center justify-between h-20 md:h-24" role="navigation" aria-label="Navigation principale">
             {/* Logo */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -68,6 +68,7 @@ export function Header() {
                 href="/"
                 className="relative z-10 group"
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="EGB Occitanie - Retour à l'accueil"
               >
                 <span
                   className={`text-xl font-medium tracking-tight transition-colors duration-300 ${
@@ -113,6 +114,7 @@ export function Header() {
                 className={`text-sm font-medium tracking-wide transition-colors duration-300 ${
                   isOnHero ? 'text-white/90 hover:text-white' : 'text-stone-700 hover:text-stone-900'
                 }`}
+                aria-label="Appeler EGB Occitanie au 06 65 01 58 82"
               >
                 06 65 01 58 82
               </a>
@@ -133,7 +135,8 @@ export function Header() {
             <button
               className="relative z-10 md:hidden p-2 -mr-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Menu"
+              aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={isMobileMenuOpen}
             >
               <div className="w-6 h-5 flex flex-col justify-between">
                 <motion.span
