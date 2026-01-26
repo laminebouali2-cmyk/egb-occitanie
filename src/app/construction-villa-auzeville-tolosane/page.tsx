@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from="next/link";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Construction Villa Auzeville-Tolosane | Technopole Recherche INRAE",

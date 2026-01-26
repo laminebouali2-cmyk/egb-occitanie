@@ -535,7 +535,7 @@ export default function ExtensionMaisonToulouse() {
                       <td className="py-4 px-4 font-medium">20m² à 40m²</td>
                       <td className="py-4 px-4">Permis de construire</td>
                       <td className="py-4 px-4">2 mois</td>
-                      <td className="py-4 px-4">Si total >150m²</td>
+                      <td className="py-4 px-4">Si total &gt;150m²</td>
                     </tr>
                     <tr className="border-b border-stone-200 bg-stone-50">
                       <td className="py-4 px-4 font-medium">Plus de 40m²</td>
