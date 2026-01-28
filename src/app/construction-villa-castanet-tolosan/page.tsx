@@ -650,7 +650,7 @@ export default function ConstructionVillaCastanetTolosan() {
                 </p>
                 <ul className="space-y-2 ml-6 mb-3">
                   <li><strong>• Secteurs simples</strong> (Quartier Durable, zones UCB hors périmètre ABF) : <strong>2-2,5 mois</strong> (délai légal respecté)</li>
-                  <li><strong>• Secteurs ABF</strong> (proximité Canal du Midi <500m, centre ancien) : <strong>2,5-3 mois</strong> (+2-3 semaines consultation Architecte Bâtiments France obligatoire)</li>
+                  <li><strong>• Secteurs ABF</strong> (proximité Canal du Midi moins de 500m, centre ancien) : <strong>2,5-3 mois</strong> (+2-3 semaines consultation Architecte Bâtiments France obligatoire)</li>
                   <li><strong>• Projets atypiques</strong> (architecture contemporaine forte, emprise sol élevée) : <strong>3 mois</strong> (instruction approfondie services techniques mairie)</li>
                 </ul>
                 <p className="mb-3">
@@ -664,7 +664,7 @@ export default function ConstructionVillaCastanetTolosan() {
                 <ul className="space-y-2 ml-6 mb-3">
                   <li><strong>• Plans non-conformes PLU 2019</strong> (emprise sol, hauteurs, reculs) = ajournement/refus (30% dossiers particuliers)</li>
                   <li><strong>• Étude géotechnique G2 manquante</strong> (obligatoire loi ELAN sols argileux) = demande pièce complémentaire (+1 mois)</li>
-                  <li><strong>• Consultation ABF oubliée</strong> (si <500m Canal) = rejet automatique dossier</li>
+                  <li><strong>• Consultation ABF oubliée</strong> (si moins de 500m Canal) = rejet automatique dossier</li>
                 </ul>
                 <p>
                   <strong>Conseil EGB Occitanie</strong> : Déléguer constitution dossier permis à constructeur expérimenté local =

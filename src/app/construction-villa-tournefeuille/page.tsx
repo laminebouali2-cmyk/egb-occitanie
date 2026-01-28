@@ -335,7 +335,7 @@ export default function ConstructionVillaTournefeuille() {
                 <p><strong>📍 Localisation</strong> : Sud-Ouest Tournefeuille, bords lac 44ha + golf 18 trous</p>
                 <p><strong>💰 Prix terrain</strong> : 380-400€/m² (parcelles 400-600m², emplacement premium nature)</p>
                 <p><strong>🏘️ Profil</strong> : Quartier résidentiel calme, 71% propriétaires, familles aisées, cadres supérieurs</p>
-                <p><strong>🎯 Avantages</strong> : Cadre vie exceptionnel (lac/golf/forêt <500m), valorisation +8-12% vs centre</p>
+                <p><strong>🎯 Avantages</strong> : Cadre vie exceptionnel (lac/golf/forêt moins de 500m), valorisation +8-12% vs centre</p>
               </div>
               <div className="bg-white rounded-lg p-4 border-2 border-emerald-200">
                 <p className="text-sm text-gray-600 mb-2"><strong>Idéal pour :</strong></p>
@@ -362,7 +362,7 @@ export default function ConstructionVillaTournefeuille() {
                 <p className="text-sm text-gray-600 mb-2"><strong>Idéal pour :</strong></p>
                 <p className="text-gray-700">
                   <strong>Actifs utilisant transports en commun</strong> (Linéo 2 direct Toulouse centre) +
-                  familles privilégiant proximité écoles/commerces (tout à pied <10min).
+                  familles privilégiant proximité écoles/commerces (tout à pied moins de 10min).
                   Liquidité marché immobilier élevée (demande soutenue).
                 </p>
               </div>
