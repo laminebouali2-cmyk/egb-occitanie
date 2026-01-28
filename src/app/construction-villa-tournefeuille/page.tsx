@@ -169,7 +169,7 @@ export default function ConstructionVillaTournefeuille() {
                 <strong>Base loisirs unique Sud-Ouest</strong> : lac 44 hectares (baignade, voile, pédalo),
                 golf 18 trous, 150 hectares forêts/prairies, 12km sentiers randonnée/VTT, aires pique-nique.
                 <strong>À domicile</strong> = qualité vie inégalée familles actives.
-                Valorisation +8-12% propriétés proximité (<1km).
+                Valorisation +8-12% propriétés proximité (moins de 1km).
               </p>
             </div>
 

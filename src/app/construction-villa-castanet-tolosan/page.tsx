@@ -630,7 +630,7 @@ export default function ConstructionVillaCastanetTolosan() {
                   (14,2‰ vs 11‰ France), forte demande logements 4-5 pièces = ville jeune et dynamique.
                 </p>
                 <p>
-                  <strong>Trajets scolaires</strong> : Majorité écoles/collège accessibles <15min à pied depuis quartiers résidentiels.
+                  <strong>Trajets scolaires</strong> : Majorité écoles/collège accessibles moins de 15min à pied depuis quartiers résidentiels.
                   Réseau piétonnier sécurisé (trottoirs larges, passages protégés). <strong>Cadre idéal enfants</strong>.
                 </p>
               </div>
