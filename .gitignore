@@ -41,3 +41,8 @@ next-env.d.ts
 # Misc
 *.log
 .vercel
+
+# Claude Code
+.agents
+.claude
+.opencode
