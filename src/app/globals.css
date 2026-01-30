@@ -24,6 +24,18 @@
   --color-accent: #C2410C;
   --color-accent-light: #EA580C;
 
+  /* Semantic Colors (mapped to stone palette) */
+  --color-primary: var(--color-stone-900);
+  --color-secondary: var(--color-stone-600);
+  --color-success: #16a34a;
+  --color-surface: var(--color-white);
+  --color-surface-elevated: var(--color-stone-100);
+  --color-text: var(--color-stone-900);
+  --color-text-secondary: var(--color-stone-600);
+  --color-text-muted: var(--color-stone-500);
+  --color-border: var(--color-stone-300);
+  --color-background: var(--color-white);
+
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;

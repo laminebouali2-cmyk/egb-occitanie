@@ -123,7 +123,7 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center gap-3 bg-zinc-800 hover:bg-zinc-900 text-white transition-all duration-200 ease-out"
+              className="group inline-flex items-center justify-center gap-3 text-white transition-all duration-200 ease-out"
               style={{
                 padding: '20px 40px',
                 fontSize: '17px',
@@ -131,7 +131,10 @@ export function Hero() {
                 letterSpacing: '0.01em',
                 borderRadius: '4px',
                 boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+                backgroundColor: 'var(--color-stone-900)',
               }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-stone-950)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-stone-900)'}
             >
               <span>Discuter de mon projet</span>
               <svg
