@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
-import Link from "next/link";
-
-const playfair = Playfair_Display({ subsets: ["latin"] });
+import ContactSection from "@/components/ContactSection";
 
 export const metadata: Metadata = {
   title: "Rénovation Appartement Saint-Cyprien Toulouse (31000) | EGB Occitanie",
@@ -101,581 +98,530 @@ const localBusinessSchema = {
 
 export default function RenovationSaintCyprienToulouse() {
   return (
-    <main className="min-h-screen bg-white">
-      {/* Schema.org JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
 
-      {/* Hero Section - Editorial Style */}
-      <section className="border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-6 py-12">
-          {/* Breadcrumb */}
-          <nav className="mb-8 text-sm">
-            <ol className="flex items-center space-x-2 text-gray-500">
-              <li><Link href="/" className="hover:text-gray-900 transition-colors">Accueil</Link></li>
-              <li><span className="mx-2">/</span></li>
-              <li><Link href="/renovation" className="hover:text-gray-900 transition-colors">Rénovation</Link></li>
-              <li><span className="mx-2">/</span></li>
-              <li className="text-gray-900 font-medium">Saint-Cyprien</li>
-            </ol>
-          </nav>
-
-          {/* Title */}
-          <h1 className={`${playfair.className} text-5xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight`}>
-            Rénovation Appartement Saint-Cyprien Toulouse
-          </h1>
-
-          {/* Intro */}
-          <p className="text-xl text-gray-600 leading-relaxed mb-8">
-            Expert rénovation quartier Saint-Cyprien depuis 15 ans. Rive gauche Garonne,
-            briques roses authentiques 1880-1930, ABF modéré.
-            Prix 2025 : 2 400-3 200€/m². 20 projets réussis, 100% validations ABF.
-          </p>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 border-t border-gray-200">
-            <div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">17 320</div>
-              <div className="text-sm text-gray-600">Habitants</div>
+      <div className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section className="bg-white py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="h-[1px] w-12 bg-amber-600" />
+              <span className="text-amber-800 text-xs uppercase tracking-[0.3em] font-medium">
+                Rive Gauche Garonne · Quartier Bohème
+              </span>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">4 747€</div>
-              <div className="text-sm text-gray-600">Prix m² (nov 2025)</div>
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-8 leading-[1.1]">
+              Rénovation Appartement
+              <br />
+              <span className="text-amber-800">Saint-Cyprien Toulouse</span>
+            </h1>
+
+            <div className="prose prose-lg prose-stone max-w-none mb-12">
+              <p className="text-xl leading-relaxed">
+                Expert rénovation quartier Saint-Cyprien depuis 15 ans. Rive gauche Garonne, immeubles briques roses authentiques 1880-1930, ABF modéré. 20 projets réussis, 100% validations ABF.
+              </p>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">1880-1930</div>
-              <div className="text-sm text-gray-600">Immeubles Briques</div>
+
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <a href="tel:0665015882" className="inline-block bg-amber-600 text-white px-8 py-4 rounded font-medium text-lg hover:bg-amber-700 transition-colors text-center">
+                06 65 01 58 82 - Devis Gratuit
+              </a>
+              <a href="/contact" className="inline-block bg-gray-900 text-white px-8 py-4 rounded font-medium text-lg hover:bg-gray-800 transition-colors text-center">
+                Dossier ABF Gratuit
+              </a>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">90%</div>
-              <div className="text-sm text-gray-600">Taux validation ABF</div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="border-2 border-amber-200 p-6 rounded">
+                <div className="text-3xl font-light mb-2 text-amber-900">17 320</div>
+                <div className="text-sm text-gray-600">Habitants</div>
+              </div>
+              <div className="border-2 border-amber-200 p-6 rounded">
+                <div className="text-3xl font-light mb-2 text-amber-900">4 747€</div>
+                <div className="text-sm text-gray-600">Prix m² (nov 2025)</div>
+              </div>
+              <div className="border-2 border-amber-200 p-6 rounded">
+                <div className="text-3xl font-light mb-2 text-amber-900">1880-1930</div>
+                <div className="text-sm text-gray-600">Briques roses</div>
+              </div>
+              <div className="border-2 border-amber-200 p-6 rounded">
+                <div className="text-3xl font-light mb-2 text-amber-900">90%</div>
+                <div className="text-sm text-gray-600">Validation ABF</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Main Content */}
-      <article className="max-w-4xl mx-auto px-6 py-16">
-        {/* Section 1 */}
-        <section className="mb-16">
-          <h2 className={`${playfair.className} text-3xl font-bold mb-6 text-gray-900`}>
-            Pourquoi Rénover à Saint-Cyprien Toulouse ?
-          </h2>
+        {/* Pourquoi Rénover Section */}
+        <section className="bg-gray-50 py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12">
+              Pourquoi Rénover
+              <span className="text-amber-800"> Saint-Cyprien</span> ?
+            </h2>
 
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Prix Attractifs vs Centre Historique</h3>
-              <p className="text-gray-700 leading-relaxed">
-                <strong>Achat 3 500-6 000€/m²</strong> (-20% vs Capitole) + rénovation 2 400-3 200€/m²
-                = <strong>total 5 900-9 200€/m²</strong> vs 10 000€/m²+ rive droite neuf.
-                Budget rénovation confortable, marges valorisation importantes.
-                <strong>ROI rénovation : +25-35%</strong> sur prix achat initial.
-              </p>
+            <div className="space-y-8">
+              <div className="bg-white border-2 border-amber-200 p-8 rounded">
+                <h3 className="text-2xl font-light text-amber-900 mb-4">
+                  Prix Attractifs vs Centre Historique
+                </h3>
+                <div className="prose prose-stone max-w-none">
+                  <p>
+                    <strong>Achat</strong> : 3 500-6 000€/m² (moyenne 4 747€/m² nov 2025) soit <strong>-20% vs Capitole</strong>.
+                  </p>
+                  <p>
+                    <strong>Rénovation</strong> : 2 400-3 200€/m² selon ampleur des travaux (vs 3 000-4 000€/m² Capitole). ABF modéré = coûts maîtrisés.
+                  </p>
+                  <p>
+                    <strong>Total investissement</strong> : 5 900-9 200€/m² post-rénovation vs 10 000€/m²+ rive droite neuf. Budget rénovation confortable, <strong>marges de valorisation importantes : ROI +25-35%</strong> sur prix achat initial.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white border-2 border-amber-200 p-8 rounded">
+                <h3 className="text-2xl font-light text-amber-900 mb-4">
+                  Gentrification Dynamique en Cours
+                </h3>
+                <div className="prose prose-stone max-w-none">
+                  <p>
+                    <strong>+5,4% prix immobilier 2024-2025</strong> (vs +2% moyenne Toulouse). Saint-Cyprien est un <strong>quartier montant</strong> : artistes, jeunes actifs, familles CSP+, commerces branchés, restaurants de qualité.
+                  </p>
+                  <p>
+                    Projets urbains structurants : réaménagement quais Garonne, nouvelles pistes cyclables, espaces piétons. <strong>Valorisation projetée : 5-7%/an pour 2025-2030</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white border-2 border-amber-200 p-8 rounded">
+                <h3 className="text-2xl font-light text-amber-900 mb-4">
+                  Vue Garonne = Valorisation +15-20%
+                </h3>
+                <div className="prose prose-stone max-w-none">
+                  <p>
+                    Appartements rénovés avec <strong>vue sur la Garonne ou terrasse panoramique</strong> : 6 000-6 500€/m² vs 4 500€/m² sans vue.
+                  </p>
+                  <p>
+                    Quais piétons, pistes cyclables, guinguettes en été. <strong>Cadre de vie unique à Toulouse</strong> = argument de revente puissant. Rareté de l'offre vue Garonne.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white border-2 border-amber-200 p-8 rounded">
+                <h3 className="text-2xl font-light text-amber-900 mb-4">
+                  Vie de Quartier Authentique & Bohème
+                </h3>
+                <div className="prose prose-stone max-w-none">
+                  <p>
+                    <strong>Communauté artistes et créatifs</strong> : galeries d'art, ateliers, théâtres alternatifs. Marché Saint-Cyprien le dimanche, bars et restaurants branchés rue des Récollets.
+                  </p>
+                  <p>
+                    <strong>Mixité sociale positive</strong>, ambiance village dans Toulouse. Écoles alternatives, crèches associatives, services de proximité complets.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Prix Détaillés */}
+        <section className="bg-white py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12">
+              Prix Rénovation
+              <span className="text-amber-800"> Saint-Cyprien 2025</span>
+            </h2>
+
+            <div className="space-y-6">
+              <div className="border-2 border-amber-200 p-8 rounded bg-white">
+                <h3 className="text-2xl font-light text-amber-900 mb-4">
+                  Rénovation Légère
+                </h3>
+                <div className="prose prose-stone max-w-none">
+                  <p className="text-3xl font-light text-gray-900 mb-4">700 €/m²</p>
+                  <ul>
+                    <li>Peinture murs et plafonds</li>
+                    <li>Sols stratifiés ou carrelage standard</li>
+                    <li>Cuisine équipée standard</li>
+                    <li>Salle de bain rafraîchie</li>
+                  </ul>
+                  <p className="text-amber-800 font-medium mt-4">
+                    60m² : 42 000€ · 80m² : 56 000€ · 100m² : 70 000€
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-2 border-amber-200 p-8 rounded bg-white">
+                <h3 className="text-2xl font-light text-amber-900 mb-4">
+                  Rénovation Moyenne
+                </h3>
+                <div className="prose prose-stone max-w-none">
+                  <p className="text-3xl font-light text-gray-900 mb-4">1 400 €/m²</p>
+                  <ul>
+                    <li>+ Électricité aux normes (installations années 70-90)</li>
+                    <li>+ Plomberie complète (remplacement canalisations plomb)</li>
+                    <li>+ Isolation phonique renforcée (tramway T1)</li>
+                  </ul>
+                  <p className="text-amber-800 font-medium mt-4">
+                    60m² : 84 000€ · 80m² : 112 000€ · 100m² : 140 000€
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-2 border-amber-200 p-8 rounded bg-white">
+                <h3 className="text-2xl font-light text-amber-900 mb-4">
+                  Rénovation Complète <span className="text-sm font-normal text-amber-600">(Le plus demandé)</span>
+                </h3>
+                <div className="prose prose-stone max-w-none">
+                  <p className="text-3xl font-light text-gray-900 mb-4">2 400 €/m²</p>
+                  <ul>
+                    <li>+ Gros œuvre (murs, sols, structures)</li>
+                    <li>+ ITE façade arrière (côté cour, autorisée)</li>
+                    <li>+ Cuisine et salle de bain premium</li>
+                    <li>+ Conservation briques roses extérieures</li>
+                  </ul>
+                  <p className="text-amber-800 font-medium mt-4">
+                    60m² : 144 000€ · 80m² : 192 000€ · 100m² : 240 000€
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-2 border-amber-200 p-8 rounded bg-white">
+                <h3 className="text-2xl font-light text-amber-900 mb-4">
+                  Rénovation Haut Standing
+                </h3>
+                <div className="prose prose-stone max-w-none">
+                  <p className="text-3xl font-light text-gray-900 mb-4">3 200 €/m²</p>
+                  <ul>
+                    <li>+ Parquet massif chêne ou marbre</li>
+                    <li>+ Domotique complète (éclairage, chauffage, volets)</li>
+                    <li>+ Aménagement terrasse avec vue Garonne</li>
+                    <li>+ Finitions architecte d'intérieur</li>
+                  </ul>
+                  <p className="text-amber-800 font-medium mt-4">
+                    60m² : 192 000€ · 80m² : 256 000€ · 100m² : 320 000€
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Gentrification Dynamique en Cours</h3>
-              <p className="text-gray-700 leading-relaxed">
-                <strong>+5,4% prix 2024-2025</strong> (vs +2% moyenne Toulouse).
-                Quartier montant : artistes, jeunes actifs, familles CSP+.
-                Commerces branches, restaurants, projets urbains (réaménagement quais Garonne).
-                <strong>Valorisation 5-7%/an prévue 2025-2030</strong>.
+            <div className="bg-amber-50 border-l-4 border-amber-600 p-6 mt-12">
+              <p className="text-amber-900 font-medium mb-3">
+                <strong>Inclus dans nos prix rénovation Saint-Cyprien :</strong>
               </p>
+              <ul className="space-y-2 text-amber-900">
+                <li>• Dossier ABF complet si travaux façade (architecte conseil, plans, photos)</li>
+                <li>• Diagnostics obligatoires (amiante, plomb, électricité immeubles avant 1997)</li>
+                <li>• Conservation briques roses extérieures (nettoyage, rejointoiement)</li>
+                <li>• Isolation phonique renforcée (tramway T1, rue République)</li>
+                <li>• Garanties décennale + parfait achèvement (protection totale 10 ans)</li>
+              </ul>
             </div>
+          </div>
+        </section>
 
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Vue Garonne = Valorisation +15-20%</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Appartements rénovés <strong>vue Garonne/terrasse</strong> :
-                6 000-6 500€/m² vs 4 500€/m² sans vue.
-                Quais piétons, pistes cyclables, guinguettes.
-                <strong>Cadre vie unique Toulouse</strong> = argument revente puissant.
-                Rareté offre vue Garonne.
+        {/* Travaux Prioritaires */}
+        <section className="bg-gray-50 py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12">
+              Travaux Prioritaires
+              <span className="text-amber-800"> Saint-Cyprien</span>
+            </h2>
+
+            <div className="prose prose-lg prose-stone max-w-none">
+              <p>
+                Les immeubles anciens de Saint-Cyprien (1880-1930) nécessitent des <strong>travaux spécifiques</strong> liés à leur âge et à l'environnement urbain (tramway, Garonne).
               </p>
-            </div>
 
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Vie Quartier Authentique & Bohème</h3>
-              <p className="text-gray-700 leading-relaxed">
-                <strong>Communauté artistes/créatifs</strong>, galeries, ateliers, théâtres.
-                Marché Saint-Cyprien (dimanche), bars/restaurants branchés rue Récollettes.
-                <strong>Mixité sociale positive</strong>, ambiance village.
-                École alternative, crèches, services complets.
+              <h3 className="text-2xl font-light text-gray-900 mt-12 mb-6">
+                1. Isolation Phonique (95% appartements)
+              </h3>
+
+              <p>
+                <strong>Problème</strong> : Tramway T1 sur rue République, trafic routier, vie nocturne branchée = nuisances sonores importantes.
+              </p>
+
+              <p>
+                <strong>Solution</strong> :
+              </p>
+
+              <ul>
+                <li>Double vitrage acoustique 45-50 dB : 8 000-12 000€ pour 80m²</li>
+                <li>Isolation murs mitoyens avec laine minérale haute densité : 6 000-10 000€</li>
+              </ul>
+
+              <h3 className="text-2xl font-light text-gray-900 mt-12 mb-6">
+                2. Électricité Obsolète (80% immeubles avant 1990)
+              </h3>
+
+              <p>
+                <strong>Problème</strong> : Installations années 70-90 non conformes normes NF C 15-100. Risques : courts-circuits, incendies.
+              </p>
+
+              <p>
+                <strong>Solution</strong> : Mise aux normes complète 80-120€/m² (6 400-9 600€ pour 80m²). Tableau électrique, disjoncteurs différentiels, prises avec terre.
+              </p>
+
+              <h3 className="text-2xl font-light text-gray-900 mt-12 mb-6">
+                3. Plomberie Plomb (60% immeubles avant 1950)
+              </h3>
+
+              <p>
+                <strong>Problème</strong> : Canalisations en plomb interdites depuis 2013 (toxicité, saturnisme).
+              </p>
+
+              <p>
+                <strong>Solution</strong> : Remplacement total par PER ou cuivre : 6 000-10 000€ pour 80m². Diagnostic plomb obligatoire avant travaux.
+              </p>
+
+              <h3 className="text-2xl font-light text-gray-900 mt-12 mb-6">
+                4. Amélioration DPE E-F (70% appartements)
+              </h3>
+
+              <p>
+                <strong>Problème</strong> : Isolation thermique faible = factures chauffage élevées + malus à la vente.
+              </p>
+
+              <p>
+                <strong>Solution</strong> :
+              </p>
+
+              <ul>
+                <li>ITE façade arrière (côté cour, autorisée ABF) : 15 000-25 000€</li>
+                <li>VMC double-flux : 3 000-5 000€</li>
+                <li>Gain DPE : E/F → C/D = valorisation +8-12%</li>
+              </ul>
+
+              <h3 className="text-2xl font-light text-gray-900 mt-12 mb-6">
+                5. Cuisine et Salle de Bain Vétustes (85%)
+              </h3>
+
+              <p>
+                <strong>Problème</strong> : Équipements années 80-2000 obsolètes, consommateurs d'eau/énergie.
+              </p>
+
+              <p>
+                <strong>Solution</strong> : Rénovation complète standing 15 000-30 000€ (cuisine 10-20k€ + SDB 5-10k€). Équipements économes A+++.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Section 2 - Témoignages */}
-        <section className="mb-16 bg-gray-50 -mx-6 px-6 py-12 md:-mx-12 md:px-12">
-          <div className="text-center mb-10">
-            <div className="inline-block bg-gray-900 text-white px-4 py-1 rounded-full text-sm font-medium mb-4">
-              20 Projets Réussis Saint-Cyprien
-            </div>
-            <h2 className={`${playfair.className} text-3xl font-bold text-gray-900 mb-2`}>
-              Ils Nous Ont Fait Confiance
+        {/* ABF Modéré Section */}
+        <section className="bg-white py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12">
+              Gestion ABF
+              <span className="text-amber-800"> Saint-Cyprien</span>
             </h2>
-            <p className="text-gray-600">
-              100% validations ABF · Note moyenne 4,9/5 · Garanties décennales
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Témoignage 1 */}
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 font-bold">
-                  SC
+            <div className="prose prose-lg prose-stone max-w-none">
+              <p>
+                Saint-Cyprien bénéficie d'un <strong>ABF modéré</strong> (vs ultra-strict Capitole/Carmes). Consultation ABF obligatoire uniquement pour :
+              </p>
+
+              <ul>
+                <li>Travaux façades visibles depuis la Garonne ou rues principales (République, Récollets, Patte d'Oie)</li>
+                <li>Changement menuiseries extérieures (fenêtres, volets, portes)</li>
+                <li>Modification toiture (surélévation, lucarnes, chien-assis)</li>
+                <li>Ravalement façade (couleur, enduit, briques)</li>
+              </ul>
+
+              <p>
+                <strong>Intérieur libre</strong> sauf immeubles classés Monuments Historiques (rares).
+              </p>
+
+              <h3 className="text-2xl font-light text-gray-900 mt-12 mb-6">
+                Procédure ABF Saint-Cyprien (100% validations EGB Occitanie)
+              </h3>
+
+              <ol className="space-y-4">
+                <li><strong>1. Consultation architecte conseil ABF</strong> (EGB Occitanie gère 100% dossiers)</li>
+                <li><strong>2. Dossier photos + plans + nuancier</strong> (respect teintes briques roses existantes)</li>
+                <li><strong>3. Déclaration préalable travaux</strong> mairie Toulouse</li>
+                <li><strong>4. Instruction urbanisme</strong> : 1 mois + transmission ABF</li>
+                <li><strong>5. Avis ABF</strong> : 3-4 semaines (favorable 90% cas si respect briques roses)</li>
+                <li><strong>6. Décision mairie</strong> définitive</li>
+              </ol>
+
+              <p>
+                <strong>Délai total</strong> : 3-4 mois vs 2 mois hors ABF. <strong>Taux acceptation</strong> : 90% si conservation briques roses extérieures + menuiseries bois/aluminium ton brique.
+              </p>
+            </div>
+
+            <div className="bg-amber-50 border-l-4 border-amber-600 p-6 mt-12">
+              <p className="text-amber-900 font-medium">
+                <strong>EGB Occitanie gère votre dossier ABF</strong> : 20 projets Saint-Cyprien réalisés, 100% validations ABF, expertise architectes conseils, relations privilégiées DRAC Occitanie. Vous n'avez aucune démarche administrative à effectuer.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Comparaison Quartiers */}
+        <section className="bg-gray-50 py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12">
+              Saint-Cyprien vs
+              <span className="text-amber-800"> Autres Quartiers</span>
+            </h2>
+
+            <div className="space-y-6">
+              <div className="border-2 border-amber-200 p-6 rounded bg-amber-50">
+                <div className="grid md:grid-cols-4 gap-4 text-center">
+                  <div>
+                    <p className="font-bold text-amber-900">Saint-Cyprien</p>
+                    <p className="text-sm text-gray-600 mt-1">Artistes, familles</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-amber-900">4 747€</p>
+                    <p className="text-xs text-gray-600">Achat/m²</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-amber-900">2 400-3 200€</p>
+                    <p className="text-xs text-gray-600">Réno/m²</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-amber-900">Modéré</p>
+                    <p className="text-xs text-gray-600">ABF</p>
+                  </div>
                 </div>
-                <div className="ml-3">
+              </div>
+
+              <div className="border-2 border-amber-200 p-6 rounded bg-white">
+                <div className="grid md:grid-cols-4 gap-4 text-center">
+                  <div>
+                    <p className="font-bold text-gray-900">Carmes</p>
+                    <p className="text-sm text-gray-600 mt-1">CSP++, patrimoine</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-gray-900">5 200€</p>
+                    <p className="text-xs text-gray-600">Achat/m²</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-gray-900">2 800-3 500€</p>
+                    <p className="text-xs text-gray-600">Réno/m²</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-gray-900">Strict</p>
+                    <p className="text-xs text-gray-600">ABF</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-2 border-amber-200 p-6 rounded bg-white">
+                <div className="grid md:grid-cols-4 gap-4 text-center">
+                  <div>
+                    <p className="font-bold text-gray-900">Capitole</p>
+                    <p className="text-sm text-gray-600 mt-1">Prestige, investisseurs</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-gray-900">6 000€</p>
+                    <p className="text-xs text-gray-600">Achat/m²</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-gray-900">3 000-4 000€</p>
+                    <p className="text-xs text-gray-600">Réno/m²</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-gray-900">Ultra-strict</p>
+                    <p className="text-xs text-gray-600">ABF</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-2 border-amber-200 p-6 rounded bg-white">
+                <div className="grid md:grid-cols-4 gap-4 text-center">
+                  <div>
+                    <p className="font-bold text-gray-900">Minimes</p>
+                    <p className="text-sm text-gray-600 mt-1">Investisseurs, DPE</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-gray-900">3 200€</p>
+                    <p className="text-xs text-gray-600">Achat/m²</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-gray-900">1 800-2 500€</p>
+                    <p className="text-xs text-gray-600">Réno/m²</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-light text-gray-900">Non</p>
+                    <p className="text-xs text-gray-600">ABF</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-amber-200 p-8 rounded mt-8">
+              <h3 className="text-2xl font-light text-amber-900 mb-4">
+                Conclusion Expert EGB Occitanie
+              </h3>
+              <div className="prose prose-stone max-w-none">
+                <p>
+                  <strong>Saint-Cyprien = meilleur rapport qualité/prix rénovation Toulouse rive gauche</strong>. Prix achat modérés vs Carmes/Capitole (-20 à -30%) + rénovation économique (ABF modéré) + gentrification dynamique (+5,4%/an) = <strong>ROI optimal 25-35%</strong> sur 3-5 ans.
+                </p>
+                <p>
+                  Profil idéal : jeunes actifs et familles cherchant authenticité + vue Garonne + cadre de vie vibrant sans payer le prix premium du centre historique.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Témoignages */}
+        <section className="bg-white py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-4">
+                Ils Nous Ont
+                <span className="text-amber-800"> Fait Confiance</span>
+              </h2>
+              <p className="text-gray-600">
+                20 projets réussis Saint-Cyprien · 100% validations ABF · Note moyenne 4,9/5
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="border-2 border-amber-200 p-6 rounded bg-white">
+                <div className="mb-4">
                   <p className="font-bold text-gray-900">Sophie C.</p>
                   <p className="text-sm text-gray-600">Rue Récollettes · Sept 2024</p>
                 </div>
+                <div className="text-amber-600 mb-3">★★★★★</div>
+                <p className="text-gray-700 italic text-sm leading-relaxed">
+                  "Rénovation complète 75m² avec vue Garonne. EGB Occitanie a géré tout le dossier ABF en 3 semaines. Travaux terminés en 5 mois pile, qualité irréprochable. Notre appartement vaut maintenant +30% selon l'agence."
+                </p>
               </div>
-              <div className="text-yellow-500 mb-3">★★★★★</div>
-              <p className="text-gray-700 italic leading-relaxed text-sm">
-                "Rénovation complète 75m² avec vue Garonne. EGB Occitanie a géré tout le dossier ABF en 3 semaines. Travaux terminés en 5 mois pile, qualité irréprochable. Notre appartement vaut maintenant +30% selon l'agence."
-              </p>
-            </div>
 
-            {/* Témoignage 2 */}
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 font-bold">
-                  ML
-                </div>
-                <div className="ml-3">
+              <div className="border-2 border-amber-200 p-6 rounded bg-white">
+                <div className="mb-4">
                   <p className="font-bold text-gray-900">Marc L.</p>
                   <p className="text-sm text-gray-600">Place Intérieure · Mars 2024</p>
                 </div>
+                <div className="text-amber-600 mb-3">★★★★★</div>
+                <p className="text-gray-700 italic text-sm leading-relaxed">
+                  "Isolation phonique + électricité + cuisine neuve pour 82m². Budget tenu au centime près (164 000€), délais respectés. Le double vitrage a transformé notre quotidien, plus aucun bruit du tramway."
+                </p>
               </div>
-              <div className="text-yellow-500 mb-3">★★★★★</div>
-              <p className="text-gray-700 italic leading-relaxed text-sm">
-                "Isolation phonique + électricité + cuisine neuve pour 82m². Budget tenu au centime près (164 000€), délais respectés. Le double vitrage a transformé notre quotidien, plus aucun bruit du tramway."
-              </p>
-            </div>
 
-            {/* Témoignage 3 */}
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 font-bold">
-                  AD
-                </div>
-                <div className="ml-3">
+              <div className="border-2 border-amber-200 p-6 rounded bg-white">
+                <div className="mb-4">
                   <p className="font-bold text-gray-900">Anne D.</p>
                   <p className="text-sm text-gray-600">Quai Garonne · Janv 2024</p>
                 </div>
+                <div className="text-amber-600 mb-3">★★★★★</div>
+                <p className="text-gray-700 italic text-sm leading-relaxed">
+                  "Investissement locatif : achat 350k€ + réno 180k€ = 530k€. Appartement loué 1 350€/mois 48h après annonce. ROI conforme prévisions. Équipe pro, suivi hebdomadaire, aucune surprise."
+                </p>
               </div>
-              <div className="text-yellow-500 mb-3">★★★★★</div>
-              <p className="text-gray-700 italic leading-relaxed text-sm">
-                "Investissement locatif : achat 350k€ + réno 180k€ = 530k€. Appartement loué 1 350€/mois 48h après annonce. ROI conforme prévisions. Équipe pro, suivi hebdomadaire, aucune surprise."
-              </p>
             </div>
           </div>
         </section>
 
-        {/* Section 3 - Prix */}
-        <section className="mb-16">
-          <h2 className={`${playfair.className} text-3xl font-bold mb-4 text-gray-900`}>
-            Prix Rénovation Saint-Cyprien Toulouse 2025
-          </h2>
-          <p className="text-gray-600 mb-8">
-            Tarifs transparents selon ampleur travaux. Conservation briques roses extérieures,
-            modernisation intérieure. Devis détaillé gratuit sous 48h.
-          </p>
-
-          <div className="overflow-x-auto mb-8">
-            <table className="w-full border border-gray-200">
-              <thead className="bg-gray-900 text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left font-semibold">Type Rénovation</th>
-                  <th className="px-6 py-4 text-right font-semibold">60m²</th>
-                  <th className="px-6 py-4 text-right font-semibold">80m²</th>
-                  <th className="px-6 py-4 text-right font-semibold">100m²</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
-                    <div>
-                      <p className="font-bold text-gray-900">Rénovation Légère</p>
-                      <p className="text-sm text-gray-600">Peinture, sols, cuisine/SDB standards</p>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">42 000€</td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">56 000€</td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">70 000€</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
-                    <div>
-                      <p className="font-bold text-gray-900">Rénovation Moyenne</p>
-                      <p className="text-sm text-gray-600">+ Électricité, plomberie, isolation phonique</p>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">84 000€</td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">112 000€</td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">140 000€</td>
-                </tr>
-                <tr className="bg-gray-50 hover:bg-gray-100">
-                  <td className="px-6 py-4">
-                    <div>
-                      <p className="font-bold text-gray-900">Rénovation Complète</p>
-                      <p className="text-sm text-gray-600">+ Gros œuvre, ITE, cuisine/SDB premium</p>
-                      <p className="text-xs text-gray-900 font-semibold mt-1">Le plus demandé</p>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">144 000€</td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">192 000€</td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">240 000€</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
-                    <div>
-                      <p className="font-bold text-gray-900">Rénovation Haut Standing</p>
-                      <p className="text-sm text-gray-600">+ Parquet massif, marbre, domotique, terrasse</p>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">192 000€</td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">256 000€</td>
-                  <td className="px-6 py-4 text-right font-bold text-gray-900">320 000€</td>
-                </tr>
-                <tr className="bg-gray-900 text-white">
-                  <td className="px-6 py-3 font-bold">Prix au m² TTC</td>
-                  <td className="px-6 py-3 text-right font-bold">700-3 200€/m²</td>
-                  <td className="px-6 py-3 text-right font-bold">700-3 200€/m²</td>
-                  <td className="px-6 py-3 text-right font-bold">700-3 200€/m²</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="bg-gray-50 border-l-4 border-gray-900 p-6 rounded-r">
-            <h3 className="font-bold text-gray-900 mb-3">Inclus dans Nos Prix Rénovation Saint-Cyprien</h3>
-            <ul className="grid md:grid-cols-2 gap-3 text-gray-700">
-              <li className="flex items-start gap-2">
-                <span className="text-gray-900 font-bold mt-1">·</span>
-                <span><strong>Dossier ABF complet</strong> si travaux façade (consultation architecte, plans, photos)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-gray-900 font-bold mt-1">·</span>
-                <span><strong>Diagnostics obligatoires</strong> (amiante, plomb, électricité immeubles avant 1997)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-gray-900 font-bold mt-1">·</span>
-                <span><strong>Conservation briques roses</strong> extérieures (nettoyage, rejointoiement si besoin)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-gray-900 font-bold mt-1">·</span>
-                <span><strong>Isolation phonique renforcée</strong> (tramway T1, rue République bruyante)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-gray-900 font-bold mt-1">·</span>
-                <span><strong>Électricité aux normes</strong> (remplacement installations années 70-90)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-gray-900 font-bold mt-1">·</span>
-                <span><strong>Garanties décennale + parfait achèvement</strong> (protection totale 10 ans)</span>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        {/* Section 4 - Comparaison */}
-        <section className="mb-16">
-          <h2 className={`${playfair.className} text-3xl font-bold mb-6 text-gray-900`}>
-            Saint-Cyprien vs Autres Quartiers Toulouse
-          </h2>
-
-          <div className="overflow-x-auto mb-6">
-            <table className="w-full border border-gray-200">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900">Quartier</th>
-                  <th className="px-6 py-3 text-right font-semibold text-gray-900">Prix Achat/m²</th>
-                  <th className="px-6 py-3 text-right font-semibold text-gray-900">Prix Réno/m²</th>
-                  <th className="px-6 py-3 text-center font-semibold text-gray-900">ABF</th>
-                  <th className="px-6 py-3 text-left font-semibold text-gray-900">Profil</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                <tr className="bg-gray-50 font-medium">
-                  <td className="px-6 py-3 text-gray-900">Saint-Cyprien</td>
-                  <td className="px-6 py-3 text-right text-gray-900">4 747€</td>
-                  <td className="px-6 py-3 text-right text-gray-900">2 400-3 200€</td>
-                  <td className="px-6 py-3 text-center text-gray-900">Modéré</td>
-                  <td className="px-6 py-3 text-gray-700">Artistes, jeunes familles</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-3 text-gray-900">Carmes</td>
-                  <td className="px-6 py-3 text-right text-gray-900">5 200€</td>
-                  <td className="px-6 py-3 text-right text-gray-900">2 800-3 500€</td>
-                  <td className="px-6 py-3 text-center text-gray-900">Strict</td>
-                  <td className="px-6 py-3 text-gray-700">CSP++, patrimoine</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-3 text-gray-900">Capitole</td>
-                  <td className="px-6 py-3 text-right text-gray-900">6 000€</td>
-                  <td className="px-6 py-3 text-right text-gray-900">3 000-4 000€</td>
-                  <td className="px-6 py-3 text-center text-gray-900">Ultra-strict</td>
-                  <td className="px-6 py-3 text-gray-700">Prestige, investisseurs</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-3 text-gray-900">Minimes</td>
-                  <td className="px-6 py-3 text-right text-gray-900">3 200€</td>
-                  <td className="px-6 py-3 text-right text-gray-900">1 800-2 500€</td>
-                  <td className="px-6 py-3 text-center text-gray-900">Non</td>
-                  <td className="px-6 py-3 text-gray-700">Investisseurs, réno DPE</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="px-6 py-3 text-gray-900">Arnaud-Bernard</td>
-                  <td className="px-6 py-3 text-right text-gray-900">3 800€</td>
-                  <td className="px-6 py-3 text-right text-gray-900">2 200-2 800€</td>
-                  <td className="px-6 py-3 text-center text-gray-900">Partiel</td>
-                  <td className="px-6 py-3 text-gray-700">Étudiants, bohème</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r">
-            <h3 className="font-bold text-gray-900 mb-2">Conclusion Expert EGB Occitanie</h3>
-            <p className="text-gray-700 leading-relaxed">
-              <strong>Saint-Cyprien = meilleur rapport qualité/prix rénovation Toulouse rive gauche</strong>.
-              Prix achat modérés vs Carmes/Capitole (-20 à -30%) + rénovation économique (ABF modéré) +
-              gentrification dynamique (+5,4%/an) = <strong>ROI optimal 25-35%</strong> sur 3-5 ans.
-              Profil idéal : jeunes actifs/familles cherchant authenticité + vue Garonne + cadre vie vibrant
-              sans payer prix premium centre historique.
-            </p>
-          </div>
-        </section>
-
-        {/* Section 5 - FAQ */}
-        <section className="mb-16">
-          <h2 className={`${playfair.className} text-3xl font-bold mb-8 text-gray-900`}>
-            Questions Fréquentes Rénovation Saint-Cyprien
-          </h2>
-
-          <div className="space-y-4">
-            <details className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:border-gray-400 transition-colors group">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
-                <span>Quels sont les travaux prioritaires en rénovation Saint-Cyprien ?</span>
-                <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
-                <p><strong>Top 5 travaux Saint-Cyprien selon fréquence :</strong></p>
-                <p><strong>1. Isolation phonique (95% appartements nécessitent)</strong> : Tramway T1 rue République,
-                trafic routier, vie nocturne = nuisances sonores importantes. <strong>Solution</strong> : double vitrage
-                acoustique 45-50 dB (8 000-12 000€ pour 80m²) + isolation murs mitoyens (6 000-10 000€).</p>
-                <p><strong>2. Électricité obsolète (80% immeubles avant 1990)</strong> : Installations années 70-90
-                non conformes normes NF C 15-100. Risques : court-circuits, incendies. <strong>Solution</strong> :
-                mise aux normes complète 80-120€/m² (6 400-9 600€ pour 80m²).</p>
-                <p><strong>3. Plomberie plomb (60% immeubles avant 1950)</strong> : Canalisations plomb interdites
-                depuis 2013 (toxicité). <strong>Solution</strong> : remplacement total PER/cuivre 6 000-10 000€ pour 80m².</p>
-                <p><strong>4. DPE E-F améliorer (70% appartements)</strong> : Isolation thermique faible = factures
-                chauffage élevées + malus vente. <strong>Solution</strong> : ITE façade arrière (côté cour) 15 000-25 000€ +
-                VMC double-flux 3 000-5 000€.</p>
-                <p><strong>5. Cuisine/SDB vétustes (85% appartements)</strong> : Équipements années 80-2000 obsolètes.
-                <strong>Solution</strong> : rénovation complète standing 15 000-30 000€ (cuisine 10-20k€ + SDB 5-10k€).</p>
-              </div>
-            </details>
-
-            <details className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:border-gray-400 transition-colors group">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
-                <span>Comment gérer l'ABF pour travaux façade Saint-Cyprien ?</span>
-                <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
-                <p><strong>ABF Saint-Cyprien = modéré vs Carmes/Capitole</strong>. Consultation obligatoire si :</p>
-                <ul className="list-disc ml-6 space-y-2">
-                  <li>Travaux façades visibles Garonne ou rues principales (République, Récollettes, Patte d'Oie)</li>
-                  <li>Changement menuiseries extérieures (fenêtres, volets, portes)</li>
-                  <li>Modification toiture (surélévation, lucarnes, chien-assis)</li>
-                  <li>Ravalement façade (couleur, enduit, briques)</li>
-                </ul>
-                <p><strong>Procédure :</strong></p>
-                <ol className="list-decimal ml-6 space-y-2">
-                  <li>Consultation architecte conseil ABF (EGB Occitanie gère 100% dossiers)</li>
-                  <li>Dossier photos + plans + nuancier couleurs briques/enduits (respect teintes existantes)</li>
-                  <li>Déclaration préalable travaux mairie Toulouse</li>
-                  <li>Instruction urbanisme 1 mois + transmission ABF</li>
-                  <li>Avis ABF 3-4 semaines (favorable 90% cas si respect briques roses)</li>
-                  <li>Décision mairie définitive</li>
-                </ol>
-                <p><strong>Délai total</strong> : 3-4 mois vs 2 mois hors ABF. <strong>Taux acceptation</strong> : 90%
-                si conservation briques roses extérieures + menuiseries bois/aluminium ton brique.</p>
-              </div>
-            </details>
-
-            <details className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:border-gray-400 transition-colors group">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
-                <span>Rentabilité investissement locatif après rénovation Saint-Cyprien ?</span>
-                <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
-                <p><strong>Exemple type investissement locatif Saint-Cyprien 2025 :</strong></p>
-                <p><strong>Achat</strong> : Appartement 80m² à rénover = 380 000€ (4 750€/m²)</p>
-                <p><strong>Rénovation</strong> : Complète standing = 200 000€ (2 500€/m²)</p>
-                <p><strong>Total investissement</strong> : 580 000€ (7 250€/m² post-rénovation)</p>
-                <p><strong>Loyer mensuel post-réno</strong> : 1 400€/mois (17,5€/m²) pour T3 rénové standing</p>
-                <p><strong>Rendement brut</strong> : (16 800€ × 100) / 580 000€ = <strong>2,9% brut</strong></p>
-                <p><strong>Rendement net</strong> : 2,0-2,3% après charges (copro 150€/mois, taxe foncière 1 500€/an, entretien)</p>
-                <p><strong>Valorisation</strong> : Appartement rénové 80m² vaut 480 000-520 000€ (6 000-6 500€/m² si vue Garonne)
-                = <strong>plus-value immédiate -60 000€ à +60 000€</strong> selon emplacement exact.</p>
-                <p><strong>ROI total 5 ans</strong> : Loyers 84 000€ + valorisation moyenne +50 000€ (gentrification +5%/an)
-                = <strong>134 000€ gain sur 580k€ = 23% ROI</strong> soit 4,6%/an.</p>
-                <p><strong>Conclusion</strong> : Rentabilité modérée MAIS sécurisée (quartier montant + demande locative forte jeunes actifs).</p>
-              </div>
-            </details>
-
-            <details className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:border-gray-400 transition-colors group">
-              <summary className="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
-                <span>Quelles aides rénovation disponibles Saint-Cyprien 2025 ?</span>
-                <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
-                <p><strong>Aides rénovation énergétique Saint-Cyprien (cumul possible) :</strong></p>
-                <p><strong>1. MaPrimeRénov' (État)</strong> :</p>
-                <ul className="list-disc ml-6 space-y-1">
-                  <li>Isolation murs extérieurs (ITE) : jusqu'à 75€/m² (75m² = 5 625€)</li>
-                  <li>Changement chauffage gaz → PAC : jusqu'à 5 000€</li>
-                  <li>VMC double-flux : jusqu'à 2 500€</li>
-                  <li>Audit énergétique : 500€</li>
-                </ul>
-                <p><strong>Conditions</strong> : Résidence principale, revenus modestes/intermédiaires, RGE obligatoire</p>
-                <p><strong>2. Éco-PTZ (Prêt taux 0%)</strong> :</p>
-                <ul className="list-disc ml-6 space-y-1">
-                  <li>Jusqu'à 50 000€ prêt 0% sur 20 ans</li>
-                  <li>Financer travaux rénovation énergétique</li>
-                  <li>Sans condition ressources</li>
-                </ul>
-                <p><strong>3. TVA réduite 5,5%</strong> :</p>
-                <ul className="list-disc ml-6 space-y-1">
-                  <li>Travaux rénovation énergétique (vs 20% standard)</li>
-                  <li>Économie : 14,5% sur montant travaux</li>
-                  <li>Exemple : 50 000€ travaux = 7 250€ économie TVA</li>
-                </ul>
-                <p><strong>4. Aides Toulouse Métropole (locales)</strong> :</p>
-                <ul className="list-disc ml-6 space-y-1">
-                  <li>Subvention ravalement façades : jusqu'à 30% coût HT (max 10 000€)</li>
-                  <li>Prime isolation thermique : 1 000-3 000€ selon revenus</li>
-                </ul>
-                <p><strong>Exemple cumul</strong> : Rénovation énergétique 80m² = 80 000€ TTC → Aides MaPrimeRénov
-                13 625€ + Éco-PTZ 50 000€ + TVA 5,5% économie 10 000€ = <strong>23 625€ aides</strong> soit 30% coût total.</p>
-              </div>
-            </details>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="border-t border-gray-200 pt-12 text-center">
-          <h2 className={`${playfair.className} text-3xl font-bold mb-4 text-gray-900`}>
-            Prêt à Démarrer Votre Projet ?
-          </h2>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            EGB Occitanie vous accompagne de A à Z : diagnostic complet, dossier ABF si besoin,
-            travaux clés en main, garanties décennales. Devis détaillé gratuit sous 48h.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:0665015882"
-              className="inline-block bg-gray-900 text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
-            >
-              Appeler 06 65 01 58 82
-            </a>
-            <Link
-              href="/contact"
-              className="inline-block bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold border-2 border-gray-900 hover:bg-gray-50 transition-colors"
-            >
-              Devis Gratuit
-            </Link>
-          </div>
-          <p className="mt-6 text-sm text-gray-500">
-            20 projets réussis · 100% validations ABF · Note 4,9/5
-          </p>
-        </section>
-      </article>
-
-      {/* Internal Links */}
-      <section className="bg-gray-50 border-t border-gray-200 py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <h3 className="text-xl font-bold text-center mb-8 text-gray-900">
-            Découvrez Aussi Nos Services Rénovation Toulouse
-          </h3>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <Link
-              href="/renovation-maison-carmes-toulouse"
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:border-gray-400 hover:shadow transition-all text-center"
-            >
-              <p className="font-bold text-gray-900">Carmes</p>
-              <p className="text-xs text-gray-500 mt-1">Patrimoine · ABF Strict</p>
-            </Link>
-            <Link
-              href="/renovation-capitole-toulouse"
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:border-gray-400 hover:shadow transition-all text-center"
-            >
-              <p className="font-bold text-gray-900">Capitole</p>
-              <p className="text-xs text-gray-500 mt-1">Prestige · Centre</p>
-            </Link>
-            <Link
-              href="/renovation-minimes-toulouse"
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:border-gray-400 hover:shadow transition-all text-center"
-            >
-              <p className="font-bold text-gray-900">Minimes</p>
-              <p className="text-xs text-gray-500 mt-1">Investissement</p>
-            </Link>
-            <Link
-              href="/renovation-busca-toulouse"
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:border-gray-400 hover:shadow transition-all text-center"
-            >
-              <p className="font-bold text-gray-900">Busca</p>
-              <p className="text-xs text-gray-500 mt-1">Familial</p>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link
-              href="/renovation"
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:border-gray-400 hover:shadow transition-all text-center"
-            >
-              <p className="font-bold text-gray-900">Rénovation</p>
-              <p className="text-xs text-gray-500 mt-1">Tous travaux</p>
-            </Link>
-            <Link
-              href="/extension"
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:border-gray-400 hover:shadow transition-all text-center"
-            >
-              <p className="font-bold text-gray-900">Extension</p>
-              <p className="text-xs text-gray-500 mt-1">Agrandissement</p>
-            </Link>
-            <Link
-              href="/contact"
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:border-gray-400 hover:shadow transition-all text-center"
-            >
-              <p className="font-bold text-gray-900">Devis Gratuit</p>
-              <p className="text-xs text-gray-500 mt-1">Réponse 48h</p>
-            </Link>
-            <Link
-              href="/avis"
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:border-gray-400 hover:shadow transition-all text-center"
-            >
-              <p className="font-bold text-gray-900">Avis Clients</p>
-              <p className="text-xs text-gray-500 mt-1">Note 4,9/5</p>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </main>
+        <ContactSection />
+      </div>
+    </>
   );
 }
