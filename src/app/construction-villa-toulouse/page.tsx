@@ -84,8 +84,8 @@ export default function ConstructionVillaToulouse() {
         <div className="container">
           <div className="max-w-4xl">
             <div className="flex items-center gap-4 mb-6">
-              <span className="h-[1px] w-12 bg-stone-400" />
-              <span className="text-stone-600 text-xs uppercase tracking-[0.3em] font-medium">
+              <span className="h-[1px] w-12 bg-amber-600" />
+              <span className="text-amber-800 text-xs uppercase tracking-[0.3em] font-medium">
                 Construction Neuve
               </span>
             </div>
@@ -93,7 +93,7 @@ export default function ConstructionVillaToulouse() {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-stone-900 mb-8 leading-[1.1]">
               Construction de Villa
               <br />
-              <span className="text-stone-500">à Toulouse</span>
+              <span className="text-amber-800">à Toulouse</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-stone-700 font-light leading-relaxed mb-12 max-w-3xl">
@@ -105,7 +105,7 @@ export default function ConstructionVillaToulouse() {
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-3 bg-stone-900 text-white px-8 py-4 text-base font-medium hover:bg-stone-800 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                className="inline-flex items-center justify-center gap-3 bg-amber-800 text-white px-8 py-4 text-base font-medium hover:bg-amber-900 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
                 Obtenir un devis gratuit
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -115,7 +115,7 @@ export default function ConstructionVillaToulouse() {
 
               <a
                 href="tel:+33665015882"
-                className="inline-flex items-center justify-center gap-3 border border-stone-300 text-stone-700 px-8 py-4 text-base font-medium hover:border-stone-400 hover:text-stone-900 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-3 border-2 border-amber-800 text-amber-900 px-8 py-4 text-base font-medium hover:bg-amber-50 transition-all duration-300"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -124,18 +124,18 @@ export default function ConstructionVillaToulouse() {
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-stone-200">
+            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-amber-200">
               <div>
-                <div className="text-3xl font-light text-stone-900 mb-2">15+</div>
-                <div className="text-sm text-stone-600">Années d'expérience</div>
+                <div className="text-3xl font-light text-amber-900 mb-2">15+</div>
+                <div className="text-sm text-amber-800">Années d'expérience</div>
               </div>
               <div>
-                <div className="text-3xl font-light text-stone-900 mb-2">0</div>
-                <div className="text-sm text-stone-600">Retard de chantier</div>
+                <div className="text-3xl font-light text-amber-900 mb-2">0</div>
+                <div className="text-sm text-amber-800">Retard de chantier</div>
               </div>
               <div>
-                <div className="text-3xl font-light text-stone-900 mb-2">5+</div>
-                <div className="text-sm text-stone-600">Architectes partenaires</div>
+                <div className="text-3xl font-light text-amber-900 mb-2">5+</div>
+                <div className="text-sm text-amber-800">Architectes partenaires</div>
               </div>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function ConstructionVillaToulouse() {
                 le permis de construire, et le suivi de chantier hebdomadaire.
               </p>
 
-              <div className="bg-stone-50 border-l-4 border-stone-900 p-6 my-8">
+              <div className="bg-amber-50 border-l-4 border-amber-600 p-6 my-8">
                 <p className="text-base text-stone-800 mb-0">
                   <strong className="font-semibold">Notre engagement :</strong> Tous nos chantiers de construction sont livrés
                   dans les délais contractuels. <strong>0 retard</strong> sur les 50+ villas construites ces 5 dernières années.
@@ -244,9 +244,9 @@ export default function ConstructionVillaToulouse() {
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 <div className="bg-white p-6 border border-stone-200">
-                  <div className="text-sm uppercase tracking-wider text-stone-500 mb-3">Finition Standard</div>
+                  <div className="text-sm uppercase tracking-wider text-amber-800 mb-3">Finition Standard</div>
                   <div className="text-4xl font-light text-stone-900 mb-2">2 500€</div>
-                  <div className="text-stone-600 mb-4">/m²</div>
+                  <div className="text-amber-800 mb-4">/m²</div>
                   <ul className="text-sm text-stone-700 space-y-2">
                     <li>• Matériaux qualité standard</li>
                     <li>• Carrelage, parquet flottant</li>
@@ -256,7 +256,7 @@ export default function ConstructionVillaToulouse() {
                   </ul>
                 </div>
 
-                <div className="bg-stone-900 p-6 border border-stone-900 relative">
+                <div className="bg-amber-800 p-6 border border-stone-900 relative">
                   <div className="absolute -top-3 left-6 bg-stone-700 text-white text-xs px-3 py-1 uppercase tracking-wider">
                     Recommandé
                   </div>
@@ -273,9 +273,9 @@ export default function ConstructionVillaToulouse() {
                 </div>
 
                 <div className="bg-white p-6 border border-stone-200">
-                  <div className="text-sm uppercase tracking-wider text-stone-500 mb-3">Finition Luxe</div>
+                  <div className="text-sm uppercase tracking-wider text-amber-800 mb-3">Finition Luxe</div>
                   <div className="text-4xl font-light text-stone-900 mb-2">4 500€</div>
-                  <div className="text-stone-600 mb-4">/m²</div>
+                  <div className="text-amber-800 mb-4">/m²</div>
                   <ul className="text-sm text-stone-700 space-y-2">
                     <li>• Matériaux d'exception</li>
                     <li>• Marbre, pierres naturelles</li>
@@ -395,7 +395,7 @@ export default function ConstructionVillaToulouse() {
                 </ul>
               </div>
 
-              <div className="bg-amber-50 border-l-4 border-amber-500 p-6 mb-8">
+              <div className="bg-amber-50 border-l-4 border-amber-600 p-6 mb-8">
                 <p className="text-base text-amber-900 mb-0">
                   <strong className="font-semibold">À prévoir en plus :</strong> Achat du terrain (300€ à 600€/m² selon secteur),
                   frais de notaire terrain (2-3%), taxe d'aménagement (environ 5 000€ à 15 000€), viabilisation si nécessaire,
@@ -407,7 +407,7 @@ export default function ConstructionVillaToulouse() {
             <div className="mt-12 text-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 bg-stone-900 text-white px-8 py-4 text-base font-medium hover:bg-stone-800 transition-all duration-300 hover:shadow-xl"
+                className="inline-flex items-center gap-3 bg-amber-800 text-white px-8 py-4 text-base font-medium hover:bg-amber-900 transition-all duration-300 hover:shadow-xl"
               >
                 Recevoir un devis personnalisé gratuit
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -487,14 +487,14 @@ export default function ConstructionVillaToulouse() {
                 ].map((quartier) => (
                   <div key={quartier.name} className="bg-stone-50 p-6 border border-stone-200">
                     <h3 className="text-xl font-medium text-stone-900 mb-2">{quartier.name}</h3>
-                    <div className="text-sm text-stone-500 mb-3 font-medium">{quartier.price}</div>
+                    <div className="text-sm text-amber-800 mb-3 font-medium">{quartier.price}</div>
                     <p className="text-stone-700 mb-4 text-base leading-relaxed">{quartier.description}</p>
                     {/* Internal link placeholder - pages to create */}
                   </div>
                 ))}
               </div>
 
-              <div className="bg-stone-900 text-white p-8 rounded-sm mb-8">
+              <div className="bg-amber-800 text-white p-8 rounded-sm mb-8">
                 <h3 className="text-2xl font-light mb-4">Notre service recherche de terrain</h3>
                 <p className="text-stone-300 mb-6 leading-relaxed">
                   Vous n'avez pas encore trouvé votre terrain ? EGB Occitanie vous accompagne dans la recherche
@@ -570,7 +570,7 @@ export default function ConstructionVillaToulouse() {
                   <div className="flex-grow pt-2">
                     <div className="flex items-center gap-4 mb-3">
                       <h3 className="text-xl font-medium text-stone-900">{step.title}</h3>
-                      <span className="text-sm text-stone-500 bg-stone-100 px-3 py-1 rounded-full whitespace-nowrap">
+                      <span className="text-sm text-amber-800 bg-stone-100 px-3 py-1 rounded-full whitespace-nowrap">
                         {step.duration}
                       </span>
                     </div>
@@ -580,7 +580,7 @@ export default function ConstructionVillaToulouse() {
               ))}
             </div>
 
-            <div className="mt-12 bg-stone-900 text-white p-8 rounded-sm">
+            <div className="mt-12 bg-amber-800 text-white p-8 rounded-sm">
               <h3 className="text-2xl font-light mb-4">Durée totale du projet</h3>
               <p className="text-stone-300 text-lg mb-2">
                 <strong className="text-white font-medium">10 à 16 mois</strong> de la première rencontre à la remise des clés
@@ -639,7 +639,7 @@ export default function ConstructionVillaToulouse() {
                 <details key={index} className="group border border-stone-200 bg-stone-50">
                   <summary className="px-6 py-5 cursor-pointer flex items-center justify-between text-stone-900 font-medium text-lg hover:bg-stone-100 transition-colors">
                     {faq.question}
-                    <svg className="w-5 h-5 text-stone-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-amber-800 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </summary>
@@ -657,7 +657,7 @@ export default function ConstructionVillaToulouse() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="tel:+33665015882"
-                  className="inline-flex items-center justify-center gap-2 bg-stone-900 text-white px-6 py-3 text-base font-medium hover:bg-stone-800 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-amber-800 text-white px-6 py-3 text-base font-medium hover:bg-amber-900 transition-colors"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -680,7 +680,7 @@ export default function ConstructionVillaToulouse() {
       </section>
 
       {/* Why Choose EGB Section */}
-      <section className="py-20 md:py-28 bg-stone-900 text-white">
+      <section className="py-20 md:py-28 bg-amber-800 text-white">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-light mb-12">
@@ -761,10 +761,10 @@ export default function ConstructionVillaToulouse() {
                 <h3 className="text-lg font-medium text-stone-900 mb-2 group-hover:text-stone-700">
                   Rénovation maison Toulouse
                 </h3>
-                <p className="text-stone-600 text-sm mb-3">
+                <p className="text-amber-800 text-sm mb-3">
                   Rénovation complète maisons toulousaines en brique. Expertise rénovation énergétique.
                 </p>
-                <span className="inline-flex items-center gap-2 text-stone-500 text-sm group-hover:gap-3 transition-all">
+                <span className="inline-flex items-center gap-2 text-amber-800 text-sm group-hover:gap-3 transition-all">
                   En savoir plus
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -779,10 +779,10 @@ export default function ConstructionVillaToulouse() {
                 <h3 className="text-lg font-medium text-stone-900 mb-2 group-hover:text-stone-700">
                   Extension maison Toulouse
                 </h3>
-                <p className="text-stone-600 text-sm mb-3">
+                <p className="text-amber-800 text-sm mb-3">
                   Agrandissement, surélévation, extension bois. Permis de construire géré.
                 </p>
-                <span className="inline-flex items-center gap-2 text-stone-500 text-sm group-hover:gap-3 transition-all">
+                <span className="inline-flex items-center gap-2 text-amber-800 text-sm group-hover:gap-3 transition-all">
                   En savoir plus
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -797,10 +797,10 @@ export default function ConstructionVillaToulouse() {
                 <h3 className="text-lg font-medium text-stone-900 mb-2 group-hover:text-stone-700">
                   Nos réalisations
                 </h3>
-                <p className="text-stone-600 text-sm mb-3">
+                <p className="text-amber-800 text-sm mb-3">
                   Découvrez nos villas construites à Toulouse et en Occitanie. Photos avant/après.
                 </p>
-                <span className="inline-flex items-center gap-2 text-stone-500 text-sm group-hover:gap-3 transition-all">
+                <span className="inline-flex items-center gap-2 text-amber-800 text-sm group-hover:gap-3 transition-all">
                   Voir le portfolio
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

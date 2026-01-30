@@ -34,8 +34,8 @@ export default function ConstructionVillaCotePaveeToulouse() {
  <div className="container">
  <div className="max-w-4xl">
  <div className="flex items-center gap-4 mb-6">
- <span className="h-[1px] w-12 bg-emerald-700" />
- <span className="text-emerald-800 text-xs uppercase tracking-[0.3em] font-medium">
+ <span className="h-[1px] w-12 bg-amber-700" />
+ <span className="text-amber-800 text-xs uppercase tracking-[0.3em] font-medium">
  Quartier Côte Pavée - Résidentiel Premium
  </span>
  </div>
@@ -43,7 +43,7 @@ export default function ConstructionVillaCotePaveeToulouse() {
  <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-8 leading-[1.1]">
  Construction Villa
  <br />
- <span className="text-emerald-800">Côte Pavée Toulouse</span>
+ <span className="text-amber-800">Côte Pavée Toulouse</span>
  </h1>
 
  <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed mb-12 max-w-3xl">
@@ -55,7 +55,7 @@ export default function ConstructionVillaCotePaveeToulouse() {
  <div className="flex flex-col sm:flex-row gap-4 mb-12">
  <Link
  href="/contact"
- className="inline-flex items-center justify-center gap-3 bg-emerald-800 text-white px-8 py-4 text-base font-medium hover:bg-emerald-900 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+ className="inline-flex items-center justify-center gap-3 bg-amber-800 text-white px-8 py-4 text-base font-medium hover:bg-amber-900 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
  >
  Recevoir étude terrain gratuite
  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@ export default function ConstructionVillaCotePaveeToulouse() {
 
  <a
  href="tel:+33665015882"
- className="inline-flex items-center justify-center gap-3 border-2 border-emerald-800 text-emerald-900 px-8 py-4 text-base font-medium hover:bg-emerald-50 transition-all duration-300"
+ className="inline-flex items-center justify-center gap-3 border-2 border-amber-800 text-amber-900 px-8 py-4 text-base font-medium hover:bg-amber-50 transition-all duration-300"
  >
  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -74,17 +74,17 @@ export default function ConstructionVillaCotePaveeToulouse() {
  </a>
  </div>
 
- <div className="grid grid-cols-3 gap-8 pt-8 border-t border-emerald-200">
+ <div className="grid grid-cols-3 gap-8 pt-8 border-t border-amber-200">
  <div>
- <div className="text-3xl font-light text-emerald-900 mb-2">5-8</div>
+ <div className="text-3xl font-light text-amber-900 mb-2">5-8</div>
  <div className="text-sm text-gray-600">Terrains/an disponibles</div>
  </div>
  <div>
- <div className="text-3xl font-light text-emerald-900 mb-2">68%</div>
+ <div className="text-3xl font-light text-amber-900 mb-2">68%</div>
  <div className="text-sm text-gray-600">Cadres supérieurs CSP+</div>
  </div>
  <div>
- <div className="text-3xl font-light text-emerald-900 mb-2">75k€</div>
+ <div className="text-3xl font-light text-amber-900 mb-2">75k€</div>
  <div className="text-sm text-gray-600">Revenu médian foyer</div>
  </div>
  </div>
@@ -121,9 +121,9 @@ export default function ConstructionVillaCotePaveeToulouse() {
  (bouche-à-oreille quartier).
  </p>
 
- <div className="bg-emerald-50 border-l-4 border-emerald-700 p-6 my-8">
- <h3 className="text-lg font-semibold text-emerald-900 mb-3">Pourquoi construire à Côte Pavée ?</h3>
- <ul className="text-base text-emerald-900 space-y-2">
+ <div className="bg-amber-50 border-l-4 border-amber-700 p-6 my-8">
+ <h3 className="text-lg font-semibold text-amber-900 mb-3">Pourquoi construire à Côte Pavée ?</h3>
+ <ul className="text-base text-amber-900 space-y-2">
  <li> <strong>Localisation premium:</strong> 2km Capitole, 1,5km Compans-Caffarelli, 800m Lycée Fermat</li>
  <li> <strong>Calme absolu:</strong> Voies résidentielles fermées, aucun passage, verdure préservée</li>
  <li> <strong>Sécurité maximale:</strong> Quartier tranquille, voisinage stable (rotation faible 2%/an)</li>
@@ -171,41 +171,41 @@ export default function ConstructionVillaCotePaveeToulouse() {
  <div className="overflow-x-auto mb-8">
  <table className="w-full text-left border-collapse bg-white">
  <thead>
- <tr className="border-b-2 border-emerald-800">
- <th className="py-4 px-4 text-emerald-900 font-semibold">Indicateur</th>
- <th className="py-4 px-4 text-emerald-900 font-semibold">Côte Pavée</th>
- <th className="py-4 px-4 text-emerald-900 font-semibold">Toulouse moyenne</th>
- <th className="py-4 px-4 text-emerald-900 font-semibold">Écart</th>
+ <tr className="border-b-2 border-amber-800">
+ <th className="py-4 px-4 text-amber-900 font-semibold">Indicateur</th>
+ <th className="py-4 px-4 text-amber-900 font-semibold">Côte Pavée</th>
+ <th className="py-4 px-4 text-amber-900 font-semibold">Toulouse moyenne</th>
+ <th className="py-4 px-4 text-amber-900 font-semibold">Écart</th>
  </tr>
  </thead>
  <tbody className="text-gray-700">
  <tr className="border-b border-gray-200">
  <td className="py-3 px-4 font-medium">Prix terrain (€/m²)</td>
- <td className="py-3 px-4"><strong className="text-emerald-800">550-750€</strong></td>
+ <td className="py-3 px-4"><strong className="text-amber-800">550-750€</strong></td>
  <td className="py-3 px-4">380€</td>
- <td className="py-3 px-4 text-emerald-700">+45%</td>
+ <td className="py-3 px-4 text-amber-700">+45%</td>
  </tr>
  <tr className="border-b border-gray-200 bg-gray-50">
  <td className="py-3 px-4 font-medium">Prix villa existante (€/m² hab.)</td>
- <td className="py-3 px-4"><strong className="text-emerald-800">5 200-6 800€</strong></td>
+ <td className="py-3 px-4"><strong className="text-amber-800">5 200-6 800€</strong></td>
  <td className="py-3 px-4">3 800€</td>
- <td className="py-3 px-4 text-emerald-700">+37%</td>
+ <td className="py-3 px-4 text-amber-700">+37%</td>
  </tr>
  <tr className="border-b border-gray-200">
  <td className="py-3 px-4 font-medium">Délai vente terrain</td>
- <td className="py-3 px-4"><strong className="text-emerald-800">2-4 semaines</strong></td>
+ <td className="py-3 px-4"><strong className="text-amber-800">2-4 semaines</strong></td>
  <td className="py-3 px-4">12 semaines</td>
- <td className="py-3 px-4 text-emerald-700">3x plus rapide</td>
+ <td className="py-3 px-4 text-amber-700">3x plus rapide</td>
  </tr>
  <tr className="border-b border-gray-200 bg-gray-50">
  <td className="py-3 px-4 font-medium">Évolution prix 2019-2024</td>
- <td className="py-3 px-4"><strong className="text-emerald-800">+28%</strong></td>
+ <td className="py-3 px-4"><strong className="text-amber-800">+28%</strong></td>
  <td className="py-3 px-4">+18%</td>
- <td className="py-3 px-4 text-emerald-700">+10 pts</td>
+ <td className="py-3 px-4 text-amber-700">+10 pts</td>
  </tr>
  <tr className="border-b border-gray-200">
  <td className="py-3 px-4 font-medium">Terrains disponibles/an</td>
- <td className="py-3 px-4"><strong className="text-emerald-800">5-8 terrains</strong></td>
+ <td className="py-3 px-4"><strong className="text-amber-800">5-8 terrains</strong></td>
  <td className="py-3 px-4">450 terrains</td>
  <td className="py-3 px-4 text-red-700">Rareté extrême</td>
  </tr>
@@ -241,8 +241,8 @@ export default function ConstructionVillaCotePaveeToulouse() {
  Budget détaillé pour villa 180-220m² sur terrain 800-1000m².
  </p>
 
- <div className="bg-white border-2 border-emerald-200 p-8 rounded-lg mb-10">
- <h3 className="text-2xl font-medium text-emerald-900 mb-6">Budget total projet villa Côte Pavée</h3>
+ <div className="bg-white border-2 border-amber-200 p-8 rounded-lg mb-10">
+ <h3 className="text-2xl font-medium text-amber-900 mb-6">Budget total projet villa Côte Pavée</h3>
 
  <div className="space-y-6">
  {/* Scenario 180m² */}
@@ -273,11 +273,11 @@ export default function ConstructionVillaCotePaveeToulouse() {
  <div className="h-[1px] bg-gray-300 my-4"></div>
  <div className="flex justify-between text-xl">
  <strong>BUDGET TOTAL (sans piscine):</strong>
- <strong className="text-2xl text-emerald-800">1 256 625€</strong>
+ <strong className="text-2xl text-amber-800">1 256 625€</strong>
  </div>
  <div className="flex justify-between text-lg">
  <span className="text-gray-600">Avec piscine:</span>
- <strong className="text-emerald-800">1 294 625€</strong>
+ <strong className="text-amber-800">1 294 625€</strong>
  </div>
  </div>
 
@@ -301,44 +301,44 @@ export default function ConstructionVillaCotePaveeToulouse() {
  </div>
 
  {/* Scenario 220m² */}
- <div className="bg-emerald-800 text-white p-6 rounded">
+ <div className="bg-amber-800 text-white p-6 rounded">
  <h4 className="text-xl font-semibold mb-4">Villa 220m² - Finition Luxe</h4>
 
  <div className="space-y-3 mb-6">
- <div className="flex justify-between pb-2 border-b border-emerald-600">
- <span className="text-emerald-100">Terrain 1000m² (700€/m² secteur premium)</span>
+ <div className="flex justify-between pb-2 border-b border-amber-600">
+ <span className="text-amber-100">Terrain 1000m² (700€/m² secteur premium)</span>
  <strong>700 000€</strong>
  </div>
- <div className="flex justify-between pb-2 border-b border-emerald-600">
- <span className="text-emerald-100">Construction villa 220m² (3 800€/m²)</span>
+ <div className="flex justify-between pb-2 border-b border-amber-600">
+ <span className="text-amber-100">Construction villa 220m² (3 800€/m²)</span>
  <strong>836 000€</strong>
  </div>
- <div className="flex justify-between pb-2 border-b border-emerald-600">
- <span className="text-emerald-100">Frais notaire terrain (2,5%)</span>
+ <div className="flex justify-between pb-2 border-b border-amber-600">
+ <span className="text-amber-100">Frais notaire terrain (2,5%)</span>
  <strong>17 500€</strong>
  </div>
- <div className="flex justify-between pb-2 border-b border-emerald-600">
- <span className="text-emerald-100">Aménagements ext. prestige (pierre, éclairage, arrosage auto)</span>
+ <div className="flex justify-between pb-2 border-b border-amber-600">
+ <span className="text-amber-100">Aménagements ext. prestige (pierre, éclairage, arrosage auto)</span>
  <strong>68 000€</strong>
  </div>
- <div className="flex justify-between pb-2 border-b border-emerald-600">
- <span className="text-emerald-100">Piscine 10×5m débordement chauffée + pool house</span>
+ <div className="flex justify-between pb-2 border-b border-amber-600">
+ <span className="text-amber-100">Piscine 10×5m débordement chauffée + pool house</span>
  <strong>95 000€</strong>
  </div>
- <div className="h-[1px] bg-emerald-600 my-4"></div>
+ <div className="h-[1px] bg-amber-600 my-4"></div>
  <div className="flex justify-between text-xl">
  <strong>BUDGET TOTAL (sans piscine):</strong>
  <strong className="text-2xl">1 621 500€</strong>
  </div>
  <div className="flex justify-between text-lg">
- <span className="text-emerald-200">Avec piscine prestige:</span>
+ <span className="text-amber-200">Avec piscine prestige:</span>
  <strong>1 716 500€</strong>
  </div>
  </div>
 
- <div className="bg-emerald-900 p-5 rounded">
+ <div className="bg-amber-900 p-5 rounded">
  <h5 className="font-semibold mb-2">Finitions Luxe supplémentaires:</h5>
- <div className="grid md:grid-cols-2 gap-3 text-sm text-emerald-100">
+ <div className="grid md:grid-cols-2 gap-3 text-sm text-amber-100">
  <div> Marbre sols (entrée, séjour)</div>
  <div> Parquet chêne massif 22mm</div>
  <div> Cuisine architecte sur-mesure 45k€</div>
@@ -357,23 +357,23 @@ export default function ConstructionVillaCotePaveeToulouse() {
  </div>
  </div>
 
- <div className="bg-emerald-900 text-white p-8 rounded-lg mb-8">
+ <div className="bg-amber-900 text-white p-8 rounded-lg mb-8">
  <h3 className="text-2xl font-light mb-6">Financement projet Côte Pavée (exemple 180m²)</h3>
  <div className="space-y-4">
- <div className="flex justify-between items-center pb-3 border-b border-emerald-700">
- <span className="text-emerald-200">Apport personnel (25% recommandé)</span>
+ <div className="flex justify-between items-center pb-3 border-b border-amber-700">
+ <span className="text-amber-200">Apport personnel (25% recommandé)</span>
  <strong className="text-2xl">315 000€</strong>
  </div>
- <div className="flex justify-between items-center pb-3 border-b border-emerald-700">
- <span className="text-emerald-200">Prêt immobilier (20 ans, taux 3,8%)</span>
+ <div className="flex justify-between items-center pb-3 border-b border-amber-700">
+ <span className="text-amber-200">Prêt immobilier (20 ans, taux 3,8%)</span>
  <strong className="text-2xl">942 000€</strong>
  </div>
  <div className="flex justify-between items-center">
- <span className="text-emerald-200">Mensualité (hors assurance)</span>
+ <span className="text-amber-200">Mensualité (hors assurance)</span>
  <strong className="text-2xl">5 685€/mois</strong>
  </div>
  </div>
- <p className="text-sm text-emerald-200 mt-6 mb-0">
+ <p className="text-sm text-amber-200 mt-6 mb-0">
  Profil emprunteur: revenus foyer 12 500€/mois mini (taux endettement 35% max). Apport 315k€ = vente résidence actuelle
  ou épargne constituée. <strong>EGB Occitanie vous met en relation courtiers spécialisés patrimoine.</strong>
  </p>
@@ -390,7 +390,7 @@ export default function ConstructionVillaCotePaveeToulouse() {
  <div className="mt-12 text-center">
  <Link
  href="/contact"
- className="inline-flex items-center gap-3 bg-emerald-800 text-white px-8 py-4 text-base font-medium hover:bg-emerald-900 transition-all duration-300 hover:shadow-xl"
+ className="inline-flex items-center gap-3 bg-amber-800 text-white px-8 py-4 text-base font-medium hover:bg-amber-900 transition-all duration-300 hover:shadow-xl"
  >
  Recevoir simulation financière personnalisée
  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
