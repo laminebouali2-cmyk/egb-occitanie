@@ -1846,22 +1846,23 @@ label {
 
 .demo-content {
   flex: 1;
-  overflow: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
 
 /* Demo Select */
 .demo-select {
-  padding: 2rem 1.5rem;
-  text-align: center;
+  padding: 1.5rem;
+  overflow-y: auto;
 }
 
 .demo-select h4 {
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--rnv-text);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .project-grid {
@@ -2065,18 +2066,27 @@ label {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 1.25rem;
-  background: var(--rnv-bg-subtle);
-  border: 1px solid var(--rnv-border);
-  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  background: white;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.mode-option:first-child {
+  border-color: var(--rnv-accent);
+  background: rgba(194, 65, 12, 0.03);
 }
 
 .mode-option:hover {
   border-color: var(--rnv-accent);
   background: rgba(194, 65, 12, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .mode-icon {
