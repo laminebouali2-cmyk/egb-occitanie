@@ -45,7 +45,7 @@ export default function RenovationSaintAubinDupuyToulouse() {
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
 
- <div className="min-h-screen bg-white from-white">
+ <div className="min-h-screen bg-white">
  <div className="bg-white border-b">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
  <nav className="text-sm text-gray-600">
@@ -58,8 +58,8 @@ export default function RenovationSaintAubinDupuyToulouse() {
  </div>
  </div>
 
- <div className="relative bg-white text-white overflow-hidden">
- <div className="absolute inset-0 bg-black opacity-10"></div>
+ <div className="relative bg-gray-900 text-white overflow-hidden">
+ 
  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
  <h1 className={`${playfair.className} text-5xl md:text-6xl font-bold mb-6 leading-tight`}>
  Rénovation Saint-Aubin Dupuy Toulouse
@@ -80,20 +80,20 @@ export default function RenovationSaintAubinDupuyToulouse() {
  </div>
 
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">Familles</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">Familles</div>
  <div className="text-teal-200">Quartier résidentiel calme</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">Jardins</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">Jardins</div>
  <div className="text-teal-200">Pavillons 200-400m²</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">Écoles</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">Écoles</div>
  <div className="text-teal-200">Réputées proximité</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">-25%</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">-25%</div>
  <div className="text-teal-200">Coûts vs centre historique</div>
  </div>
  </div>
@@ -141,7 +141,7 @@ export default function RenovationSaintAubinDupuyToulouse() {
  </div>
  </section>
 
- <section className="py-16 bg-white text-white">
+ <section className="py-16 bg-gray-900 text-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
  <h2 className={`${playfair.className} text-4xl md:text-5xl font-bold mb-6`}>
  Projet Rénovation Maison Famille ?

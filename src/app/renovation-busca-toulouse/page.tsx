@@ -77,7 +77,7 @@ export default function RenovationBuscaToulouse() {
  dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
  />
 
- <div className="min-h-screen bg-white from-white">
+ <div className="min-h-screen bg-white">
  {/* Breadcrumb */}
  <div className="bg-white border-b">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -92,12 +92,12 @@ export default function RenovationBuscaToulouse() {
  </div>
 
  {/* Hero Section */}
- <div className="relative bg-white text-white overflow-hidden">
- <div className="absolute inset-0 bg-black opacity-10"></div>
+ <div className="relative bg-gray-900 text-white overflow-hidden">
+ 
  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
  <h1 className={`${playfair.className} text-5xl md:text-6xl font-bold mb-6 leading-tight`}>
  Rénovation Busca Toulouse
- <span className="block text-3xl md:text-4xl mt-4 text-amber-200">
+ <span className="block text-3xl md:text-4xl mt-4 text-gray-300">
  Expert Villas 1920-1950 Art Déco & Jardins Résidentiels
  </span>
  </h1>
@@ -121,21 +121,21 @@ export default function RenovationBuscaToulouse() {
 
  {/* Stats Cards */}
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">1920-50</div>
- <div className="text-amber-200">Villas Art Déco période</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">1920-50</div>
+ <div className="text-gray-600">Villas Art Déco période</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">200-500m²</div>
- <div className="text-amber-200">Jardins privatifs</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">200-500m²</div>
+ <div className="text-gray-600">Jardins privatifs</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">0 ABF</div>
- <div className="text-amber-200">Liberté architecturale</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">0 ABF</div>
+ <div className="text-gray-600">Liberté architecturale</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">CSP+</div>
- <div className="text-amber-200">Familles cadres professions lib.</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">CSP+</div>
+ <div className="text-gray-600">Familles cadres professions lib.</div>
  </div>
  </div>
  </div>
@@ -184,7 +184,7 @@ export default function RenovationBuscaToulouse() {
  </section>
 
  {/* Prix Rénovation Villa Busca */}
- <section className="py-16 bg-white to-white">
+ <section className="py-16 bg-white">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-6 text-center`}>
  Prix Rénovation Villa Busca Toulouse 2025
@@ -195,7 +195,7 @@ export default function RenovationBuscaToulouse() {
 
  <div className="overflow-x-auto shadow-xl rounded-lg mb-8">
  <table className="w-full bg-white">
- <thead className="bg-white text-white">
+ <thead className="bg-gray-900 text-white">
  <tr>
  <th className="px-6 py-4 text-left font-bold">Type Rénovation Villa</th>
  <th className="px-6 py-4 text-center font-bold">120m²</th>
@@ -274,7 +274,7 @@ export default function RenovationBuscaToulouse() {
 
  <div className="overflow-x-auto shadow-xl rounded-lg">
  <table className="w-full bg-white">
- <thead className="bg-white text-white">
+ <thead className="bg-gray-900 text-white">
  <tr>
  <th className="px-6 py-4 text-left font-bold">Critère</th>
  <th className="px-6 py-4 text-center font-bold">Villa 150m² Busca</th>
@@ -351,7 +351,7 @@ export default function RenovationBuscaToulouse() {
  </section>
 
  {/* FAQ */}
- <section className="py-16 bg-white to-white">
+ <section className="py-16 bg-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
  <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-12 text-center`}>
  Questions Fréquentes Rénovation Villa Busca
@@ -437,7 +437,7 @@ export default function RenovationBuscaToulouse() {
  </section>
 
  {/* CTA Section */}
- <section className="py-16 bg-white text-white">
+ <section className="py-16 bg-gray-900 text-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
  <h2 className={`${playfair.className} text-4xl md:text-5xl font-bold mb-6`}>
  Projet Rénovation Villa Busca ?
@@ -459,7 +459,7 @@ export default function RenovationBuscaToulouse() {
  Visite Villa Gratuite + Devis
  </Link>
  </div>
- <p className="text-amber-200">
+ <p className="text-gray-600">
  29 villas rénovées Busca • Note 4,9/5 • Garantie décennale • Spécialiste Art Déco
  </p>
  </div>

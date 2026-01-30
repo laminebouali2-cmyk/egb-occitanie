@@ -34,7 +34,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 
 export default function ConstructionVillaTournefeuille() {
  return (
- <main className="min-h-screen bg-white to-white">
+ <main className="min-h-screen bg-white">
  {/* Schema.org JSON-LD */}
  <script
  type="application/ld+json"
@@ -84,22 +84,22 @@ export default function ConstructionVillaTournefeuille() {
 
  {/* Stats Cards */}
  <div className="grid grid-cols-2 gap-4">
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
  <div className="text-3xl font-bold text-emerald-100 mb-2">31 543</div>
  <div className="text-sm text-emerald-50">Habitants (2025)</div>
  <div className="text-xs text-emerald-200 mt-1">3ème ville Haute-Garonne</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
  <div className="text-3xl font-bold text-emerald-100 mb-2">243 ha</div>
  <div className="text-sm text-emerald-50">La Ramée Nature</div>
  <div className="text-xs text-emerald-200 mt-1">Lac 44ha + Golf + Forêt</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
  <div className="text-3xl font-bold text-emerald-100 mb-2">29 020€</div>
  <div className="text-sm text-emerald-50">Revenus/hab</div>
  <div className="text-xs text-emerald-200 mt-1">+41% vs France</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
  <div className="text-3xl font-bold text-emerald-100 mb-2">370€</div>
  <div className="text-sm text-emerald-50">Prix terrain/m²</div>
  <div className="text-xs text-emerald-200 mt-1">Attractif grande ville</div>
@@ -177,7 +177,7 @@ export default function ConstructionVillaTournefeuille() {
  </section>
 
  {/* Prix Détaillés Section */}
- <section className="py-16 bg-white to-white">
+ <section className="py-16 bg-white">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <h2 className={`${playfair.className} text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900`}>
  Prix Construction Villa Tournefeuille 2025
@@ -189,7 +189,7 @@ export default function ConstructionVillaTournefeuille() {
 
  <div className="overflow-x-auto">
  <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
- <thead className="bg-white text-white">
+ <thead className="bg-gray-900 text-white">
  <tr>
  <th className="px-6 py-4 text-left font-semibold">Poste</th>
  <th className="px-6 py-4 text-right font-semibold">Villa 100m²</th>
@@ -380,7 +380,7 @@ export default function ConstructionVillaTournefeuille() {
  </section>
 
  {/* CTA Final Section */}
- <section className="py-16 bg-white text-white">
+ <section className="py-16 bg-gray-900 text-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
  <h2 className={`${playfair.className} text-3xl md:text-4xl font-bold mb-6`}>
  Prêt à Construire Votre Villa à Tournefeuille ?

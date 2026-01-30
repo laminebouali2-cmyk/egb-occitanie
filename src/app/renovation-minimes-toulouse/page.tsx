@@ -77,7 +77,7 @@ export default function RenovationMinimesToulouse() {
  dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
  />
 
- <div className="min-h-screen bg-white from-white">
+ <div className="min-h-screen bg-white">
  {/* Breadcrumb */}
  <div className="bg-white border-b">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -92,12 +92,12 @@ export default function RenovationMinimesToulouse() {
  </div>
 
  {/* Hero Section */}
- <div className="relative bg-white text-white overflow-hidden">
- <div className="absolute inset-0 bg-black opacity-10"></div>
+ <div className="relative bg-gray-900 text-white overflow-hidden">
+ 
  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
  <h1 className={`${playfair.className} text-5xl md:text-6xl font-bold mb-6 leading-tight`}>
  Rénovation Minimes Toulouse
- <span className="block text-3xl md:text-4xl mt-4 text-green-200">
+ <span className="block text-3xl md:text-4xl mt-4 text-gray-300">
  Expert DPE F-G & Rénovation Énergétique Années 60-70
  </span>
  </h1>
@@ -121,21 +121,21 @@ export default function RenovationMinimesToulouse() {
 
  {/* Stats Cards */}
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">3 200€</div>
- <div className="text-green-200">Prix m² moyen 2025</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">3 200€</div>
+ <div className="text-gray-600">Prix m² moyen 2025</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">60-70%</div>
- <div className="text-green-200">DPE F-G passoires</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">60-70%</div>
+ <div className="text-gray-600">DPE F-G passoires</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">50%</div>
- <div className="text-green-200">Aides MaPrimeRénov'</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">50%</div>
+ <div className="text-gray-600">Aides MaPrimeRénov'</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">0 ABF</div>
- <div className="text-green-200">Pas contraintes patrimoine</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">0 ABF</div>
+ <div className="text-gray-600">Pas contraintes patrimoine</div>
  </div>
  </div>
  </div>
@@ -184,7 +184,7 @@ export default function RenovationMinimesToulouse() {
  </section>
 
  {/* Prix Rénovation Énergétique Détaillés */}
- <section className="py-16 bg-white to-white">
+ <section className="py-16 bg-white">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-6 text-center`}>
  Prix Rénovation Énergétique Minimes 2025
@@ -195,7 +195,7 @@ export default function RenovationMinimesToulouse() {
 
  <div className="overflow-x-auto shadow-xl rounded-lg mb-8">
  <table className="w-full bg-white">
- <thead className="bg-white text-white">
+ <thead className="bg-gray-900 text-white">
  <tr>
  <th className="px-6 py-4 text-left font-bold">Type Rénovation Énergétique</th>
  <th className="px-6 py-4 text-center font-bold">50m²</th>
@@ -311,7 +311,7 @@ export default function RenovationMinimesToulouse() {
 
  <div className="overflow-x-auto shadow-xl rounded-lg">
  <table className="w-full bg-white">
- <thead className="bg-white text-white">
+ <thead className="bg-gray-900 text-white">
  <tr>
  <th className="px-6 py-4 text-left font-bold">Critère</th>
  <th className="px-6 py-4 text-center font-bold">DPE G Avant</th>
@@ -391,7 +391,7 @@ export default function RenovationMinimesToulouse() {
  </section>
 
  {/* FAQ Section */}
- <section className="py-16 bg-white to-white">
+ <section className="py-16 bg-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
  <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-12 text-center`}>
  Questions Fréquentes Rénovation Minimes
@@ -494,7 +494,7 @@ export default function RenovationMinimesToulouse() {
  </section>
 
  {/* CTA Section */}
- <section className="py-16 bg-white text-white">
+ <section className="py-16 bg-gray-900 text-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
  <h2 className={`${playfair.className} text-4xl md:text-5xl font-bold mb-6`}>
  Projet Rénovation Énergétique Minimes ?
@@ -516,7 +516,7 @@ export default function RenovationMinimesToulouse() {
  Audit Énergétique Gratuit Minimes
  </Link>
  </div>
- <p className="text-green-200">
+ <p className="text-gray-600">
  47 rénovations DPE Minimes • Note 4,8/5 • 100% atteinte DPE cible • Artisans RGE certifiés
  </p>
  </div>

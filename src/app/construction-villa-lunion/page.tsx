@@ -22,19 +22,19 @@ export default function ConstructionVillaLUnionPage() {
  Suburb résidentiel premium Toulouse Nord, 12 000 habitants, revenu médian 48 000€/an (CSP+ 58%). Écoles 8.7/10, 15 permis/an, prix terrain 480-560€/m².
  </p>
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-indigo-400">15</div>
  <div className="text-sm text-gray-300 mt-1">Permis/an</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-indigo-400">58%</div>
  <div className="text-sm text-gray-300 mt-1">CSP+</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-indigo-400">480€</div>
  <div className="text-sm text-gray-300 mt-1">Terrain/m²</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-indigo-400">8.7/10</div>
  <div className="text-sm text-gray-300 mt-1">Écoles</div>
  </div>

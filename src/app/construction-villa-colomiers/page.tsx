@@ -66,19 +66,19 @@ export default function ConstructionVillaColommiersPage() {
  </p>
 
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-amber-400">42k</div>
  <div className="text-sm text-gray-200 mt-1">Habitants (2e ville)</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-amber-400">388€</div>
  <div className="text-sm text-gray-200 mt-1">Terrain/m²</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-amber-400">2028</div>
  <div className="text-sm text-gray-200 mt-1">Métro ligne C</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-amber-400">5min</div>
  <div className="text-sm text-gray-200 mt-1">Airbus Clément Ader</div>
  </div>

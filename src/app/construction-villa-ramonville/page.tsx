@@ -24,19 +24,19 @@ export default function ConstructionVillaRamonvillePage() {
  Young professionals 62% (25-45 ans), métro ligne B 2027 (+25-30% valorisation), université proximité. Prix terrain 480€/m² pré-métro → 620€/m² post-2027.
  </p>
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-blue-400">2027</div>
  <div className="text-sm text-gray-300 mt-1">Métro Ligne B</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-blue-400">+25%</div>
  <div className="text-sm text-gray-300 mt-1">Valorisation</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-blue-400">62%</div>
  <div className="text-sm text-gray-300 mt-1">25-45 ans</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-blue-400">5min</div>
  <div className="text-sm text-gray-300 mt-1">Université</div>
  </div>

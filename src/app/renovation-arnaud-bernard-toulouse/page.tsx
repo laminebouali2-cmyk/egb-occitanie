@@ -74,7 +74,7 @@ export default function RenovationArnaudBernardToulouse() {
  dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
  />
 
- <div className="min-h-screen bg-white from-white">
+ <div className="min-h-screen bg-white">
  {/* Breadcrumb */}
  <div className="bg-white border-b">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -89,12 +89,12 @@ export default function RenovationArnaudBernardToulouse() {
  </div>
 
  {/* Hero Section */}
- <div className="relative bg-white text-white overflow-hidden">
- <div className="absolute inset-0 bg-black opacity-10"></div>
+ <div className="relative bg-gray-900 text-white overflow-hidden">
+ 
  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
  <h1 className={`${playfair.className} text-5xl md:text-6xl font-bold mb-6 leading-tight`}>
  Rénovation Arnaud-Bernard Toulouse
- <span className="block text-3xl md:text-4xl mt-4 text-indigo-200">
+ <span className="block text-3xl md:text-4xl mt-4 text-gray-300">
  Expert Petits T1-T2 Investissement Locatif Jeunes Actifs
  </span>
  </h1>
@@ -118,21 +118,21 @@ export default function RenovationArnaudBernardToulouse() {
 
  {/* Stats Cards */}
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">4 782€</div>
- <div className="text-indigo-200">Prix m² moyen 2025</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">4 782€</div>
+ <div className="text-gray-600">Prix m² moyen 2025</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">6-8%</div>
- <div className="text-indigo-200">Rentabilité locative brute</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">6-8%</div>
+ <div className="text-gray-600">Rentabilité locative brute</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">25-35m²</div>
- <div className="text-indigo-200">Petits T1-T2 investisseurs</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">25-35m²</div>
+ <div className="text-gray-600">Petits T1-T2 investisseurs</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">Jeunes</div>
- <div className="text-indigo-200">Étudiants actifs bohème</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">Jeunes</div>
+ <div className="text-gray-600">Étudiants actifs bohème</div>
  </div>
  </div>
  </div>
@@ -181,7 +181,7 @@ export default function RenovationArnaudBernardToulouse() {
  </section>
 
  {/* Prix Rénovation Petits Appartements */}
- <section className="py-16 bg-white to-white">
+ <section className="py-16 bg-white">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-6 text-center`}>
  Prix Rénovation Arnaud-Bernard 2025
@@ -192,7 +192,7 @@ export default function RenovationArnaudBernardToulouse() {
 
  <div className="overflow-x-auto shadow-xl rounded-lg mb-8">
  <table className="w-full bg-white">
- <thead className="bg-white text-white">
+ <thead className="bg-gray-900 text-white">
  <tr>
  <th className="px-6 py-4 text-left font-bold">Type Rénovation</th>
  <th className="px-6 py-4 text-center font-bold">Studio 25m²</th>
@@ -261,7 +261,7 @@ export default function RenovationArnaudBernardToulouse() {
 
  <div className="overflow-x-auto shadow-xl rounded-lg">
  <table className="w-full bg-white">
- <thead className="bg-white text-white">
+ <thead className="bg-gray-900 text-white">
  <tr>
  <th className="px-6 py-4 text-left font-bold">Critère</th>
  <th className="px-6 py-4 text-center font-bold">Arnaud-Bernard</th>
@@ -338,7 +338,7 @@ export default function RenovationArnaudBernardToulouse() {
  </section>
 
  {/* FAQ */}
- <section className="py-16 bg-white to-white">
+ <section className="py-16 bg-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
  <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-12 text-center`}>
  Questions Fréquentes Investissement Arnaud-Bernard
@@ -394,7 +394,7 @@ export default function RenovationArnaudBernardToulouse() {
  </section>
 
  {/* CTA */}
- <section className="py-16 bg-white text-white">
+ <section className="py-16 bg-gray-900 text-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
  <h2 className={`${playfair.className} text-4xl md:text-5xl font-bold mb-6`}>
  Projet Investissement Locatif Arnaud-Bernard ?
@@ -416,7 +416,7 @@ export default function RenovationArnaudBernardToulouse() {
  Simulation Rentabilité Gratuite
  </Link>
  </div>
- <p className="text-indigo-200">
+ <p className="text-gray-600">
  34 investissements locatifs Arnaud-Bernard • Note 4,7/5 • Rentabilité moyenne 6,4%
  </p>
  </div>

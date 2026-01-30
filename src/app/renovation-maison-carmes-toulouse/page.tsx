@@ -429,7 +429,7 @@ export default function RenovationMaisonCarmesToulouse() {
  <strong>5-6 mois</strong>
  </div>
  </div>
- <p className="text-amber-200 text-sm mt-6 mb-0">
+ <p className="text-gray-600 text-sm mt-6 mb-0">
  Vs 3-4 mois hors zone ABF. <strong>EGB Occitanie optimise délais grâce dossiers complets dès 1er dépôt.</strong>
  </p>
  </div>
@@ -496,11 +496,11 @@ export default function RenovationMaisonCarmesToulouse() {
  <div className="flex justify-between items-start mb-4">
  <div>
  <h4 className="text-lg font-semibold">Rénovation complète patrimoine</h4>
- <p className="text-sm text-amber-200">Travaux structure + conservation + finitions premium</p>
+ <p className="text-sm text-gray-600">Travaux structure + conservation + finitions premium</p>
  </div>
  <div className="text-right">
  <div className="text-3xl font-light">3 200€</div>
- <div className="text-sm text-amber-200">/m²</div>
+ <div className="text-sm text-gray-600">/m²</div>
  </div>
  </div>
  <ul className="text-sm text-amber-100 space-y-1.5">

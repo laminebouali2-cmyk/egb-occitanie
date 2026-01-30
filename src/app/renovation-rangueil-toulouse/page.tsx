@@ -30,7 +30,7 @@ export default function RenovationRangueuilToulouse() {
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
 
- <div className="min-h-screen bg-white from-white to-sky-50">
+ <div className="min-h-screen bg-white to-sky-50">
  <div className="bg-white border-b">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
  <nav className="text-sm text-gray-600">
@@ -43,8 +43,8 @@ export default function RenovationRangueuilToulouse() {
  </div>
  </div>
 
- <div className="relative bg-white text-white overflow-hidden">
- <div className="absolute inset-0 bg-black opacity-10"></div>
+ <div className="relative bg-gray-900 text-white overflow-hidden">
+ 
  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
  <h1 className={`${playfair.className} text-5xl md:text-6xl font-bold mb-6 leading-tight`}>
  Rénovation Rangueil Toulouse
@@ -65,20 +65,20 @@ export default function RenovationRangueuilToulouse() {
  </div>
 
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">CHU</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">CHU</div>
  <div className="text-sky-200">Hôpital Purpan proximité</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">6-7%</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">6-7%</div>
  <div className="text-sky-200">Rentabilité locative brute</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">Étudiants</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">Étudiants</div>
  <div className="text-sky-200">Médecine sciences facs</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">-30%</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">-30%</div>
  <div className="text-sky-200">Coûts vs centre historique</div>
  </div>
  </div>
@@ -118,7 +118,7 @@ export default function RenovationRangueuilToulouse() {
  </div>
  </section>
 
- <section className="py-16 bg-white text-white">
+ <section className="py-16 bg-gray-900 text-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
  <h2 className={`${playfair.className} text-4xl font-bold mb-6`}>
  Projet Investissement Locatif Rangueil ?

@@ -66,19 +66,19 @@ export default function ConstructionVillaBlagnacPage() {
  </p>
 
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-blue-400">29k</div>
  <div className="text-sm text-gray-200 mt-1">Habitants</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-blue-400">25%</div>
  <div className="text-sm text-gray-200 mt-1">Cadres internationaux</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-blue-400">391€</div>
  <div className="text-sm text-gray-200 mt-1">Terrain/m²</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4">
+ <div className="bg-white border-2 border border-gray-200 rounded-lg p-4">
  <div className="text-3xl font-bold text-blue-400">5min</div>
  <div className="text-sm text-gray-200 mt-1">Aéroport</div>
  </div>

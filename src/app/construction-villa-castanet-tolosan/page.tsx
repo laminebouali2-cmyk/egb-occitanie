@@ -34,7 +34,7 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
 
 export default function ConstructionVillaCastanetTolosan() {
  return (
- <main className="min-h-screen bg-white to-white">
+ <main className="min-h-screen bg-white">
  {/* Schema.org JSON-LD */}
  <script
  type="application/ld+json"
@@ -59,7 +59,7 @@ export default function ConstructionVillaCastanetTolosan() {
  <div>
  <h1 className={`${playfair.className} text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight`}>
  Construction Villa Neuve
- <span className="block text-green-200 mt-2">Castanet-Tolosan</span>
+ <span className="block text-gray-600 mt-2">Castanet-Tolosan</span>
  </h1>
  <p className="text-xl text-green-50 mb-8 leading-relaxed">
  Constructeur expert villa sur-mesure à Castanet-Tolosan (31320).
@@ -84,25 +84,25 @@ export default function ConstructionVillaCastanetTolosan() {
 
  {/* Stats Cards */}
  <div className="grid grid-cols-2 gap-4">
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
  <div className="text-3xl font-bold text-green-100 mb-2">16 582</div>
  <div className="text-sm text-green-50">Habitants (2025)</div>
- <div className="text-xs text-green-200 mt-1">+48% depuis 2006</div>
+ <div className="text-xs text-gray-600 mt-1">+48% depuis 2006</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
  <div className="text-3xl font-bold text-green-100 mb-2">25%</div>
  <div className="text-sm text-green-50">Cadres Tech</div>
- <div className="text-xs text-green-200 mt-1">Revenus 25 080€/hab</div>
+ <div className="text-xs text-gray-600 mt-1">Revenus 25 080€/hab</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
  <div className="text-3xl font-bold text-green-100 mb-2">1 958</div>
  <div className="text-sm text-green-50">Entreprises Innopôle</div>
- <div className="text-xs text-green-200 mt-1">Labège à 5-10min</div>
+ <div className="text-xs text-gray-600 mt-1">Labège à 5-10min</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
  <div className="text-3xl font-bold text-green-100 mb-2">380€</div>
  <div className="text-sm text-green-50">Prix terrain/m²</div>
- <div className="text-xs text-green-200 mt-1">Attractif vs Toulouse</div>
+ <div className="text-xs text-gray-600 mt-1">Attractif vs Toulouse</div>
  </div>
  </div>
  </div>
@@ -177,7 +177,7 @@ export default function ConstructionVillaCastanetTolosan() {
  </section>
 
  {/* Prix Détaillés Section */}
- <section className="py-16 bg-white to-white">
+ <section className="py-16 bg-white">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
  <h2 className={`${playfair.className} text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900`}>
  Prix Construction Villa Castanet-Tolosan 2025
@@ -189,7 +189,7 @@ export default function ConstructionVillaCastanetTolosan() {
 
  <div className="overflow-x-auto">
  <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
- <thead className="bg-white text-white">
+ <thead className="bg-gray-900 text-white">
  <tr>
  <th className="px-6 py-4 text-left font-semibold">Poste</th>
  <th className="px-6 py-4 text-right font-semibold">Villa 100m²</th>
@@ -380,7 +380,7 @@ export default function ConstructionVillaCastanetTolosan() {
  </section>
 
  {/* Étude de Cas Réelle */}
- <section className="py-16 bg-white to-white">
+ <section className="py-16 bg-white">
  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
  <h2 className={`${playfair.className} text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900`}>
  Étude de Cas Réelle : Villa Cadre Tech CNES - Quartier Durable
@@ -648,7 +648,7 @@ export default function ConstructionVillaCastanetTolosan() {
  </section>
 
  {/* CTA Final Section */}
- <section className="py-16 bg-white text-white">
+ <section className="py-16 bg-gray-900 text-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
  <h2 className={`${playfair.className} text-3xl md:text-4xl font-bold mb-6`}>
  Prêt à Construire Votre Villa à Castanet-Tolosan ?

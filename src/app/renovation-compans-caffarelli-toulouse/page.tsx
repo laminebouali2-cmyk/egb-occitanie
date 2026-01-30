@@ -30,7 +30,7 @@ export default function RenovationCompansCaffarelliToulouse() {
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
 
- <div className="min-h-screen bg-white from-white">
+ <div className="min-h-screen bg-white">
  <div className="bg-white border-b">
  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
  <nav className="text-sm text-gray-600">
@@ -43,8 +43,8 @@ export default function RenovationCompansCaffarelliToulouse() {
  </div>
  </div>
 
- <div className="relative bg-white text-white overflow-hidden">
- <div className="absolute inset-0 bg-black opacity-10"></div>
+ <div className="relative bg-gray-900 text-white overflow-hidden">
+ 
  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
  <h1 className={`${playfair.className} text-5xl md:text-6xl font-bold mb-6 leading-tight`}>
  Rénovation Compans-Caffarelli Toulouse
@@ -62,20 +62,20 @@ export default function RenovationCompansCaffarelliToulouse() {
  </div>
 
  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">70-80</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">70-80</div>
  <div className="text-slate-200">Immeubles années</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">Gare 5min</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">Gare 5min</div>
  <div className="text-slate-200">Matabiau proximité</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">-30%</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">-30%</div>
  <div className="text-slate-200">Coûts vs centre</div>
  </div>
- <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
- <div className="text-3xl font-bold mb-2">Affaires</div>
+ <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
+ <div className="text-3xl font-bold mb-2 text-gray-900">Affaires</div>
  <div className="text-slate-200">Quartier business actifs</div>
  </div>
  </div>
@@ -115,7 +115,7 @@ export default function RenovationCompansCaffarelliToulouse() {
  </div>
  </section>
 
- <section className="py-16 bg-white text-white">
+ <section className="py-16 bg-gray-900 text-white">
  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
  <h2 className={`${playfair.className} text-4xl font-bold mb-6`}>
  Projet Rénovation Compans-Caffarelli ?
