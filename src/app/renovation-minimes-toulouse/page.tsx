@@ -125,7 +125,7 @@ export default function RenovationMinimesToulouse() {
  <li><strong>Dévalorisation patrimoine:</strong> DPE F-G = -15-20% prix vente vs DPE B-C équivalent</li>
  <li><strong>Factures énergétiques:</strong> 1 800-2 500€/an électricité 60m² vs 600-900€ DPE B après PAC</li>
  <li><strong>Aides exceptionnelles 2025:</strong> MaPrimeRénov' jusqu'à 50% coûts + Bonus Toulouse + CEE</li>
- <li><strong>Obligation copropriété:</strong> Audit énergétique obligatoire si >50 lots + DPE D-G</li>
+ <li><strong>Obligation copropriété:</strong> Audit énergétique obligatoire si &gt;50 lots + DPE D-G</li>
  <li><strong>ROI travaux:</strong> 8-12 ans via économies chauffage + valorisation +25-35% patrimoine</li>
  </ul>
  </div>
@@ -240,7 +240,7 @@ export default function RenovationMinimesToulouse() {
  <li>• Facture chauffage AVANT (DPE G): 2 200€/an → APRÈS (DPE B): 700€/an = <strong>Économies 1 500€/an</strong></li>
  <li>• Valorisation patrimoine: +25-35% = +60 000-84 000€ (prix vente 240k→300-324k€)</li>
  <li>• ROI économies chauffage seules: 124 300€ / 1 500€/an = <strong>8,3 ans</strong></li>
- <li>• ROI total avec valorisation: immédiat (gains >coûts dès revente)</li>
+ <li>• ROI total avec valorisation: immédiat (gains &gt;coûts dès revente)</li>
  </ul>
  </div>
  </div>

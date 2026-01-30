@@ -395,10 +395,8 @@ export default function RenovationCompansCaffarelliToulouse() {
  </div>
  </div>
  <div className="mt-4 text-xs bg-green-50 p-3 rounded text-green-900">
- <strong>Rentabilité opération:</strong> Achat 280k€ + Travaux 148k€ + Frais 30k€ = 458k€ investissement.
- Revente 2 T3 380k€ (190k€ chacun, 3 800€/m²) = PERTE -78k€ revente immédiate. <strong>MAIS location
- 2 T3 1 200€/mois = 14 400€/an = rentabilité 3,1% nette.</strong> Stratégie : location long terme
- jeunes actifs mobilité gare Matabiau.
+ <strong>Rentabilité opération:</strong> Achat 280k€ + Travaux 148k€ + Frais 30k€ = 458k€ investissement. Revente 2 T3 380k€ (190k€ chacun, 3 800€/m²) = PERTE -78k€ revente immédiate. <strong>MAIS location 2 T3 1 200€/mois = 14 400€/an = rentabilité 3,1% nette.</strong> Stratégie : location long terme jeunes actifs mobilité gare Matabiau.
+ </div>
  </div>
  </div>
  </div>
