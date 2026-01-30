@@ -1,13 +1,9 @@
-"use client";
-
 export default function RenovateurLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="renovateur-app">
-      {children}
-    </div>
-  );
+  // This layout removes the main EGB header/footer
+  // The renovateur-ia page has its own header and footer
+  return <>{children}</>;
 }

@@ -1,12 +1,20 @@
 import { Metadata } from "next";
-import { RenovateurDashboard } from "@/components/renovateur-ia/RenovateurDashboard";
+import { RenovateurLanding } from "@/components/renovateur-ia/RenovateurLanding";
 
 export const metadata: Metadata = {
-  title: "Renovateur IA | Planificateur de Renovation Intelligent",
+  title: "Renovateur IA | Planifiez votre renovation avec l'intelligence artificielle",
   description:
-    "Concevez votre projet de renovation avec notre assistant IA. Visualisez, planifiez et estimez vos travaux en temps reel.",
+    "Transformez vos projets de renovation avec notre assistant IA. Estimez vos couts, visualisez les transformations et planifiez chaque etape. Outil professionnel pour particuliers et entreprises du batiment.",
+  keywords: [
+    "renovation IA",
+    "planificateur renovation",
+    "estimation travaux",
+    "assistant renovation",
+    "devis renovation",
+    "visualisation travaux",
+  ],
 };
 
 export default function RenovateurIAPage() {
-  return <RenovateurDashboard />;
+  return <RenovateurLanding />;
 }
