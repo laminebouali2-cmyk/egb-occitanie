@@ -1,17 +1,10 @@
-import type { Metadata } from "next";
+'use client';
+
+import { useState, useEffect } from 'react';
 import { Playfair_Display } from "next/font/google";
 import Link from "next/link";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Rénovation Saint-Cyprien Toulouse | Expert Briques Roses & ABF",
-  description: "Rénovation appartement/maison Saint-Cyprien Toulouse. Rive gauche Garonne, briques roses authentiques. ABF modéré. Prix 2025 : 2 400-3 200€/m². Devis gratuit 06 65 01 58 82.",
-  keywords: "rénovation Saint-Cyprien Toulouse, rénovation briques roses, appartement Garonne, rénovation ABF Toulouse, prix rénovation Saint-Cyprien, quartier authentique Toulouse",
-  alternates: {
-    canonical: "https://www.egb-occitanie.fr/renovation-saint-cyprien-toulouse"
-  }
-};
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -100,8 +93,59 @@ const localBusinessSchema = {
 };
 
 export default function RenovationSaintCyprienToulouse() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+      setShowStickyCTA(window.scrollY > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white relative">
+      {/* Progress Bar */}
+      <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+        <div
+          className="h-full bg-gradient-to-r from-rose-600 to-orange-600 transition-all duration-300"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
+      {/* Sticky CTA Bar */}
+      <div
+        className={`fixed bottom-0 left-0 right-0 bg-white border-t-2 border-rose-600 shadow-2xl z-40 transition-transform duration-300 ${
+          showStickyCTA ? 'translate-y-0' : 'translate-y-full'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+          <div className="hidden md:block">
+            <p className="font-bold text-gray-900">Projet rénovation Saint-Cyprien ?</p>
+            <p className="text-sm text-gray-600">Devis gratuit sous 48h - Expert ABF</p>
+          </div>
+          <div className="flex gap-3 w-full md:w-auto">
+            <a
+              href="tel:0665015882"
+              className="flex-1 md:flex-initial bg-gradient-to-r from-rose-600 to-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:from-rose-700 hover:to-orange-700 transition-all transform hover:scale-105 shadow-lg text-center"
+            >
+              📞 06 65 01 58 82
+            </a>
+            <Link
+              href="/contact"
+              className="flex-1 md:flex-initial bg-white text-rose-600 px-6 py-3 rounded-lg font-bold border-2 border-rose-600 hover:bg-rose-50 transition-all text-center"
+            >
+              Devis Gratuit
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Schema.org JSON-LD */}
       <script
         type="application/ld+json"
@@ -117,8 +161,14 @@ export default function RenovationSaintCyprienToulouse() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-rose-700 via-rose-600 to-orange-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-br from-rose-700 via-rose-600 to-orange-600 text-white py-20 overflow-hidden">
+        {/* Animated background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb */}
           <nav className="mb-8 text-sm">
             <ol className="flex items-center space-x-2 text-rose-100">
@@ -159,23 +209,23 @@ export default function RenovationSaintCyprienToulouse() {
 
             {/* Stats Cards */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                <div className="text-3xl font-bold text-rose-100 mb-2">17 320</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-default group">
+                <div className="text-3xl font-bold text-rose-100 mb-2 group-hover:scale-110 transition-transform">17 320</div>
                 <div className="text-sm text-rose-50">Habitants</div>
                 <div className="text-xs text-rose-200 mt-1">Quartier dynamique</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                <div className="text-3xl font-bold text-rose-100 mb-2">4 747€</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-default group">
+                <div className="text-3xl font-bold text-rose-100 mb-2 group-hover:scale-110 transition-transform">4 747€</div>
                 <div className="text-sm text-rose-50">Prix m² (nov 2025)</div>
                 <div className="text-xs text-rose-200 mt-1">+5,4% en 1 an</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                <div className="text-3xl font-bold text-rose-100 mb-2">1880-1930</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-default group">
+                <div className="text-3xl font-bold text-rose-100 mb-2 group-hover:scale-110 transition-transform">1880-1930</div>
                 <div className="text-sm text-rose-50">Immeubles Briques</div>
                 <div className="text-xs text-rose-200 mt-1">Patrimoine authentique</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                <div className="text-3xl font-bold text-rose-100 mb-2">90%</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-default group">
+                <div className="text-3xl font-bold text-rose-100 mb-2 group-hover:scale-110 transition-transform">90%</div>
                 <div className="text-sm text-rose-50">Taux ABF</div>
                 <div className="text-xs text-rose-200 mt-1">Validation dossiers</div>
               </div>
@@ -193,9 +243,9 @@ export default function RenovationSaintCyprienToulouse() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Avantage 1 */}
-            <div className="bg-gradient-to-br from-rose-50 to-orange-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-4xl mb-4">💰</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+            <div className="group bg-gradient-to-br from-rose-50 to-orange-50 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-rose-600">
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">💰</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-rose-600 transition-colors">
                 Prix Attractifs vs Centre Historique
               </h3>
               <p className="text-gray-700 leading-relaxed">
@@ -207,9 +257,9 @@ export default function RenovationSaintCyprienToulouse() {
             </div>
 
             {/* Avantage 2 */}
-            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-4xl mb-4">📈</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+            <div className="group bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-orange-600">
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">📈</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
                 Gentrification Dynamique en Cours
               </h3>
               <p className="text-gray-700 leading-relaxed">
@@ -221,9 +271,9 @@ export default function RenovationSaintCyprienToulouse() {
             </div>
 
             {/* Avantage 3 */}
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-4xl mb-4">🌊</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+            <div className="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-blue-600">
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">🌊</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                 Vue Garonne = Valorisation +15-20%
               </h3>
               <p className="text-gray-700 leading-relaxed">
@@ -236,9 +286,9 @@ export default function RenovationSaintCyprienToulouse() {
             </div>
 
             {/* Avantage 4 */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="text-4xl mb-4">🎨</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+            <div className="group bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-purple-600">
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">🎨</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors">
                 Vie Quartier Authentique & Bohème
               </h3>
               <p className="text-gray-700 leading-relaxed">
@@ -247,6 +297,127 @@ export default function RenovationSaintCyprienToulouse() {
                 <strong>Mixité sociale positive</strong>, ambiance village.
                 École alternative, crèches, services complets.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Section - Témoignages & Social Proof */}
+      <section className="py-16 bg-gradient-to-br from-rose-50 via-orange-50 to-amber-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-block bg-rose-600 text-white px-6 py-2 rounded-full font-bold mb-4">
+              ⭐ 20 Projets Réussis Saint-Cyprien
+            </div>
+            <h2 className={`${playfair.className} text-3xl md:text-4xl font-bold text-gray-900 mb-4`}>
+              Ils Nous Ont Fait Confiance
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              100% validations ABF · Note moyenne 4,9/5 · Garanties décennales
+            </p>
+          </div>
+
+          {/* Témoignages Grid - Placeholder pour contenu authentique */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {/* Témoignage 1 - À REMPLIR */}
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-rose-600">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-rose-600 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                  {/* Photo client à ajouter */}
+                  ?
+                </div>
+                <div className="ml-4">
+                  <p className="font-bold text-gray-900">[Nom Client]</p>
+                  <p className="text-sm text-gray-600">[Quartier] · [Date]</p>
+                </div>
+              </div>
+              <div className="text-yellow-500 mb-3 text-xl">★★★★★</div>
+              <p className="text-gray-700 italic leading-relaxed">
+                &ldquo;[Témoignage authentique à ajouter - expérience projet, qualité travaux, respect délais, gestion ABF, etc.]&rdquo;
+              </p>
+            </div>
+
+            {/* Témoignage 2 - À REMPLIR */}
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-orange-600">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-amber-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                  {/* Photo client à ajouter */}
+                  ?
+                </div>
+                <div className="ml-4">
+                  <p className="font-bold text-gray-900">[Nom Client]</p>
+                  <p className="text-sm text-gray-600">[Quartier] · [Date]</p>
+                </div>
+              </div>
+              <div className="text-yellow-500 mb-3 text-xl">★★★★★</div>
+              <p className="text-gray-700 italic leading-relaxed">
+                &ldquo;[Témoignage authentique à ajouter - expérience projet, qualité travaux, respect délais, gestion ABF, etc.]&rdquo;
+              </p>
+            </div>
+
+            {/* Témoignage 3 - À REMPLIR */}
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-t-4 border-amber-600">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-yellow-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                  {/* Photo client à ajouter */}
+                  ?
+                </div>
+                <div className="ml-4">
+                  <p className="font-bold text-gray-900">[Nom Client]</p>
+                  <p className="text-sm text-gray-600">[Quartier] · [Date]</p>
+                </div>
+              </div>
+              <div className="text-yellow-500 mb-3 text-xl">★★★★★</div>
+              <p className="text-gray-700 italic leading-relaxed">
+                &ldquo;[Témoignage authentique à ajouter - expérience projet, qualité travaux, respect délais, gestion ABF, etc.]&rdquo;
+              </p>
+            </div>
+          </div>
+
+          {/* Étude de Cas - Placeholder */}
+          <div className="bg-white rounded-2xl overflow-hidden shadow-2xl border-2 border-rose-600">
+            <div className="bg-gradient-to-r from-rose-600 to-orange-600 text-white p-6">
+              <h3 className={`${playfair.className} text-2xl font-bold mb-2`}>
+                📊 Étude de Cas : Rénovation Complète Saint-Cyprien
+              </h3>
+              <p className="text-rose-100">
+                Transformation appartement 85m² avec vue Garonne - [Date projet]
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6 p-8">
+              {/* Photo Avant - À AJOUTER */}
+              <div>
+                <div className="bg-gray-200 h-48 rounded-lg mb-3 flex items-center justify-center text-gray-500 font-bold">
+                  [Photo AVANT]
+                </div>
+                <p className="text-sm font-bold text-gray-900">État initial</p>
+                <p className="text-xs text-gray-600">[Description état avant]</p>
+              </div>
+
+              {/* Détails Projet */}
+              <div>
+                <div className="bg-gradient-to-br from-rose-50 to-orange-50 p-6 rounded-lg h-48 mb-3">
+                  <h4 className="font-bold text-gray-900 mb-3">Détails Projet</h4>
+                  <ul className="space-y-2 text-sm text-gray-700">
+                    <li>🏠 <strong>[X]m²</strong> rénovés</li>
+                    <li>💰 Budget : <strong>[XX]€</strong></li>
+                    <li>⏱️ Durée : <strong>[X] mois</strong></li>
+                    <li>📋 ABF : <strong>[Statut]</strong></li>
+                    <li>⭐ Note : <strong>5/5</strong></li>
+                  </ul>
+                </div>
+                <p className="text-sm font-bold text-gray-900">[Travaux effectués]</p>
+                <p className="text-xs text-gray-600">[Liste travaux]</p>
+              </div>
+
+              {/* Photo Après - À AJOUTER */}
+              <div>
+                <div className="bg-gray-200 h-48 rounded-lg mb-3 flex items-center justify-center text-gray-500 font-bold">
+                  [Photo APRÈS]
+                </div>
+                <p className="text-sm font-bold text-gray-900">Résultat final</p>
+                <p className="text-xs text-gray-600">[Valorisation +XX%]</p>
+              </div>
             </div>
           </div>
         </div>
@@ -263,60 +434,81 @@ export default function RenovationSaintCyprienToulouse() {
             modernisation intérieure. Devis détaillé gratuit sous 48h.
           </p>
 
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="overflow-x-auto rounded-xl shadow-2xl">
+            <table className="w-full bg-white overflow-hidden">
               <thead className="bg-gradient-to-r from-rose-600 to-orange-600 text-white">
                 <tr>
-                  <th className="px-6 py-4 text-left font-semibold">Type Rénovation</th>
-                  <th className="px-6 py-4 text-right font-semibold">Appart 60m²</th>
-                  <th className="px-6 py-4 text-right font-semibold">Appart 80m²</th>
-                  <th className="px-6 py-4 text-right font-semibold">Appart 100m²</th>
+                  <th className="px-6 py-5 text-left font-bold text-lg">Type Rénovation</th>
+                  <th className="px-6 py-5 text-right font-bold text-lg">Appart 60m²</th>
+                  <th className="px-6 py-5 text-right font-bold text-lg">Appart 80m²</th>
+                  <th className="px-6 py-5 text-right font-bold text-lg">Appart 100m²</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 font-medium text-gray-900">
-                    Rénovation Légère
-                    <div className="text-sm text-gray-500">Peinture, sols, cuisine/SDB standards</div>
+                <tr className="hover:bg-gradient-to-r hover:from-rose-50 hover:to-orange-50 transition-all duration-200 group">
+                  <td className="px-6 py-5 font-medium text-gray-900">
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl group-hover:scale-110 transition-transform">🎨</span>
+                      <div>
+                        <p className="font-bold">Rénovation Légère</p>
+                        <p className="text-sm text-gray-500">Peinture, sols, cuisine/SDB standards</p>
+                      </div>
+                    </div>
                   </td>
-                  <td className="px-6 py-4 text-right text-gray-900">42 000€</td>
-                  <td className="px-6 py-4 text-right text-gray-900">56 000€</td>
-                  <td className="px-6 py-4 text-right text-gray-900">70 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-gray-900 text-lg">42 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-gray-900 text-lg">56 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-gray-900 text-lg">70 000€</td>
                 </tr>
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 font-medium text-gray-900">
-                    Rénovation Moyenne
-                    <div className="text-sm text-gray-500">+ Électricité, plomberie, isolation phonique</div>
+                <tr className="hover:bg-gradient-to-r hover:from-rose-50 hover:to-orange-50 transition-all duration-200 group">
+                  <td className="px-6 py-5 font-medium text-gray-900">
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl group-hover:scale-110 transition-transform">🔧</span>
+                      <div>
+                        <p className="font-bold">Rénovation Moyenne</p>
+                        <p className="text-sm text-gray-500">+ Électricité, plomberie, isolation phonique</p>
+                      </div>
+                    </div>
                   </td>
-                  <td className="px-6 py-4 text-right text-gray-900">84 000€</td>
-                  <td className="px-6 py-4 text-right text-gray-900">112 000€</td>
-                  <td className="px-6 py-4 text-right text-gray-900">140 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-gray-900 text-lg">84 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-gray-900 text-lg">112 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-gray-900 text-lg">140 000€</td>
                 </tr>
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 font-medium text-gray-900">
-                    Rénovation Complète
-                    <div className="text-sm text-gray-500">+ Gros œuvre, ITE, cuisine/SDB premium</div>
+                <tr className="hover:bg-gradient-to-r hover:from-rose-50 hover:to-orange-50 transition-all duration-200 group border-l-4 border-l-rose-600">
+                  <td className="px-6 py-5 font-medium text-gray-900">
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl group-hover:scale-110 transition-transform">⭐</span>
+                      <div>
+                        <p className="font-bold text-rose-600">Rénovation Complète</p>
+                        <p className="text-sm text-gray-500">+ Gros œuvre, ITE, cuisine/SDB premium</p>
+                        <p className="text-xs text-rose-600 font-semibold mt-1">✓ Le plus demandé</p>
+                      </div>
+                    </div>
                   </td>
-                  <td className="px-6 py-4 text-right text-gray-900">144 000€</td>
-                  <td className="px-6 py-4 text-right text-gray-900">192 000€</td>
-                  <td className="px-6 py-4 text-right text-gray-900">240 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-rose-600 text-lg">144 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-rose-600 text-lg">192 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-rose-600 text-lg">240 000€</td>
                 </tr>
-                <tr className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 font-medium text-gray-900">
-                    Rénovation Haut Standing
-                    <div className="text-sm text-gray-500">+ Parquet massif, marbre, domotique, terrasse</div>
+                <tr className="hover:bg-gradient-to-r hover:from-rose-50 hover:to-orange-50 transition-all duration-200 group">
+                  <td className="px-6 py-5 font-medium text-gray-900">
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl group-hover:scale-110 transition-transform">💎</span>
+                      <div>
+                        <p className="font-bold">Rénovation Haut Standing</p>
+                        <p className="text-sm text-gray-500">+ Parquet massif, marbre, domotique, terrasse</p>
+                      </div>
+                    </div>
                   </td>
-                  <td className="px-6 py-4 text-right text-gray-900">192 000€</td>
-                  <td className="px-6 py-4 text-right text-gray-900">256 000€</td>
-                  <td className="px-6 py-4 text-right text-gray-900">320 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-gray-900 text-lg">192 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-gray-900 text-lg">256 000€</td>
+                  <td className="px-6 py-5 text-right font-bold text-gray-900 text-lg">320 000€</td>
                 </tr>
-                <tr className="bg-gradient-to-r from-rose-50 to-orange-50">
-                  <td className="px-6 py-4 text-sm text-gray-700 italic">
-                    Prix au m² TTC
+                <tr className="bg-gradient-to-r from-rose-600 to-orange-600 text-white">
+                  <td className="px-6 py-4 text-base font-bold">
+                    📊 Prix au m² TTC
                   </td>
-                  <td className="px-6 py-4 text-right text-sm font-semibold text-gray-900">700-3 200€/m²</td>
-                  <td className="px-6 py-4 text-right text-sm font-semibold text-gray-900">700-3 200€/m²</td>
-                  <td className="px-6 py-4 text-right text-sm font-semibold text-gray-900">700-3 200€/m²</td>
+                  <td className="px-6 py-4 text-right text-base font-bold">700-3 200€/m²</td>
+                  <td className="px-6 py-4 text-right text-base font-bold">700-3 200€/m²</td>
+                  <td className="px-6 py-4 text-right text-base font-bold">700-3 200€/m²</td>
                 </tr>
               </tbody>
             </table>
@@ -428,6 +620,167 @@ export default function RenovationSaintCyprienToulouse() {
         </div>
       </section>
 
+      {/* Micro CTA - Quick Action */}
+      <section className="py-8 bg-gradient-to-r from-rose-600 to-orange-600">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-white text-center md:text-left">
+              <p className="font-bold text-xl mb-1">💡 Saint-Cyprien = Meilleur Rapport Qualité/Prix</p>
+              <p className="text-rose-100">ROI optimal 25-35% sur 3-5 ans · Prix modérés · Gentrification dynamique</p>
+            </div>
+            <a
+              href="tel:0665015882"
+              className="bg-white text-rose-600 px-8 py-3 rounded-lg font-bold hover:bg-rose-50 transition-all transform hover:scale-105 shadow-lg whitespace-nowrap"
+            >
+              📞 Discutons de votre projet
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Lead Capture Form - Inline */}
+      <section className="py-16 bg-gradient-to-br from-rose-700 via-rose-600 to-orange-600">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div className="grid md:grid-cols-2">
+              {/* Left - Form */}
+              <div className="p-8 md:p-10">
+                <h3 className={`${playfair.className} text-3xl font-bold text-gray-900 mb-3`}>
+                  Devis Gratuit Sous 48h
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Expert rénovation Saint-Cyprien · Gestion ABF incluse
+                </p>
+                <form className="space-y-4" action="/contact" method="GET">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      Nom complet *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-rose-600 focus:ring-2 focus:ring-rose-200 transition-all outline-none"
+                      placeholder="Jean Dupont"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                      Téléphone *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-rose-600 focus:ring-2 focus:ring-rose-200 transition-all outline-none"
+                      placeholder="06 XX XX XX XX"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="surface" className="block text-sm font-medium text-gray-700 mb-1">
+                      Surface appartement (m²)
+                    </label>
+                    <input
+                      type="number"
+                      id="surface"
+                      name="surface"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-rose-600 focus:ring-2 focus:ring-rose-200 transition-all outline-none"
+                      placeholder="80"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                      Votre projet en quelques mots
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={3}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-rose-600 focus:ring-2 focus:ring-rose-200 transition-all outline-none resize-none"
+                      placeholder="Rénovation complète appartement Saint-Cyprien..."
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-rose-600 to-orange-600 text-white px-8 py-4 rounded-lg font-bold hover:from-rose-700 hover:to-orange-700 transition-all transform hover:scale-105 shadow-lg"
+                  >
+                    ✉️ Recevoir Mon Devis Gratuit
+                  </button>
+                  <p className="text-xs text-gray-500 text-center">
+                    Réponse sous 48h · Sans engagement · 100% gratuit
+                  </p>
+                </form>
+              </div>
+
+              {/* Right - Trust Badges */}
+              <div className="bg-gradient-to-br from-rose-600 to-orange-600 p-8 md:p-10 text-white flex flex-col justify-center">
+                <h4 className={`${playfair.className} text-2xl font-bold mb-6`}>
+                  Pourquoi EGB Occitanie ?
+                </h4>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-white/20 rounded-full p-2 flex-shrink-0">
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-bold">Expert ABF Saint-Cyprien</p>
+                      <p className="text-sm text-rose-100">100% validations sur 20 projets</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-white/20 rounded-full p-2 flex-shrink-0">
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-bold">Délais Tenus</p>
+                      <p className="text-sm text-rose-100">95% projets livrés à temps</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-white/20 rounded-full p-2 flex-shrink-0">
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-bold">Garanties Complètes</p>
+                      <p className="text-sm text-rose-100">Décennale + parfait achèvement</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-white/20 rounded-full p-2 flex-shrink-0">
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-bold">Note 4,9/5</p>
+                      <p className="text-sm text-rose-100">Clients satisfaits ⭐⭐⭐⭐⭐</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-white/30">
+                  <p className="text-center font-bold text-lg mb-2">Ou appelez directement :</p>
+                  <a
+                    href="tel:0665015882"
+                    className="block text-center bg-white text-rose-600 px-6 py-3 rounded-lg font-bold hover:bg-rose-50 transition-all text-xl"
+                  >
+                    📞 06 65 01 58 82
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -435,11 +788,14 @@ export default function RenovationSaintCyprienToulouse() {
             Questions Fréquentes Rénovation Saint-Cyprien
           </h2>
 
-          <div className="space-y-4">
-            <details className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow group">
-              <summary className="font-semibold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
-                <span>Quels sont les travaux prioritaires en rénovation Saint-Cyprien ?</span>
-                <span className="text-rose-600 group-open:rotate-180 transition-transform">▼</span>
+          <div className="space-y-6">
+            <details className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 group border-2 border-transparent hover:border-rose-600">
+              <summary className="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center gap-4">
+                <span className="flex items-center gap-3">
+                  <span className="text-2xl">🔧</span>
+                  <span>Quels sont les travaux prioritaires en rénovation Saint-Cyprien ?</span>
+                </span>
+                <span className="text-rose-600 text-2xl group-open:rotate-180 transition-transform flex-shrink-0">▼</span>
               </summary>
               <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
                 <p><strong>Top 5 travaux Saint-Cyprien selon fréquence :</strong></p>
@@ -459,10 +815,13 @@ export default function RenovationSaintCyprienToulouse() {
               </div>
             </details>
 
-            <details className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow group">
-              <summary className="font-semibold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
-                <span>Comment gérer l'ABF pour travaux façade Saint-Cyprien ?</span>
-                <span className="text-rose-600 group-open:rotate-180 transition-transform">▼</span>
+            <details className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 group border-2 border-transparent hover:border-rose-600">
+              <summary className="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center gap-4">
+                <span className="flex items-center gap-3">
+                  <span className="text-2xl">📋</span>
+                  <span>Comment gérer l'ABF pour travaux façade Saint-Cyprien ?</span>
+                </span>
+                <span className="text-rose-600 text-2xl group-open:rotate-180 transition-transform flex-shrink-0">▼</span>
               </summary>
               <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
                 <p><strong>ABF Saint-Cyprien = modéré vs Carmes/Capitole</strong>. Consultation obligatoire si :</p>
@@ -486,10 +845,13 @@ export default function RenovationSaintCyprienToulouse() {
               </div>
             </details>
 
-            <details className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow group">
-              <summary className="font-semibold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
-                <span>Rentabilité investissement locatif après rénovation Saint-Cyprien ?</span>
-                <span className="text-rose-600 group-open:rotate-180 transition-transform">▼</span>
+            <details className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 group border-2 border-transparent hover:border-rose-600">
+              <summary className="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center gap-4">
+                <span className="flex items-center gap-3">
+                  <span className="text-2xl">💰</span>
+                  <span>Rentabilité investissement locatif après rénovation Saint-Cyprien ?</span>
+                </span>
+                <span className="text-rose-600 text-2xl group-open:rotate-180 transition-transform flex-shrink-0">▼</span>
               </summary>
               <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
                 <p><strong>Exemple type investissement locatif Saint-Cyprien 2025 :</strong></p>
@@ -507,10 +869,13 @@ export default function RenovationSaintCyprienToulouse() {
               </div>
             </details>
 
-            <details className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow group">
-              <summary className="font-semibold text-lg text-gray-900 cursor-pointer flex justify-between items-center">
-                <span>Quelles aides rénovation disponibles Saint-Cyprien 2025 ?</span>
-                <span className="text-rose-600 group-open:rotate-180 transition-transform">▼</span>
+            <details className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 group border-2 border-transparent hover:border-rose-600">
+              <summary className="font-bold text-lg text-gray-900 cursor-pointer flex justify-between items-center gap-4">
+                <span className="flex items-center gap-3">
+                  <span className="text-2xl">🎁</span>
+                  <span>Quelles aides rénovation disponibles Saint-Cyprien 2025 ?</span>
+                </span>
+                <span className="text-rose-600 text-2xl group-open:rotate-180 transition-transform flex-shrink-0">▼</span>
               </summary>
               <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
                 <p><strong>Aides rénovation énergétique Saint-Cyprien (cumul possible) :</strong></p>
@@ -548,66 +913,179 @@ export default function RenovationSaintCyprienToulouse() {
       </section>
 
       {/* CTA Final Section */}
-      <section className="py-16 bg-gradient-to-br from-rose-700 via-rose-600 to-orange-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className={`${playfair.className} text-3xl md:text-4xl font-bold mb-6`}>
-            Prêt à Rénover Votre Appartement Saint-Cyprien ?
+      <section className="py-20 bg-gradient-to-br from-rose-700 via-rose-600 to-orange-600 text-white relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full font-bold mb-6 border border-white/30">
+            🎯 Prêt à Passer à l'Action ?
+          </div>
+          <h2 className={`${playfair.className} text-4xl md:text-5xl font-bold mb-6 leading-tight`}>
+            Transformez Votre Appartement
+            <span className="block text-rose-200 mt-2">Saint-Cyprien en 2025</span>
           </h2>
-          <p className="text-xl text-rose-50 mb-8 leading-relaxed">
+          <p className="text-xl text-rose-50 mb-10 leading-relaxed max-w-2xl mx-auto">
             EGB Occitanie vous accompagne de A à Z : diagnostic complet, dossier ABF si besoin,
-            travaux clés en main, garanties décennales. <strong>Devis détaillé gratuit sous 48h</strong>.
+            travaux clés en main, garanties décennales. <strong className="text-white">Devis détaillé gratuit sous 48h</strong>.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <a
               href="tel:0665015882"
-              className="inline-block bg-white text-rose-700 px-8 py-4 rounded-lg font-semibold hover:bg-rose-50 transition-all transform hover:scale-105 shadow-lg text-lg"
+              className="group inline-block bg-white text-rose-700 px-10 py-5 rounded-xl font-bold hover:bg-rose-50 transition-all transform hover:scale-105 shadow-2xl text-lg"
             >
-              📞 Appel Direct : 06 65 01 58 82
+              <span className="flex items-center justify-center gap-2">
+                <span className="text-2xl">📞</span>
+                <span>
+                  <span className="block text-sm font-normal text-gray-600">Appelez maintenant</span>
+                  <span className="block">06 65 01 58 82</span>
+                </span>
+              </span>
             </a>
             <Link
               href="/contact"
-              className="inline-block bg-rose-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-rose-900 transition-all border-2 border-white text-lg"
+              className="inline-block bg-rose-800 text-white px-10 py-5 rounded-xl font-bold hover:bg-rose-900 transition-all border-2 border-white text-lg hover:scale-105 transform shadow-2xl"
             >
-              ✉️ Demande Devis Gratuit
+              <span className="flex items-center justify-center gap-2">
+                <span className="text-2xl">✉️</span>
+                <span>Demande Devis Gratuit</span>
+              </span>
             </Link>
           </div>
-          <p className="mt-6 text-rose-100 text-sm">
-            ⭐ 20 projets réussis Saint-Cyprien - 100% validations ABF - Note moyenne 4,9/5
-          </p>
+
+          {/* Trust Indicators */}
+          <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto pt-6 border-t border-white/30">
+            <div>
+              <div className="text-3xl font-bold mb-1">20</div>
+              <div className="text-sm text-rose-100">Projets Réussis</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold mb-1">100%</div>
+              <div className="text-sm text-rose-100">Validations ABF</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold mb-1">4,9/5</div>
+              <div className="text-sm text-rose-100">Note Moyenne ⭐</div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Internal Links Section */}
-      <section className="py-12 bg-gray-50">
+      {/* Internal Links Section - Optimisé pour engagement */}
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-xl font-bold text-center mb-8 text-gray-900">
-            Découvrez Aussi Nos Autres Services Rénovation Toulouse
+          <h3 className={`${playfair.className} text-3xl font-bold text-center mb-4 text-gray-900`}>
+            Découvrez Aussi Nos Services Rénovation
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/renovation-maison-carmes-toulouse" className="text-center p-4 bg-white rounded-lg hover:shadow-md transition-shadow text-rose-600 hover:text-rose-700">
-              Rénovation Carmes
-            </Link>
-            <Link href="/renovation-capitole-toulouse" className="text-center p-4 bg-white rounded-lg hover:shadow-md transition-shadow text-rose-600 hover:text-rose-700">
-              Rénovation Capitole
-            </Link>
-            <Link href="/renovation-minimes-toulouse" className="text-center p-4 bg-white rounded-lg hover:shadow-md transition-shadow text-rose-600 hover:text-rose-700">
-              Rénovation Minimes
-            </Link>
-            <Link href="/renovation-busca-toulouse" className="text-center p-4 bg-white rounded-lg hover:shadow-md transition-shadow text-rose-600 hover:text-rose-700">
-              Rénovation Busca
-            </Link>
-            <Link href="/renovation" className="text-center p-4 bg-white rounded-lg hover:shadow-md transition-shadow text-rose-600 hover:text-rose-700">
-              Rénovation Toulouse
-            </Link>
-            <Link href="/extension" className="text-center p-4 bg-white rounded-lg hover:shadow-md transition-shadow text-rose-600 hover:text-rose-700">
-              Extension Maison
-            </Link>
-            <Link href="/contact" className="text-center p-4 bg-white rounded-lg hover:shadow-md transition-shadow text-rose-600 hover:text-rose-700">
-              Devis Gratuit
-            </Link>
-            <Link href="/avis" className="text-center p-4 bg-white rounded-lg hover:shadow-md transition-shadow text-rose-600 hover:text-rose-700">
-              Avis Clients
-            </Link>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Expert rénovation Toulouse · Tous quartiers · Gestion ABF · Devis gratuit 48h
+          </p>
+
+          {/* Quartiers Principaux */}
+          <div className="mb-8">
+            <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <span className="text-2xl">🏘️</span>
+              <span>Rénovation par Quartier</span>
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <Link
+                href="/renovation-maison-carmes-toulouse"
+                className="group relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-rose-600 overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-rose-600/10 to-orange-600/10 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-300"></div>
+                <div className="relative">
+                  <div className="text-3xl mb-2">🏛️</div>
+                  <p className="font-bold text-gray-900 group-hover:text-rose-600 transition-colors">Carmes</p>
+                  <p className="text-xs text-gray-500 mt-1">Patrimoine · ABF Strict</p>
+                </div>
+              </Link>
+
+              <Link
+                href="/renovation-capitole-toulouse"
+                className="group relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-rose-600 overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-rose-600/10 to-orange-600/10 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-300"></div>
+                <div className="relative">
+                  <div className="text-3xl mb-2">⭐</div>
+                  <p className="font-bold text-gray-900 group-hover:text-rose-600 transition-colors">Capitole</p>
+                  <p className="text-xs text-gray-500 mt-1">Prestige · Centre</p>
+                </div>
+              </Link>
+
+              <Link
+                href="/renovation-minimes-toulouse"
+                className="group relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-rose-600 overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-rose-600/10 to-orange-600/10 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-300"></div>
+                <div className="relative">
+                  <div className="text-3xl mb-2">🏢</div>
+                  <p className="font-bold text-gray-900 group-hover:text-rose-600 transition-colors">Minimes</p>
+                  <p className="text-xs text-gray-500 mt-1">Investissement · Prix</p>
+                </div>
+              </Link>
+
+              <Link
+                href="/renovation-busca-toulouse"
+                className="group relative bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:border-rose-600 overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-rose-600/10 to-orange-600/10 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-300"></div>
+                <div className="relative">
+                  <div className="text-3xl mb-2">🌳</div>
+                  <p className="font-bold text-gray-900 group-hover:text-rose-600 transition-colors">Busca</p>
+                  <p className="text-xs text-gray-500 mt-1">Familial · Verdure</p>
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          {/* Services & Actions */}
+          <div>
+            <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <span className="text-2xl">🔧</span>
+              <span>Nos Services</span>
+            </h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <Link
+                href="/renovation"
+                className="group bg-gradient-to-br from-rose-50 to-orange-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="text-3xl mb-2">🏠</div>
+                <p className="font-bold text-gray-900 group-hover:text-rose-600 transition-colors">Rénovation</p>
+                <p className="text-xs text-gray-500 mt-1">Tous types travaux</p>
+              </Link>
+
+              <Link
+                href="/extension"
+                className="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="text-3xl mb-2">📐</div>
+                <p className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Extension</p>
+                <p className="text-xs text-gray-500 mt-1">Agrandissement</p>
+              </Link>
+
+              <Link
+                href="/contact"
+                className="group bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="text-3xl mb-2">✉️</div>
+                <p className="font-bold text-gray-900 group-hover:text-green-600 transition-colors">Devis Gratuit</p>
+                <p className="text-xs text-gray-500 mt-1">Réponse 48h</p>
+              </Link>
+
+              <Link
+                href="/avis"
+                className="group bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="text-3xl mb-2">⭐</div>
+                <p className="font-bold text-gray-900 group-hover:text-yellow-600 transition-colors">Avis Clients</p>
+                <p className="text-xs text-gray-500 mt-1">Note 4,9/5</p>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
