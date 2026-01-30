@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ContactSection from "@/components/ContactSection";
+import { ContactSection } from "@/components/ContactSection";
 
 export const metadata: Metadata = {
   title: "Rénovation Rangueil Toulouse | Expert Étudiants CHU Université",
