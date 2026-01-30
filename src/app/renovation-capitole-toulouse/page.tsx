@@ -1,8 +1,6 @@
 import type { Metadata } from"next";
-import { Playfair_Display } from"next/font/google";
 import Link from"next/link";
-
-const playfair = Playfair_Display({ subsets: ["latin"] });
+import { ContactSection } from"@/components/ContactSection";
 
 export const metadata: Metadata = {
  title:"Rénovation Capitole Toulouse | Expert ABF Ultra-Strict & Prestige",
@@ -22,41 +20,8 @@ const faqSchema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity
  },
  {"@type":"Question","name":"Pourquoi investir dans une rénovation au Capitole malgré les contraintes ?","acceptedAnswer": {"@type":"Answer","text":"ROI rénovation Capitole Toulouse exceptionnel malgré contraintes ABF : 1) Prix m² achat : 5 228-5 490€/m² (top 1 Toulouse) = valorisation maximale 2) Rentabilité locative : 4-5,5% brut (meublé tourisme/étudiants) 3) Demande locative illimitée (hyper-centre) 4) Vacance locative quasi-nulle (<5 jours/an) 5) Plus-value revente : +40-60% sur 10 ans (quartiers prestige) 6) Prestige adresse 'Place du Capitole' = argument commercial premium 7) Cible CSP++ (professions libérales, cadres sup) = loyers élevés acceptés 8) Contraintes ABF = barrière entrée concurrence = rareté offre qualité. Investissement patrimonial sécurisé. Simulation rentabilité gratuite : 06 65 01 58 82."
  }
- },
- {"@type":"Question","name":"Combien de temps prend une rénovation au Capitole avec ABF ?","acceptedAnswer": {"@type":"Answer","text":"Délais rénovation Capitole Toulouse avec ABF : 1) Constitution dossier ABF : 2-3 semaines (photos, plans, descriptif matériaux) 2) Instruction ABF : 1-2 mois (vs 3 semaines quartiers non-protégés) 3) Travaux rénovation légère : 6-8 semaines 4) Travaux rénovation complète : 12-16 semaines 5) Rénovation prestige patrimoine : 20-28 semaines. Total moyen appartement 80m² rénovation complète : 5-7 mois (vs 3-4 mois hors ABF). Anticipation cruciale : contact ABF AVANT achat pour valider faisabilité projet. EGB Occitanie : planning précis intégrant délais ABF, suivi instruction, relation directe ABF = pas de surprise délais. Estimation durée projet gratuite : 06 65 01 58 82."
- }
- },
- {"@type":"Question","name":"Quelles aides financières pour rénover au Capitole en 2025 ?","acceptedAnswer": {"@type":"Answer","text":"Aides rénovation Capitole Toulouse 2025 : 1) MaPrimeRénov' : jusqu'à 10 000€ (rénovation énergétique globale) 2) Bonus Éco-Rénovation Toulouse Métropole : jusqu'à 1 500€ (amélioration 2 classes DPE) 3) Éco-PTZ : prêt 50 000€ taux 0% (travaux énergie) 4) TVA réduite 5,5% (rénovation énergétique) vs 10% (autres travaux) 5) Défiscalisation Malraux : réduction IR 22-30% (secteur sauvegardé Capitole éligible si immeuble classé) 6) Monuments Historiques : déduction 100% travaux si immeuble classé 7) Aides ANAH : jusqu'à 50% coût travaux (sous conditions ressources). Cumul possible = financement 30-50% projet. EGB Occitanie : accompagnement montage dossiers aides, optimisation fiscale, expertise Malraux/MH. Simulation aides gratuite : 06 65 01 58 82."
- }
  }
  ]
-};
-
-const howToSchema = {"@context":"https://schema.org","@type":"HowTo","name":"Rénover appartement Capitole Toulouse","step": [
- {"@type":"HowToStep","text":"1. Vérifier si immeuble classé Monument Historique ou secteur sauvegardé (quasi-totalité Capitole) sur geoportail-urbanisme.gouv.fr"
- },
- {"@type":"HowToStep","text":"2. Contact préalable ABF Toulouse obligatoire AVANT devis pour validation faisabilité projet et choix matériaux"
- },
- {"@type":"HowToStep","text":"3. Constituer dossier ABF : photos état existant, plans avant/après, descriptif matériaux (brique rose, fenêtres bois, tuiles)"
- },
- {"@type":"HowToStep","text":"4. Déposer déclaration préalable travaux ou permis construire Mairie Toulouse avec avis ABF joint (délai +1 mois)"
- },
- {"@type":"HowToStep","text":"5. Attendre validation ABF (1-2 mois) - NE PAS commencer travaux avant accord formel sous peine amende + démolition"
- },
- {"@type":"HowToStep","text":"6. Choisir artisans spécialisés patrimoine (brique rose, chaux, fenêtres bois) - liste recommandée ABF disponible"
- },
- {"@type":"HowToStep","text":"7. Lancer travaux avec suivi ABF possible en cours chantier si modifications nécessaires"
- },
- {"@type":"HowToStep","text":"8. Déclaration attestation conformité fin travaux à Mairie avec photos résultat final pour validation ABF"
- },
- {"@type":"HowToStep","text":"9. Demander attestation conformité ABF pour dossier revente et valorisation patrimoine"
- }
- ]
-};
-
-const localBusinessSchema = {"@context":"https://schema.org","@type":"LocalBusiness","name":"EGB Occitanie Rénovation Capitole","image":"https://www.egb-occitanie.fr/images/renovation-capitole-toulouse.jpg","address": {"@type":"PostalAddress","addressLocality":"Toulouse","addressRegion":"Occitanie","postalCode":"31000","addressCountry":"FR"
- },"telephone":"+33665015882","priceRange":"3000-4200€/m²","aggregateRating": {"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"47"
- }
 };
 
 export default function RenovationCapitoleToulouse() {
@@ -66,473 +31,538 @@ export default function RenovationCapitoleToulouse() {
  type="application/ld+json"
  dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
  />
- <script
- type="application/ld+json"
- dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
- />
- <script
- type="application/ld+json"
- dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
- />
-
- <div className="min-h-screen bg-white">
- {/* Breadcrumb */}
- <div className="bg-white border-b">
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
- <nav className="text-sm text-gray-600">
- <Link href="/" className="hover:text-orange-600">Accueil</Link>
- <span className="mx-2">/</span>
- <Link href="/renovation-maison-toulouse" className="hover:text-orange-600">Rénovation Toulouse</Link>
- <span className="mx-2">/</span>
- <span className="text-gray-900 font-medium">Capitole</span>
- </nav>
- </div>
- </div>
 
  {/* Hero Section */}
- <div className="relative bg-gray-900 text-white overflow-hidden">
- 
- <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
- <h1 className={`${playfair.className} text-5xl md:text-6xl font-bold mb-6 leading-tight`}>
- Rénovation Capitole Toulouse
- <span className="block text-3xl md:text-4xl mt-4 text-gray-300">
- Expert ABF Ultra-Strict & Prestige Hyper-Centre
+ <section className="relative py-24 md:py-32 bg-white">
+ <div className="container">
+ <div className="max-w-4xl">
+ <div className="flex items-center gap-4 mb-6">
+ <span className="h-[1px] w-12 bg-amber-600" />
+ <span className="text-amber-800 text-xs uppercase tracking-[0.3em] font-medium">
+ Place du Capitole - Secteur Sauvegardé ABF
  </span>
+ </div>
+
+ <h1 className="text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-8 leading-[1.1]">
+ Rénovation Prestige
+ <br />
+ <span className="text-amber-800">Capitole Toulouse</span>
  </h1>
- <p className="text-xl md:text-2xl mb-8 max-w-3xl leading-relaxed">
- Rénovation appartements prestige Place du Capitole. Secteur sauvegardé, ABF ultra-strict, brique rose obligatoire. 100% validations ABF, expertise matériaux patrimoniaux, CSP++ & investisseurs.
+
+ <p className="text-xl md:text-2xl text-gray-700 font-light leading-relaxed mb-12 max-w-3xl">
+ Expert rénovation appartements prestige Place du Capitole. ABF ultra-strict, 100% secteur sauvegardé.
+ Brique rose obligatoire, fenêtres bois, matériaux patrimoniaux. 100% validations ABF obtenues.
+ <strong className="font-medium text-gray-900"> Devis gratuit sous 48h.</strong>
  </p>
+
  <div className="flex flex-col sm:flex-row gap-4 mb-12">
- <a
- href="tel:0665015882"
- className="inline-block bg-white text-rose-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-100 transition-colors text-center shadow-lg"
- >
- 06 65 01 58 82 - Devis Gratuit 48h
- </a>
  <Link
  href="/contact"
- className="inline-block bg-orange-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-700 transition-colors text-center shadow-lg"
+ className="inline-flex items-center justify-center gap-3 bg-amber-800 text-white px-8 py-4 text-base font-medium hover:bg-amber-900 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
  >
- Demander un Devis ABF Capitole
+ Conseil ABF gratuit
+ <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+ <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+ </svg>
  </Link>
+
+ <a
+ href="tel:+33665015882"
+ className="inline-flex items-center justify-center gap-3 border-2 border-amber-800 text-amber-900 px-8 py-4 text-base font-medium hover:bg-amber-50 transition-all duration-300"
+ >
+ <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+ <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+ </svg>
+ 06 65 01 58 82
+ </a>
  </div>
 
- {/* Stats Cards */}
- <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
- <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
- <div className="text-3xl font-bold mb-2 text-gray-900">5 490€</div>
- <div className="text-gray-600">Prix m² moyen 2025</div>
+ <div className="grid grid-cols-3 gap-8 pt-8 border-t border-amber-200">
+ <div>
+ <div className="text-3xl font-light text-amber-900 mb-2">5 490€</div>
+ <div className="text-sm text-gray-600">Prix m² moyen 2025</div>
  </div>
- <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
- <div className="text-3xl font-bold mb-2 text-gray-900">100%</div>
- <div className="text-gray-600">Secteur sauvegardé ABF</div>
+ <div>
+ <div className="text-3xl font-light text-amber-900 mb-2">100%</div>
+ <div className="text-sm text-gray-600">Secteur sauvegardé ABF</div>
  </div>
- <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
- <div className="text-3xl font-bold mb-2 text-gray-900">+1 mois</div>
- <div className="text-gray-600">Délai validation ABF</div>
+ <div>
+ <div className="text-3xl font-light text-amber-900 mb-2">Top 1</div>
+ <div className="text-sm text-gray-600">Quartier prestige Toulouse</div>
  </div>
- <div className="bg-white border-2 rounded-lg p-6 border border-gray-200">
- <div className="text-3xl font-bold mb-2 text-gray-900">Top 1</div>
- <div className="text-gray-600">Quartier prestige Toulouse</div>
- </div>
- </div>
- </div>
- </div>
-
- {/* Pourquoi Rénover au Capitole */}
- <section className="py-16 bg-white">
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-12 text-center`}>
- Pourquoi Rénover au Capitole Malgré Contraintes ABF ?
- </h2>
- <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
- <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
- <div className="text-4xl mb-4">️</div>
- <h3 className="text-xl font-bold mb-3 text-gray-900">Prestige Adresse Unique</h3>
- <p className="text-gray-700 leading-relaxed">
- Place du Capitole = adresse prestige #1 Toulouse. Valorisation maximale CSP++ (professions libérales, cadres sup, investisseurs). Prix m² 5 490€ = top marché. Plus-value revente +40-60% sur 10 ans.
- </p>
- </div>
-
- <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
- <div className="text-4xl mb-4"></div>
- <h3 className="text-xl font-bold mb-3 text-gray-900">ROI Exceptionnel 4-5,5%</h3>
- <p className="text-gray-700 leading-relaxed">
- Rentabilité locative meublé/tourisme 4-5,5% brut malgré prix achat élevé. Demande illimitée hyper-centre, vacance locative quasi-nulle (&lt;5 jours/an). Loyers premium acceptés clientèle CSP++.
- </p>
- </div>
-
- <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
- <div className="text-4xl mb-4"></div>
- <h3 className="text-xl font-bold mb-3 text-gray-900">Rareté Offre Qualité</h3>
- <p className="text-gray-700 leading-relaxed">
- Contraintes ABF = barrière entrée concurrence = offre rénovation qualité limitée. Secteur sauvegardé protège patrimoine ET valorisation long terme. Investissement patrimonial sécurisé.
- </p>
- </div>
-
- <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
- <div className="text-4xl mb-4"></div>
- <h3 className="text-xl font-bold mb-3 text-gray-900">Défiscalisation Malraux</h3>
- <p className="text-gray-700 leading-relaxed">
- Capitole secteur sauvegardé = éligible Loi Malraux (réduction IR 22-30%) + Monuments Historiques (déduction 100% si classé). Financement 30-50% travaux via aides cumulées possibles.
- </p>
  </div>
  </div>
  </div>
  </section>
 
- {/* Prix Rénovation Détaillés */}
- <section className="py-16 bg-white">
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-6 text-center`}>
- Prix Rénovation Capitole Toulouse 2025
+ {/* Introduction Quartier */}
+ <section className="py-20 md:py-28 bg-gray-50">
+ <div className="container">
+ <div className="max-w-4xl mx-auto">
+ <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-8">
+ Capitole : hyper-centre prestige et contraintes ABF ultra-strictes
  </h2>
- <p className="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto">
- Tarifs rénovation appartement Capitole <strong>avec contraintes ABF ultra-strictes</strong> : brique rose obligatoire, fenêtres bois, tuiles toulousaines. <strong>Coût +10-15% vs quartiers non-protégés</strong> pour matériaux patrimoniaux premium.
+
+ <div className="prose prose-lg prose-stone max-w-none">
+ <p className="text-lg text-gray-700 leading-relaxed mb-6">
+ La Place du Capitole et ses environs constituent <strong>le quartier le plus prestigieux de Toulouse</strong>.
+ Avec un prix au m² de 5 490€ (top 1 de l'agglomération), le Capitole attire une clientèle CSP++ :
+ professions libérales, cadres supérieurs, investisseurs patrimoniaux. L'adresse "Place du Capitole"
+ confère un prestige inégalé et une valorisation maximale.
  </p>
 
- <div className="overflow-x-auto shadow-xl rounded-lg mb-8">
- <table className="w-full bg-white">
- <thead className="bg-gray-900 text-white">
- <tr>
- <th className="px-6 py-4 text-left font-bold">Type Rénovation</th>
- <th className="px-6 py-4 text-center font-bold">60m²</th>
- <th className="px-6 py-4 text-center font-bold">80m²</th>
- <th className="px-6 py-4 text-center font-bold">100m²</th>
- </tr>
- </thead>
- <tbody className="divide-y divide-gray-200">
- <tr className="hover:bg-orange-50 transition-colors">
- <td className="px-6 py-4">
- <div className="font-bold text-gray-900">Rénovation Légère</div>
- <div className="text-sm text-gray-600 mt-1">Peinture murs, électricité remise normes, sols parquet flottant, luminaires, petites finitions. Validation ABF si façade/fenêtres touchées.</div>
- <div className="text-orange-600 font-semibold mt-2">3 000 - 3 500€/m²</div>
- </td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">180 000 - 210 000€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">240 000 - 280 000€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">300 000 - 350 000€</td>
- </tr>
- <tr className="hover:bg-orange-50 transition-colors bg-orange-50/30">
- <td className="px-6 py-4">
- <div className="font-bold text-gray-900">Rénovation Complète</div>
- <div className="text-sm text-gray-600 mt-1">Cuisine équipée, salle de bain complète, parquet massif chêne, isolation phonique, électricité+plomberie totales, peinture, fenêtres bois ABF, volets conformes.</div>
- <div className="text-orange-600 font-semibold mt-2">3 500 - 4 200€/m²</div>
- </td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">210 000 - 252 000€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">280 000 - 336 000€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">350 000 - 420 000€</td>
- </tr>
- <tr className="hover:bg-orange-50 transition-colors">
- <td className="px-6 py-4">
- <div className="font-bold text-gray-900">Rénovation Prestige Patrimoine</div>
- <div className="text-sm text-gray-600 mt-1">Restauration patrimoine brique rose chaux, parquet point Hongrie massif, cuisine luxe sur-mesure, marbre Carrare salle de bain, moulures staff, cheminée restaurée, fenêtres bois noble ABF premium.</div>
- <div className="text-orange-600 font-semibold mt-2">4 500 - 6 000€/m²</div>
- </td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">270 000 - 360 000€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">360 000 - 480 000€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">450 000 - 600 000€</td>
- </tr>
- <tr className="hover:bg-orange-50 transition-colors bg-rose-50">
- <td className="px-6 py-4">
- <div className="font-bold text-gray-900">Restructuration Lourde ABF</div>
- <div className="text-sm text-gray-600 mt-1">Modification volumes (abattement murs si autorisé ABF), création mezzanine, réfection façade brique rose totale, toiture tuiles canal, fenêtres bois sur-mesure, ravalement enduit chaux, dossier ABF complet.</div>
- <div className="text-orange-600 font-semibold mt-2">5 500 - 7 500€/m²</div>
- </td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">330 000 - 450 000€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">440 000 - 600 000€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">550 000 - 750 000€</td>
- </tr>
- </tbody>
- </table>
+ <p className="text-lg text-gray-700 leading-relaxed mb-6">
+ <strong>Particularité cruciale : 100% du quartier Capitole est classé secteur sauvegardé</strong> avec
+ contraintes ABF (Architecte des Bâtiments de France) ultra-strictes. Toute modification extérieure
+ nécessite validation ABF : fenêtres bois obligatoires (PVC interdit), brique rose patrimoine, tuiles
+ canal, couleurs réglementées. Délai instruction +1-2 mois vs quartiers non protégés.
+ </p>
+
+ <p className="text-lg text-gray-700 leading-relaxed mb-8">
+ <strong>EGB Occitanie</strong> : expert rénovation prestige Capitole depuis 2010. <strong>23 projets
+ réalisés, 100% validations ABF obtenues, 0 refus</strong>. Notre expertise : relation directe ABF Toulouse,
+ maîtrise matériaux patrimoniaux, accompagnement Loi Malraux (défiscalisation 22-30%). Nous sécurisons
+ vos projets et optimisons délais administratifs.
+ </p>
+
+ <div className="bg-amber-50 border-l-4 border-amber-600 p-6 my-8">
+ <h3 className="text-lg font-semibold text-amber-900 mb-3">Pourquoi investir au Capitole malgré contraintes ABF ?</h3>
+ <ul className="text-base text-amber-900 space-y-2">
+ <li><strong>Prestige adresse unique:</strong> Place du Capitole = adresse #1 Toulouse, valorisation maximale CSP++</li>
+ <li><strong>ROI exceptionnel 4-5,5%:</strong> Rentabilité locative meublé/tourisme malgré prix achat élevé</li>
+ <li><strong>Demande illimitée hyper-centre:</strong> Vacance locative quasi-nulle (&lt;5 jours/an)</li>
+ <li><strong>Plus-value +40-60% sur 10 ans:</strong> Quartiers prestige surperforment marché</li>
+ <li><strong>Rareté offre qualité:</strong> Contraintes ABF = barrière entrée = peu concurrence</li>
+ <li><strong>Défiscalisation Malraux:</strong> Secteur sauvegardé éligible (réduction IR 22-30%)</li>
+ </ul>
  </div>
 
- <div className="bg-rose-100 border-l-4 border-rose-600 p-6 rounded-r-lg">
- <h3 className="font-bold text-rose-900 mb-2 text-lg">️ Surcoûts Spécifiques ABF Capitole</h3>
- <ul className="space-y-2 text-gray-700">
- <li><strong>• Brique rose patrimoine :</strong> +15-25€/brique vs standard (restauration façade)</li>
- <li><strong>• Fenêtres bois sur-mesure ABF :</strong> 800-1 500€/fenêtre (vs PVC 300-500€ interdit)</li>
- <li><strong>• Tuiles canal toulousaines anciennes :</strong> 80-120€/m² (vs tuiles modernes 40-60€/m²)</li>
- <li><strong>• Constitution dossier ABF :</strong> 2 000-5 000€ (photos, plans, descriptif matériaux, suivi instruction)</li>
- <li><strong>• Délais allongés :</strong> +1-2 mois validation = coûts indirects (loyers perdus, double loyer...)</li>
- <li><strong>• Architecte patrimoine obligatoire :</strong> +10-15% honoraires (si modification façade/structure)</li>
+ <h3 className="text-2xl font-light text-gray-900 mt-12 mb-6">
+ Contraintes ABF Capitole (secteur sauvegardé)
+ </h3>
+
+ <div className="grid md:grid-cols-2 gap-6 mb-10">
+ <div className="bg-white p-6 border-2 border-amber-200 rounded">
+ <h4 className="text-lg font-medium text-gray-900 mb-3">Contraintes matériaux strictes</h4>
+ <ul className="text-sm text-gray-700 space-y-2">
+ <li>• Brique rose obligatoire façades (terre cuite patrimoine)</li>
+ <li>• Fenêtres bois uniquement (PVC/alu INTERDIT)</li>
+ <li>• Volets couleur réglementée (gris, vert foncé)</li>
+ <li>• Toiture tuiles toulousaines canal rouges</li>
+ <li>• Enduit chaux naturelle (pas ciment moderne)</li>
+ <li>• Menuiseries profils traditionnels obligatoires</li>
+ <li>• Même peinture volets soumise validation ABF</li>
+ </ul>
+ </div>
+
+ <div className="bg-white p-6 border-2 border-amber-200 rounded">
+ <h4 className="text-lg font-medium text-gray-900 mb-3">Procédure administrative longue</h4>
+ <ul className="text-sm text-gray-700 space-y-2">
+ <li>• Constitution dossier ABF : 2-3 semaines</li>
+ <li>• Instruction ABF : 1-2 mois (vs 3 semaines hors ABF)</li>
+ <li>• Photos état existant haute résolution obligatoires</li>
+ <li>• Plans avant/après détaillés requis</li>
+ <li>• Descriptif technique matériaux complet</li>
+ <li>• Échantillons couleurs/matériaux parfois demandés</li>
+ <li>• Contact préalable ABF recommandé AVANT devis</li>
  </ul>
  </div>
  </div>
- </section>
-
- {/* Comparaison Quartiers */}
- <section className="py-16 bg-white">
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-6 text-center`}>
- Capitole vs Autres Quartiers Toulouse
- </h2>
- <p className="text-center text-gray-600 mb-12 text-lg">
- Comparaison coûts rénovation, contraintes ABF, prix m², rentabilité locative
- </p>
-
- <div className="overflow-x-auto shadow-xl rounded-lg">
- <table className="w-full bg-white">
- <thead className="bg-gray-900 text-white">
- <tr>
- <th className="px-6 py-4 text-left font-bold">Quartier</th>
- <th className="px-6 py-4 text-center font-bold">Contraintes ABF</th>
- <th className="px-6 py-4 text-center font-bold">Prix Rénovation/m²</th>
- <th className="px-6 py-4 text-center font-bold">Prix Achat/m²</th>
- <th className="px-6 py-4 text-center font-bold">Rentabilité Locative</th>
- </tr>
- </thead>
- <tbody className="divide-y divide-gray-200">
- <tr className="bg-rose-100 hover:bg-rose-200 transition-colors">
- <td className="px-6 py-4">
- <div className="font-bold text-rose-900">Capitole</div>
- <div className="text-sm text-gray-600">Hyper-centre prestige</div>
- </td>
- <td className="px-6 py-4 text-center">
- <span className="inline-block bg-rose-600 text-white px-3 py-1 rounded-full text-sm font-semibold">ULTRA-STRICT</span>
- <div className="text-xs text-gray-600 mt-1">100% secteur sauvegardé</div>
- </td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">3 000 - 4 200€</td>
- <td className="px-6 py-4 text-center font-bold text-rose-900">5 490€</td>
- <td className="px-6 py-4 text-center font-bold text-green-700">4,0 - 5,5%</td>
- </tr>
- <tr className="hover:bg-orange-50 transition-colors">
- <td className="px-6 py-4">
- <div className="font-bold text-gray-900">Carmes</div>
- <div className="text-sm text-gray-600">Patrimoine médiéval</div>
- </td>
- <td className="px-6 py-4 text-center">
- <span className="inline-block bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-semibold">STRICT</span>
- <div className="text-xs text-gray-600 mt-1">Immeubles classés</div>
- </td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">2 800 - 3 500€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">5 300€</td>
- <td className="px-6 py-4 text-center font-bold text-green-700">4,5 - 6,0%</td>
- </tr>
- <tr className="hover:bg-orange-50 transition-colors">
- <td className="px-6 py-4">
- <div className="font-bold text-gray-900">Saint-Cyprien</div>
- <div className="text-sm text-gray-600">Rive gauche bohème</div>
- </td>
- <td className="px-6 py-4 text-center">
- <span className="inline-block bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-semibold">MODÉRÉ</span>
- <div className="text-xs text-gray-600 mt-1">90% validation</div>
- </td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">2 400 - 3 200€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">4 747€</td>
- <td className="px-6 py-4 text-center font-bold text-green-700">5,0 - 6,5%</td>
- </tr>
- <tr className="hover:bg-orange-50 transition-colors">
- <td className="px-6 py-4">
- <div className="font-bold text-gray-900">Saint-Étienne</div>
- <div className="text-sm text-gray-600">Bourgeois 1850-1920</div>
- </td>
- <td className="px-6 py-4 text-center">
- <span className="inline-block bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">STRICT</span>
- <div className="text-xs text-gray-600 mt-1">Hôtels particuliers</div>
- </td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">2 700 - 3 600€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">5 100€</td>
- <td className="px-6 py-4 text-center font-bold text-green-700">4,2 - 5,8%</td>
- </tr>
- <tr className="hover:bg-orange-50 transition-colors">
- <td className="px-6 py-4">
- <div className="font-bold text-gray-900">Minimes</div>
- <div className="text-sm text-gray-600">Années 60-70</div>
- </td>
- <td className="px-6 py-4 text-center">
- <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">AUCUNE</span>
- <div className="text-xs text-gray-600 mt-1">Hors périmètre ABF</div>
- </td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">1 800 - 2 600€</td>
- <td className="px-6 py-4 text-center font-bold text-gray-900">3 200€</td>
- <td className="px-6 py-4 text-center font-bold text-green-700">5,5 - 7,5%</td>
- </tr>
- </tbody>
- </table>
  </div>
-
- <div className="mt-8 bg-orange-50 p-6 rounded-lg border-l-4 border-orange-600">
- <h3 className="font-bold text-orange-900 mb-3 text-lg"> Analyse Comparative</h3>
- <p className="text-gray-700 leading-relaxed">
- <strong>Capitole = contraintes ABF maximales MAIS valorisation/prestige maximaux.</strong> Prix rénovation +15-20% vs Saint-Cyprien, +40% vs Minimes, MAIS prix achat m² +70% vs Minimes = cible CSP++ acceptant investissement premium pour adresse prestige. Rentabilité locative 4-5,5% correcte (vs 5,5-7,5% Minimes) car loyers premium compensent prix achat élevé. <strong>Stratégie : Investissement patrimonial long terme (plus-value +40-60% sur 10 ans) plutôt que cash-flow immédiat.</strong>
- </p>
  </div>
  </div>
  </section>
 
- {/* FAQ Section */}
- <section className="py-16 bg-white">
- <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
- <h2 className={`${playfair.className} text-4xl font-bold text-gray-900 mb-12 text-center`}>
- Questions Fréquentes Rénovation Capitole
+ {/* Prix Rénovation */}
+ <section className="py-20 md:py-28 bg-white">
+ <div className="container">
+ <div className="max-w-4xl mx-auto">
+ <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-12">
+ Prix rénovation Capitole : 3 000 - 4 200€/m²
  </h2>
+
+ <div className="prose prose-lg prose-stone max-w-none">
+ <p className="text-lg text-gray-700 leading-relaxed mb-8">
+ Prix rénovation Capitole <strong>+10-15% supérieur vs quartiers non protégés</strong> en raison des
+ contraintes ABF. Matériaux patrimoniaux obligatoires coûteux : fenêtres bois sur-mesure 800-1 500€/unité
+ (vs PVC 300-500€ interdit), brique rose patrimoine, tuiles canal anciennes, enduit chaux naturelle.
+ Délais allongés génèrent coûts indirects.
+ </p>
+
+ <div className="bg-white border-2 border-amber-200 p-8 rounded-lg mb-10">
+ <h3 className="text-2xl font-medium text-amber-900 mb-6">Grille tarifaire rénovation Capitole 2025</h3>
 
  <div className="space-y-6">
- <details className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
- <summary className="font-bold text-xl text-gray-900 cursor-pointer flex justify-between items-center">
- Quels travaux sont prioritaires pour rénover au Capitole ?
- <span className="text-orange-600 text-2xl">+</span>
- </summary>
- <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
- <p><strong>Priorités rénovation appartement Capitole Toulouse (ordre importance) :</strong></p>
- <p><strong>1. Fenêtres bois conformes ABF (priorité #1)</strong> : PVC/alu interdit secteur sauvegardé. Fenêtres bois sur-mesure double vitrage ABF : 800-1 500€/unité. Validation ABF obligatoire couleur/modèle. Impact : isolation thermique + conformité légale + valorisation 10-15%.</p>
- <p><strong>2. Électricité remise normes</strong> : Immeubles 1850-1920 = électricité obsolète. Mise normes NF C15-100 complète : 80-120€/m². Indispensable sécurité + vente + assurance.</p>
- <p><strong>3. Isolation phonique</strong> : Hyper-centre = nuisances sonores Place Capitole. Isolation phonique plafond/murs : 40-80€/m². Confort locataires/propriétaires prioritaire.</p>
- <p><strong>4. Salle de bain + cuisine</strong> : Équipements obsolètes dévalorisent. Salle de bain complète : 12 000-25 000€. Cuisine équipée : 15 000-35 000€ (haut de gamme CSP++).</p>
- <p><strong>5. Parquet massif chêne</strong> : Parquet point Hongrie/Versailles valorise prestige. 80-150€/m² posé (vs stratifié 30-50€/m²). ROI revente +8-12%.</p>
- <p><strong>6. Façade brique rose (si dégradée)</strong> : Ravalement brique rose chaux : 80-150€/m². Obligatoire si immeuble copropriété vote travaux. Validation ABF couleur enduit stricte.</p>
+ <div className="bg-white p-6 rounded border border-gray-200">
+ <div className="flex justify-between items-start mb-4">
+ <div>
+ <h4 className="text-lg font-semibold text-gray-900">Rénovation légère rafraîchissement</h4>
+ <p className="text-sm text-gray-600">Peinture, électricité, sols, finitions (validation ABF si façade touchée)</p>
  </div>
- </details>
+ <div className="text-right">
+ <div className="text-3xl font-light text-amber-800">3 200€</div>
+ <div className="text-sm text-gray-600">/m²</div>
+ </div>
+ </div>
+ <ul className="text-sm text-gray-700 space-y-1.5">
+ <li>• Peinture murs/plafonds complète</li>
+ <li>• Électricité remise normes NF C15-100</li>
+ <li>• Sols parquet flottant ou carrelage</li>
+ <li>• Luminaires, petites finitions</li>
+ <li>• Dossier ABF si modification façade/fenêtres</li>
+ </ul>
+ </div>
 
- <details className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
- <summary className="font-bold text-xl text-gray-900 cursor-pointer flex justify-between items-center">
- Comment obtenir validation ABF pour rénovation Capitole ?
- <span className="text-orange-600 text-2xl">+</span>
- </summary>
- <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
- <p><strong>Procédure validation ABF rénovation Capitole Toulouse (étapes détaillées) :</strong></p>
- <p><strong>1. Diagnostic patrimoine</strong> : Vérifier statut immeuble (classé MH / secteur sauvegardé) sur geoportail-urbanisme.gouv.fr. Capitole = 100% secteur sauvegardé.</p>
- <p><strong>2. Contact préalable ABF Toulouse</strong> : Prendre RDV ABF AVANT devis entreprise. ABF Toulouse : UDAP 31 - 2 Boulevard Griffoul-Dorval 31400 Toulouse. Présenter projet, obtenir préconisations matériaux/couleurs.</p>
- <p><strong>3. Constitution dossier ABF</strong> : Photos état existant (façade, fenêtres, toiture), plans avant/après, descriptif technique matériaux (échantillons brique rose, fenêtres bois, tuiles), notice patrimoine (histoire immeuble si connu).</p>
- <p><strong>4. Dépôt déclaration préalable/permis</strong> : Déclaration préalable (DP) travaux façade/fenêtres/toiture. Permis de construire si modification volumes/structure. Dossier transmis automatiquement ABF par Mairie.</p>
- <p><strong>5. Instruction ABF</strong> : Délai instruction 1-2 mois (vs 3 semaines hors ABF). ABF peut demander modifications/compléments. Avis ABF conforme/défavorable = décision Mairie liée.</p>
- <p><strong>6. Accord formel avant travaux</strong> : NE JAMAIS commencer avant accord écrit ABF + arrêté Mairie. Sanction : amende 300 000€ + démolition + remise état initial forcée.</p>
- <p><strong>EGB Occitanie : accompagnement dossier ABF Capitole complet, relation directe ABF Toulouse, 100% validations obtenues, 0 refus sur 23 projets Capitole 2020-2025.</strong></p>
+ <div className="bg-amber-50 p-6 rounded border-2 border-amber-600">
+ <div className="flex justify-between items-start mb-4">
+ <div>
+ <h4 className="text-lg font-semibold text-amber-900">Rénovation complète ABF</h4>
+ <p className="text-sm text-amber-800">Cuisine, SDB, parquet, fenêtres bois, isolation, conformité patrimoine</p>
  </div>
- </details>
+ <div className="text-right">
+ <div className="text-3xl font-light text-amber-900">3 800€</div>
+ <div className="text-sm text-amber-800">/m²</div>
+ </div>
+ </div>
+ <ul className="text-sm text-amber-900 space-y-1.5">
+ <li>• Cuisine équipée haut de gamme 25-35k€</li>
+ <li>• SDB prestige douche italienne 15-25k€</li>
+ <li>• Parquet massif chêne point de Hongrie</li>
+ <li>• Fenêtres bois double vitrage ABF 800-1 500€/unité</li>
+ <li>• Volets bois/alu couleur réglementée ABF</li>
+ <li>• Isolation phonique (hyper-centre bruyant)</li>
+ <li>• Électricité + plomberie complètes</li>
+ <li>• Dossier ABF complet (2 000-5 000€)</li>
+ </ul>
+ </div>
 
- <details className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
- <summary className="font-bold text-xl text-gray-900 cursor-pointer flex justify-between items-center">
- Est-ce rentable d'investir dans une rénovation au Capitole ?
- <span className="text-orange-600 text-2xl">+</span>
- </summary>
- <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
- <p><strong>Rentabilité investissement rénovation Capitole Toulouse (analyse détaillée) :</strong></p>
- <p><strong>Exemple concret 80m² Place du Capitole :</strong></p>
- <p>• Achat 80m² état moyen : 439 200€ (5 490€/m²)<br/>
- • Rénovation complète ABF : 280 000€ (3 500€/m²)<br/>
- • Total investissement : 719 200€<br/>
- • Frais notaire + agence : 45 000€<br/>
- • <strong>TOTAL : 764 200€</strong></p>
- <p><strong>Revenus locatifs :</strong><br/>
- • Location meublé étudiant/jeune actif : 1 400€/mois = 16 800€/an<br/>
- • Location meublé tourisme (Airbnb) : 2 800€/mois moyen (70% occupation) = 33 600€/an<br/>
- • Charges/taxes : -6 000€/an<br/>
- • <strong>Revenus nets : 10 800€ (classique) à 27 600€ (tourisme)</strong></p>
- <p><strong>ROI :</strong><br/>
- • Rentabilité brute : 1,4% (location classique) à 4,4% (tourisme)<br/>
- • Rentabilité nette : 1,2% (classique) à 3,0% (tourisme après charges)<br/>
- • Plus-value revente 10 ans : +40-60% = +305 680€ à +458 520€<br/>
- • <strong>ROI total 10 ans : +413 680€ à +734 520€ = +54% à +96%</strong></p>
- <p><strong>Conclusion : Rentabilité immédiate faible (1-3%) MAIS plus-value long terme exceptionnelle (+50-100% sur 10 ans). Stratégie patrimoine CSP++, pas cash-flow.</strong></p>
+ <div className="bg-white p-6 rounded border border-gray-200">
+ <div className="flex justify-between items-start mb-4">
+ <div>
+ <h4 className="text-lg font-semibold text-gray-900">Rénovation prestige patrimoine</h4>
+ <p className="text-sm text-gray-600">Restauration brique rose, matériaux nobles, prestations luxe CSP++</p>
  </div>
- </details>
+ <div className="text-right">
+ <div className="text-3xl font-light text-amber-800">5 200€</div>
+ <div className="text-sm text-gray-600">/m²</div>
+ </div>
+ </div>
+ <ul className="text-sm text-gray-700 space-y-1.5">
+ <li>• Restauration façade brique rose chaux 80-150€/m²</li>
+ <li>• Parquet Versailles massif restauré</li>
+ <li>• Moulures staff, corniches, rosaces plafond</li>
+ <li>• Cuisine luxe sur-mesure 50-80k€</li>
+ <li>• SDB marbre Carrare 30-50k€</li>
+ <li>• Fenêtres bois noble sur-mesure ABF premium</li>
+ <li>• Cheminées marbre restauration artisan Compagnon</li>
+ <li>• Domotique invisible haute gamme</li>
+ </ul>
+ </div>
+ </div>
+ </div>
 
- <details className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
- <summary className="font-bold text-xl text-gray-900 cursor-pointer flex justify-between items-center">
- Puis-je bénéficier de la Loi Malraux au Capitole ?
- <span className="text-orange-600 text-2xl">+</span>
- </summary>
- <div className="mt-4 text-gray-700 leading-relaxed space-y-3">
- <p><strong>Loi Malraux Capitole Toulouse 2025 (défiscalisation rénovation patrimoine) :</strong></p>
- <p><strong>Éligibilité Capitole :</strong> OUI, Place du Capitole = secteur sauvegardé = éligible Loi Malraux automatiquement. Condition : immeuble dans périmètre PSMV (Plan Sauvegarde Mise Valeur) validé.</p>
- <p><strong>Avantages Malraux 2025 :</strong><br/>
- • Réduction impôt revenu : 22% (ZPPAUP) à 30% (secteur sauvegardé Capitole) du montant travaux<br/>
- • Plafond travaux : 400 000€ sur 4 ans<br/>
- • Réduction IR maximale : 120 000€ sur 4 ans (400 000€ × 30%)<br/>
- • Engagement location : 9 ans minimum<br/>
- • Travaux validés ABF obligatoires (restauration complète immeuble)</p>
- <p><strong>Exemple concret :</strong><br/>
- Travaux rénovation Malraux : 300 000€<br/>
- Réduction IR 30% : 90 000€ sur 4 ans = 22 500€/an<br/>
- Coût net travaux : 210 000€ (au lieu 300 000€)<br/>
- <strong>Économie : 30% coût rénovation</strong></p>
- <p><strong>Conditions strictes :</strong><br/>
- • Restauration complète immeuble (pas rénovation partielle)<br/>
- • Validation ABF + architecte patrimoine obligatoire<br/>
- • Travaux intérieur + extérieur<br/>
- • Location nue (pas meublé) 9 ans<br/>
- • Déclaration revenus fonciers réels (pas micro-foncier)</p>
- <p><strong>Cumul possible :</strong> Malraux (30%) + MaPrimeRénov' (énergie) + Bonus Éco-Rénovation Toulouse = financement 35-45% projet total.</p>
- <p><strong>EGB Occitanie : expertise Malraux Capitole, accompagnement dossier fiscal + ABF, 12 projets Malraux réalisés Toulouse 2020-2025.</strong></p>
+ <div className="bg-amber-50 border-l-4 border-amber-600 p-6 mb-8">
+ <h4 className="font-semibold text-amber-900 mb-3">Exemple budget appartement 80m² Capitole rénovation complète:</h4>
+ <div className="space-y-2 text-sm text-amber-900">
+ <div className="flex justify-between pb-2 border-b border-amber-200">
+ <span>Rénovation complète ABF (3 800€/m² × 80m²)</span>
+ <strong>304 000€</strong>
  </div>
- </details>
+ <div className="flex justify-between pb-2 border-b border-amber-200">
+ <span>Architecte patrimoine 10% (si modification structure)</span>
+ <strong>30 400€</strong>
+ </div>
+ <div className="flex justify-between pb-2 border-b border-amber-200">
+ <span>Dossier ABF (photos, plans, suivi instruction)</span>
+ <strong>4 000€</strong>
+ </div>
+ <div className="flex justify-between pb-2 border-b border-amber-200">
+ <span>Imprévus 10% (découvertes chantier immeubles anciens)</span>
+ <strong>33 840€</strong>
+ </div>
+ <div className="h-[1px] bg-amber-300 my-3"></div>
+ <div className="flex justify-between text-base">
+ <strong>BUDGET TOTAL:</strong>
+ <strong className="text-lg">372 240€</strong>
+ </div>
+ </div>
+ <p className="text-xs text-amber-800 mt-4 mb-0">
+ Investissement total : Achat 439k€ (5 490€/m²) + Rénovation 372k€ + Frais 45k€ = 856k€.
+ Valorisation post-rénovation : 950-1 100k€ = plus-value 94-244k€. Rentabilité locative meublé : 4-5,5% brut.
+ </p>
+ </div>
+ </div>
  </div>
  </div>
  </section>
 
- {/* CTA Section */}
- <section className="py-16 bg-gray-900 text-white">
- <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
- <h2 className={`${playfair.className} text-4xl md:text-5xl font-bold mb-6`}>
- Projet Rénovation Capitole Toulouse ?
+ {/* Procédure ABF Section */}
+ <section className="py-20 md:py-28 bg-gray-50">
+ <div className="container">
+ <div className="max-w-4xl mx-auto">
+ <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-12">
+ Procédure validation ABF Capitole (étape par étape)
  </h2>
- <p className="text-xl mb-8 leading-relaxed">
- Expert ABF ultra-strict, 100% validations obtenues, matériaux patrimoniaux premium, accompagnement Loi Malraux. Devis gratuit 48h avec estimation délais ABF.
+
+ <div className="space-y-8">
+ <div className="bg-white border-2 border-amber-200 p-8 rounded">
+ <div className="flex items-start gap-4 mb-4">
+ <div className="w-14 h-14 rounded-full bg-amber-600 text-white flex items-center justify-center text-xl font-light flex-shrink-0">
+ 1
+ </div>
+ <div>
+ <h3 className="text-2xl font-medium text-gray-900 mb-2">Contact préalable ABF Toulouse (AVANT devis)</h3>
+ <p className="text-amber-800 font-medium">Durée: 1-2 semaines | Recommandé fortement</p>
+ </div>
+ </div>
+
+ <div className="space-y-4 text-gray-700">
+ <p className="leading-relaxed">
+ <strong>Prendre rendez-vous ABF Toulouse AVANT établissement devis entreprise</strong> pour valider
+ faisabilité projet et obtenir préconisations matériaux/couleurs. ABF Toulouse : UDAP 31 - 2 Boulevard
+ Griffoul-Dorval 31400 Toulouse. Présenter projet, photos existant, intentions travaux.
  </p>
- <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
- <a
- href="tel:0665015882"
- className="inline-block bg-white text-rose-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-100 transition-colors shadow-xl"
- >
- 06 65 01 58 82
- </a>
+
+ <div className="bg-amber-50 p-5 rounded">
+ <h4 className="font-semibold text-gray-900 mb-3">Points validés lors contact ABF:</h4>
+ <ul className="text-sm space-y-1.5">
+ <li> Faisabilité modification envisagée (fenêtres, façade, toiture)</li>
+ <li> Matériaux autorisés (type bois fenêtres, brique, tuiles)</li>
+ <li> Couleurs réglementaires volets/menuiseries (nuancier ABF)</li>
+ <li> Pièces dossier requises pour instruction</li>
+ <li> Délai instruction estimé (généralement 1-2 mois)</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ <div className="bg-white border-2 border-amber-200 p-8 rounded">
+ <div className="flex items-start gap-4 mb-4">
+ <div className="w-14 h-14 rounded-full bg-amber-600 text-white flex items-center justify-center text-xl font-light flex-shrink-0">
+ 2
+ </div>
+ <div>
+ <h3 className="text-2xl font-medium text-gray-900 mb-2">Constitution dossier ABF complet</h3>
+ <p className="text-amber-800 font-medium">Durée: 2-3 semaines | Dossier ultra-détaillé</p>
+ </div>
+ </div>
+
+ <div className="space-y-4 text-gray-700">
+ <p className="leading-relaxed">
+ Dossier ABF Capitole plus exigeant que quartiers ABF modérés. <strong>Documentation photographique
+ haute qualité</strong>, plans avant/après précis, descriptif technique matériaux complet, justifications
+ architecturales choix effectués.
+ </p>
+
+ <div className="bg-white border border-gray-200 divide-y divide-gray-200">
+ {["Photos état existant : façade 4 faces, fenêtres détail, toiture, environnement proche","Plans façades EXISTANTES échelle 1/100 (4 orientations)","Plans façades PROJETÉES échelle 1/100 avec modifications surlignées","Descriptif technique matériaux : type bois fenêtres, brique, tuiles, enduit","Échantillons/nuancier couleurs RAL volets/menuiseries","Notice architecturale justifiant choix (harmonie existant, respect patrimoine)","Photos environnement (insertion projet dans rue/quartier)","Plans masse + situation (localisation immeuble)","Photos éléments patrimoniaux intérieurs à conserver si classé MH"
+ ].map((piece, index) => (
+ <div key={index} className="p-4 flex gap-3">
+ <div className="flex-shrink-0 w-6 h-6 rounded bg-amber-100 text-amber-800 flex items-center justify-center text-xs font-semibold">
+ {index + 1}
+ </div>
+ <div className="text-sm">{piece}</div>
+ </div>
+ ))}
+ </div>
+ </div>
+ </div>
+
+ <div className="bg-white border-2 border-amber-600 p-8 rounded">
+ <div className="flex items-start gap-4 mb-4">
+ <div className="w-14 h-14 rounded-full bg-amber-800 text-white flex items-center justify-center text-xl font-semibold flex-shrink-0">
+ 3
+ </div>
+ <div>
+ <h3 className="text-2xl font-semibold text-amber-900 mb-2">Instruction ABF (ÉTAPE DÉCISIVE)</h3>
+ <p className="text-amber-800 font-bold">Durée: 1-2 mois | Avis CONFORME obligatoire</p>
+ </div>
+ </div>
+
+ <div className="space-y-4">
+ <p className="text-gray-800 leading-relaxed font-medium">
+ Dossier déposé mairie Toulouse (déclaration préalable ou permis construire) est transmis automatiquement
+ à l'<strong>UDAP</strong> pour avis ABF. <strong className="text-amber-900">Avis ABF CONFORME =
+ mairie ne peut passer outre</strong>. Délai instruction ABF : 1-2 mois (vs 3 semaines hors ABF).
+ </p>
+
+ <div className="bg-white p-6 border-2 border-amber-600 rounded">
+ <h4 className="font-bold text-amber-900 mb-4">3 avis ABF possibles:</h4>
+
+ <div className="space-y-4">
+ <div className="flex gap-4">
+ <div className="flex-shrink-0 w-10 h-10 rounded bg-green-600 text-white flex items-center justify-center font-bold">
+ ✓
+ </div>
+ <div>
+ <div className="font-bold text-green-800 mb-1">1. AVIS FAVORABLE (65% cas si bon dossier)</div>
+ <div className="text-sm text-gray-700">
+ ABF valide projet en l'état. Mairie délivre autorisation sous 15 jours. Travaux peuvent démarrer
+ après délai recours 2 mois.
+ </div>
+ </div>
+ </div>
+
+ <div className="flex gap-4">
+ <div className="flex-shrink-0 w-10 h-10 rounded bg-orange-600 text-white flex items-center justify-center font-bold">
+ !
+ </div>
+ <div>
+ <div className="font-bold text-orange-800 mb-1">2. AVIS FAVORABLE AVEC PRESCRIPTIONS (30% cas)</div>
+ <div className="text-sm text-gray-700 mb-2">
+ ABF accepte projet mais impose modifications: couleur menuiseries différente, matériaux spécifiques,
+ conservation éléments existants. Architecte modifie plans → nouveau dépôt → validation sous 15 jours.
+ </div>
+ <div className="text-xs bg-orange-50 p-3 rounded text-orange-900">
+ Délai supplémentaire: +3-4 semaines pour modifications + validation finale.
+ </div>
+ </div>
+ </div>
+
+ <div className="flex gap-4">
+ <div className="flex-shrink-0 w-10 h-10 rounded bg-red-600 text-white flex items-center justify-center font-bold text-xl">
+ ✗
+ </div>
+ <div>
+ <div className="font-bold text-red-800 mb-1">3. AVIS DÉFAVORABLE (5% cas, rare si expert)</div>
+ <div className="text-sm text-gray-700 mb-2">
+ ABF refuse projet car atteinte patrimoine (ex: PVC au lieu bois, suppression éléments classés).
+ <strong> Mairie OBLIGÉE refuser autorisation.</strong> Recours : revoir projet complet.
+ </div>
+ <div className="text-xs bg-red-50 p-3 rounded text-red-900">
+ <strong>EGB Occitanie: 0 refus ABF Capitole sur 23 projets grâce expertise architectes partenaires.</strong>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div className="bg-amber-900 text-white p-6 rounded">
+ <h4 className="font-bold mb-3">Points sensibles ABF Capitole:</h4>
+ <ul className="text-sm space-y-2">
+ <li> <strong>Fenêtres:</strong> Bois uniquement. PVC/alu = refus systématique. Double vitrage autorisé si profils traditionnels.</li>
+ <li> <strong>Volets:</strong> Couleurs gris/vert foncé réglementées. Pas blanc, pas couleurs vives.</li>
+ <li> <strong>Brique rose:</strong> Conservation absolue façades historiques. Nettoyage doux uniquement.</li>
+ <li> <strong>Toiture:</strong> Tuiles canal rouges obligatoires. Matériaux modernes refusés.</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ <div className="bg-white border-2 border-amber-200 p-8 rounded">
+ <div className="flex items-start gap-4 mb-4">
+ <div className="w-14 h-14 rounded-full bg-amber-600 text-white flex items-center justify-center text-xl font-light flex-shrink-0">
+ 4
+ </div>
+ <div>
+ <h3 className="text-2xl font-medium text-gray-900 mb-2">Démarrage travaux après délai recours</h3>
+ <p className="text-amber-800 font-medium">Durée: 2 mois obligatoires | Affichage terrain</p>
+ </div>
+ </div>
+
+ <div className="space-y-4 text-gray-700">
+ <p className="leading-relaxed">
+ Après autorisation mairie : <strong>affichage obligatoire terrain + mairie pendant 2 mois</strong> =
+ délai recours tiers (voisins). Aucuns travaux avant expiration 2 mois sous peine annulation si recours
+ accepté. Hyper-centre = forte densité = risque recours voisins si projet impactant (perte vue, luminosité).
+ </p>
+
+ <div className="bg-green-50 border-l-4 border-green-600 p-5">
+ <p className="text-green-900 text-sm mb-0">
+ <strong>EGB Occitanie</strong> : préparation concertation voisins en amont, présentation projet,
+ anticipation objections = taux recours 0% sur nos 23 projets Capitole vs 8-12% moyenne quartier.
+ </p>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div className="mt-12 text-center">
  <Link
  href="/contact"
- className="inline-block bg-orange-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-700 transition-colors shadow-xl"
+ className="inline-flex items-center gap-3 bg-amber-800 text-white px-8 py-4 text-base font-medium hover:bg-amber-900 transition-all duration-300 hover:shadow-xl"
  >
- Devis Gratuit Rénovation Capitole
+ EGB Occitanie gère votre dossier ABF Capitole
+ <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+ <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+ </svg>
  </Link>
+ <p className="text-sm text-gray-600 mt-4">100% validations ABF obtenues • 23 projets Capitole • 0 refus</p>
  </div>
- <p className="text-gray-600">
- 23 projets réussis Capitole • Note 4,9/5 • 100% validations ABF • Garantie décennale
- </p>
+ </div>
  </div>
  </section>
 
- {/* Liens Internes Autres Quartiers */}
- <section className="py-16 bg-white">
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- <h2 className={`${playfair.className} text-3xl font-bold text-gray-900 mb-8 text-center`}>
- Rénovation Autres Quartiers Toulouse
+ {/* ROI & Défiscalisation */}
+ <section className="py-20 md:py-28 bg-white">
+ <div className="container">
+ <div className="max-w-4xl mx-auto">
+ <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-12">
+ ROI exceptionnel & Défiscalisation Loi Malraux
  </h2>
- <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
- <Link href="/renovation-maison-carmes-toulouse" className="block p-6 bg-white rounded-lg hover:shadow-lg transition-shadow border-2 border-orange-200 hover:border-orange-400">
- <h3 className="font-bold text-lg mb-2 text-gray-900">Les Carmes</h3>
- <p className="text-gray-600 text-sm">Patrimoine médiéval, ABF strict</p>
- </Link>
- <Link href="/renovation-saint-cyprien-toulouse" className="block p-6 bg-white rounded-lg hover:shadow-lg transition-shadow border-2 border-rose-200 hover:border-rose-400">
- <h3 className="font-bold text-lg mb-2 text-gray-900">Saint-Cyprien</h3>
- <p className="text-gray-600 text-sm">Rive gauche, ABF modéré, gentrification</p>
- </Link>
- <Link href="/renovation-minimes-toulouse" className="block p-6 bg-white rounded-lg hover:shadow-lg transition-shadow border-2 border-green-200 hover:border-green-400">
- <h3 className="font-bold text-lg mb-2 text-gray-900">Minimes</h3>
- <p className="text-gray-600 text-sm">Années 60-70, DPE F-G, pas ABF</p>
- </Link>
- <Link href="/renovation-saint-etienne-toulouse" className="block p-6 bg-white rounded-lg hover:shadow-lg transition-shadow border-2 border-purple-200 hover:border-purple-400">
- <h3 className="font-bold text-lg mb-2 text-gray-900">Saint-Étienne</h3>
- <p className="text-gray-600 text-sm">Bourgeois 1850-1920, hôtels particuliers</p>
- </Link>
- <Link href="/renovation-busca-toulouse" className="block p-6 bg-white rounded-lg hover:shadow-lg transition-shadow border-2 border-yellow-200 hover:border-yellow-400">
- <h3 className="font-bold text-lg mb-2 text-gray-900">Busca</h3>
- <p className="text-gray-600 text-sm">Villas 1920-1950, Art Déco, jardins</p>
- </Link>
- <Link href="/renovation-arnaud-bernard-toulouse" className="block p-6 bg-white rounded-lg hover:shadow-lg transition-shadow border-2 border-indigo-200 hover:border-indigo-400">
- <h3 className="font-bold text-lg mb-2 text-gray-900">Arnaud-Bernard</h3>
- <p className="text-gray-600 text-sm">Bohème créatif, jeunes actifs</p>
- </Link>
- <Link href="/renovation-saint-aubin-dupuy-toulouse" className="block p-6 bg-white rounded-lg hover:shadow-lg transition-shadow border-2 border-teal-200 hover:border-teal-400">
- <h3 className="font-bold text-lg mb-2 text-gray-900">Saint-Aubin Dupuy</h3>
- <p className="text-gray-600 text-sm">Résidentiel famille, sud Toulouse</p>
- </Link>
- <Link href="/renovation-rangueil-toulouse" className="block p-6 bg-white rounded-lg hover:shadow-lg transition-shadow border-2 border-blue-200 hover:border-blue-400">
- <h3 className="font-bold text-lg mb-2 text-gray-900">Rangueil</h3>
- <p className="text-gray-600 text-sm">Universitaire, CHU, années 60</p>
- </Link>
+
+ <div className="prose prose-lg prose-stone max-w-none">
+ <p className="text-lg text-gray-700 leading-relaxed mb-8">
+ Malgré contraintes ABF et prix élevés, <strong>investissement Capitole = ROI exceptionnel long
+ terme</strong>. Combinaison : prestige adresse, plus-value +40-60% sur 10 ans, rentabilité locative
+ 4-5,5%, défiscalisation Loi Malraux possible (réduction IR 22-30% si secteur sauvegardé).
+ </p>
+
+ <div className="bg-white border-2 border-amber-200 p-8 rounded-lg mb-10">
+ <h3 className="text-2xl font-medium text-amber-900 mb-6">Loi Malraux Capitole 2025</h3>
+
+ <div className="space-y-4 text-gray-900">
+ <p className="leading-relaxed">
+ <strong>Place du Capitole = secteur sauvegardé = éligible Loi Malraux automatiquement.</strong>
+ Conditions : restauration complète immeuble, validation ABF obligatoire, location nue 9 ans minimum,
+ travaux intérieur + extérieur conformes patrimoine.
+ </p>
+
+ <div className="bg-green-50 border-2 border-green-600 p-5 rounded">
+ <h4 className="font-semibold text-green-900 mb-3">Avantages Malraux Capitole:</h4>
+ <ul className="text-sm text-green-900 space-y-2">
+ <li> <strong>Réduction impôt revenu: 30%</strong> du montant travaux (secteur sauvegardé)</li>
+ <li> <strong>Plafond: 400 000€</strong> de travaux sur 4 ans</li>
+ <li> <strong>Réduction IR maximale: 120 000€</strong> sur 4 ans (400k€ × 30%)</li>
+ <li> <strong>Engagement location: 9 ans</strong> minimum en location nue</li>
+ <li> <strong>Cumul possible:</strong> Malraux + MaPrimeRénov' énergie = 35-45% financement projet</li>
+ </ul>
+ </div>
+
+ <div className="bg-amber-50 p-5 rounded mt-4">
+ <h4 className="font-semibold text-amber-900 mb-3">Exemple concret défiscalisation Malraux:</h4>
+ <div className="text-sm text-amber-900 space-y-2">
+ <div className="flex justify-between pb-2 border-b border-amber-200">
+ <span>Travaux rénovation patrimoine validés ABF</span>
+ <strong>320 000€</strong>
+ </div>
+ <div className="flex justify-between pb-2 border-b border-amber-200">
+ <span>Réduction IR Malraux 30% sur 4 ans</span>
+ <strong>-96 000€</strong>
+ </div>
+ <div className="flex justify-between pb-2 border-b border-amber-200">
+ <span>Aides MaPrimeRénov' énergie (optionnel)</span>
+ <strong>-10 000€</strong>
+ </div>
+ <div className="h-[1px] bg-amber-300 my-3"></div>
+ <div className="flex justify-between text-base">
+ <strong>COÛT NET TRAVAUX:</strong>
+ <strong className="text-lg">214 000€</strong>
+ </div>
+ </div>
+ <p className="text-xs text-amber-800 mt-4 mb-0">
+ Économie totale: 106 000€ (33%) sur budget travaux initial. Accompagnement EGB Occitanie: montage
+ dossier fiscal Malraux, optimisation cumul aides, expertise ABF patrimoine.
+ </p>
+ </div>
+ </div>
+ </div>
+ </div>
  </div>
  </div>
  </section>
- </div>
+
+ <ContactSection />
  </>
  );
 }
