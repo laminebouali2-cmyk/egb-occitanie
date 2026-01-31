@@ -1,0 +1,265 @@
+// Prisma Schema for Renovateur IA
+// Database: PostgreSQL (Supabase)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// AUTHENTICATION (NextAuth)
+// ============================================
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ============================================
+// USERS
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+
+  // Relations
+  accounts      Account[]
+  sessions      Session[]
+  projects      Project[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// ============================================
+// PROJECTS
+// ============================================
+
+model Project {
+  id          String        @id @default(cuid())
+  name        String        @default("Mon projet")
+  description String?
+  status      ProjectStatus @default(DRAFT)
+
+  // Owner (nullable for anonymous projects)
+  userId      String?
+  user        User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Anonymous session token (for non-logged users)
+  sessionToken String?
+
+  // Relations
+  rooms       Room[]
+  exports     ProjectExport[]
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+enum ProjectStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+}
+
+// ============================================
+// ROOMS
+// ============================================
+
+model Room {
+  id                  String     @id @default(cuid())
+  name                String
+  type                RoomType
+
+  // Original uploaded image
+  originalImageUrl    String?
+  originalImageKey    String?    // Storage key
+
+  // Dimensions (estimated by AI or user input)
+  estimatedArea       Float?     // in m²
+  estimatedHeight     Float?     // in meters
+
+  // AI understood context
+  aiContext           Json?      // What the AI understood about this room
+
+  // Project relation
+  projectId           String
+  project             Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  // Relations
+  conversations       Conversation[]
+  proposals           Proposal[]
+
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+}
+
+enum RoomType {
+  SALON
+  CUISINE
+  CHAMBRE
+  SALLE_DE_BAIN
+  BUREAU
+  GRENIER
+  SOUS_SOL
+  GARAGE
+  COULOIR
+  ENTREE
+  TERRASSE
+  JARDIN
+  AUTRE
+}
+
+// ============================================
+// CONVERSATIONS
+// ============================================
+
+model Conversation {
+  id          String    @id @default(cuid())
+
+  // Messages history (JSON array)
+  messages    Json      @default("[]")
+
+  // AI Context built from conversation
+  context     Json?     // Usage, style preferences, constraints, etc.
+
+  // Status
+  status      ConversationStatus @default(ACTIVE)
+
+  // Room relation
+  roomId      String
+  room        Room      @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  // Generated proposals from this conversation
+  proposals   Proposal[]
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+enum ConversationStatus {
+  ACTIVE
+  COMPLETED
+  ABANDONED
+}
+
+// ============================================
+// PROPOSALS (AI Generated)
+// ============================================
+
+model Proposal {
+  id                  String    @id @default(cuid())
+
+  // Content
+  title               String
+  description         String    @db.Text
+  keyPoints           Json      // Array of key features
+
+  // Generated images
+  generatedImageUrl   String?
+  generatedImageKey   String?
+  planImageUrl        String?
+  planImageKey        String?
+
+  // Elements that can be selected for mixing
+  elements            Json?     // Array of selectable elements
+
+  // AI generation metadata
+  prompt              String?   @db.Text
+  generationParams    Json?
+
+  // User interaction
+  isSelected          Boolean   @default(false)
+  userFeedback        String?   @db.Text
+
+  // Relations
+  roomId              String
+  room                Room      @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  conversationId      String
+  conversation        Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  // Modifications (variations of this proposal)
+  parentId            String?
+  parent              Proposal? @relation("ProposalVariations", fields: [parentId], references: [id])
+  variations          Proposal[] @relation("ProposalVariations")
+
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
+
+// ============================================
+// PROJECT EXPORTS
+// ============================================
+
+model ProjectExport {
+  id              String    @id @default(cuid())
+
+  // Export type
+  type            ExportType
+
+  // Generated files
+  fileUrl         String?
+  fileKey         String?
+
+  // Share token for public access
+  shareToken      String?   @unique
+  isPublic        Boolean   @default(false)
+
+  // Budget estimates
+  budgetMin       Float?
+  budgetMax       Float?
+  budgetDetails   Json?     // Breakdown by category
+
+  // Project relation
+  projectId       String
+  project         Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  expiresAt       DateTime?
+  createdAt       DateTime  @default(now())
+}
+
+enum ExportType {
+  PDF
+  IMAGES_ZIP
+  SHARE_LINK
+}
