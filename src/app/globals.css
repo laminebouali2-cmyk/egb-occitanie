@@ -564,6 +564,21 @@ label {
    RENOVATEUR IA — Premium SaaS Landing Page
    ========================================================================== */
 
+/* Hide main site header and footer when Renovateur IA is active */
+body:has(.renovateur-landing) > .smooth-scroll > header,
+body:has(.renovateur-landing) > .smooth-scroll > footer,
+body:has(.renovateur-landing) header.sticky,
+body:has(.renovateur-landing) > header,
+body:has(.renovateur-landing) > footer {
+  display: none !important;
+}
+
+/* Renovateur Landing Container */
+.renovateur-landing {
+  min-height: 100vh;
+  background: var(--rnv-bg);
+}
+
 /* Header */
 .rnv-header {
   position: fixed;
