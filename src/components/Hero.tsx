@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
 
 /**
  * HERO SECTION — Premium Architecture Hero
@@ -35,33 +34,41 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ height: '90vh' }}
+      className="relative flex items-center justify-center overflow-hidden"
+      style={{ minHeight: '70vh', maxHeight: '80vh' }}
     >
-      {/* Background Image Layer avec Parallax */}
+      {/* Background Premium Gradient */}
       <motion.div
         className="absolute inset-0"
         style={{ y }}
       >
-        <Image
-          src="/hero-villa-occitanie.jpg"
-          alt="Villa contemporaine en Occitanie au coucher du soleil"
-          fill
-          priority
-          quality={95}
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-
-        {/* Overlay gradient pour lisibilité texte */}
+        {/* Gradient moderne architectural */}
         <div
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(
-                ellipse at center,
-                rgba(0,0,0,0.25) 0%,
-                rgba(0,0,0,0.40) 100%
+              linear-gradient(135deg,
+                #1C1917 0%,
+                #292524 25%,
+                #44403C 50%,
+                #57534E 75%,
+                #78716C 100%
+              )
+            `
+          }}
+        />
+
+        {/* Overlay texture subtile */}
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255,255,255,0.03) 2px,
+                rgba(255,255,255,0.03) 4px
               )
             `
           }}
@@ -77,16 +84,15 @@ export function Hero() {
 
           {/* HEADLINE */}
           <motion.h1
-            className="text-white mb-8"
+            className="text-white mb-6"
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.25rem, 6vw, 4.5rem)', // 36px mobile → 72px desktop
-              lineHeight: '1.1',
-              letterSpacing: '-0.02em',
-              fontWeight: 700,
-              textShadow: '0 2px 24px rgba(0,0,0,0.3)',
-              maxWidth: '800px',
-              margin: '0 auto 32px auto',
+              fontSize: 'clamp(2rem, 4.5vw, 3.25rem)', // 32px mobile → 52px desktop
+              lineHeight: '1.2',
+              letterSpacing: '-0.01em',
+              fontWeight: 500,
+              maxWidth: '720px',
+              margin: '0 auto 24px auto',
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,14 +105,14 @@ export function Hero() {
 
           {/* SUBHEADLINE */}
           <motion.p
-            className="text-white/90 mb-10"
+            className="text-white/85 mb-8"
             style={{
-              fontSize: 'clamp(1rem, 1.8vw, 1.25rem)', // 16px mobile → 20px desktop
-              lineHeight: '1.5',
-              letterSpacing: '0.01em',
-              fontWeight: 400,
-              maxWidth: '680px',
-              margin: '0 auto 40px auto',
+              fontSize: 'clamp(0.95rem, 1.4vw, 1.125rem)', // 15px mobile → 18px desktop
+              lineHeight: '1.6',
+              letterSpacing: '0.005em',
+              fontWeight: 300,
+              maxWidth: '600px',
+              margin: '0 auto 32px auto',
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,25 +129,22 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center gap-3 text-white transition-all duration-200 ease-out"
+              className="group inline-flex items-center justify-center gap-2.5 text-stone-900 bg-white hover:bg-stone-50 transition-all duration-300 ease-out"
               style={{
-                padding: '20px 40px',
-                fontSize: '17px',
+                padding: '16px 36px',
+                fontSize: '15px',
                 fontWeight: 500,
-                letterSpacing: '0.01em',
-                borderRadius: '4px',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
-                backgroundColor: 'var(--color-stone-900)',
+                letterSpacing: '0.02em',
+                borderRadius: '2px',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
               }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-stone-950)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-stone-900)'}
             >
               <span>Discuter de mon projet</span>
               <svg
-                className="w-5 h-5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.5"
                 viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -151,20 +154,20 @@ export function Hero() {
 
           {/* TRUST SIGNALS */}
           <motion.div
-            className="mt-6 text-white/70 text-center"
+            className="mt-8 text-white/60 text-center"
             style={{
-              fontSize: '14px',
+              fontSize: '13px',
               fontWeight: 300,
-              letterSpacing: '0.03em',
+              letterSpacing: '0.05em',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             Rénovation & construction d'excellence
-            <span className="mx-4">•</span>
+            <span className="mx-3 text-white/40">•</span>
             Projets sur-mesure
-            <span className="mx-4">•</span>
+            <span className="mx-3 text-white/40">•</span>
             Toulouse & Occitanie
           </motion.div>
 
