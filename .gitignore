@@ -44,5 +44,8 @@ next-env.d.ts
 
 # Claude Code
 .agents
-.claude
 .opencode
+
+# Claude MCP - Exclude memory file but keep config
+.claude/mcp/memory.json
+.claude/mcp/*.db
