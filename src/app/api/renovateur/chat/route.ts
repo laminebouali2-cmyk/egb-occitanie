@@ -1,16 +1,16 @@
 /**
  * RENOVATEUR IA - Chat API Route
  *
- * Handles conversation with the AI renovation assistant
+ * Uses Google Gemini for conversation (FREE!)
  */
 
 import { NextRequest, NextResponse } from "next/server";
-import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import type { ConversationContext, Message, Question } from "@/types/renovateur";
 
-// Initialize OpenAI (only if API key is available)
-const openai = process.env.OPENAI_API_KEY
-  ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+// Initialize Gemini
+const genAI = process.env.GEMINI_API_KEY
+  ? new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
   : null;
 
 // System prompt for the renovation AI
@@ -26,39 +26,35 @@ RÈGLES IMPORTANTES :
 4. EXPERTISE - Partage ton expertise (contraintes techniques, bonnes pratiques)
 5. INSPIRATION - Suggère des possibilités que l'utilisateur n'imaginait pas
 
-FORMAT POUR LES QUESTIONS (inclure à la fin de ta réponse) :
-\`\`\`json
-{
-  "questions": [
-    {
-      "id": "usage",
-      "text": "Qui utilisera cet espace ?",
-      "type": "single",
-      "options": [
-        {"id": "family", "label": "La famille", "icon": "👨‍👩‍👧"},
-        {"id": "work", "label": "Télétravail", "icon": "💼"}
-      ],
-      "allowSkip": true,
-      "skipLabel": "Je ne sais pas encore"
-    }
-  ]
-}
-\`\`\`
+FORMAT POUR LES QUESTIONS (inclure à la fin de ta réponse entre balises) :
+<questions>
+[
+  {
+    "id": "usage",
+    "text": "Qui utilisera cet espace ?",
+    "type": "single",
+    "options": [
+      {"id": "family", "label": "La famille", "icon": "👨‍👩‍👧"},
+      {"id": "work", "label": "Télétravail", "icon": "💼"}
+    ],
+    "allowSkip": true,
+    "skipLabel": "Je ne sais pas encore"
+  }
+]
+</questions>
 
 FORMAT POUR LES PROPOSITIONS (quand tu as assez d'infos) :
-\`\`\`json
-{
-  "proposals": [
-    {
-      "id": "prop1",
-      "title": "Option lumineuse",
-      "description": "Description courte",
-      "keyPoints": ["Point 1", "Point 2", "Point 3"],
-      "imagePrompt": "detailed prompt for image generation"
-    }
-  ]
-}
-\`\`\`
+<proposals>
+[
+  {
+    "id": "prop1",
+    "title": "Option lumineuse",
+    "description": "Description courte",
+    "keyPoints": ["Point 1", "Point 2", "Point 3"],
+    "imagePrompt": "detailed prompt for image generation in english"
+  }
+]
+</proposals>
 
 CONTRAINTES TECHNIQUES QUE TU CONNAIS :
 - Hauteur sous plafond minimum habitable : 1.80m (idéal 2.20m+)
@@ -66,15 +62,15 @@ CONTRAINTES TECHNIQUES QUE TU CONNAIS :
 - Salle de bain : évacuations nécessaires, ventilation obligatoire
 - Permis de construire : >40m² d'extension ou modification façade
 
-Tu réponds TOUJOURS en français. Sois chaleureux et professionnel.`;
+Tu réponds TOUJOURS en français. Sois chaleureux, professionnel et concis.`;
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { messages, context, roomImageUrl } = body as {
+    const { messages, context, roomImageBase64 } = body as {
       messages: Message[];
       context?: Partial<ConversationContext>;
-      roomImageUrl?: string;
+      roomImageBase64?: string;
     };
 
     if (!messages || !Array.isArray(messages)) {
@@ -84,13 +80,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // If no OpenAI key, return a demo response
-    if (!openai) {
+    // If no Gemini key, return a demo response
+    if (!genAI) {
+      console.log("No Gemini API key, returning demo response");
       return NextResponse.json({
         success: true,
         data: getDemoResponse(messages, context),
       });
     }
+
+    // Use Gemini 1.5 Pro (free and powerful)
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
     // Build context string
     let contextString = "";
@@ -110,45 +110,52 @@ export async function POST(request: NextRequest) {
       if (context.preferences.style) contextString += `- Style: ${context.preferences.style}\n`;
     }
 
-    // Prepare messages for OpenAI
-    const openaiMessages: OpenAI.Chat.ChatCompletionMessageParam[] = [
-      { role: "system", content: SYSTEM_PROMPT + contextString },
-    ];
+    // Build conversation history for Gemini
+    const history = messages.slice(0, -1).map((msg) => ({
+      role: msg.role === "assistant" ? "model" : "user",
+      parts: [{ text: msg.content }],
+    }));
 
-    // Add image if provided (for initial analysis)
-    if (roomImageUrl && messages.length === 1) {
-      openaiMessages.push({
-        role: "user",
-        content: [
-          {
-            type: "text",
-            text: messages[0].content + "\n\nVoici une photo de la pièce à analyser.",
-          },
-          {
-            type: "image_url",
-            image_url: { url: roomImageUrl },
-          },
-        ],
-      });
-    } else {
-      // Add conversation history
-      for (const msg of messages) {
-        openaiMessages.push({
-          role: msg.role as "user" | "assistant",
-          content: msg.content,
-        });
-      }
-    }
+    const lastMessage = messages[messages.length - 1];
 
-    // Call OpenAI
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o",
-      messages: openaiMessages,
-      max_tokens: 2000,
-      temperature: 0.7,
+    // Start chat with history
+    const chat = model.startChat({
+      history: [
+        {
+          role: "user",
+          parts: [{ text: "Voici tes instructions:\n" + SYSTEM_PROMPT + contextString }],
+        },
+        {
+          role: "model",
+          parts: [{ text: "Compris ! Je suis prêt à aider avec les projets de rénovation. Je poserai des questions avant de proposer des solutions." }],
+        },
+        ...history,
+      ],
     });
 
-    const aiContent = completion.choices[0]?.message?.content || "";
+    let result;
+
+    // If there's an image, use vision capability
+    if (roomImageBase64 && messages.length === 1) {
+      // Convert base64 to the format Gemini expects
+      const imageData = roomImageBase64.replace(/^data:image\/\w+;base64,/, "");
+
+      const visionModel = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+
+      result = await visionModel.generateContent([
+        {
+          inlineData: {
+            mimeType: "image/jpeg",
+            data: imageData,
+          },
+        },
+        { text: SYSTEM_PROMPT + "\n\nL'utilisateur a partagé cette photo de sa pièce. Analyse-la et commence la conversation en posant des questions pertinentes sur son projet.\n\nMessage de l'utilisateur: " + lastMessage.content },
+      ]);
+    } else {
+      result = await chat.sendMessage(lastMessage.content);
+    }
+
+    const aiContent = result.response.text();
 
     // Parse questions and proposals from the response
     const { text, questions, proposals } = parseAIResponse(aiContent);
@@ -167,7 +174,7 @@ export async function POST(request: NextRequest) {
           role: "assistant",
           content: text,
           timestamp: new Date(),
-          question: questions?.[0], // Send first question for display
+          question: questions?.[0],
         },
         questions,
         proposals,
@@ -184,14 +191,14 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Chat API error:", error);
     return NextResponse.json(
-      { success: false, error: "Failed to process chat message" },
+      { success: false, error: "Failed to process chat message: " + (error as Error).message },
       { status: 500 }
     );
   }
 }
 
 /**
- * Parse AI response to extract questions and proposals from JSON blocks
+ * Parse AI response to extract questions and proposals
  */
 function parseAIResponse(content: string): {
   text: string;
@@ -214,20 +221,40 @@ function parseAIResponse(content: string): {
     imagePrompt: string;
   }> | undefined;
 
-  // Extract JSON blocks
+  // Extract questions block
+  const questionsMatch = content.match(/<questions>([\s\S]*?)<\/questions>/);
+  if (questionsMatch) {
+    try {
+      questions = JSON.parse(questionsMatch[1]);
+      text = text.replace(questionsMatch[0], "").trim();
+    } catch {
+      console.error("Failed to parse questions JSON");
+    }
+  }
+
+  // Extract proposals block
+  const proposalsMatch = content.match(/<proposals>([\s\S]*?)<\/proposals>/);
+  if (proposalsMatch) {
+    try {
+      proposals = JSON.parse(proposalsMatch[1]);
+      text = text.replace(proposalsMatch[0], "").trim();
+    } catch {
+      console.error("Failed to parse proposals JSON");
+    }
+  }
+
+  // Also try JSON code blocks as fallback
   const jsonBlockRegex = /```json\s*([\s\S]*?)```/g;
   let match;
-
   while ((match = jsonBlockRegex.exec(content)) !== null) {
     try {
       const parsed = JSON.parse(match[1]);
-      if (parsed.questions) {
+      if (parsed.questions && !questions) {
         questions = parsed.questions;
       }
-      if (parsed.proposals) {
+      if (parsed.proposals && !proposals) {
         proposals = parsed.proposals;
       }
-      // Remove JSON block from text
       text = text.replace(match[0], "").trim();
     } catch {
       // Invalid JSON, keep as text
@@ -281,73 +308,73 @@ Pour vous proposer des idées vraiment adaptées, j'aurais quelques questions :`
     };
   }
 
-  // Check if user answered a question
-  if (lastMessage.includes("moderne") || lastMessage.includes("scandinave")) {
+  // Style question if usage was answered
+  if (context?.questionsAsked?.includes("usage") && !context?.questionsAsked?.includes("style")) {
     return {
       message: {
         id: `msg_${Date.now()}`,
         role: "assistant",
-        content: `Excellent choix ! Basé sur vos préférences, voici 2 propositions pour votre espace :`,
+        content: `Parfait, je comprends mieux ! Une dernière question pour affiner mes propositions :`,
         timestamp: new Date(),
       },
-      proposals: [
+      questions: [
         {
-          id: "prop1",
-          title: "Option Lumineuse",
-          description: "Un espace épuré qui maximise la lumière naturelle",
-          keyPoints: [
-            "Grande baie vitrée ou verrière",
-            "Tons neutres (blanc, gris clair)",
-            "Mobilier aux lignes simples",
+          id: "style",
+          text: "Quel style vous attire le plus ?",
+          type: "single",
+          options: [
+            { id: "modern", label: "Moderne", icon: "🏢" },
+            { id: "scandinavian", label: "Scandinave", icon: "🌲" },
+            { id: "industrial", label: "Industriel", icon: "🏭" },
+            { id: "cosy", label: "Cosy", icon: "🛋️" },
           ],
-          imagePrompt: "modern bright interior, large windows, minimalist furniture, white walls, natural light",
-        },
-        {
-          id: "prop2",
-          title: "Option Chaleureuse",
-          description: "Un cocon moderne avec des touches de bois",
-          keyPoints: [
-            "Parquet en chêne clair",
-            "Éclairage indirect",
-            "Touches de bois naturel",
-          ],
-          imagePrompt: "modern cozy interior, oak wood floor, indirect lighting, warm atmosphere",
+          allowSkip: true,
+          skipLabel: "Surprenez-moi",
         },
       ],
       context: {
         ...context,
-        currentStep: "proposing",
+        currentStep: "questioning",
+        questionsAsked: [...(context?.questionsAsked || []), "style"],
       },
     };
   }
 
-  // Default follow-up question
+  // Generate proposals
   return {
     message: {
       id: `msg_${Date.now()}`,
       role: "assistant",
-      content: `Merci pour cette information ! Une dernière question pour affiner mes propositions :`,
+      content: `Excellent ! Basé sur vos préférences, voici 2 propositions pour votre espace :`,
       timestamp: new Date(),
     },
-    questions: [
+    proposals: [
       {
-        id: "style",
-        text: "Quel style vous attire le plus ?",
-        type: "single",
-        options: [
-          { id: "modern", label: "Moderne", icon: "🏢" },
-          { id: "scandinavian", label: "Scandinave", icon: "🌲" },
-          { id: "industrial", label: "Industriel", icon: "🏭" },
-          { id: "cosy", label: "Cosy", icon: "🛋️" },
+        id: "prop1",
+        title: "Option Lumineuse",
+        description: "Un espace épuré qui maximise la lumière naturelle",
+        keyPoints: [
+          "Grande baie vitrée ou verrière",
+          "Tons neutres (blanc, gris clair)",
+          "Mobilier aux lignes simples",
         ],
-        allowSkip: true,
-        skipLabel: "Surprenez-moi",
+        imagePrompt: "modern bright interior, large windows, minimalist furniture, white walls, natural light, professional interior photography",
+      },
+      {
+        id: "prop2",
+        title: "Option Chaleureuse",
+        description: "Un cocon moderne avec des touches de bois",
+        keyPoints: [
+          "Parquet en chêne clair",
+          "Éclairage indirect",
+          "Touches de bois naturel",
+        ],
+        imagePrompt: "modern cozy interior, oak wood floor, indirect warm lighting, natural materials, inviting atmosphere, professional interior photography",
       },
     ],
     context: {
       ...context,
-      currentStep: "questioning",
-      questionsAsked: [...(context?.questionsAsked || []), "style"],
+      currentStep: "proposing",
     },
   };
 }
