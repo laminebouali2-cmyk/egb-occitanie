@@ -25,12 +25,19 @@ interface Proposal {
   description: string;
   keyPoints: string[];
   imagePrompt: string;
+  generatedImage?: string;
+  isGenerating?: boolean;
 }
 
 interface ConversationContext {
   currentStep: string;
   questionsAsked: string[];
   preferences: Record<string, string>;
+  room?: {
+    type?: string;
+    estimatedArea?: number;
+    detectedElements?: string[];
+  };
 }
 
 type AppMode = "select" | "upload" | "describe" | "chat";
@@ -188,6 +195,54 @@ export default function RenovateurIAPage() {
     });
     setInputValue("");
   }, []);
+
+  // Handle image generation for a proposal
+  const handleGenerateImage = useCallback(async (proposalId: string) => {
+    const proposal = proposals.find((p) => p.id === proposalId);
+    if (!proposal || proposal.isGenerating) return;
+
+    // Mark as generating
+    setProposals((prev) =>
+      prev.map((p) =>
+        p.id === proposalId ? { ...p, isGenerating: true } : p
+      )
+    );
+
+    try {
+      const response = await fetch("/api/renovateur/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prompt: proposal.imagePrompt,
+          style: context.preferences.style || "modern",
+          roomType: context.room?.type,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success && data.data?.imageUrl) {
+        setProposals((prev) =>
+          prev.map((p) =>
+            p.id === proposalId
+              ? { ...p, generatedImage: data.data.imageUrl, isGenerating: false }
+              : p
+          )
+        );
+      } else {
+        throw new Error(data.error || "Generation failed");
+      }
+    } catch (error) {
+      console.error("Image generation error:", error);
+      setProposals((prev) =>
+        prev.map((p) =>
+          p.id === proposalId ? { ...p, isGenerating: false } : p
+        )
+      );
+      // Show error in a toast or alert
+      alert("Erreur lors de la generation de l'image. Veuillez reessayer.");
+    }
+  }, [proposals, context]);
 
   return (
     <div className="rnv-app-wrapper">
@@ -444,6 +499,13 @@ export default function RenovateurIAPage() {
                     <div className="proposals-list">
                       {proposals.map((p) => (
                         <div key={p.id} className="proposal-card">
+                          {/* Generated Image */}
+                          {p.generatedImage && (
+                            <div className="proposal-image">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img src={p.generatedImage} alt={p.title} />
+                            </div>
+                          )}
                           <h4>{p.title}</h4>
                           <p>{p.description}</p>
                           <ul>
@@ -451,8 +513,33 @@ export default function RenovateurIAPage() {
                               <li key={i}>{pt}</li>
                             ))}
                           </ul>
-                          <button className="btn-generate">
-                            Generer l&apos;image IA
+                          <button
+                            className={`btn-generate ${p.isGenerating ? "generating" : ""}`}
+                            onClick={() => handleGenerateImage(p.id)}
+                            disabled={p.isGenerating}
+                          >
+                            {p.isGenerating ? (
+                              <>
+                                <span className="spinner"></span>
+                                Generation en cours...
+                              </>
+                            ) : p.generatedImage ? (
+                              <>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M23 4l-11 11-4-4m-3 3l-4-4L12 21l11-11"/>
+                                </svg>
+                                Regenerer l&apos;image
+                              </>
+                            ) : (
+                              <>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                                  <path d="M21 15l-5-5L5 21"/>
+                                </svg>
+                                Generer l&apos;image IA
+                              </>
+                            )}
                           </button>
                         </div>
                       ))}

@@ -14,10 +14,10 @@ const genAI = process.env.GEMINI_API_KEY
   : null;
 
 // System prompt for the renovation AI
-const SYSTEM_PROMPT = `Tu es un architecte d'intérieur IA expert, travaillant pour "Renovateur IA".
+const SYSTEM_PROMPT = `Tu es un architecte d'intérieur IA expert de niveau international, travaillant pour "Renovateur IA".
 
 TON RÔLE :
-Tu es un partenaire de réflexion pour les projets de rénovation. Tu ne fais pas que répondre - tu PENSES avec l'utilisateur, tu poses des questions pertinentes, et tu proposes des idées auxquelles il n'aurait pas pensé.
+Tu es un partenaire de réflexion EXPERT pour les projets de rénovation. Tu ne fais pas que répondre - tu PENSES avec l'utilisateur, tu poses des questions pertinentes, et tu proposes des idées innovantes auxquelles il n'aurait pas pensé.
 
 RÈGLES IMPORTANTES :
 1. COMPRENDRE D'ABORD - Ne propose JAMAIS de solutions avant d'avoir posé des questions pour comprendre le contexte
@@ -51,7 +51,7 @@ FORMAT POUR LES PROPOSITIONS (quand tu as assez d'infos) :
     "title": "Option lumineuse",
     "description": "Description courte",
     "keyPoints": ["Point 1", "Point 2", "Point 3"],
-    "imagePrompt": "detailed prompt for image generation in english"
+    "imagePrompt": "VERY detailed prompt for image generation in english - include specific furniture, colors, materials, lighting, camera angle, interior photography style"
   }
 ]
 </proposals>
@@ -60,9 +60,62 @@ CONTRAINTES TECHNIQUES QUE TU CONNAIS :
 - Hauteur sous plafond minimum habitable : 1.80m (idéal 2.20m+)
 - Mezzanine : hauteur totale minimum 4m pour confort
 - Salle de bain : évacuations nécessaires, ventilation obligatoire
+- Cuisine : triangle d'activité (évier-cuisson-frigo) < 6m
+- Électricité : normes NF C 15-100, différentiel obligatoire
 - Permis de construire : >40m² d'extension ou modification façade
+- Déclaration préalable : 5-40m² extension selon zone
 
 Tu réponds TOUJOURS en français. Sois chaleureux, professionnel et concis.`;
+
+// VISION PROMPT - Specialized for detailed room analysis
+const VISION_ANALYSIS_PROMPT = `Tu es un expert en architecture d'intérieur avec 20 ans d'expérience. Analyse cette photo de pièce en DÉTAIL.
+
+ANALYSE OBLIGATOIRE (sois précis et technique) :
+
+1. **TYPE DE PIÈCE** : Identifie avec certitude (salon, cuisine, chambre, salle de bain, etc.)
+
+2. **DIMENSIONS ESTIMÉES** :
+   - Estime la surface en m² (utilise les éléments de référence : portes standard 80cm, fenêtres, meubles)
+   - Hauteur sous plafond approximative
+   - Configuration (carré, rectangulaire, en L, etc.)
+
+3. **ÉLÉMENTS EXISTANTS** (liste exhaustive) :
+   - Fenêtres/portes : nombre, type, orientation lumière
+   - Revêtements : sol (parquet, carrelage, moquette), murs, plafond
+   - Menuiseries : portes, placards, encadrements
+   - Électricité visible : prises, interrupteurs, luminaires
+   - Chauffage : radiateurs, convecteurs, etc.
+
+4. **ANALYSE LUMIÈRE** :
+   - Type d'éclairage naturel (direct, indirect, zénithal)
+   - Points lumineux artificiels
+   - Orientation probable (nord/sud/est/ouest selon la lumière)
+
+5. **STYLE ACTUEL** :
+   - Époque de la construction/décoration
+   - Style dominant (moderne, ancien, industriel, etc.)
+   - État général (neuf, bon état, à rafraîchir, à rénover)
+
+6. **POTENTIEL DE RÉNOVATION** :
+   - Points forts à conserver
+   - Éléments datés à moderniser
+   - Contraintes visibles (poutre, pilier, etc.)
+
+7. **OPPORTUNITÉS** :
+   - Murs potentiellement non porteurs à ouvrir
+   - Espaces perdus à optimiser
+   - Idées créatives adaptées à l'espace
+
+Après ton analyse, pose 2-3 questions pertinentes pour comprendre le projet de l'utilisateur.
+
+IMPORTANT pour imagePrompt : Quand tu feras des propositions, le prompt pour générer l'image doit être ULTRA DÉTAILLÉ en anglais :
+- Mentionner la pièce exacte et ses dimensions
+- Décrire précisément les meubles, matériaux, couleurs
+- Inclure l'éclairage, l'ambiance, l'heure du jour
+- Spécifier l'angle de caméra et le style photo
+- Ajouter : "professional interior photography, architectural digest, 8k, photorealistic"
+
+Réponds en français.`;
 
 export async function POST(request: NextRequest) {
   try {
@@ -135,21 +188,33 @@ export async function POST(request: NextRequest) {
 
     let result;
 
-    // If there's an image, use vision capability
+    // If there's an image, use vision capability with DETAILED analysis
     if (roomImageBase64 && messages.length === 1) {
       // Convert base64 to the format Gemini expects
       const imageData = roomImageBase64.replace(/^data:image\/\w+;base64,/, "");
 
-      const visionModel = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+      // Detect mime type from base64 header
+      const mimeMatch = roomImageBase64.match(/^data:(image\/\w+);base64,/);
+      const mimeType = mimeMatch ? mimeMatch[1] : "image/jpeg";
+
+      const visionModel = genAI.getGenerativeModel({
+        model: "gemini-1.5-pro",
+        generationConfig: {
+          temperature: 0.7,
+          topP: 0.95,
+          topK: 40,
+          maxOutputTokens: 4096,
+        }
+      });
 
       result = await visionModel.generateContent([
         {
           inlineData: {
-            mimeType: "image/jpeg",
+            mimeType,
             data: imageData,
           },
         },
-        { text: SYSTEM_PROMPT + "\n\nL'utilisateur a partagé cette photo de sa pièce. Analyse-la et commence la conversation en posant des questions pertinentes sur son projet.\n\nMessage de l'utilisateur: " + lastMessage.content },
+        { text: VISION_ANALYSIS_PROMPT + "\n\n---\n\nMessage de l'utilisateur: " + lastMessage.content },
       ]);
     } else {
       result = await chat.sendMessage(lastMessage.content);
@@ -272,7 +337,8 @@ function getDemoResponse(
   context?: Partial<ConversationContext>
 ) {
   const isFirstMessage = messages.length === 1;
-  const lastMessage = messages[messages.length - 1]?.content?.toLowerCase() || "";
+  // Note: lastMessage can be used for more advanced demo logic in the future
+  const _lastMessage = messages[messages.length - 1]?.content?.toLowerCase() || "";
 
   if (isFirstMessage) {
     return {
