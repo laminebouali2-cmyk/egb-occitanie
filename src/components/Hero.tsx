@@ -5,18 +5,19 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 /**
- * HERO SECTION — Light & Modern Architecture Hero
+ * HERO SECTION — Enhanced High-Impact Hero
  *
  * Design Philosophy:
- * - Clean, light aesthetic with modern architecture
- * - Clear typography with strong contrast
+ * - Maximum contrast for readability
+ * - Bold, impactful design with depth
  * - Professional and aspirational
- * - Crisp CTAs with clear hierarchy
+ * - Clear hierarchy and strong CTAs
  *
  * Layout:
- * - Light background with subtle gradients
- * - Centered content with architectural accents
+ * - Rich dark background with architectural image
+ * - Strong contrast white text
  * - Subtle parallax on scroll
+ * - Gradient overlays for depth
  */
 
 export function Hero() {
@@ -36,33 +37,38 @@ export function Hero() {
       className="relative flex items-center justify-center overflow-hidden"
       style={{ minHeight: '85vh', maxHeight: '95vh' }}
     >
-      {/* Light Background with Gradient */}
+      {/* Background Image with Overlay */}
       <motion.div
         className="absolute inset-0"
         style={{ y }}
       >
-        {/* Clean gradient - light blue-gray to white */}
+        {/* High-quality architecture background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070')`,
+          }}
+        />
+
+        {/* Dark gradient overlay for contrast and readability */}
         <div
           className="absolute inset-0"
           style={{
             background: `
               linear-gradient(135deg,
-                #8B9DAF 0%,
-                #9BAAB8 25%,
-                #ABB7C4 50%,
-                #BCC5CF 75%,
-                #CDD4DC 100%
+                rgba(28, 25, 23, 0.92) 0%,
+                rgba(41, 37, 36, 0.88) 25%,
+                rgba(28, 25, 23, 0.90) 50%,
+                rgba(41, 37, 36, 0.86) 75%,
+                rgba(28, 25, 23, 0.88) 100%
               )
             `
           }}
         />
 
-        {/* Subtle light overlay for depth */}
-        <div className="absolute inset-0 bg-white/10" />
-
-        {/* Decorative architectural element - subtle pattern */}
+        {/* Subtle pattern overlay for texture */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `
               repeating-linear-gradient(
@@ -84,17 +90,18 @@ export function Hero() {
       >
         <div className="max-w-[1200px] mx-auto text-center">
 
-          {/* HEADLINE - Dark text on light background */}
+          {/* HEADLINE - White text on dark background for maximum contrast */}
           <motion.h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
               lineHeight: '1.1',
               letterSpacing: '-0.03em',
               fontWeight: 300,
-              maxWidth: '900px',
+              maxWidth: '950px',
               margin: '0 auto 32px auto',
-              color: '#1a1a1a',
+              color: '#ffffff',
+              textShadow: '0 2px 20px rgba(0,0,0,0.3)',
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -102,19 +109,20 @@ export function Hero() {
           >
             Certaines constructions
             <br />
-            deviennent <span style={{ fontWeight: 400 }}>patrimoine</span>
+            deviennent <span style={{ fontWeight: 500 }}>patrimoine</span>
           </motion.h1>
 
           {/* SUBHEADLINE */}
           <motion.p
             style={{
-              fontSize: 'clamp(1.05rem, 1.8vw, 1.35rem)',
-              lineHeight: '1.6',
-              letterSpacing: '0.005em',
+              fontSize: 'clamp(1.1rem, 1.9vw, 1.4rem)',
+              lineHeight: '1.65',
+              letterSpacing: '0.01em',
               fontWeight: 400,
-              maxWidth: '700px',
+              maxWidth: '750px',
               margin: '0 auto 48px auto',
-              color: '#2d3748',
+              color: 'rgba(255, 255, 255, 0.92)',
+              textShadow: '0 1px 10px rgba(0,0,0,0.2)',
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -134,14 +142,14 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center gap-3 text-white bg-stone-900 hover:bg-stone-800 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
+              className="group inline-flex items-center justify-center gap-3 text-stone-900 bg-white hover:bg-stone-50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
               style={{
                 padding: '20px 44px',
                 fontSize: '16px',
-                fontWeight: 500,
+                fontWeight: 600,
                 letterSpacing: '0.01em',
                 borderRadius: '4px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+                boxShadow: '0 4px 30px rgba(255,255,255,0.15)',
               }}
             >
               <span>Démarrer un projet</span>
@@ -158,7 +166,7 @@ export function Hero() {
 
             <Link
               href="/projets"
-              className="group inline-flex items-center justify-center gap-2.5 text-stone-900 border-2 border-stone-900/20 hover:border-stone-900/40 hover:bg-stone-900/5 transition-all duration-300 ease-out"
+              className="group inline-flex items-center justify-center gap-2.5 text-white border-2 border-white/60 hover:border-white hover:bg-white/10 transition-all duration-300 ease-out"
               style={{
                 padding: '18px 36px',
                 fontSize: '16px',
@@ -186,17 +194,17 @@ export function Hero() {
             style={{
               fontSize: '14px',
               fontWeight: 400,
-              letterSpacing: '0.02em',
-              color: '#4a5568',
+              letterSpacing: '0.03em',
+              color: 'rgba(255, 255, 255, 0.75)',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             Construction d'excellence
-            <span className="mx-4 text-stone-400">•</span>
+            <span className="mx-4" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>•</span>
             Projets sur-mesure
-            <span className="mx-4 text-stone-400">•</span>
+            <span className="mx-4" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>•</span>
             Toulouse & Occitanie
           </motion.div>
 
@@ -213,7 +221,7 @@ export function Hero() {
           opacity: useTransform(scrollYProgress, [0, 0.2], [1, 0])
         }}
       >
-        <div className="flex flex-col items-center gap-2 text-stone-600">
+        <div className="flex flex-col items-center gap-2" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
           <p className="text-xs uppercase tracking-widest font-medium">Découvrir</p>
           <motion.svg
             className="w-6 h-6"

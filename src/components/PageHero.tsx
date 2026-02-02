@@ -20,10 +20,10 @@ interface PageHeroProps {
 }
 
 /**
- * PageHero — Light & Clean Hero Component
+ * PageHero — Enhanced High-Contrast Hero Component
  *
- * Modern, light hero section for internal pages
- * with clean typography and optional CTAs
+ * Modern hero section for internal pages
+ * with strong contrast, clear typography and optional CTAs
  */
 export function PageHero({
   overline,
@@ -36,7 +36,7 @@ export function PageHero({
 }: PageHeroProps) {
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Light Background */}
+      {/* Background with Strong Overlay */}
       <div className="absolute inset-0">
         {backgroundImage ? (
           <>
@@ -47,21 +47,34 @@ export function PageHero({
                 backgroundImage: `url('${backgroundImage}')`,
               }}
             />
-            {/* Light overlay instead of dark */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/75 to-white/85" />
+            {/* Dark overlay for contrast */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `
+                  linear-gradient(135deg,
+                    rgba(28, 25, 23, 0.90) 0%,
+                    rgba(41, 37, 36, 0.86) 25%,
+                    rgba(28, 25, 23, 0.88) 50%,
+                    rgba(41, 37, 36, 0.84) 75%,
+                    rgba(28, 25, 23, 0.86) 100%
+                  )
+                `
+              }}
+            />
           </>
         ) : (
-          /* Clean gradient background */
+          /* Rich gradient background */
           <div
             className="absolute inset-0"
             style={{
               background: `
                 linear-gradient(135deg,
-                  #8B9DAF 0%,
-                  #9BAAB8 25%,
-                  #ABB7C4 50%,
-                  #BCC5CF 75%,
-                  #CDD4DC 100%
+                  #292524 0%,
+                  #44403c 25%,
+                  #57534e 50%,
+                  #44403c 75%,
+                  #292524 100%
                 )
               `,
             }}
@@ -77,8 +90,8 @@ export function PageHero({
                 45deg,
                 transparent,
                 transparent 60px,
-                rgba(0,0,0,0.5) 60px,
-                rgba(0,0,0,0.5) 61px
+                rgba(255,255,255,0.5) 60px,
+                rgba(255,255,255,0.5) 61px
               )
             `,
           }}
@@ -93,7 +106,7 @@ export function PageHero({
           {overline && (
             <motion.p
               className="text-sm md:text-base uppercase tracking-wider font-medium mb-6"
-              style={{ color: '#4a5568' }}
+              style={{ color: 'rgba(255, 255, 255, 0.75)' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -106,12 +119,13 @@ export function PageHero({
           <motion.h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.25rem, 5vw, 4rem)',
+              fontSize: 'clamp(2.25rem, 5vw, 4.5rem)',
               lineHeight: '1.1',
               letterSpacing: '-0.02em',
               fontWeight: 300,
-              color: '#1a1a1a',
+              color: '#ffffff',
               marginBottom: '24px',
+              textShadow: '0 2px 20px rgba(0,0,0,0.3)',
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -130,13 +144,14 @@ export function PageHero({
           {description && (
             <motion.p
               style={{
-                fontSize: 'clamp(1.05rem, 1.8vw, 1.3rem)',
-                lineHeight: '1.6',
-                letterSpacing: '0.005em',
+                fontSize: 'clamp(1.1rem, 1.9vw, 1.35rem)',
+                lineHeight: '1.65',
+                letterSpacing: '0.01em',
                 fontWeight: 400,
-                color: '#2d3748',
-                maxWidth: '800px',
+                color: 'rgba(255, 255, 255, 0.9)',
+                maxWidth: '850px',
                 margin: '0 auto 40px auto',
+                textShadow: '0 1px 10px rgba(0,0,0,0.2)',
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -156,14 +171,14 @@ export function PageHero({
               {primaryCTA && (
                 <Link
                   href={primaryCTA.href}
-                  className="group inline-flex items-center justify-center gap-3 text-white bg-stone-900 hover:bg-stone-800 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl"
+                  className="group inline-flex items-center justify-center gap-3 text-stone-900 bg-white hover:bg-stone-50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
                   style={{
                     padding: '18px 40px',
                     fontSize: '16px',
-                    fontWeight: 500,
+                    fontWeight: 600,
                     letterSpacing: '0.01em',
                     borderRadius: '4px',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+                    boxShadow: '0 4px 30px rgba(255,255,255,0.15)',
                   }}
                 >
                   <span>{primaryCTA.text}</span>
@@ -182,7 +197,7 @@ export function PageHero({
               {secondaryCTA && (
                 <Link
                   href={secondaryCTA.href}
-                  className="group inline-flex items-center justify-center gap-2.5 text-stone-900 border-2 border-stone-900/20 hover:border-stone-900/40 hover:bg-stone-900/5 transition-all duration-300 ease-out"
+                  className="group inline-flex items-center justify-center gap-2.5 text-white border-2 border-white/60 hover:border-white hover:bg-white/10 transition-all duration-300 ease-out"
                   style={{
                     padding: '16px 32px',
                     fontSize: '16px',
