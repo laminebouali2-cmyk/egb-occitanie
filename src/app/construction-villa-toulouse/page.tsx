@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ContactForm } from '@/components/ContactForm';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = {
   title: 'Construction Villa Toulouse | Constructeur Maison Sur-Mesure Haute-Garonne',
@@ -126,37 +127,21 @@ export default function ConstructionVillaToulousePage() {
       />
 
       {/* Hero */}
-      <section className="relative h-[75vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070')`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/80 via-stone-900/60 to-stone-900/80" />
-
-        <div className="relative z-10 container text-center text-white">
-          <p className="text-overline !text-white/80 mb-6">Construction de villa à Toulouse</p>
-          <h1 className="!text-white text-4xl md:text-6xl mb-6 font-light">
-            Construisez la villa
-            <br />
-            <span className="font-medium">qui vous ressemble</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-            À Toulouse et en Occitanie, nous donnons vie à votre projet de construction sur-mesure.
-            <br />
-            Du terrain nu à la remise des clés.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a href="#contact" className="btn btn-primary !bg-white !text-stone-900 hover:!bg-stone-100">
-              Devis gratuit sous 48h
-            </a>
-            <a href="tel:+33665015882" className="btn btn-secondary !border-white !text-white hover:!bg-white hover:!text-stone-900">
-              ☎ 06 65 01 58 82
-            </a>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        overline="Construction de villa à Toulouse"
+        title="Construisez la villa"
+        subtitle="qui vous ressemble"
+        description="À Toulouse et en Occitanie, nous donnons vie à votre projet de construction sur-mesure.<br />Du terrain nu à la remise des clés."
+        backgroundImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070"
+        primaryCTA={{
+          text: 'Devis gratuit sous 48h',
+          href: '#contact',
+        }}
+        secondaryCTA={{
+          text: '☎ 06 65 01 58 82',
+          href: 'tel:+33665015882',
+        }}
+      />
 
       {/* Trust Bar */}
       <section className="border-b border-stone-200 bg-stone-50 py-8">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ContactForm } from '@/components/ContactForm';
+import { PageHero } from '@/components/PageHero';
 
 export const metadata: Metadata = {
   title: 'Notre Méthode | Process Construction & Rénovation - EGB Occitanie',
@@ -197,29 +198,13 @@ export default function NotreMethodePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070')`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/80 via-stone-900/70 to-stone-900/80" />
-
-        <div className="relative z-10 container text-center text-white">
-          <p className="text-overline !text-white/80 mb-6">Notre méthode</p>
-          <h1 className="!text-white text-4xl md:text-6xl mb-6 font-light">
-            Un processus
-            <br />
-            <span className="font-medium">transparent & structuré</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light">
-            De la première rencontre à la remise des clés, chaque étape est planifiée,
-            <br />
-            documentée et partagée avec vous.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        overline="Notre méthode"
+        title="Un processus"
+        subtitle="transparent & structuré"
+        description="De la première rencontre à la remise des clés, chaque étape est planifiée,<br />documentée et partagée avec vous."
+        backgroundImage="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070"
+      />
 
       {/* Introduction */}
       <section className="py-20 md:py-32 bg-white">

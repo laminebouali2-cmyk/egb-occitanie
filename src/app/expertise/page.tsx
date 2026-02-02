@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import { PageHero } from "@/components/PageHero";
 
 // export const metadata: Metadata = {
 //   title: "Notre Expertise | Construction, Rénovation, Extension en Occitanie",
@@ -197,53 +198,13 @@ export default function ExpertisePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=2070')`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/80 via-stone-900/75 to-stone-900/80" />
-
-        <div className="relative z-10 container text-center text-white">
-          <motion.p
-            className="text-overline !text-white mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{
-              textShadow: '0 1px 8px rgba(0,0,0,0.6)',
-            }}
-          >
-            Nos expertises
-          </motion.p>
-          <motion.h1
-            className="!text-white mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            style={{
-              textShadow: '0 2px 20px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.7)',
-            }}
-          >
-            Ce que nous faisons
-            <br />
-            <span className="text-white/90">pour vous</span>
-          </motion.h1>
-          <motion.p
-            className="text-xl text-white max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            style={{
-              textShadow: '0 1px 10px rgba(0,0,0,0.6)',
-            }}
-          >
-            Quatre domaines d'intervention. Une même exigence : votre satisfaction totale.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        overline="Nos expertises"
+        title="Ce que nous faisons"
+        subtitle="pour vous"
+        description="Quatre domaines d'intervention. Une même exigence : votre satisfaction totale."
+        backgroundImage="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=2070"
+      />
 
       {/* Expertises Sections */}
       {expertises.map((expertise, index) => (
