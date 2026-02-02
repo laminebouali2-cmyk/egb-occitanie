@@ -41,3 +41,12 @@ next-env.d.ts
 # Misc
 *.log
 .vercel
+
+# Claude Code
+.agents
+.opencode
+
+# Claude MCP - Exclude memory file but keep config
+.claude/mcp/memory.json
+.claude/mcp/*.db
+.claude/skills/

@@ -140,13 +140,10 @@ export default function ProjetsPage() {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Image Placeholder */}
-                <div className="aspect-[4/3] img-container mb-6">
-                  <div
-                    className="w-full h-full"
-                    style={{
-                      background: `linear-gradient(135deg, #e5e5e5 0%, #d4d4d4 50%, #e5e5e5 100%)`,
-                    }}
-                  />
+                <div className="aspect-[4/3] img-container mb-6" style={{ backgroundColor: 'var(--color-stone-200)' }}>
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-xs" style={{ color: 'var(--color-stone-400)' }}>Image à venir</span>
+                  </div>
                 </div>
 
                 {/* Meta */}

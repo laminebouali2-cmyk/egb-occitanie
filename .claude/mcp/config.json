@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "supermemory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supermemory/mcp-server-memory"
+      ],
+      "env": {
+        "MEMORY_STORAGE_PATH": ".claude/mcp/memory.json"
+      }
+    }
+  }
+}

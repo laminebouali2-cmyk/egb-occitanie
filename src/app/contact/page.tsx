@@ -124,14 +124,12 @@ export default function ContactPage() {
       </section>
 
       {/* Map Placeholder */}
-      <section className="h-[400px] bg-[var(--color-surface)]">
-        <div
-          className="w-full h-full"
-          style={{
-            background:
-              "linear-gradient(180deg, #e5e5e5 0%, #d4d4d4 50%, #e5e5e5 100%)",
-          }}
-        />
+      <section className="h-[400px]" style={{ backgroundColor: 'var(--color-stone-200)' }}>
+        <div className="w-full h-full flex items-center justify-center">
+          <p className="text-sm" style={{ color: 'var(--color-stone-500)' }}>
+            Carte interactive à venir
+          </p>
+        </div>
       </section>
     </>
   );

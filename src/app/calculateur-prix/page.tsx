@@ -80,26 +80,26 @@ export default function CalculateurPrixPage() {
   };
 
   return (
-    <main className="min-h-screen bg-stone-50">
-      <section className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-900 text-white py-16">
+    <main className="min-h-screen bg-gray-50">
+      <section className="bg-white text-white py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="inline-block px-4 py-2 bg-emerald-600/20 border border-emerald-600/40 rounded-full mb-6">
-            <span className="text-emerald-400 font-medium text-sm">💰 CALCULATEUR GRATUIT</span>
+            <span className="text-emerald-400 font-medium text-sm"> CALCULATEUR GRATUIT</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Calculateur Prix Construction & Rénovation
           </h1>
-          <p className="text-xl text-stone-300">
+          <p className="text-xl text-gray-300">
             Estimez votre projet en 2 minutes • Résultat personnalisé gratuit
           </p>
         </div>
       </section>
 
-      <section className="py-4 bg-white border-b border-stone-200">
+      <section className="py-4 bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-sm text-stone-600">
+          <div className="text-sm text-gray-600">
             <Link href="/">Accueil</Link> <span className="mx-2">›</span>
-            <span className="text-stone-900 font-medium">Calculateur Prix</span>
+            <span className="text-gray-900 font-medium">Calculateur Prix</span>
           </div>
         </div>
       </section>
@@ -112,19 +112,19 @@ export default function CalculateurPrixPage() {
                 <div
                   key={s}
                   className={`w-full h-2 mx-1 rounded ${
-                    s <= step ? "bg-emerald-600" : "bg-stone-200"
+                    s <= step ? "bg-emerald-600" : "bg-gray-200"
                   }`}
                 />
               ))}
             </div>
-            <p className="text-sm text-stone-600 text-center">
+            <p className="text-sm text-gray-600 text-center">
               Étape {Math.min(step, 5)} sur 5
             </p>
           </div>
 
           {step === 1 && (
             <div className="bg-white rounded-lg shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-stone-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Quel est votre projet ?
               </h2>
               <div className="space-y-4">
@@ -139,10 +139,10 @@ export default function CalculateurPrixPage() {
                       setFormData({ ...formData, projectType: type.id });
                       handleNext();
                     }}
-                    className="w-full p-6 border-2 border-stone-200 hover:border-emerald-600 hover:bg-emerald-50 rounded-lg transition-all text-left"
+                    className="w-full p-6 border-2 border-gray-200 hover:border-emerald-600 hover:bg-emerald-50 rounded-lg transition-all text-left"
                   >
                     <span className="text-3xl mr-4">{type.icon}</span>
-                    <span className="text-lg font-semibold text-stone-900">{type.label}</span>
+                    <span className="text-lg font-semibold text-gray-900">{type.label}</span>
                   </button>
                 ))}
               </div>
@@ -151,7 +151,7 @@ export default function CalculateurPrixPage() {
 
           {step === 2 && (
             <div className="bg-white rounded-lg shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-stone-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Quelle surface ?
               </h2>
               <div className="mb-8">
@@ -167,9 +167,9 @@ export default function CalculateurPrixPage() {
                   step="10"
                   value={formData.surface}
                   onChange={(e) => setFormData({ ...formData, surface: parseInt(e.target.value) })}
-                  className="w-full h-3 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
-                <div className="flex justify-between text-sm text-stone-600 mt-2">
+                <div className="flex justify-between text-sm text-gray-600 mt-2">
                   <span>50m²</span>
                   <span>300m²</span>
                 </div>
@@ -185,13 +185,13 @@ export default function CalculateurPrixPage() {
 
           {step === 3 && (
             <div className="bg-white rounded-lg shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-stone-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Quel quartier ?
               </h2>
               <select
                 value={formData.quartier}
                 onChange={(e) => setFormData({ ...formData, quartier: e.target.value })}
-                className="w-full p-4 border-2 border-stone-200 rounded-lg text-lg mb-6"
+                className="w-full p-4 border-2 border-gray-200 rounded-lg text-lg mb-6"
               >
                 <option value="">Sélectionnez un quartier</option>
                 {quartiers.map((q) => (
@@ -201,7 +201,7 @@ export default function CalculateurPrixPage() {
               <button
                 onClick={handleNext}
                 disabled={!formData.quartier}
-                className="w-full px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors disabled:bg-stone-300 disabled:cursor-not-allowed"
+                className="w-full px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
               >
                 Continuer →
               </button>
@@ -210,7 +210,7 @@ export default function CalculateurPrixPage() {
 
           {step === 4 && (
             <div className="bg-white rounded-lg shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-stone-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Niveau de finition ?
               </h2>
               <div className="space-y-4">
@@ -225,10 +225,10 @@ export default function CalculateurPrixPage() {
                       setFormData({ ...formData, finition: fin.id });
                       handleNext();
                     }}
-                    className="w-full p-6 border-2 border-stone-200 hover:border-emerald-600 hover:bg-emerald-50 rounded-lg transition-all text-left"
+                    className="w-full p-6 border-2 border-gray-200 hover:border-emerald-600 hover:bg-emerald-50 rounded-lg transition-all text-left"
                   >
-                    <div className="font-bold text-lg text-stone-900">{fin.label}</div>
-                    <div className="text-sm text-stone-600 mt-1">{fin.desc}</div>
+                    <div className="font-bold text-lg text-gray-900">{fin.label}</div>
+                    <div className="text-sm text-gray-600 mt-1">{fin.desc}</div>
                   </button>
                 ))}
               </div>
@@ -237,10 +237,10 @@ export default function CalculateurPrixPage() {
 
           {step === 5 && !result && (
             <div className="bg-white rounded-lg shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-stone-900 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 Où envoyer votre estimation ?
               </h2>
-              <p className="text-stone-600 mb-6">
+              <p className="text-gray-600 mb-6">
                 Recevez votre estimation détaillée + guide gratuit construction/rénovation (PDF 40 pages)
               </p>
               <form
@@ -256,7 +256,7 @@ export default function CalculateurPrixPage() {
                   value={formData.nom}
                   onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
                   required
-                  className="w-full p-4 border-2 border-stone-200 rounded-lg"
+                  className="w-full p-4 border-2 border-gray-200 rounded-lg"
                 />
                 <input
                   type="email"
@@ -264,14 +264,14 @@ export default function CalculateurPrixPage() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
-                  className="w-full p-4 border-2 border-stone-200 rounded-lg"
+                  className="w-full p-4 border-2 border-gray-200 rounded-lg"
                 />
                 <input
                   type="tel"
                   placeholder="Votre téléphone (optionnel)"
                   value={formData.telephone}
                   onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
-                  className="w-full p-4 border-2 border-stone-200 rounded-lg"
+                  className="w-full p-4 border-2 border-gray-200 rounded-lg"
                 />
                 <button
                   type="submit"
@@ -279,7 +279,7 @@ export default function CalculateurPrixPage() {
                 >
                   Voir Mon Estimation 🎁
                 </button>
-                <p className="text-xs text-stone-500 text-center">
+                <p className="text-xs text-gray-500 text-center">
                   Vos données sont sécurisées. Nous ne vendons jamais vos informations.
                 </p>
               </form>
@@ -290,17 +290,17 @@ export default function CalculateurPrixPage() {
             <div className="bg-white rounded-lg shadow-xl p-8">
               <div className="text-center mb-8">
                 <div className="inline-block px-4 py-2 bg-green-100 text-green-800 rounded-full mb-4">
-                  ✅ Estimation calculée
+                   Estimation calculée
                 </div>
-                <h2 className="text-2xl font-bold text-stone-900 mb-2">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   Votre Projet : {formData.surface}m²
                 </h2>
-                <p className="text-stone-600">
+                <p className="text-gray-600">
                   {formData.projectType === "construction" ? "Construction neuve" : formData.projectType === "renovation" ? "Rénovation complète" : "Extension"} • Finition {formData.finition}
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white rounded-lg p-8 mb-8">
+              <div className="bg-white text-white rounded-lg p-8 mb-8">
                 <div className="text-center">
                   <div className="text-sm mb-2">Budget estimé</div>
                   <div className="text-4xl md:text-5xl font-bold mb-2">
@@ -312,7 +312,7 @@ export default function CalculateurPrixPage() {
 
               <div className="space-y-4 mb-8">
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <div className="font-bold text-blue-900 mb-2">✉️ Email envoyé !</div>
+                  <div className="font-bold text-blue-900 mb-2"> Email envoyé !</div>
                   <div className="text-sm text-blue-800">
                     Nous vous avons envoyé votre estimation détaillée + guide PDF gratuit à <strong>{formData.email}</strong>
                   </div>
@@ -330,7 +330,7 @@ export default function CalculateurPrixPage() {
                   href="tel:+33582950495"
                   className="block text-center px-8 py-4 border-2 border-emerald-600 text-emerald-900 font-bold rounded-lg hover:bg-emerald-50 transition-colors"
                 >
-                  📱 05 82 95 04 95
+                   05 82 95 04 95
                 </a>
               </div>
             </div>
@@ -343,15 +343,15 @@ export default function CalculateurPrixPage() {
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold text-emerald-700 mb-2">150+</div>
-              <div className="text-stone-600">Projets réalisés</div>
+              <div className="text-gray-600">Projets réalisés</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-emerald-700 mb-2">4.9/5</div>
-              <div className="text-stone-600">Note moyenne clients</div>
+              <div className="text-gray-600">Note moyenne clients</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-emerald-700 mb-2">48h</div>
-              <div className="text-stone-600">Devis détaillé gratuit</div>
+              <div className="text-gray-600">Devis détaillé gratuit</div>
             </div>
           </div>
         </div>

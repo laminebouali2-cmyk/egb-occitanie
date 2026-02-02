@@ -27,7 +27,7 @@ export default function MentionsLegalesPage() {
               <p className="text-[var(--color-text-secondary)]">
                 Email : contact@egb-occitanie.fr
                 <br />
-                Téléphone : 05 00 00 00 00
+                Téléphone : 06 65 01 58 82
               </p>
             </section>
 

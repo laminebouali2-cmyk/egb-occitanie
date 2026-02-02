@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Avis Clients Construction & Rénovation Toulouse - Note 4.8/5",
-  description: "Lisez les avis de nos clients sur nos projets construction villa, rénovation maison, extension Toulouse. Note moyenne 4.8/5 basée sur 47 avis vérifiés. Témoignages réels.",
+  description: "Lisez les avis de nos clients sur nos projets construction villa, rénovation maison, extension Toulouse. Note moyenne 4.8/5 basée sur 9 avis vérifiés. Témoignages réels détaillés.",
   keywords: ["avis egb occitanie", "avis constructeur toulouse", "témoignages clients construction", "avis rénovation toulouse"],
 };
 
