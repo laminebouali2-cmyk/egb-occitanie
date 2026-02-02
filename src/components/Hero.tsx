@@ -87,12 +87,12 @@ export function Hero() {
             className="text-white mb-6"
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2rem, 4.5vw, 3.25rem)', // 32px mobile → 52px desktop
-              lineHeight: '1.2',
-              letterSpacing: '-0.01em',
-              fontWeight: 500,
-              maxWidth: '720px',
-              margin: '0 auto 24px auto',
+              fontSize: 'clamp(2.25rem, 5vw, 3.75rem)', // 36px mobile → 60px desktop
+              lineHeight: '1.15',
+              letterSpacing: '-0.02em',
+              fontWeight: 400,
+              maxWidth: '800px',
+              margin: '0 auto 28px auto',
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,14 +105,14 @@ export function Hero() {
 
           {/* SUBHEADLINE */}
           <motion.p
-            className="text-white/85 mb-8"
+            className="text-white/90 mb-10"
             style={{
-              fontSize: 'clamp(0.95rem, 1.4vw, 1.125rem)', // 15px mobile → 18px desktop
-              lineHeight: '1.6',
-              letterSpacing: '0.005em',
+              fontSize: 'clamp(1rem, 1.5vw, 1.25rem)', // 16px mobile → 20px desktop
+              lineHeight: '1.65',
+              letterSpacing: '0.01em',
               fontWeight: 300,
-              maxWidth: '600px',
-              margin: '0 auto 32px auto',
+              maxWidth: '640px',
+              margin: '0 auto 40px auto',
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,28 +123,52 @@ export function Hero() {
 
           {/* CTA PRIMAIRE */}
           <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: [0.19, 1.0, 0.22, 1.0] }}
           >
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center gap-2.5 text-stone-900 bg-white hover:bg-stone-50 transition-all duration-300 ease-out"
+              className="group inline-flex items-center justify-center gap-3 text-stone-900 bg-white hover:bg-stone-50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
               style={{
-                padding: '16px 36px',
-                fontSize: '15px',
+                padding: '18px 40px',
+                fontSize: '16px',
                 fontWeight: 500,
-                letterSpacing: '0.02em',
+                letterSpacing: '0.01em',
                 borderRadius: '2px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+                boxShadow: '0 8px 30px rgba(0,0,0,0.25)',
               }}
             >
               <span>Discuter de mon projet</span>
               <svg
-                className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1"
+                className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1.5"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+
+            <Link
+              href="/realisations"
+              className="group inline-flex items-center justify-center gap-2.5 text-white/90 hover:text-white border border-white/30 hover:border-white/60 transition-all duration-300 ease-out hover:bg-white/5"
+              style={{
+                padding: '18px 32px',
+                fontSize: '15px',
+                fontWeight: 400,
+                letterSpacing: '0.01em',
+                borderRadius: '2px',
+              }}
+            >
+              <span>Voir nos réalisations</span>
+              <svg
+                className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -154,20 +178,20 @@ export function Hero() {
 
           {/* TRUST SIGNALS */}
           <motion.div
-            className="mt-8 text-white/60 text-center"
+            className="mt-10 text-white/70 text-center"
             style={{
-              fontSize: '13px',
+              fontSize: '14px',
               fontWeight: 300,
-              letterSpacing: '0.05em',
+              letterSpacing: '0.04em',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             Rénovation & construction d'excellence
-            <span className="mx-3 text-white/40">•</span>
+            <span className="mx-4 text-white/50">•</span>
             Projets sur-mesure
-            <span className="mx-3 text-white/40">•</span>
+            <span className="mx-4 text-white/50">•</span>
             Toulouse & Occitanie
           </motion.div>
 
