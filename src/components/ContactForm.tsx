@@ -112,19 +112,74 @@ export function ContactForm() {
           <option value="construction">Construction neuve</option>
           <option value="renovation">Rénovation</option>
           <option value="extension">Extension</option>
+          <option value="sinistres">Gestion de sinistres</option>
+          <option value="division">Division d'immeuble</option>
           <option value="other">Autre</option>
+        </select>
+      </div>
+
+      {/* Location & Budget */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="location">Localisation du projet</label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            required
+            placeholder="Ex: Toulouse, Balma, Castanet..."
+          />
+        </div>
+        <div>
+          <label htmlFor="budget">Budget envisagé</label>
+          <select
+            id="budget"
+            name="budget"
+            required
+            className="w-full p-4 bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] focus:border-[var(--color-primary)] outline-none transition-colors"
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Sélectionnez une fourchette
+            </option>
+            <option value="<100k">Moins de 100 000 €</option>
+            <option value="100-200k">100 000 € - 200 000 €</option>
+            <option value="200-500k">200 000 € - 500 000 €</option>
+            <option value=">500k">Plus de 500 000 €</option>
+            <option value="non-defini">Non défini</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Timeline */}
+      <div>
+        <label htmlFor="timeline">Échéance souhaitée</label>
+        <select
+          id="timeline"
+          name="timeline"
+          required
+          className="w-full p-4 bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] focus:border-[var(--color-primary)] outline-none transition-colors"
+          defaultValue=""
+        >
+          <option value="" disabled>
+            Quand souhaitez-vous démarrer ?
+          </option>
+          <option value="urgent">Dès que possible (moins de 3 mois)</option>
+          <option value="moyen-terme">Moyen terme (3-6 mois)</option>
+          <option value="long-terme">Long terme (6-12 mois)</option>
+          <option value="reflexion">En phase de réflexion (plus de 12 mois)</option>
         </select>
       </div>
 
       {/* Message */}
       <div>
-        <label htmlFor="message">Votre message</label>
+        <label htmlFor="message">Décrivez votre projet</label>
         <textarea
           id="message"
           name="message"
           rows={5}
           required
-          placeholder="Décrivez votre projet en quelques mots..."
+          placeholder="Expliquez-nous votre projet : vos besoins, vos contraintes, vos attentes..."
         />
       </div>
 

@@ -3,20 +3,34 @@ export function StructuredData() {
     "@context": "https://schema.org",
     "@type": "GeneralContractor",
     "@id": "https://egb-occitanie.fr/#organization",
-    "name": "EGB Occitanie",
+    "name": "EGB OCCITANIE",
+    "legalName": "EGB OCCITANIE – SAS au capital social variable",
     "alternateName": "Entreprise Générale de Bâtiment Occitanie",
-    "description": "Maîtres d'œuvre de projets d'exception à Toulouse et en Occitanie. Construction neuve, rénovation, extension de villas et maisons haut de gamme.",
+    "description": "Maîtres d'œuvre de projets d'exception à Toulouse et en Occitanie. Construction neuve, rénovation, extension de villas et maisons haut de gamme. 15 ans d'expertise, 200+ réalisations.",
     "url": "https://egb-occitanie.fr",
     "telephone": "+33665015882",
     "email": "contact@egb-occitanie.fr",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "3 Rue de l'équipement",
-      "addressLocality": "Castanet-Tolosan",
-      "postalCode": "31320",
+      "streetAddress": "18 rue du Lauragais",
+      "addressLocality": "Deyme",
+      "postalCode": "31450",
       "addressCountry": "FR",
       "addressRegion": "Occitanie"
     },
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "SIRET",
+      "value": "893 232 801 00025"
+    },
+    "vatID": "FR83893232801",
+    "founder": {
+      "@type": "Person",
+      "name": "Sergiu Lungu",
+      "jobTitle": "Dirigeant"
+    },
+    "foundingDate": "2008",
+    "slogan": "Nous construisons ce qui dure",
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": "43.5528",
@@ -107,10 +121,14 @@ export function StructuredData() {
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "5",
+      "ratingValue": "5.0",
+      "reviewCount": "25",
       "bestRating": "5",
       "worstRating": "1"
+    },
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "15"
     }
   };
 

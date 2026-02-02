@@ -4,6 +4,8 @@ import { TrustBar } from "@/components/TrustBar";
 import { Introduction } from "@/components/Introduction";
 import { Expertises } from "@/components/Expertises";
 import { Realisations } from "@/components/Realisations";
+import { Testimonials } from "@/components/Testimonials";
+import { FAQ } from "@/components/FAQ";
 import { Approche } from "@/components/Approche";
 import { ContactSection } from "@/components/ContactSection";
 
@@ -16,6 +18,8 @@ export default function Home() {
       <Introduction />
       <Expertises />
       <Realisations />
+      <Testimonials />
+      <FAQ />
       <Approche />
       <ContactSection />
     </>
