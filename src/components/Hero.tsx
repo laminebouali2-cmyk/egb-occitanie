@@ -48,15 +48,18 @@ export function Hero() {
           style={{
             background: `
               linear-gradient(135deg,
-                #1C1917 0%,
-                #292524 25%,
-                #44403C 50%,
-                #57534E 75%,
-                #78716C 100%
+                #0F0E0D 0%,
+                #1C1917 25%,
+                #292524 50%,
+                #332F2C 75%,
+                #3F3A36 100%
               )
             `
           }}
         />
+
+        {/* Overlay sombre pour contraste optimal */}
+        <div className="absolute inset-0 bg-black/20" />
 
         {/* Overlay texture subtile */}
         <div
@@ -93,6 +96,7 @@ export function Hero() {
               fontWeight: 400,
               maxWidth: '800px',
               margin: '0 auto 28px auto',
+              textShadow: '0 2px 20px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.7)',
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,7 +109,7 @@ export function Hero() {
 
           {/* SUBHEADLINE */}
           <motion.p
-            className="text-white/90 mb-10"
+            className="text-white mb-10"
             style={{
               fontSize: 'clamp(1rem, 1.5vw, 1.25rem)', // 16px mobile → 20px desktop
               lineHeight: '1.65',
@@ -113,6 +117,7 @@ export function Hero() {
               fontWeight: 300,
               maxWidth: '640px',
               margin: '0 auto 40px auto',
+              textShadow: '0 1px 10px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.8)',
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
