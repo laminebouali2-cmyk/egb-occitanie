@@ -5,19 +5,19 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 /**
- * HERO SECTION — Enhanced High-Impact Hero
+ * HERO SECTION — Light & Airy Architecture Hero
  *
  * Design Philosophy:
- * - Maximum contrast for readability
- * - Bold, impactful design with depth
+ * - Bright, clear aesthetic with blue sky and modern villa
+ * - Clean typography with strong readability
  * - Professional and aspirational
- * - Clear hierarchy and strong CTAs
+ * - Crisp CTAs with clear hierarchy
  *
  * Layout:
- * - Rich dark background with architectural image
- * - Strong contrast white text
+ * - Light background with clear architecture image
+ * - Centered content with excellent contrast
  * - Subtle parallax on scroll
- * - Gradient overlays for depth
+ * - Minimal overlay for text readability
  */
 
 export function Hero() {
@@ -35,32 +35,32 @@ export function Hero() {
     <section
       ref={containerRef}
       className="relative flex items-center justify-center overflow-hidden"
-      style={{ minHeight: '85vh', maxHeight: '95vh' }}
+      style={{ minHeight: '100vh' }}
     >
-      {/* Background Image with Overlay */}
+      {/* Light Background with Clear Image */}
       <motion.div
         className="absolute inset-0"
         style={{ y }}
       >
-        {/* High-quality architecture background image */}
+        {/* Clear blue sky + modern villa image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075')`,
           }}
         />
 
-        {/* Dark gradient overlay for contrast and readability */}
+        {/* Very light overlay for subtle text contrast only */}
         <div
           className="absolute inset-0"
           style={{
             background: `
               linear-gradient(135deg,
-                rgba(28, 25, 23, 0.92) 0%,
-                rgba(41, 37, 36, 0.88) 25%,
-                rgba(28, 25, 23, 0.90) 50%,
-                rgba(41, 37, 36, 0.86) 75%,
-                rgba(28, 25, 23, 0.88) 100%
+                rgba(255, 255, 255, 0.45) 0%,
+                rgba(255, 255, 255, 0.35) 25%,
+                rgba(255, 255, 255, 0.40) 50%,
+                rgba(255, 255, 255, 0.30) 75%,
+                rgba(255, 255, 255, 0.35) 100%
               )
             `
           }}
@@ -75,8 +75,8 @@ export function Hero() {
                 45deg,
                 transparent,
                 transparent 60px,
-                rgba(255,255,255,0.5) 60px,
-                rgba(255,255,255,0.5) 61px
+                rgba(0,0,0,0.3) 60px,
+                rgba(0,0,0,0.3) 61px
               )
             `
           }}
@@ -90,7 +90,7 @@ export function Hero() {
       >
         <div className="max-w-[1200px] mx-auto text-center">
 
-          {/* HEADLINE - White text on dark background for maximum contrast */}
+          {/* HEADLINE - Dark text on light background for maximum contrast */}
           <motion.h1
             style={{
               fontFamily: 'var(--font-serif)',
@@ -100,8 +100,8 @@ export function Hero() {
               fontWeight: 300,
               maxWidth: '950px',
               margin: '0 auto 32px auto',
-              color: '#ffffff',
-              textShadow: '0 2px 20px rgba(0,0,0,0.3)',
+              color: '#1a1a1a',
+              textShadow: '0 2px 30px rgba(255,255,255,0.9), 0 0 60px rgba(255,255,255,0.7)',
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,11 +118,11 @@ export function Hero() {
               fontSize: 'clamp(1.1rem, 1.9vw, 1.4rem)',
               lineHeight: '1.65',
               letterSpacing: '0.01em',
-              fontWeight: 400,
+              fontWeight: 500,
               maxWidth: '750px',
               margin: '0 auto 48px auto',
-              color: 'rgba(255, 255, 255, 0.92)',
-              textShadow: '0 1px 10px rgba(0,0,0,0.2)',
+              color: '#2d3748',
+              textShadow: '0 1px 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.6)',
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -142,14 +142,14 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center gap-3 text-stone-900 bg-white hover:bg-stone-50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
+              className="group inline-flex items-center justify-center gap-3 text-white bg-stone-900 hover:bg-stone-800 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
               style={{
                 padding: '20px 44px',
                 fontSize: '16px',
                 fontWeight: 600,
                 letterSpacing: '0.01em',
                 borderRadius: '4px',
-                boxShadow: '0 4px 30px rgba(255,255,255,0.15)',
+                boxShadow: '0 4px 30px rgba(0,0,0,0.2)',
               }}
             >
               <span>Démarrer un projet</span>
@@ -166,13 +166,15 @@ export function Hero() {
 
             <Link
               href="/projets"
-              className="group inline-flex items-center justify-center gap-2.5 text-white border-2 border-white/60 hover:border-white hover:bg-white/10 transition-all duration-300 ease-out"
+              className="group inline-flex items-center justify-center gap-2.5 text-stone-900 border-2 border-stone-900/30 hover:border-stone-900/60 hover:bg-stone-900/10 transition-all duration-300 ease-out"
               style={{
                 padding: '18px 36px',
                 fontSize: '16px',
                 fontWeight: 500,
                 letterSpacing: '0.01em',
                 borderRadius: '4px',
+                background: 'rgba(255, 255, 255, 0.7)',
+                backdropFilter: 'blur(10px)',
               }}
             >
               <span>Voir nos réalisations</span>
@@ -193,18 +195,19 @@ export function Hero() {
             className="mt-12 text-center"
             style={{
               fontSize: '14px',
-              fontWeight: 400,
+              fontWeight: 500,
               letterSpacing: '0.03em',
-              color: 'rgba(255, 255, 255, 0.75)',
+              color: '#57534e',
+              textShadow: '0 1px 10px rgba(255,255,255,0.8)',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             Construction d'excellence
-            <span className="mx-4" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>•</span>
+            <span className="mx-4" style={{ color: '#a8a29e' }}>•</span>
             Projets sur-mesure
-            <span className="mx-4" style={{ color: 'rgba(255, 255, 255, 0.4)' }}>•</span>
+            <span className="mx-4" style={{ color: '#a8a29e' }}>•</span>
             Toulouse & Occitanie
           </motion.div>
 
@@ -221,7 +224,13 @@ export function Hero() {
           opacity: useTransform(scrollYProgress, [0, 0.2], [1, 0])
         }}
       >
-        <div className="flex flex-col items-center gap-2" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+        <div
+          className="flex flex-col items-center gap-2"
+          style={{
+            color: '#57534e',
+            textShadow: '0 1px 10px rgba(255,255,255,0.8)'
+          }}
+        >
           <p className="text-xs uppercase tracking-widest font-medium">Découvrir</p>
           <motion.svg
             className="w-6 h-6"
