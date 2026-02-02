@@ -18,11 +18,22 @@ export default function MentionsLegalesPage() {
                 Éditeur du site
               </h2>
               <p className="text-[var(--color-text-secondary)] mb-4">
-                EGB Occitanie
+                EGB OCCITANIE – SAS au capital social variable
                 <br />
                 Entreprise générale de bâtiment
                 <br />
-                Toulouse, Occitanie, France
+                Siège social : 18 rue du Lauragais, 31450 Deyme
+                <br />
+                SIRET : 893 232 801 00025
+                <br />
+                TVA intracommunautaire : FR83893232801
+                <br />
+                RCS Toulouse
+              </p>
+              <p className="text-[var(--color-text-secondary)] mb-4">
+                Dirigeant : Sergiu Lungu
+                <br />
+                Directeur de la publication : Lamine Bouali
               </p>
               <p className="text-[var(--color-text-secondary)]">
                 Email : contact@egb-occitanie.fr
