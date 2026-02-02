@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
 
+  // Turbopack configuration for TLS
+  experimental: {
+    turbopackUseSystemTlsCerts: true,
+  },
+
   // Image optimization
   images: {
     formats: ["image/avif", "image/webp"],
