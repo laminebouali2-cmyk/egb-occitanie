@@ -52,17 +52,8 @@ export function PageHero({
   stats,
 }: PageHeroProps) {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden"
-      style={{
-        minHeight: '60vh', // Mobile-first
-      }}
-      // eslint-disable-next-line react/no-unknown-property
-      css={{
-        '@media (min-width: 768px)': {
-          minHeight: '75vh',
-        }
-      }}
-    >
+    <section className="relative flex items-center justify-center overflow-hidden min-h-[60vh] md:min-h-[75vh]">
+      {/* Mobile-first: 60vh sur mobile, 75vh sur desktop (≥768px) */}
       {/* Background Image — Valorisée avec overlay minimal */}
       <div className="absolute inset-0">
         {backgroundImage ? (

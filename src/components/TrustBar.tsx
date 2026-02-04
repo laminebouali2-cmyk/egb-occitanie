@@ -49,30 +49,30 @@ const keyStats = [
 
 // Logos partenaires — À remplacer par vraies images
 // Structure attendue : /public/partners/nom-partenaire.png (PNG transparent, 400×200px)
-const partners = [
+const partners: Array<{ name: string; logo?: string; placeholder: string }> = [
   {
     name: 'Architecte Partenaire 1',
-    // logo: '/partners/architecte-1.png', // À ajouter
+    logo: undefined, // À ajouter: '/partners/architecte-1.png'
     placeholder: 'AP1',
   },
   {
     name: 'Architecte Partenaire 2',
-    // logo: '/partners/architecte-2.png',
+    logo: undefined, // À ajouter: '/partners/architecte-2.png'
     placeholder: 'AP2',
   },
   {
     name: 'Bureau d\'études',
-    // logo: '/partners/bureau-etudes.png',
+    logo: undefined, // À ajouter: '/partners/bureau-etudes.png'
     placeholder: 'BE',
   },
   {
     name: 'Assureur Décennale',
-    // logo: '/partners/assureur.png',
+    logo: undefined, // À ajouter: '/partners/assureur.png'
     placeholder: 'Assurance',
   },
   {
     name: 'Bureau de contrôle',
-    // logo: '/partners/bureau-controle.png',
+    logo: undefined, // À ajouter: '/partners/bureau-controle.png'
     placeholder: 'BC',
   },
 ];
