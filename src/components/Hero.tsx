@@ -20,10 +20,10 @@ import { motion, useScroll, useTransform } from 'framer-motion';
  * - CTA : Action claire et engageante
  * - Trust minimal mais puissant (pas de décoration)
  *
- * TODO après réception images réelles:
- * - Remplacer backgroundImage par vraie photo projet Toulouse
- * - Ajuster overlay selon composition photo (actuellement minimal)
- * - A/B tester variantes de headline avec chiffres différents
+ * Image Hero:
+ * - Photo réelle villa moderne Occitanie (oliviers, lavande, architecture contemporaine)
+ * - Overlay minimal optimisé pour golden hour lighting
+ * - A/B tester variantes de headline avec chiffres différents (à venir)
  */
 
 export function Hero() {
@@ -48,24 +48,24 @@ export function Hero() {
         className="absolute inset-0"
         style={{ y }}
       >
-        {/* TEMPORAIRE : Image stock — À REMPLACER par vraie photo projet */}
+        {/* Image Hero — Villa moderne Occitanie avec oliviers et lavande */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075')`,
+            backgroundImage: `url('/hero-villa-occitanie.jpg')`,
           }}
         />
 
-        {/* Overlay MINIMAL — Seulement pour garantir lisibilité texte
-            Ajuster opacité selon composition de la vraie photo finale */}
+        {/* Overlay MINIMAL — Optimisé pour l'image golden hour
+            L'image a déjà un bel éclairage naturel, on garde l'overlay très léger */}
         <div
           className="absolute inset-0"
           style={{
             background: `
               linear-gradient(to bottom,
-                rgba(0, 0, 0, 0.15) 0%,
-                rgba(0, 0, 0, 0.25) 40%,
-                rgba(0, 0, 0, 0.35) 100%
+                rgba(0, 0, 0, 0.08) 0%,
+                rgba(0, 0, 0, 0.18) 40%,
+                rgba(0, 0, 0, 0.28) 100%
               )
             `
           }}
