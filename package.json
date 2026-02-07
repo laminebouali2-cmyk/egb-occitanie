@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "check:images": "bash scripts/check-image-sizes.sh"
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
