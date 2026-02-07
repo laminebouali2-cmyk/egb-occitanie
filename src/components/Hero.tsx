@@ -5,18 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-/**
- * HERO SECTION — Full-screen Premium with Background Image
- *
- * Design inspired by cinematic real-estate heroes:
- * - Full viewport height with villa background image
- * - Gradient overlay for text readability
- * - Subtle noise texture for premium feel
- * - Overline + Headline (with italic accent) + Subtitle + CTAs + Trust signals
- * - Parallax content fade on scroll
- * - Scroll indicator at bottom
- */
-
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -24,10 +12,8 @@ export function Hero() {
     offset: ['start start', 'end start'],
   });
 
-  // Parallax: content moves up and fades as user scrolls
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  // Scroll indicator fades out quickly
   const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   const scrollToSection = (href: string) => {
@@ -42,7 +28,7 @@ export function Hero() {
       ref={containerRef}
       className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image with Overlay */}
+      {/* Background Image */}
       <div className="absolute inset-0">
         <Image
           src="/hero-villa.jpg"
@@ -51,21 +37,14 @@ export function Hero() {
           priority
           className="object-cover"
           sizes="100vw"
-          quality={85}
+          quality={90}
         />
-        {/* Gradient Overlay */}
+        {/* Light overlay — keeps image luminous */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to bottom, rgba(12,10,9,0.70) 0%, rgba(12,10,9,0.50) 50%, rgba(12,10,9,0.80) 100%)',
-          }}
-        />
-        {/* Subtle noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+              'linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.03) 40%, rgba(0,0,0,0.18) 100%)',
           }}
         />
       </div>
@@ -75,36 +54,38 @@ export function Hero() {
         className="relative z-10 w-full px-6 md:px-12"
         style={{ y: contentY, opacity: contentOpacity }}
       >
-        <div className="max-w-[1000px] mx-auto text-center">
+        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
           {/* Overline */}
           <motion.div
-            className="mb-6"
+            className="mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.19, 1.0, 0.22, 1.0] }}
           >
             <span
-              className="text-white/60"
               style={{
+                color: 'rgba(255,255,255,0.7)',
                 fontSize: '0.75rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.3em',
                 fontWeight: 500,
+                fontFamily: 'var(--font-sans)',
               }}
             >
-              Construction & Rénovation Premium
+              Prime Construction & Rénovation
             </span>
           </motion.div>
 
-          {/* HEADLINE */}
+          {/* HEADLINE — all white, forced via inline styles to override globals.css */}
           <motion.h1
-            className="text-white mb-8"
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.25rem, 6vw, 4.5rem)',
-              lineHeight: 1.1,
+              fontSize: 'clamp(2.5rem, 6.5vw, 5rem)',
+              lineHeight: 1.08,
               letterSpacing: '-0.02em',
               fontWeight: 400,
+              color: '#FFFFFF',
+              marginBottom: '2rem',
             }}
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -117,21 +98,29 @@ export function Hero() {
             Dès leur conception.
           </motion.h1>
 
-          {/* SUBHEADLINE */}
-          <motion.p
-            className="text-white/80 mb-12 mx-auto"
-            style={{
-              fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
-              lineHeight: 1.7,
-              maxWidth: '600px',
-            }}
+          {/* SUBHEADLINE — two separate lines like Kimi */}
+          <motion.div
+            style={{ marginBottom: '2.5rem' }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.19, 1.0, 0.22, 1.0] }}
           >
-            EGB Occitanie conçoit et réalise les projets bâtis pour durer.
-            Gros œuvre, rénovation, extension — sur-mesure en Occitanie.
-          </motion.p>
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.9)',
+                fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
+                lineHeight: 1.8,
+                fontWeight: 300,
+                maxWidth: '600px',
+                margin: '0 auto',
+                fontFamily: 'var(--font-sans)',
+              }}
+            >
+              EGB Occitanie conçoit et réalise les projets bâtis pour durer.
+              <br />
+              Gros œuvre, rénovation, extension — sur-mesure en Occitanie.
+            </p>
+          </motion.div>
 
           {/* CTA BUTTONS */}
           <motion.div
@@ -142,13 +131,14 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-3 bg-white hover:bg-stone-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className="group inline-flex items-center gap-3 transition-all duration-300 hover:-translate-y-1"
               style={{
-                padding: '16px 32px',
+                padding: '16px 36px',
                 fontSize: '14px',
                 fontWeight: 500,
                 letterSpacing: '0.02em',
-                color: 'var(--color-stone-900)',
+                color: '#1C1917',
+                background: '#FFFFFF',
               }}
             >
               <span>Discuter de mon projet</span>
@@ -165,12 +155,15 @@ export function Hero() {
 
             <Link
               href="/projets"
-              className="group inline-flex items-center gap-3 text-white border border-white/40 hover:bg-white/10 hover:border-white/60 transition-all duration-300"
+              className="group inline-flex items-center gap-3 transition-all duration-300"
               style={{
-                padding: '16px 32px',
+                padding: '16px 36px',
                 fontSize: '14px',
                 fontWeight: 500,
                 letterSpacing: '0.02em',
+                color: '#FFFFFF',
+                border: '1px solid rgba(255,255,255,0.5)',
+                background: 'transparent',
               }}
             >
               <span>Voir nos réalisations</span>
@@ -188,20 +181,22 @@ export function Hero() {
 
           {/* TRUST SIGNALS */}
           <motion.div
-            className="mt-16 text-white/50 text-center"
             style={{
+              marginTop: '4rem',
               fontSize: '13px',
               fontWeight: 400,
               letterSpacing: '0.08em',
+              color: 'rgba(255,255,255,0.5)',
+              textAlign: 'center',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
           >
             <span>Toulouse & Occitanie</span>
-            <span className="mx-4">•</span>
+            <span style={{ margin: '0 1rem' }}>•</span>
             <span>15 ans d&apos;expertise</span>
-            <span className="mx-4">•</span>
+            <span style={{ margin: '0 1rem' }}>•</span>
             <span>Projets sur-mesure</span>
           </motion.div>
         </div>
@@ -217,7 +212,8 @@ export function Hero() {
       >
         <button
           onClick={() => scrollToSection('#trustbar')}
-          className="flex flex-col items-center gap-2 text-white/50 hover:text-white/80 transition-colors cursor-pointer"
+          className="flex flex-col items-center gap-2 transition-colors cursor-pointer"
+          style={{ color: 'rgba(255,255,255,0.5)' }}
         >
           <span className="text-xs uppercase tracking-widest">Découvrir</span>
           <motion.svg
