@@ -44,7 +44,7 @@ export function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to bottom, rgba(30,30,30,0.25) 0%, rgba(20,20,20,0.15) 40%, rgba(15,15,15,0.35) 100%)',
+              'linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.03) 40%, rgba(0,0,0,0.18) 100%)',
           }}
         />
       </div>
@@ -93,7 +93,7 @@ export function Hero() {
           >
             Certaines constructions
             <br />
-            <span style={{ fontStyle: 'italic', color: '#E8C17A' }}>deviennent patrimoine.</span>
+            <span style={{ fontStyle: 'italic' }}>deviennent patrimoine.</span>
             <br />
             Dès leur conception.
           </motion.h1>
