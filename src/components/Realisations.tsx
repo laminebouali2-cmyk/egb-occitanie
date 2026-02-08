@@ -2,77 +2,352 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
 
-const featuredProject = {
-  title: 'Villa Contemporaine',
-  category: 'Construction',
-  location: 'Toulouse',
-  year: '2024',
-  description: 'Une villa contemporaine alliant architecture moderne et matériaux nobles. Piscine miroir, terrasses panoramiques et finitions d\'exception.',
-  image: '/realisation-1.jpg',
-};
+/**
+ * Realisations — Editorial portfolio grid
+ *
+ * Inspired by airelles.com and architectural magazines.
+ * Asymmetric layout with breathing room.
+ * Large hero image + offset smaller images.
+ * Minimal text — let the images speak.
+ * Premium hover interactions.
+ */
 
 const projects = [
   {
-    title: 'Appartement Toulousain',
-    category: 'Rénovation complète',
+    title: 'Villa Contemporaine',
+    subtitle: 'Construction neuve',
     location: 'Toulouse',
+    description:
+      'Architecture moderne, matériaux nobles, finitions d\'exception. Une villa conçue comme un lieu de vie unique.',
+    image: '/realisation-1.jpg',
+    aspect: 'aspect-[4/3]',
+  },
+  {
+    title: 'Appartement Toulousain',
+    subtitle: 'Rénovation complète',
+    location: 'Toulouse Centre',
+    description:
+      'Transformer l\'existant en quelque chose qui vous ressemble. Chaque détail repensé.',
     image: '/realisation-2.jpg',
+    aspect: 'aspect-[3/4]',
   },
   {
     title: 'Extension Jardin',
-    category: 'Extension',
+    subtitle: 'Extension sur-mesure',
     location: 'Haute-Garonne',
+    description:
+      'Agrandir sans dénaturer. Un volume contemporain en harmonie avec l\'existant.',
     image: '/realisation-3.jpg',
+    aspect: 'aspect-[3/4]',
   },
   {
     title: 'Mas Provençal',
-    category: 'Construction',
+    subtitle: 'Construction',
     location: 'Occitanie',
+    description:
+      'Le charme de la tradition, le confort du contemporain. Un mas pensé pour traverser les générations.',
     image: '/realisation-4.jpg',
+    aspect: 'aspect-[4/3]',
   },
 ];
 
 export function Realisations() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  });
-
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
 
   return (
-    <section ref={sectionRef} className="section bg-white overflow-hidden">
+    <section ref={sectionRef} className="bg-white overflow-hidden" style={{ padding: 'clamp(5rem, 12vw, 10rem) 0' }}>
       <div className="container">
-        {/* Section Header */}
+        {/* Section Header — editorial, left-aligned */}
         <motion.div
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 md:mb-24"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          className="mb-20 md:mb-28"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1 }}
         >
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-px bg-stone-900" />
-              <span className="text-overline">Nos Réalisations</span>
-            </div>
-            <h2>
-              Des projets qui
-              <br />
-              <span className="text-stone-400">parlent d&apos;eux-mêmes</span>
-            </h2>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-px bg-stone-900" />
+            <span className="text-overline">Nos Réalisations</span>
           </div>
-          <Link
-            href="/projets"
-            className="btn btn-secondary self-start md:self-auto"
+
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <h2 className="max-w-xl">
+              Chaque projet
+              <br />
+              <span className="text-stone-400">raconte une histoire</span>
+            </h2>
+
+            <Link
+              href="/projets"
+              className="group inline-flex items-center gap-3 self-start md:self-auto pb-1"
+              style={{
+                fontSize: '0.85rem',
+                fontWeight: 500,
+                letterSpacing: '0.02em',
+                borderBottom: '1px solid var(--color-stone-300)',
+                transition: 'border-color 0.3s ease',
+              }}
+            >
+              <span>Voir tous les projets</span>
+              <svg
+                className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </div>
+        </motion.div>
+
+        {/* Editorial Grid — Row 1: Large left + tall right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 mb-6 md:mb-8">
+          {/* Featured — large landscape */}
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.15 }}
           >
-            Voir tous les projets
+            <Link href="/projets" className="group block">
+              <div className="relative aspect-[4/3] overflow-hidden mb-5">
+                <Image
+                  src={projects[0].image}
+                  alt={projects[0].title}
+                  fill
+                  className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+              </div>
+              <div className="flex items-baseline justify-between gap-4">
+                <div>
+                  <p
+                    className="text-stone-400 mb-1"
+                    style={{ fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}
+                  >
+                    {projects[0].subtitle} — {projects[0].location}
+                  </p>
+                  <h3
+                    className="group-hover:text-stone-500 transition-colors duration-300"
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                      fontWeight: 400,
+                    }}
+                  >
+                    {projects[0].title}
+                  </h3>
+                </div>
+                <svg
+                  className="w-5 h-5 text-stone-300 group-hover:text-stone-900 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </Link>
+          </motion.div>
+
+          {/* Tall portrait */}
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.3 }}
+          >
+            <Link href="/projets" className="group block h-full">
+              <div className="relative aspect-[3/4] lg:aspect-auto lg:h-[calc(100%-3.5rem)] overflow-hidden mb-5">
+                <Image
+                  src={projects[1].image}
+                  alt={projects[1].title}
+                  fill
+                  className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+              </div>
+              <div className="flex items-baseline justify-between gap-4">
+                <div>
+                  <p
+                    className="text-stone-400 mb-1"
+                    style={{ fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}
+                  >
+                    {projects[1].subtitle} — {projects[1].location}
+                  </p>
+                  <h3
+                    className="group-hover:text-stone-500 transition-colors duration-300"
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                      fontWeight: 400,
+                    }}
+                  >
+                    {projects[1].title}
+                  </h3>
+                </div>
+                <svg
+                  className="w-5 h-5 text-stone-300 group-hover:text-stone-900 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Editorial Grid — Row 2: Portrait left + landscape right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 mb-20 md:mb-28">
+          {/* Portrait */}
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.45 }}
+          >
+            <Link href="/projets" className="group block h-full">
+              <div className="relative aspect-[3/4] lg:aspect-auto lg:h-[calc(100%-3.5rem)] overflow-hidden mb-5">
+                <Image
+                  src={projects[2].image}
+                  alt={projects[2].title}
+                  fill
+                  className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+              </div>
+              <div className="flex items-baseline justify-between gap-4">
+                <div>
+                  <p
+                    className="text-stone-400 mb-1"
+                    style={{ fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}
+                  >
+                    {projects[2].subtitle} — {projects[2].location}
+                  </p>
+                  <h3
+                    className="group-hover:text-stone-500 transition-colors duration-300"
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                      fontWeight: 400,
+                    }}
+                  >
+                    {projects[2].title}
+                  </h3>
+                </div>
+                <svg
+                  className="w-5 h-5 text-stone-300 group-hover:text-stone-900 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </Link>
+          </motion.div>
+
+          {/* Large landscape */}
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.6 }}
+          >
+            <Link href="/projets" className="group block">
+              <div className="relative aspect-[4/3] overflow-hidden mb-5">
+                <Image
+                  src={projects[3].image}
+                  alt={projects[3].title}
+                  fill
+                  className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+              </div>
+              <div className="flex items-baseline justify-between gap-4">
+                <div>
+                  <p
+                    className="text-stone-400 mb-1"
+                    style={{ fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}
+                  >
+                    {projects[3].subtitle} — {projects[3].location}
+                  </p>
+                  <h3
+                    className="group-hover:text-stone-500 transition-colors duration-300"
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                      fontWeight: 400,
+                    }}
+                  >
+                    {projects[3].title}
+                  </h3>
+                </div>
+                <svg
+                  className="w-5 h-5 text-stone-300 group-hover:text-stone-900 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Emotional CTA band — not a button, a statement */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1, delay: 0.8 }}
+        >
+          <p
+            className="mb-8"
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+              fontWeight: 400,
+              color: 'var(--color-stone-400)',
+              maxWidth: '500px',
+              margin: '0 auto',
+              lineHeight: 1.4,
+            }}
+          >
+            Votre projet mérite la même attention.
+          </p>
+          <Link
+            href="/contact"
+            className="group inline-flex items-center gap-3"
+            style={{
+              fontSize: '0.85rem',
+              fontWeight: 500,
+              letterSpacing: '0.02em',
+              color: 'var(--color-stone-900)',
+              borderBottom: '1.5px solid var(--color-stone-900)',
+              paddingBottom: '4px',
+              transition: 'color 0.3s ease',
+            }}
+          >
+            <span>Parlons de votre vision</span>
             <svg
-              className="w-4 h-4"
+              className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -86,103 +361,6 @@ export function Realisations() {
             </svg>
           </Link>
         </motion.div>
-
-        {/* Featured Project - Large */}
-        <motion.div
-          className="mb-16 md:mb-24"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <Link href="/projets" className="group block">
-            <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-              {/* Image - Takes 3 columns */}
-              <div className="lg:col-span-3 relative aspect-[16/10] overflow-hidden">
-                <motion.div
-                  className="absolute inset-0"
-                  style={{ y: imageY }}
-                >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center scale-110 transition-transform duration-1000 group-hover:scale-105"
-                    style={{ backgroundImage: `url('${featuredProject.image}')` }}
-                  />
-                </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-
-              {/* Content - Takes 2 columns */}
-              <div className="lg:col-span-2 flex flex-col justify-center">
-                <div className="flex items-center gap-4 mb-6 text-sm text-stone-500">
-                  <span>{featuredProject.category}</span>
-                  <span className="w-1 h-1 bg-stone-300 rounded-full" />
-                  <span>{featuredProject.location}</span>
-                  <span className="w-1 h-1 bg-stone-300 rounded-full" />
-                  <span>{featuredProject.year}</span>
-                </div>
-                <h3 className="text-3xl md:text-4xl mb-6 group-hover:text-stone-600 transition-colors">
-                  {featuredProject.title}
-                </h3>
-                <p className="text-stone-500 leading-relaxed mb-8">
-                  {featuredProject.description}
-                </p>
-                <div className="inline-flex items-center gap-3 text-stone-900 font-medium">
-                  <span>Découvrir ce projet</span>
-                  <svg
-                    className="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </motion.div>
-
-        {/* Secondary Projects - Grid */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
-            >
-              <Link href="/projets" className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden mb-6">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url('${project.image}')` }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
-
-                  {/* Hover State */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="px-6 py-3 bg-white text-stone-900 font-medium text-sm">
-                      Voir le projet
-                    </span>
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-sm text-stone-500 mb-2">
-                    {project.category} — {project.location}
-                  </p>
-                  <h4 className="text-xl text-stone-900 group-hover:text-stone-600 transition-colors">
-                    {project.title}
-                  </h4>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );

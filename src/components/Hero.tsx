@@ -196,9 +196,9 @@ export function Hero() {
           >
             <span>Toulouse & Occitanie</span>
             <span style={{ margin: '0 1rem' }}>•</span>
-            <span>15 ans d&apos;expertise</span>
+            <span>Accompagnement sur-mesure</span>
             <span style={{ margin: '0 1rem' }}>•</span>
-            <span>Projets sur-mesure</span>
+            <span>Engagement qualité</span>
           </motion.div>
         </div>
       </motion.div>

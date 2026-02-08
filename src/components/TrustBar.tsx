@@ -1,82 +1,111 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 /**
- * TrustBar — Premium authority strip
+ * TrustBar — Emotional value strip
  *
- * No icons, no badges, no SaaS-style shields.
- * Just powerful numbers that speak for themselves,
- * like the foyer of an architecture firm.
+ * Not stats. Not badges. Not SaaS marketing.
+ * Four pillars of what makes the experience premium:
+ * empathy, bespoke service, transparency, excellence.
+ * Like the promise wall at a luxury architecture firm.
  */
 
-const metrics = [
-  { value: '15', unit: 'ans', label: 'd\'expertise en Occitanie' },
-  { value: '200', unit: '+', label: 'projets livrés' },
-  { value: '100', unit: '%', label: 'autorisations ABF obtenues' },
-  { value: '24', unit: 'h', label: 'réponse garantie' },
+const pillars = [
+  {
+    word: 'Écoute',
+    promise: 'Votre vision guide chaque décision. On comprend avant de construire.',
+  },
+  {
+    word: 'Sur-mesure',
+    promise: 'Aucun projet identique. Chaque solution est pensée pour vous.',
+  },
+  {
+    word: 'Transparence',
+    promise: 'Un interlocuteur dédié, un budget respecté, zéro surprise.',
+  },
+  {
+    word: 'Excellence',
+    promise: 'Du gros œuvre aux finitions, nous ne transigeons jamais.',
+  },
 ];
 
 export function TrustBar() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-50px' });
+
   return (
-    <section id="trustbar" className="relative bg-white border-b border-stone-100">
+    <section ref={sectionRef} id="trustbar" className="relative bg-white">
       <div className="container">
-        <div className="py-12 md:py-16">
+        <div className="py-16 md:py-24">
+          {/* Thin separator line at top */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            {metrics.map((metric, index) => (
+            className="w-full h-px bg-stone-200 mb-16 md:mb-20"
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : {}}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ transformOrigin: 'left' }}
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+            {pillars.map((pillar, index) => (
               <motion.div
-                key={metric.label}
-                className="relative text-center"
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                key={pillar.word}
+                className="relative"
+                initial={{ opacity: 0, y: 12 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.15 + index * 0.12 }}
               >
-                {/* Large number */}
-                <div className="flex items-baseline justify-center gap-0.5 mb-2">
-                  <span
-                    className="text-stone-900"
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                      fontWeight: 300,
-                      lineHeight: 1,
-                      letterSpacing: '-0.03em',
-                    }}
-                  >
-                    {metric.value}
-                  </span>
-                  <span
-                    className="text-stone-400"
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
-                      fontWeight: 300,
-                    }}
-                  >
-                    {metric.unit}
-                  </span>
-                </div>
-                {/* Label */}
-                <p
-                  className="text-stone-500"
+                {/* The keyword — serif, editorial */}
+                <h3
+                  className="mb-3"
                   style={{
-                    fontSize: '0.8rem',
-                    letterSpacing: '0.02em',
-                    lineHeight: 1.4,
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: 'clamp(1.4rem, 2vw, 1.75rem)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.01em',
+                    lineHeight: 1.2,
+                    color: 'var(--color-stone-900)',
                   }}
                 >
-                  {metric.label}
+                  {pillar.word}
+                </h3>
+
+                {/* Small accent line */}
+                <div
+                  className="mb-4"
+                  style={{
+                    width: '28px',
+                    height: '1.5px',
+                    background: 'var(--color-stone-300)',
+                  }}
+                />
+
+                {/* The promise — understated, human */}
+                <p
+                  style={{
+                    fontSize: '0.9rem',
+                    lineHeight: 1.7,
+                    color: 'var(--color-stone-500)',
+                    fontWeight: 400,
+                    maxWidth: '280px',
+                  }}
+                >
+                  {pillar.promise}
                 </p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
+
+          {/* Thin separator line at bottom */}
+          <motion.div
+            className="w-full h-px bg-stone-200 mt-16 md:mt-20"
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : {}}
+            transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            style={{ transformOrigin: 'right' }}
+          />
         </div>
       </div>
     </section>
