@@ -5,32 +5,32 @@ import Link from 'next/link';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 const featuredProject = {
-  title: 'Villa Occitane',
+  title: 'Villa Contemporaine',
   category: 'Construction',
   location: 'Toulouse',
   year: '2024',
-  description: 'Une villa contemporaine de 320m² alliant architecture moderne et matériaux nobles. Piscine à débordement, terrasses panoramiques et finitions d\'exception.',
-  image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop',
+  description: 'Une villa contemporaine alliant architecture moderne et matériaux nobles. Piscine miroir, terrasses panoramiques et finitions d\'exception.',
+  image: '/realisation-1.jpg',
 };
 
 const projects = [
   {
-    title: 'Maison de Maître',
+    title: 'Appartement Toulousain',
     category: 'Rénovation complète',
-    location: 'Albi',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070&auto=format&fit=crop',
-  },
-  {
-    title: 'Extension Contemporaine',
-    category: 'Extension',
-    location: 'Montauban',
-    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2070&auto=format&fit=crop',
-  },
-  {
-    title: 'Loft Industriel',
-    category: 'Réhabilitation',
     location: 'Toulouse',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop',
+    image: '/realisation-2.jpg',
+  },
+  {
+    title: 'Extension Jardin',
+    category: 'Extension',
+    location: 'Haute-Garonne',
+    image: '/realisation-3.jpg',
+  },
+  {
+    title: 'Mas Provençal',
+    category: 'Construction',
+    location: 'Occitanie',
+    image: '/realisation-4.jpg',
   },
 ];
 

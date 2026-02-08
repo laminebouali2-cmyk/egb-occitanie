@@ -96,7 +96,7 @@ export function Introduction() {
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop')`,
+                  backgroundImage: `url('/introduction-chantier.jpg')`,
                 }}
               />
               {/* Subtle overlay */}
