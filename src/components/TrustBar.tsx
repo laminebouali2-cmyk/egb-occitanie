@@ -38,10 +38,10 @@ export function TrustBar() {
   return (
     <section ref={sectionRef} id="trustbar" className="relative bg-white">
       <div className="container">
-        <div className="py-16 md:py-24">
+        <div className="py-10 md:py-14">
           {/* Thin separator line at top */}
           <motion.div
-            className="w-full h-px bg-stone-200 mb-16 md:mb-20"
+            className="w-full h-px bg-stone-200 mb-10 md:mb-12"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
@@ -100,7 +100,7 @@ export function TrustBar() {
 
           {/* Thin separator line at bottom */}
           <motion.div
-            className="w-full h-px bg-stone-200 mt-16 md:mt-20"
+            className="w-full h-px bg-stone-200 mt-10 md:mt-12"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
