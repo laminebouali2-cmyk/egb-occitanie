@@ -50,7 +50,7 @@ export function Realisations() {
       <div className="container">
         {/* Section Header */}
         <motion.div
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 md:mb-24"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 mb-10 md:mb-24"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -89,7 +89,7 @@ export function Realisations() {
 
         {/* Featured Project - Large */}
         <motion.div
-          className="mb-16 md:mb-24"
+          className="mb-10 md:mb-24"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.2 }}
@@ -147,16 +147,17 @@ export function Realisations() {
         </motion.div>
 
         {/* Secondary Projects - Grid */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
+              className={index === 2 ? 'hidden md:block' : ''}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
             >
               <Link href="/projets" className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden mb-6">
+                <div className="relative aspect-[4/4] md:aspect-[4/5] overflow-hidden mb-4 md:mb-6">
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                     style={{ backgroundImage: `url('${project.image}')` }}

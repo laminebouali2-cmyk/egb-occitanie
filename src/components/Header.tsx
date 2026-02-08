@@ -255,13 +255,13 @@ export function Header() {
                 <div className="flex flex-col gap-2">
                   <a
                     href="tel:+33665015882"
-                    className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-medium"
+                    className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-medium py-1"
                   >
                     06 65 01 58 82
                   </a>
                   <a
                     href="mailto:contact@egb-occitanie.fr"
-                    className="text-sm text-stone-600 hover:text-stone-900 transition-colors"
+                    className="text-sm text-stone-600 hover:text-stone-900 transition-colors py-1"
                   >
                     contact@egb-occitanie.fr
                   </a>

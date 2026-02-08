@@ -29,25 +29,25 @@ export function TrustBar() {
   return (
     <section ref={sectionRef} id="trustbar" className="relative bg-white">
       <div className="container">
-        <div className="py-10 md:py-14">
+        <div className="py-6 md:py-14">
           {/* Thin separator line at top */}
           <motion.div
-            className="w-full h-px bg-stone-200 mb-10 md:mb-12"
+            className="w-full h-px bg-stone-200 mb-6 md:mb-12"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             style={{ transformOrigin: 'left' }}
           />
 
-          {/* Editorial intro */}
+          {/* Editorial intro — smaller on mobile */}
           <motion.p
-            className="text-center mb-10 md:mb-12"
+            className="text-center mb-6 md:mb-12"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.15 }}
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.1rem, 1.8vw, 1.35rem)',
+              fontSize: 'clamp(0.95rem, 1.8vw, 1.35rem)',
               fontWeight: 400,
               fontStyle: 'italic',
               color: 'var(--color-stone-400)',
@@ -57,7 +57,8 @@ export function TrustBar() {
             La confiance ne se décrète pas. Elle se construit.
           </motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Desktop: 4 columns with full content */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {pillars.map((pillar, index) => (
               <motion.div
                 key={pillar.word}
@@ -66,7 +67,6 @@ export function TrustBar() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.15 + index * 0.12 }}
               >
-                {/* The keyword — serif, editorial */}
                 <h3
                   className="mb-3"
                   style={{
@@ -81,7 +81,6 @@ export function TrustBar() {
                   {pillar.word}
                 </h3>
 
-                {/* Small accent line */}
                 <div
                   className="mb-4"
                   style={{
@@ -91,7 +90,6 @@ export function TrustBar() {
                   }}
                 />
 
-                {/* The promise — understated, human */}
                 <p
                   style={{
                     fontSize: '0.9rem',
@@ -107,9 +105,34 @@ export function TrustBar() {
             ))}
           </div>
 
+          {/* Mobile: compact 2x2 grid — keywords only, no promise text */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-5 md:hidden">
+            {pillars.map((pillar, index) => (
+              <motion.div
+                key={pillar.word}
+                initial={{ opacity: 0, y: 8 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
+              >
+                <p
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '0.95rem',
+                    fontWeight: 400,
+                    letterSpacing: '-0.01em',
+                    lineHeight: 1.35,
+                    color: 'var(--color-stone-900)',
+                  }}
+                >
+                  {pillar.word}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
           {/* Thin separator line at bottom */}
           <motion.div
-            className="w-full h-px bg-stone-200 mt-10 md:mt-12"
+            className="w-full h-px bg-stone-200 mt-6 md:mt-12"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}

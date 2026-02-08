@@ -17,7 +17,7 @@ export function Introduction() {
   return (
     <section ref={sectionRef} className="section bg-white">
       <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-center">
           {/* Left - Text Content */}
           <div>
             <motion.div
@@ -42,7 +42,7 @@ export function Introduction() {
             </motion.h2>
 
             <motion.div
-              className="space-y-6 mb-10"
+              className="space-y-4 md:space-y-6 mb-8 md:mb-10"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -52,7 +52,7 @@ export function Introduction() {
                 d&apos;exception à Toulouse et en Occitanie. Chaque chantier porte notre signature :
                 qualité irréprochable, délais maîtrisés, finitions soignées.
               </p>
-              <p>
+              <p className="hidden md:block">
                 Notre approche allie expertise technique pointue et écoute attentive de vos aspirations.
                 Chaque projet est unique, chaque détail compte. De la construction de votre villa
                 sur-mesure à la rénovation complète de votre bien, nous mettons notre savoir-faire
@@ -88,7 +88,7 @@ export function Introduction() {
           <div>
             {/* Image */}
             <motion.div
-              className="relative aspect-[4/3] mb-12 overflow-hidden"
+              className="relative aspect-[16/10] md:aspect-[4/3] mb-8 md:mb-12 overflow-hidden"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 1, delay: 0.2 }}
@@ -105,7 +105,7 @@ export function Introduction() {
 
             {/* Promises */}
             <motion.div
-              className="grid grid-cols-3 gap-6 md:gap-8"
+              className="grid grid-cols-3 gap-4 md:gap-8"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}

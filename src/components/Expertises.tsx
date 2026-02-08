@@ -49,7 +49,7 @@ export function Expertises() {
       <div className="container">
         {/* Section Header */}
         <motion.div
-          className="max-w-3xl mb-20"
+          className="max-w-3xl mb-10 md:mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -70,7 +70,7 @@ export function Expertises() {
         </motion.div>
 
         {/* Main Expertises - Large Cards */}
-        <div className="space-y-8 mb-20">
+        <div className="space-y-4 md:space-y-8 mb-10 md:mb-20">
           {expertises.map((expertise, index) => (
             <ExpertiseCard
               key={expertise.id}
@@ -106,7 +106,7 @@ function ExpertiseCard({
         className="group grid lg:grid-cols-2 bg-white overflow-hidden"
       >
         {/* Image */}
-        <div className={`relative aspect-[16/10] lg:aspect-auto overflow-hidden ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+        <div className={`relative aspect-[16/9] md:aspect-[16/10] lg:aspect-auto overflow-hidden ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
           <div
             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
             style={{ backgroundImage: `url('${expertise.image}')` }}
@@ -115,12 +115,12 @@ function ExpertiseCard({
         </div>
 
         {/* Content */}
-        <div className={`p-8 md:p-12 lg:p-16 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+        <div className={`p-6 md:p-12 lg:p-16 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
           <span className="text-overline text-stone-400 mb-4">{expertise.subtitle}</span>
           <h3 className="text-2xl md:text-3xl mb-4 group-hover:text-stone-600 transition-colors duration-300">
             {expertise.title}
           </h3>
-          <p className="text-stone-500 mb-8 leading-relaxed">
+          <p className="text-stone-500 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
             {expertise.description}
           </p>
           <div className="inline-flex items-center gap-3 text-stone-900 font-medium">

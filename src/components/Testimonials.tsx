@@ -50,7 +50,7 @@ export function Testimonials() {
       <div className="container">
         {/* Minimal header — not shouting "TESTIMONIALS" */}
         <motion.div
-          className="mb-16"
+          className="mb-8 md:mb-16"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
@@ -71,18 +71,18 @@ export function Testimonials() {
           </div>
         </motion.div>
 
-        {/* Testimonial cards — image-card format */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        {/* Testimonial cards — show 2 on mobile, 3 on desktop */}
+        <div className="grid md:grid-cols-3 gap-4 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.author}
-              className="bg-white p-8 md:p-10 flex flex-col"
+              className={`bg-white p-6 md:p-10 flex flex-col ${index === 2 ? 'hidden md:flex' : ''}`}
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: index * 0.15 }}
             >
               {/* 5 stars — subtle, not flashy */}
-              <div className="flex gap-1 mb-6">
+              <div className="flex gap-1 mb-4 md:mb-6">
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
@@ -97,10 +97,10 @@ export function Testimonials() {
 
               {/* Quote — the real content */}
               <p
-                className="text-stone-700 mb-8 flex-grow"
+                className="text-stone-700 mb-6 md:mb-8 flex-grow"
                 style={{
-                  fontSize: '0.95rem',
-                  lineHeight: 1.75,
+                  fontSize: '0.9rem',
+                  lineHeight: 1.7,
                   fontWeight: 400,
                 }}
               >
@@ -108,7 +108,7 @@ export function Testimonials() {
               </p>
 
               {/* Author — like a Google review */}
-              <div className="flex items-center gap-4 pt-6 border-t border-stone-100">
+              <div className="flex items-center gap-3 md:gap-4 pt-4 md:pt-6 border-t border-stone-100">
                 {/* Avatar initials */}
                 <div
                   className="w-11 h-11 rounded-full bg-stone-100 flex items-center justify-center flex-shrink-0"
