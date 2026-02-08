@@ -3,31 +3,22 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-/**
- * TrustBar — Emotional value strip
- *
- * Not stats. Not badges. Not SaaS marketing.
- * Four pillars of what makes the experience premium:
- * empathy, bespoke service, transparency, excellence.
- * Like the promise wall at a luxury architecture firm.
- */
-
 const pillars = [
   {
-    word: 'Écoute',
-    promise: 'Votre vision guide chaque décision. On comprend avant de construire.',
+    word: 'On écoute avant de construire.',
+    promise: 'Votre projet commence par vos mots, pas les nôtres. Chaque décision reflète votre vision, votre rythme de vie.',
   },
   {
-    word: 'Sur-mesure',
-    promise: 'Aucun projet identique. Chaque solution est pensée pour vous.',
+    word: 'Rien n\u2019est standard.',
+    promise: 'Pas de catalogue, pas de formule. Chaque maison est dessinée autour de ceux qui vont y vivre.',
   },
   {
-    word: 'Transparence',
-    promise: 'Un interlocuteur dédié, un budget respecté, zéro surprise.',
+    word: 'Le prix dit est le prix payé.',
+    promise: 'Forfaitaire, détaillé, définitif. Un seul interlocuteur, zéro surprise, du premier jour au dernier.',
   },
   {
-    word: 'Excellence',
-    promise: 'Du gros œuvre aux finitions, nous ne transigeons jamais.',
+    word: 'La qualité ne se négocie pas.',
+    promise: 'Garantie décennale, artisans certifiés. Chaque finition est contrôlée comme si c\u2019était notre propre maison.',
   },
 ];
 
@@ -48,6 +39,24 @@ export function TrustBar() {
             style={{ transformOrigin: 'left' }}
           />
 
+          {/* Editorial intro */}
+          <motion.p
+            className="text-center mb-10 md:mb-12"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(1.1rem, 1.8vw, 1.35rem)',
+              fontWeight: 400,
+              fontStyle: 'italic',
+              color: 'var(--color-stone-400)',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            La confiance ne se décrète pas. Elle se construit.
+          </motion.p>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {pillars.map((pillar, index) => (
               <motion.div
@@ -62,10 +71,10 @@ export function TrustBar() {
                   className="mb-3"
                   style={{
                     fontFamily: 'var(--font-serif)',
-                    fontSize: 'clamp(1.4rem, 2vw, 1.75rem)',
+                    fontSize: 'clamp(1.05rem, 1.4vw, 1.2rem)',
                     fontWeight: 400,
                     letterSpacing: '-0.01em',
-                    lineHeight: 1.2,
+                    lineHeight: 1.3,
                     color: 'var(--color-stone-900)',
                   }}
                 >
