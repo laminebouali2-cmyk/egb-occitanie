@@ -108,14 +108,14 @@ export function Hero() {
           >
             <p
               style={{
-                color: 'rgba(255,255,255,0.92)',
-                fontSize: 'clamp(1.05rem, 1.6vw, 1.3rem)',
-                lineHeight: 1.7,
+                color: 'rgba(255,255,255,0.88)',
+                fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
+                lineHeight: 1.75,
                 fontWeight: 300,
-                fontStyle: 'italic',
-                maxWidth: '550px',
+                letterSpacing: '0.02em',
+                maxWidth: '520px',
                 margin: '0 auto',
-                fontFamily: 'var(--font-serif-body)',
+                fontFamily: 'var(--font-sans)',
               }}
             >
               EGB Occitanie conçoit et réalise les projets bâtis pour durer.
