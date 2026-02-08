@@ -121,11 +121,11 @@ export function Header() {
 
               <Link
                 href="/contact"
-                className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
-                  isOnHero
-                    ? 'bg-white text-stone-900 hover:bg-stone-100'
-                    : 'bg-stone-900 text-white hover:bg-stone-800'
-                }`}
+                className="px-6 py-3 text-sm font-medium transition-all duration-300"
+                style={{
+                  backgroundColor: isOnHero ? '#FFFFFF' : 'var(--color-stone-900)',
+                  color: isOnHero ? 'var(--color-stone-900)' : '#FFFFFF',
+                }}
               >
                 Démarrer un projet
               </Link>

@@ -10,41 +10,35 @@ const expertises = [
     title: 'Construction de Villas',
     subtitle: 'Créer l\'exceptionnel',
     description: 'De la parcelle vierge à la villa de vos rêves. Nous orchestrons chaque étape avec une précision d\'orfèvre pour donner vie à des demeures d\'exception.',
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop',
-    href: '/expertise/construction',
+    image: '/expertise-construction.jpg',
+    href: '/construction-villa-toulouse',
   },
   {
     id: 'renovation',
     title: 'Rénovation Haut de Gamme',
     subtitle: 'Sublimer l\'existant',
     description: 'Maisons de maître, appartements de prestige, bâtisses de caractère. Nous redonnons vie aux espaces avec respect du patrimoine et exigence contemporaine.',
-    image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2070&auto=format&fit=crop',
-    href: '/expertise/renovation',
+    image: '/expertise-renovation.jpg',
+    href: '/renovation-maison-toulouse',
   },
   {
     id: 'extension',
     title: 'Extension & Surélévation',
     subtitle: 'Agrandir avec harmonie',
     description: 'Prolonger votre espace de vie en parfaite continuité avec l\'existant. Architecture cohérente, intégration fluide, finitions irréprochables.',
-    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2070&auto=format&fit=crop',
-    href: '/expertise/extension',
+    image: '/expertise-extension.jpg',
+    href: '/extension-maison-toulouse',
+  },
+  {
+    id: 'energetique',
+    title: 'Rénovation Énergétique',
+    subtitle: 'Performer durablement',
+    description: 'Isolation, panneaux solaires, bardage bois. Nous transformons votre habitat pour réduire vos consommations et valoriser votre patrimoine.',
+    image: '/expertise-energetique.jpg',
+    href: '/renovation-energetique-toulouse',
   },
 ];
 
-const additionalServices = [
-  {
-    id: 'sinistres',
-    title: 'Restauration Sinistres',
-    description: 'Intervention rapide après inondation, incendie ou dégât des eaux. Remise en état complète.',
-    href: '/expertise/sinistres',
-  },
-  {
-    id: 'division',
-    title: 'Division d\'Immeubles',
-    description: 'Transformation de bâtiments en appartements distincts. Optimisation et valorisation patrimoniale.',
-    href: '/expertise/division',
-  },
-];
 
 export function Expertises() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -87,44 +81,6 @@ export function Expertises() {
           ))}
         </div>
 
-        {/* Additional Services - Smaller Cards */}
-        <motion.div
-          className="grid md:grid-cols-2 gap-6"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          {additionalServices.map((service) => (
-            <Link
-              key={service.id}
-              href={service.href}
-              className="group bg-white p-8 md:p-10 transition-all duration-500 hover:shadow-xl hover:shadow-stone-200/50"
-            >
-              <h4 className="text-xl font-medium text-stone-900 mb-3 group-hover:text-stone-600 transition-colors">
-                {service.title}
-              </h4>
-              <p className="text-stone-500 mb-6">
-                {service.description}
-              </p>
-              <span className="inline-flex items-center gap-2 text-sm font-medium text-stone-900">
-                En savoir plus
-                <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </span>
-            </Link>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

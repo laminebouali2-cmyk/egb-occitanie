@@ -4,10 +4,10 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 
-const stats = [
-  { value: '5+', label: 'Architectes toulousains partenaires' },
-  { value: '0', label: 'Retard de chantier' },
-  { value: '200+', label: 'Projets réalisés' },
+const promises = [
+  { title: 'Un prix, un contrat.', text: 'Budget forfaitaire, zéro surprise.' },
+  { title: 'Un planning, une parole.', text: 'Délais inscrits au contrat.' },
+  { title: 'Un résultat, une garantie.', text: 'Décennale, RGE, Qualibat.' },
 ];
 
 export function Introduction() {
@@ -96,33 +96,41 @@ export function Introduction() {
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop')`,
+                  backgroundImage: `url('/introduction-chantier.jpg')`,
                 }}
               />
               {/* Subtle overlay */}
               <div className="absolute inset-0 bg-stone-900/10" />
             </motion.div>
 
-            {/* Stats */}
+            {/* Promises */}
             <motion.div
-              className="grid grid-cols-3 gap-8"
+              className="grid grid-cols-3 gap-6 md:gap-8"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              {stats.map((stat, index) => (
-                <div key={stat.label} className="text-center">
-                  <motion.p
-                    className="text-4xl md:text-5xl font-light text-stone-900 mb-2"
-                    style={{ fontFamily: 'var(--font-serif)' }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+              {promises.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                >
+                  <p
+                    className="mb-1"
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: 'clamp(0.95rem, 1.3vw, 1.15rem)',
+                      fontWeight: 400,
+                      color: 'var(--color-stone-900)',
+                      lineHeight: 1.3,
+                    }}
                   >
-                    {stat.value}
-                  </motion.p>
-                  <p className="text-sm text-stone-500">{stat.label}</p>
-                </div>
+                    {item.title}
+                  </p>
+                  <p className="text-sm text-stone-500">{item.text}</p>
+                </motion.div>
               ))}
             </motion.div>
           </div>

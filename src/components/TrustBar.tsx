@@ -1,69 +1,121 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
-const trustItems = [
+const pillars = [
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
-    title: 'Garantie décennale',
+    word: 'On écoute avant de construire.',
+    promise: 'Votre projet commence par vos mots, pas les nôtres. Chaque décision reflète votre vision, votre rythme de vie.',
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
-    title: '5+ Architectes toulousains',
+    word: 'Rien n\u2019est standard.',
+    promise: 'Pas de catalogue, pas de formule. Chaque maison est dessinée autour de ceux qui vont y vivre.',
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: '0 Retard de chantier',
+    word: 'Le prix dit est le prix payé.',
+    promise: 'Forfaitaire, détaillé, définitif. Un seul interlocuteur, zéro surprise, du premier jour au dernier.',
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-    title: 'Réponse sous 24h',
+    word: 'La qualité ne se négocie pas.',
+    promise: 'Garantie décennale, artisans certifiés. Chaque finition est contrôlée comme si c\u2019était notre propre maison.',
   },
 ];
 
 export function TrustBar() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-50px' });
+
   return (
-    <section className="border-t border-b border-stone-200 bg-stone-50/50 py-8">
+    <section ref={sectionRef} id="trustbar" className="relative bg-white">
       <div className="container">
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {trustItems.map((item, index) => (
-            <motion.div
-              key={item.title}
-              className="flex flex-col items-center text-center gap-3"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <div className="text-stone-600">{item.icon}</div>
-              <p className="text-sm font-medium text-stone-700 leading-snug">
-                {item.title}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="py-10 md:py-14">
+          {/* Thin separator line at top */}
+          <motion.div
+            className="w-full h-px bg-stone-200 mb-10 md:mb-12"
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : {}}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ transformOrigin: 'left' }}
+          />
+
+          {/* Editorial intro */}
+          <motion.p
+            className="text-center mb-10 md:mb-12"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(1.1rem, 1.8vw, 1.35rem)',
+              fontWeight: 400,
+              fontStyle: 'italic',
+              color: 'var(--color-stone-400)',
+              letterSpacing: '-0.01em',
+            }}
+          >
+            La confiance ne se décrète pas. Elle se construit.
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+            {pillars.map((pillar, index) => (
+              <motion.div
+                key={pillar.word}
+                className="relative"
+                initial={{ opacity: 0, y: 12 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.15 + index * 0.12 }}
+              >
+                {/* The keyword — serif, editorial */}
+                <h3
+                  className="mb-3"
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: 'clamp(1.05rem, 1.4vw, 1.2rem)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.01em',
+                    lineHeight: 1.3,
+                    color: 'var(--color-stone-900)',
+                  }}
+                >
+                  {pillar.word}
+                </h3>
+
+                {/* Small accent line */}
+                <div
+                  className="mb-4"
+                  style={{
+                    width: '28px',
+                    height: '1.5px',
+                    background: 'var(--color-stone-300)',
+                  }}
+                />
+
+                {/* The promise — understated, human */}
+                <p
+                  style={{
+                    fontSize: '0.9rem',
+                    lineHeight: 1.7,
+                    color: 'var(--color-stone-500)',
+                    fontWeight: 400,
+                    maxWidth: '280px',
+                  }}
+                >
+                  {pillar.promise}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Thin separator line at bottom */}
+          <motion.div
+            className="w-full h-px bg-stone-200 mt-10 md:mt-12"
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : {}}
+            transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            style={{ transformOrigin: 'right' }}
+          />
+        </div>
       </div>
     </section>
   );

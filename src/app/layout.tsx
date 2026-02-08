@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | EGB Occitanie",
   },
   description:
-    "Constructeur villa neuve & rénovation haut de gamme à Toulouse. 15 ans d'expertise, 5+ architectes partenaires, 0 retard de chantier, garantie décennale. Devis gratuit sous 48h. Construction, rénovation, extension sur-mesure en Haute-Garonne.",
+    "Constructeur villa neuve & rénovation haut de gamme à Toulouse. Architectes partenaires, 0 retard de chantier, garantie décennale. Devis gratuit sous 48h. Construction, rénovation, extension sur-mesure en Haute-Garonne.",
   keywords: [
     "construction villa toulouse",
     "constructeur maison toulouse",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "EGB Occitanie",
     title: "EGB Occitanie | Constructeur Villa & Rénovation Premium Toulouse",
     description:
-      "Spécialiste construction villa neuve et rénovation haut de gamme à Toulouse. 15 ans d'expertise, 5+ architectes, 0 retard, garantie décennale. Devis gratuit 48h.",
+      "Spécialiste construction villa neuve et rénovation haut de gamme à Toulouse. Architectes partenaires, 0 retard, garantie décennale. Devis gratuit 48h.",
     images: [
       {
         url: "/og-image.jpg",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "EGB Occitanie | Constructeur Villa Toulouse - Rénovation Premium",
     description:
-      "Construction villa neuve & rénovation haut de gamme à Toulouse. 15 ans d'expertise, 5+ architectes, 0 retard. Devis gratuit 48h.",
+      "Construction villa neuve & rénovation haut de gamme à Toulouse. Architectes partenaires, 0 retard. Devis gratuit 48h.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -96,7 +96,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
           rel="stylesheet"
         />
         <link rel="icon" href="/favicon.ico" sizes="any" />

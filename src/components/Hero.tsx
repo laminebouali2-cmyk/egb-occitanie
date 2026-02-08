@@ -26,9 +26,9 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
+      className="relative h-screen min-h-[700px] flex items-start justify-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Image — wide angle, show full scene */}
       <div className="absolute inset-0">
         <Image
           src="/hero-villa.jpg"
@@ -36,10 +36,11 @@ export function Hero() {
           fill
           priority
           className="object-cover"
+          style={{ objectPosition: 'center 35%' }}
           sizes="100vw"
           quality={90}
         />
-        {/* Light overlay — keeps image luminous */}
+        {/* Near-invisible overlay — just enough for text contrast */}
         <div
           className="absolute inset-0"
           style={{
@@ -49,23 +50,23 @@ export function Hero() {
         />
       </div>
 
-      {/* Content */}
+      {/* Content — positioned upper third, not dead center */}
       <motion.div
         className="relative z-10 w-full px-6 md:px-12"
-        style={{ y: contentY, opacity: contentOpacity }}
+        style={{ y: contentY, opacity: contentOpacity, marginTop: '18vh' }}
       >
-        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
           {/* Overline */}
           <motion.div
-            className="mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.19, 1.0, 0.22, 1.0] }}
+            className="mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.1 }}
           >
             <span
               style={{
                 color: 'rgba(255,255,255,0.7)',
-                fontSize: '0.75rem',
+                fontSize: '0.7rem',
                 textTransform: 'uppercase',
                 letterSpacing: '0.3em',
                 fontWeight: 500,
@@ -76,20 +77,20 @@ export function Hero() {
             </span>
           </motion.div>
 
-          {/* HEADLINE — all white, forced via inline styles to override globals.css */}
+          {/* HEADLINE */}
           <motion.h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.5rem, 6.5vw, 5rem)',
-              lineHeight: 1.08,
+              fontSize: 'clamp(2rem, 5vw, 3.8rem)',
+              lineHeight: 1.12,
               letterSpacing: '-0.02em',
               fontWeight: 400,
               color: '#FFFFFF',
-              marginBottom: '2rem',
+              marginBottom: '1.5rem',
             }}
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3, ease: [0.19, 1.0, 0.22, 1.0] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
           >
             Certaines constructions
             <br />
@@ -98,20 +99,21 @@ export function Hero() {
             Dès leur conception.
           </motion.h1>
 
-          {/* SUBHEADLINE — two separate lines like Kimi */}
+          {/* SUBHEADLINE */}
           <motion.div
-            style={{ marginBottom: '2.5rem' }}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.19, 1.0, 0.22, 1.0] }}
+            style={{ marginBottom: '2rem' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
           >
             <p
               style={{
-                color: 'rgba(255,255,255,0.9)',
-                fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
-                lineHeight: 1.8,
+                color: 'rgba(255,255,255,0.88)',
+                fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
+                lineHeight: 1.75,
                 fontWeight: 300,
-                maxWidth: '600px',
+                letterSpacing: '0.02em',
+                maxWidth: '520px',
                 margin: '0 auto',
                 fontFamily: 'var(--font-sans)',
               }}
@@ -125,16 +127,16 @@ export function Hero() {
           {/* CTA BUTTONS */}
           <motion.div
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7, ease: [0.19, 1.0, 0.22, 1.0] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.9 }}
           >
             <Link
               href="/contact"
               className="group inline-flex items-center gap-3 transition-all duration-300 hover:-translate-y-1"
               style={{
-                padding: '16px 36px',
-                fontSize: '14px',
+                padding: '14px 32px',
+                fontSize: '13px',
                 fontWeight: 500,
                 letterSpacing: '0.02em',
                 color: '#1C1917',
@@ -157,8 +159,8 @@ export function Hero() {
               href="/projets"
               className="group inline-flex items-center gap-3 transition-all duration-300"
               style={{
-                padding: '16px 36px',
-                fontSize: '14px',
+                padding: '14px 32px',
+                fontSize: '13px',
                 fontWeight: 500,
                 letterSpacing: '0.02em',
                 color: '#FFFFFF',
@@ -182,47 +184,47 @@ export function Hero() {
           {/* TRUST SIGNALS */}
           <motion.div
             style={{
-              marginTop: '4rem',
-              fontSize: '13px',
+              marginTop: '3rem',
+              fontSize: '12px',
               fontWeight: 400,
               letterSpacing: '0.08em',
-              color: 'rgba(255,255,255,0.5)',
+              color: 'rgba(255,255,255,0.72)',
               textAlign: 'center',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 1, delay: 1.1 }}
           >
             <span>Toulouse & Occitanie</span>
             <span style={{ margin: '0 1rem' }}>•</span>
-            <span>15 ans d&apos;expertise</span>
+            <span>Accompagnement sur-mesure</span>
             <span style={{ margin: '0 1rem' }}>•</span>
-            <span>Projets sur-mesure</span>
+            <span>Engagement qualité</span>
           </motion.div>
         </div>
       </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
+        transition={{ delay: 1.4, duration: 1 }}
         style={{ opacity: scrollIndicatorOpacity }}
       >
         <button
           onClick={() => scrollToSection('#trustbar')}
           className="flex flex-col items-center gap-2 transition-colors cursor-pointer"
-          style={{ color: 'rgba(255,255,255,0.5)' }}
+          style={{ color: 'rgba(255,255,255,0.4)' }}
         >
-          <span className="text-xs uppercase tracking-widest">Découvrir</span>
+          <span style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Découvrir</span>
           <motion.svg
-            className="w-5 h-5"
+            className="w-4 h-4"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
             viewBox="0 0 24 24"
-            animate={{ y: [0, 6, 0] }}
+            animate={{ y: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />

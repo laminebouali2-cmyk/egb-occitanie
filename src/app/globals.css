@@ -46,6 +46,7 @@
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif-body: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Spacing System */
