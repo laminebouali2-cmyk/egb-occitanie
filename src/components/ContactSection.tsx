@@ -37,7 +37,7 @@ export function ContactSection() {
             {/* Contact Methods */}
             <div className="space-y-8 mb-12">
               <motion.a
-                href="tel:+33500000000"
+                href="tel:+33665015882"
                 className="group flex items-start gap-6"
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -61,7 +61,7 @@ export function ContactSection() {
                 <div>
                   <span className="text-sm text-stone-500 block mb-1">Téléphone</span>
                   <span className="text-xl text-stone-900 group-hover:text-stone-600 transition-colors">
-                    05 00 00 00 00
+                    06 65 01 58 82
                   </span>
                 </div>
               </motion.a>

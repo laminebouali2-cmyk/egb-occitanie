@@ -1,23 +1,25 @@
 import { Hero } from "@/components/Hero";
-// import CinematicHero from "@/components/CinematicHero"; // À réactiver quand les 192 frames seront ajoutées
 import { TrustBar } from "@/components/TrustBar";
 import { Introduction } from "@/components/Introduction";
 import { Expertises } from "@/components/Expertises";
 import { Realisations } from "@/components/Realisations";
+import { Testimonials } from "@/components/Testimonials";
 import { Approche } from "@/components/Approche";
 import { ContactSection } from "@/components/ContactSection";
+import { StickyCallButton } from "@/components/StickyCallButton";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <TrustBar />
-      {/* <CinematicHero /> */}
       <Introduction />
       <Expertises />
       <Realisations />
+      <Testimonials />
       <Approche />
       <ContactSection />
+      <StickyCallButton />
     </>
   );
 }
