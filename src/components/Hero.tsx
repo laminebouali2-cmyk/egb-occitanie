@@ -53,8 +53,10 @@ export function Hero() {
       {/* Content — positioned upper third, not dead center */}
       <motion.div
         className="relative z-10 w-full px-6 md:px-12"
-        style={{ y: contentY, opacity: contentOpacity, marginTop: '18vh' }}
+        style={{ y: contentY, opacity: contentOpacity }}
       >
+        {/* Spacer — smaller on mobile to maximize content area */}
+        <div className="h-[22vh] md:h-[18vh]" />
         <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
           {/* Overline */}
           <motion.div
@@ -99,8 +101,9 @@ export function Hero() {
             Dès leur conception.
           </motion.h1>
 
-          {/* SUBHEADLINE */}
+          {/* SUBHEADLINE — hidden on mobile for cleaner impact */}
           <motion.div
+            className="hidden sm:block"
             style={{ marginBottom: '2rem' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -123,6 +126,8 @@ export function Hero() {
               Gros œuvre, rénovation, extension — sur-mesure en Occitanie.
             </p>
           </motion.div>
+          {/* Mobile spacer when subtitle is hidden */}
+          <div className="sm:hidden h-4" />
 
           {/* CTA BUTTONS */}
           <motion.div
@@ -133,10 +138,10 @@ export function Hero() {
           >
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-3 transition-all duration-300 hover:-translate-y-1"
+              className="group inline-flex items-center gap-3 transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto justify-center"
               style={{
-                padding: '14px 32px',
-                fontSize: '13px',
+                padding: '16px 32px',
+                fontSize: '14px',
                 fontWeight: 500,
                 letterSpacing: '0.02em',
                 color: '#1C1917',
@@ -157,10 +162,10 @@ export function Hero() {
 
             <Link
               href="/projets"
-              className="group inline-flex items-center gap-3 transition-all duration-300"
+              className="group inline-flex items-center gap-3 transition-all duration-300 w-full sm:w-auto justify-center"
               style={{
-                padding: '14px 32px',
-                fontSize: '13px',
+                padding: '16px 32px',
+                fontSize: '14px',
                 fontWeight: 500,
                 letterSpacing: '0.02em',
                 color: '#FFFFFF',
@@ -181,8 +186,9 @@ export function Hero() {
             </Link>
           </motion.div>
 
-          {/* TRUST SIGNALS */}
+          {/* TRUST SIGNALS — compact on mobile */}
           <motion.div
+            className="hidden sm:block"
             style={{
               marginTop: '3rem',
               fontSize: '12px',
@@ -201,12 +207,30 @@ export function Hero() {
             <span style={{ margin: '0 1rem' }}>•</span>
             <span>Engagement qualité</span>
           </motion.div>
+          {/* Mobile: single elegant line */}
+          <motion.div
+            className="sm:hidden"
+            style={{
+              marginTop: '2rem',
+              fontSize: '11px',
+              fontWeight: 400,
+              letterSpacing: '0.12em',
+              color: 'rgba(255,255,255,0.6)',
+              textAlign: 'center',
+              textTransform: 'uppercase',
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.1 }}
+          >
+            Toulouse & Occitanie — Sur-mesure
+          </motion.div>
         </div>
       </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator — hidden on mobile */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 1 }}

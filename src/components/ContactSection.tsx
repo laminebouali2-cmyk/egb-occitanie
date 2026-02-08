@@ -11,7 +11,7 @@ export function ContactSection() {
   return (
     <section ref={sectionRef} className="section bg-white">
       <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-24">
           {/* Left - Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -29,13 +29,13 @@ export function ContactSection() {
               <span className="text-stone-400">mérite une conversation</span>
             </h2>
 
-            <p className="text-lead mb-12 max-w-lg">
+            <p className="text-lead mb-8 md:mb-12 max-w-lg">
               Chaque projet est unique. Prenons le temps d&apos;en discuter pour
               comprendre vos besoins et vous proposer l&apos;accompagnement idéal.
             </p>
 
             {/* Contact Methods */}
-            <div className="space-y-8 mb-12">
+            <div className="space-y-6 md:space-y-8 mb-8 md:mb-12">
               <motion.a
                 href="tel:+33665015882"
                 className="group flex items-start gap-6"
@@ -135,7 +135,7 @@ export function ContactSection() {
 
           {/* Right - CTA Card */}
           <motion.div
-            className="bg-stone-900 p-10 md:p-14 text-white"
+            className="bg-stone-900 p-7 md:p-14 text-white"
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -144,13 +144,13 @@ export function ContactSection() {
               Parlons de votre projet
             </h3>
 
-            <p className="text-stone-400 text-lg mb-10 leading-relaxed">
+            <p className="text-stone-400 text-base md:text-lg mb-8 md:mb-10 leading-relaxed">
               Décrivez-nous votre vision. Nous vous recontactons sous 24h pour
               un premier échange sans engagement.
             </p>
 
             {/* Benefits */}
-            <div className="space-y-4 mb-10">
+            <div className="space-y-3 md:space-y-4 mb-8 md:mb-10">
               {[
                 'Étude personnalisée offerte',
                 'Réponse sous 24 heures',
