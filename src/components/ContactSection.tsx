@@ -140,7 +140,7 @@ export function ContactSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-3xl md:text-4xl text-white mb-6" style={{ fontFamily: 'var(--font-serif)' }}>
+            <h3 className="text-3xl md:text-4xl mb-6" style={{ fontFamily: 'var(--font-serif)', color: '#FFFFFF' }}>
               Parlons de votre projet
             </h3>
 
