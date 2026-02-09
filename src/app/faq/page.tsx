@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "FAQ Construction & Rénovation Toulouse - Questions Fréquentes Expert",
   description: "Réponses expertes à vos questions construction villa, rénovation maison, extension Toulouse. Prix, délais, permis, financement, quartiers. Tout ce qu'il faut savoir.",
   keywords: ["faq construction toulouse", "questions construction maison", "prix construction toulouse", "délai construction", "permis construire toulouse"],
+  alternates: {
+    canonical: "https://egb-occitanie.fr/faq",
+  },
 };
 
 const faqSchema = {
@@ -335,7 +338,7 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <main className="min-h-screen bg-stone-50">
+      <div className="min-h-screen bg-stone-50">
         {/* Hero */}
         <section className="bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 text-white py-20">
           <div className="max-w-6xl mx-auto px-6">
@@ -420,8 +423,8 @@ export default function FAQPage() {
               <a href="/contact" className="inline-block px-10 py-5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-lg rounded-lg transition-colors shadow-xl">
                 Poser Votre Question
               </a>
-              <a href="tel:+33582950495" className="inline-block px-10 py-5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg rounded-lg transition-colors">
-                📱 05 82 95 04 95
+              <a href="tel:+33665015882" className="inline-block px-10 py-5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg rounded-lg transition-colors">
+                06 65 01 58 82
               </a>
             </div>
           </div>
@@ -441,7 +444,7 @@ export default function FAQPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

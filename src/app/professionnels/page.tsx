@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Programme Partenaires | EGB Occitanie — Construction & Rénovation Toulouse",
   description:
     "Architectes, agents immobiliers, courtiers : recommandez EGB Occitanie et soyez rémunéré. Budget garanti, plans respectés, réputation protégée. Toulouse & Occitanie.",
+  alternates: {
+    canonical: "https://egb-occitanie.fr/professionnels",
+  },
   openGraph: {
     title: "Programme Partenaires | EGB Occitanie",
     description:

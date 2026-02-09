@@ -19,11 +19,11 @@ export function ContactForm() {
 
   if (isSubmitted) {
     return (
-      <div className="bg-[var(--color-surface)] p-8 md:p-12">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-full bg-[var(--color-success)] flex items-center justify-center">
+      <div className="bg-[var(--color-surface-elevated)] p-8 md:p-12" style={{ border: '1px solid var(--color-border)' }}>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-12 h-12 rounded-full bg-[var(--color-success)] flex items-center justify-center">
             <svg
-              className="w-5 h-5 text-white"
+              className="w-6 h-6 text-white"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
@@ -35,13 +35,24 @@ export function ContactForm() {
               />
             </svg>
           </div>
-          <h3 className="text-xl font-medium text-[var(--color-primary)]">
-            Message envoyé
-          </h3>
+          <div>
+            <h3 className="text-xl font-medium text-[var(--color-primary)]">
+              Demande bien re&ccedil;ue
+            </h3>
+            <p className="text-sm text-[var(--color-text-muted)] mt-1">
+              Merci pour votre confiance
+            </p>
+          </div>
         </div>
-        <p className="text-[var(--color-text-secondary)]">
-          Merci pour votre message. Notre équipe vous recontactera dans les plus
-          brefs délais.
+        <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
+          Notre &eacute;quipe vous recontactera <strong>sous 24 heures ouvr&eacute;es</strong> pour
+          &eacute;changer sur votre projet et r&eacute;pondre &agrave; toutes vos questions.
+        </p>
+        <p className="text-sm text-[var(--color-text-muted)]">
+          Besoin urgent ? Appelez-nous directement au{" "}
+          <a href="tel:+33665015882" className="font-medium text-[var(--color-primary)] hover:underline">
+            06 65 01 58 82
+          </a>
         </p>
       </div>
     );
@@ -49,16 +60,35 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Reassurance message */}
+      <div
+        className="flex items-start gap-3 p-4"
+        style={{
+          background: 'var(--color-stone-50)',
+          border: '1px solid var(--color-stone-200)',
+        }}
+      >
+        <svg className="w-5 h-5 mt-0.5 shrink-0" style={{ color: 'var(--color-accent)' }} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+        </svg>
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--color-stone-600)' }}>
+          <strong style={{ color: 'var(--color-stone-800)' }}>Laissez-nous vos coordonn&eacute;es, on s&rsquo;occupe du reste.</strong>
+          <br />
+          Notre &eacute;quipe vous rappelle sous 24h pour discuter de votre projet. Aucun engagement.
+        </p>
+      </div>
+
       {/* Name Fields */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="firstName">Prénom</label>
+          <label htmlFor="firstName">Pr&eacute;nom</label>
           <input
             type="text"
             id="firstName"
             name="firstName"
             required
-            placeholder="Votre prénom"
+            autoComplete="given-name"
+            placeholder="Votre pr&eacute;nom"
           />
         </div>
         <div>
@@ -68,6 +98,7 @@ export function ContactForm() {
             id="lastName"
             name="lastName"
             required
+            autoComplete="family-name"
             placeholder="Votre nom"
           />
         </div>
@@ -82,15 +113,19 @@ export function ContactForm() {
             id="email"
             name="email"
             required
+            autoComplete="email"
             placeholder="votre@email.fr"
           />
         </div>
         <div>
-          <label htmlFor="phone">Téléphone</label>
+          <label htmlFor="phone">
+            T&eacute;l&eacute;phone <span className="text-[var(--color-text-muted)] font-normal">(recommand&eacute;)</span>
+          </label>
           <input
             type="tel"
             id="phone"
             name="phone"
+            autoComplete="tel"
             placeholder="06 00 00 00 00"
           />
         </div>
@@ -107,24 +142,26 @@ export function ContactForm() {
           defaultValue=""
         >
           <option value="" disabled>
-            Sélectionnez un type de projet
+            S&eacute;lectionnez un type de projet
           </option>
           <option value="construction">Construction neuve</option>
-          <option value="renovation">Rénovation</option>
+          <option value="renovation">R&eacute;novation</option>
           <option value="extension">Extension</option>
           <option value="other">Autre</option>
         </select>
       </div>
 
-      {/* Message */}
+      {/* Message - Now optional */}
       <div>
-        <label htmlFor="message">Votre message</label>
+        <label htmlFor="message">
+          Un mot sur votre projet{" "}
+          <span className="text-[var(--color-text-muted)] font-normal">(optionnel)</span>
+        </label>
         <textarea
           id="message"
           name="message"
-          rows={5}
-          required
-          placeholder="Décrivez votre projet en quelques mots..."
+          rows={3}
+          placeholder="Budget approximatif, surface, localisation... Ou laissez vide, on en discutera ensemble."
         />
       </div>
 
@@ -159,14 +196,18 @@ export function ContactForm() {
             Envoi en cours...
           </>
         ) : (
-          "Envoyer le message"
+          "Demander \u00e0 \u00eatre rappel\u00e9"
         )}
       </button>
 
       {/* Privacy Note */}
       <p className="text-xs text-[var(--color-text-muted)]">
-        En soumettant ce formulaire, vous acceptez que vos données soient
-        utilisées pour vous recontacter dans le cadre de votre demande.
+        En soumettant ce formulaire, vous acceptez que vos donn&eacute;es soient
+        utilis&eacute;es pour vous recontacter dans le cadre de votre demande.
+        Consultez notre{" "}
+        <a href="/politique-confidentialite" className="underline hover:text-[var(--color-primary)]">
+          politique de confidentialit&eacute;
+        </a>.
       </p>
     </form>
   );

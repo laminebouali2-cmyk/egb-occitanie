@@ -9,12 +9,12 @@ interface SmoothScrollProps {
 
 export function SmoothScroll({ children }: SmoothScrollProps) {
   const lenisRef = useRef<Lenis | null>(null);
+  const rafIdRef = useRef<number>(0);
 
   useEffect(() => {
-    // Configuration Lenis — style contemplatif
     lenisRef.current = new Lenis({
-      duration: 1.4, // Scroll lent et luxueux
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Ease out expo
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
@@ -23,17 +23,17 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
 
     function raf(time: number) {
       lenisRef.current?.raf(time);
-      requestAnimationFrame(raf);
+      rafIdRef.current = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafIdRef.current = requestAnimationFrame(raf);
 
-    // Expose Lenis to window for external access
     if (typeof window !== "undefined") {
       (window as Window & { lenis?: Lenis }).lenis = lenisRef.current;
     }
 
     return () => {
+      cancelAnimationFrame(rafIdRef.current);
       lenisRef.current?.destroy();
     };
   }, []);
