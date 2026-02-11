@@ -188,22 +188,44 @@ export const metadata: Metadata = { title: "..." }; // IGNORÉ !!!
 // src/lib/constants.ts
 export const SITE = {
   name: "Shedli Auto",
+  legalName: "SHEDLI AUTO",
+  legalForm: "SASU au capital de 100 €",
   url: "https://shedliauto.com",
   phone: "06 28 43 88 44",
   phoneHref: "tel:+33628438844",
   whatsapp: "https://wa.me/33628438844",
-  email: "contact@shedliauto.com",  // À confirmer
+  email: "shedliauto@gmail.com",
   address: {
-    street: "",    // À fournir
-    city: "",      // À fournir
-    zip: "",       // À fournir
+    street: "24 rue des Ebisoires",
+    city: "Plaisir",
+    zip: "78370",
+    region: "Île-de-France",
     country: "France",
   },
-  siret: "",       // À fournir
+  siren: "933 679 482",
+  siret: "933 679 482 00010",
+  tva: "FR13933679482",
+  rcs: "Versailles",
+  ape: "4520A",
+  manager: "Saif-Dine Baccouche",
+  managerRole: "Président",
   hours: {
     weekdays: "8h00 - 19h00",
     saturday: "9h00 - 17h00",
     sunday: "Fermé",
+  },
+  zone: {
+    primary: "Yvelines (78)",
+    secondary: "Île-de-France",
+    cities: [
+      "Plaisir", "Versailles", "Saint-Germain-en-Laye",
+      "Poissy", "Mantes-la-Jolie", "Sartrouville",
+      "Chatou", "Le Vésinet", "Maisons-Laffitte",
+      "Conflans-Sainte-Honorine", "Les Mureaux",
+      "Trappes", "Montigny-le-Bretonneux", "Guyancourt",
+      "Élancourt", "Maurepas", "Rambouillet",
+      "Bois-d'Arcy", "Fontenay-le-Fleury", "Villepreux",
+    ],
   },
   social: {
     instagram: "https://instagram.com/shedli_auto",
