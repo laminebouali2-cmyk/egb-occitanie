@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facture F2026-002 — Lamine Bouali</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      font-size: 13px;
+      line-height: 1.6;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .invoice {
+      max-width: 794px;
+      margin: 0 auto;
+      padding: 48px 56px;
+      min-height: 1122px;
+      position: relative;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    .emitter-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #1a1a1a;
+    }
+
+    .emitter-activity {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .invoice-label {
+      text-align: right;
+    }
+
+    .invoice-label h1 {
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      color: #1a1a1a;
+      text-transform: uppercase;
+    }
+
+    .invoice-number {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-top: 4px;
+    }
+
+    /* ---- Info Grid ---- */
+    .info-grid {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .info-block {
+      max-width: 280px;
+    }
+
+    .info-block-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    .info-block p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .info-block .name {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    /* ---- Dates ---- */
+    .dates {
+      display: flex;
+      gap: 48px;
+      margin-bottom: 40px;
+      padding: 20px 24px;
+      background: #f8f8f8;
+      border-radius: 4px;
+    }
+
+    .date-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .date-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #999;
+      margin-bottom: 4px;
+    }
+
+    .date-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    /* ---- Table ---- */
+    .table-wrapper {
+      margin-bottom: 32px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #999;
+      padding: 0 0 12px 0;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: left;
+    }
+
+    thead th:last-child {
+      text-align: right;
+    }
+
+    thead th:nth-child(2) {
+      text-align: center;
+      width: 80px;
+    }
+
+    thead th:nth-child(3) {
+      text-align: right;
+      width: 120px;
+    }
+
+    tbody td {
+      padding: 20px 0;
+      vertical-align: top;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    tbody td:last-child {
+      text-align: right;
+      font-weight: 500;
+    }
+
+    tbody td:nth-child(2) {
+      text-align: center;
+    }
+
+    tbody td:nth-child(3) {
+      text-align: right;
+    }
+
+    .item-title {
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .item-description {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    /* ---- Totals ---- */
+    .totals {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .totals-table {
+      width: 280px;
+    }
+
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 13px;
+    }
+
+    .totals-row.subtotal {
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 12px;
+      margin-bottom: 4px;
+    }
+
+    .totals-row .label {
+      color: #666;
+    }
+
+    .totals-row .value {
+      font-weight: 500;
+    }
+
+    .totals-row.total {
+      border-top: 2px solid #1a1a1a;
+      margin-top: 8px;
+      padding-top: 12px;
+    }
+
+    .totals-row.total .label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #1a1a1a;
+    }
+
+    .totals-row.total .value {
+      font-weight: 700;
+      font-size: 18px;
+      color: #1a1a1a;
+    }
+
+    .tva-mention {
+      font-size: 11px;
+      color: #999;
+      text-align: right;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* ---- Payment ---- */
+    .payment {
+      margin-bottom: 40px;
+      padding: 24px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+
+    .payment-title {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #999;
+      margin-bottom: 16px;
+    }
+
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .payment-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .payment-item .label {
+      font-size: 11px;
+      color: #999;
+      margin-bottom: 2px;
+    }
+
+    .payment-item .value {
+      font-size: 13px;
+      font-weight: 500;
+      color: #1a1a1a;
+      font-family: 'Inter', monospace;
+      letter-spacing: 0.3px;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      position: absolute;
+      bottom: 48px;
+      left: 56px;
+      right: 56px;
+      padding-top: 20px;
+      border-top: 1px solid #e8e8e8;
+    }
+
+    .legal {
+      font-size: 10px;
+      line-height: 1.8;
+      color: #aaa;
+    }
+
+    .legal p {
+      margin-bottom: 2px;
+    }
+
+    /* ---- Print ---- */
+    @media print {
+      body {
+        background: #fff;
+      }
+      .invoice {
+        padding: 32px 40px;
+        max-width: none;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* ---- Download Button ---- */
+    .download-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px;
+      background: #1a1a1a;
+      text-align: center;
+      z-index: 100;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 32px;
+      background: #fff;
+      color: #1a1a1a;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .download-btn:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Download Button -->
+  <div class="download-bar no-print">
+    <button class="download-btn" onclick="window.print()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      Enregistrer en PDF
+    </button>
+  </div>
+
+  <div class="invoice">
+
+    <!-- Header -->
+    <div class="header">
+      <div>
+        <div class="emitter-name">Lamine Bouali</div>
+        <div class="emitter-activity">Conseil en gestion d'entreprise</div>
+      </div>
+      <div class="invoice-label">
+        <h1>Facture</h1>
+        <div class="invoice-number">F2026-002</div>
+      </div>
+    </div>
+
+    <!-- Emitter / Client -->
+    <div class="info-grid">
+      <div class="info-block">
+        <div class="info-block-label">De</div>
+        <p>
+          <span class="name">Lamine Bouali</span><br>
+          Entrepreneur individuel<br>
+          1 Rue Claude Cornac<br>
+          31140 Launaguet<br>
+          France<br><br>
+          SIRET : 999 924 038 00014<br>
+          SIREN : 999 924 038<br>
+          APE : 7022Z
+        </p>
+      </div>
+      <div class="info-block" style="text-align: right;">
+        <div class="info-block-label" style="text-align: right;">Facturer à</div>
+        <p style="text-align: right;">
+          <span class="name">EGB Occitanie</span><br>
+          À l'attention de Sergiu Lungu<br>
+          18 Rue du Lauraguais<br>
+          31650 Deyme<br>
+          France
+        </p>
+      </div>
+    </div>
+
+    <!-- Dates -->
+    <div class="dates">
+      <div class="date-item">
+        <span class="date-label">Date d'émission</span>
+        <span class="date-value">11 février 2026</span>
+      </div>
+      <div class="date-item">
+        <span class="date-label">Échéance</span>
+        <span class="date-value">13 mars 2026</span>
+      </div>
+      <div class="date-item">
+        <span class="date-label">Mode de règlement</span>
+        <span class="date-value">Virement bancaire</span>
+      </div>
+    </div>
+
+    <!-- Line Items -->
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Qté</th>
+            <th>Prix unitaire</th>
+            <th>Montant</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="item-title">Stratégie digitale & développement web</div>
+              <div class="item-description">
+                Audit technique complet (SEO, sécurité, performance, accessibilité)<br>
+                Refonte et optimisation du site web<br>
+                Stratégie d'acquisition et prospection B2B<br>
+                Conseil en positionnement et développement commercial
+              </div>
+            </td>
+            <td>1</td>
+            <td>2 000,00 €</td>
+            <td>2 000,00 €</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Totals -->
+    <div class="totals">
+      <div class="totals-table">
+        <div class="totals-row subtotal">
+          <span class="label">Total HT</span>
+          <span class="value">2 000,00 €</span>
+        </div>
+        <div class="totals-row">
+          <span class="label">TVA</span>
+          <span class="value">0,00 €</span>
+        </div>
+        <div class="totals-row total">
+          <span class="label">Net à payer</span>
+          <span class="value">2 000,00 €</span>
+        </div>
+        <div class="tva-mention">TVA non applicable, article 293 B du CGI</div>
+      </div>
+    </div>
+
+    <!-- Payment Info -->
+    <div class="payment">
+      <div class="payment-title">Coordonnées bancaires</div>
+      <div class="payment-grid">
+        <div class="payment-item">
+          <span class="label">Titulaire</span>
+          <span class="value">Lamine Bouali</span>
+        </div>
+        <div class="payment-item">
+          <span class="label">Banque</span>
+          <span class="value">Crédit Agricole</span>
+        </div>
+        <div class="payment-item">
+          <span class="label">IBAN</span>
+          <span class="value">FR76 1310 6005 0030 0438 8590 889</span>
+        </div>
+        <div class="payment-item">
+          <span class="label">BIC</span>
+          <span class="value">AGRIFRPP831</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="legal">
+        <p>Lamine Bouali — Entrepreneur individuel — SIRET : 999 924 038 00014 — APE : 7022Z</p>
+        <p>TVA non applicable, article 293 B du Code général des impôts.</p>
+        <p>En cas de retard de paiement, une pénalité de 3 fois le taux d'intérêt légal sera appliquée, ainsi qu'une indemnité forfaitaire de recouvrement de 40 €.</p>
+        <p>Pas d'escompte pour paiement anticipé. Délai de paiement : 30 jours à compter de la date d'émission.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
