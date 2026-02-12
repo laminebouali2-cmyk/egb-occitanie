@@ -2,72 +2,55 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
 import { Phone, ArrowRight } from "lucide-react";
 
 export function CtaBanner() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <section ref={ref} className="relative overflow-hidden min-h-[480px] flex items-center">
-      {/* Background image */}
-      <Image
-        src="/images/car-dramatic.jpg"
-        alt="Voiture premium"
-        fill
-        className="object-cover object-center"
-        sizes="100vw"
-        quality={80}
+    <section ref={ref} className="relative overflow-hidden bg-[#09090b]">
+      {/* Gradient accent */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[1px]"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)" }}
       />
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-950/95 via-primary-950/80 to-primary-950/60" />
-
-      {/* Noise */}
-      <div className="absolute inset-0 noise-overlay" />
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-16 py-20 lg:py-28">
+      <div className="mx-auto w-full max-w-3xl px-6 sm:px-8 py-24 lg:py-32 text-center">
         <motion.div
-          className="max-w-xl"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
-            Un impact ?
-            <br />
-            Une fissure ?
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight leading-snug">
+            Un impact ? Une fissure ?
           </h2>
-
-          <p className="mt-5 text-lg text-white/50 leading-relaxed">
-            Un seul appel et on s&apos;occupe de tout. Intervention, assurance,
-            garantie. Vous ne faites rien.
+          <p className="mt-4 text-base text-white/40 leading-relaxed max-w-md mx-auto">
+            Un seul appel et on s&apos;occupe de tout.
+            Intervention, assurance, garantie.
           </p>
 
           <motion.div
-            className="mt-10 flex flex-col sm:flex-row gap-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
+            initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
           >
             <a
               href={SITE.phoneHref}
-              className="group relative inline-flex items-center justify-center gap-3 rounded-2xl bg-white px-8 py-4 text-lg font-extrabold text-primary-700 transition-all duration-300 hover:shadow-[0_20px_40px_-8px_rgba(255,255,255,0.2)] hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2.5 rounded-lg bg-white px-6 py-3 text-sm font-medium text-[#09090b] transition-all duration-200 hover:bg-white/90"
             >
-              <Phone size={20} />
+              <Phone size={16} />
               {SITE.phone}
             </a>
-
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/25"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/[0.1] px-6 py-3 text-sm font-medium text-white/70 transition-all duration-200 hover:text-white hover:border-white/20"
             >
               Demander un devis
-              <ArrowRight size={18} />
+              <ArrowRight size={14} />
             </Link>
           </motion.div>
         </motion.div>
