@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { reviews, averageRating, reviewCount } from "@/lib/reviews";
 import { Star } from "lucide-react";
 import Link from "next/link";
@@ -11,9 +12,9 @@ function StarRating({ rating }: { rating: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          size={15}
+          size={16}
           className={
-            i < rating ? "fill-star text-star" : "fill-border text-border"
+            i < rating ? "fill-star text-star" : "fill-border/50 text-border"
           }
         />
       ))}
@@ -35,121 +36,124 @@ function timeAgo(dateStr: string): string {
   return `il y a plus d'un an`;
 }
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  },
-};
-
 export function ReviewsPreview() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
   const featured = reviews.slice(0, 3);
 
   return (
-    <section className="py-20 lg:py-32">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-16">
+    <section className="py-24 lg:py-36">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-16">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-primary-500 mb-4">
-              Témoignages
-            </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-text tracking-tight leading-tight">
-              Ils nous font confiance
-            </h2>
-          </div>
-          <div className="flex items-center gap-3 shrink-0">
-            <div className="flex items-center gap-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  size={18}
-                  className={
-                    i < Math.round(averageRating)
-                      ? "fill-star text-star"
-                      : "fill-border text-border"
-                  }
-                />
-              ))}
-            </div>
-            <span className="text-lg font-bold text-text">
-              {averageRating}/5
-            </span>
-            <span className="text-sm text-text-muted">
-              · {reviewCount} avis Google
-            </span>
-          </div>
-        </div>
-
-        {/* Cards */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          ref={ref}
+          className="mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
         >
-          {featured.map((review) => (
-            <motion.div key={review.id} variants={cardVariants}>
-              <div className="h-full rounded-2xl border border-border bg-white p-7 transition-shadow duration-300 hover:shadow-lg hover:shadow-black/[0.04]">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div>
+              <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary-500 bg-primary-50 rounded-full px-4 py-1.5 mb-6">
+                Avis clients
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-text tracking-tight leading-[1.1]">
+                Ils nous font
+                <br />
+                <span className="text-text-secondary font-semibold">confiance.</span>
+              </h2>
+            </div>
+
+            {/* Google rating summary */}
+            <div className="flex items-center gap-4 lg:pb-2">
+              <div className="flex items-center gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    size={22}
+                    className={
+                      i < Math.round(averageRating)
+                        ? "fill-star text-star"
+                        : "fill-border/50 text-border"
+                    }
+                  />
+                ))}
+              </div>
+              <div>
+                <span className="text-2xl font-extrabold text-text">
+                  {averageRating}
+                </span>
+                <span className="text-sm text-text-muted ml-1">/5</span>
+              </div>
+              <span className="text-sm text-text-muted">
+                {reviewCount} avis Google
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Review cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {featured.map((review, i) => (
+            <motion.div
+              key={review.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.6,
+                delay: 0.15 + i * 0.12,
+                ease: [0.16, 1, 0.3, 1] as const,
+              }}
+            >
+              <div className="group h-full rounded-2xl bg-white border border-border/60 p-7 transition-all duration-300 hover:shadow-[0_8px_30px_-8px_rgba(0,0,0,0.1)] hover:border-border hover:-translate-y-1">
+                {/* Stars */}
                 <StarRating rating={review.rating} />
 
-                <blockquote className="mt-5 text-base text-text leading-relaxed">
+                {/* Quote */}
+                <blockquote className="mt-5 text-base text-text leading-relaxed line-clamp-4">
                   &ldquo;{review.text}&rdquo;
                 </blockquote>
 
-                <div className="mt-6 pt-5 border-t border-border/50">
-                  <div className="font-semibold text-sm text-text">
-                    {review.author}
-                  </div>
-                  <div className="flex items-center gap-2 mt-1">
-                    {review.vehicle && (
-                      <>
-                        <span className="text-xs text-text-muted">
-                          {review.vehicle}
-                        </span>
-                        <span className="text-text-muted">·</span>
-                      </>
-                    )}
-                    <span className="text-xs text-text-muted">
-                      {timeAgo(review.date)}
-                    </span>
+                {/* Author */}
+                <div className="mt-6 pt-5 border-t border-border/40">
+                  <div className="flex items-center gap-3">
+                    {/* Avatar placeholder */}
+                    <div className="w-9 h-9 rounded-full bg-primary-100 flex items-center justify-center text-sm font-bold text-primary-600">
+                      {review.author.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm text-text">
+                        {review.author}
+                      </div>
+                      <div className="text-xs text-text-muted">
+                        {review.vehicle && `${review.vehicle} · `}
+                        {timeAgo(review.date)}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Link */}
-        <div className="mt-10 text-center">
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
           <Link
             href="/avis"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary-500 hover:text-primary-600 transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-bold text-primary-500 hover:text-primary-600 transition-colors"
           >
             Voir tous les avis
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 5l7 7-7 7"
-              />
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
