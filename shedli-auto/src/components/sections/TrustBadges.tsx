@@ -4,99 +4,63 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 const stats = [
-  { value: 48, suffix: "h", prefix: "<", label: "Délai d'intervention" },
-  { value: 0, suffix: "€", prefix: "", label: "Avance de frais" },
-  { value: 2, suffix: " ans", prefix: "", label: "Garantie pièce & pose" },
+  { value: 48, suffix: "h", prefix: "<", label: "Délai moyen d'intervention" },
+  { value: 0, suffix: "€", prefix: "", label: "D'avance de frais" },
+  { value: 2, suffix: " ans", prefix: "", label: "De garantie" },
   { value: 100, suffix: "%", prefix: "", label: "Clients satisfaits" },
 ];
 
-function AnimatedNumber({
-  value,
-  suffix,
-  prefix,
-  inView,
-}: {
-  value: number;
-  suffix: string;
-  prefix: string;
-  inView: boolean;
-}) {
+function AnimatedNumber({ value, suffix, prefix, active }: { value: number; suffix: string; prefix: string; active: boolean }) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
-
-    if (value === 0) {
-      setDisplay(0);
-      return;
-    }
-
-    let start = 0;
-    const duration = 1200;
-    const stepTime = 16;
-    const steps = duration / stepTime;
+    if (!active) return;
+    if (value === 0) { setDisplay(0); return; }
+    const duration = 1000;
+    const steps = 60;
     const increment = value / steps;
     let current = 0;
-
     const timer = setInterval(() => {
       current += increment;
-      if (current >= value) {
-        setDisplay(value);
-        clearInterval(timer);
-      } else {
-        setDisplay(Math.floor(current));
-      }
-    }, stepTime);
-
+      if (current >= value) { setDisplay(value); clearInterval(timer); }
+      else setDisplay(Math.floor(current));
+    }, duration / steps);
     return () => clearInterval(timer);
-  }, [inView, value]);
+  }, [active, value]);
 
-  return (
-    <span>
-      {prefix}
-      {display}
-      {suffix}
-    </span>
-  );
+  return <span>{prefix}{display}{suffix}</span>;
 }
 
 export function TrustBadges() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <section className="relative z-10 -mt-16 pb-12">
-      <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
+    <section className="py-20 lg:py-24">
+      <div className="mx-auto w-full max-w-5xl px-6 sm:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-3xl bg-white shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)] border border-border/50 px-6 py-8 sm:px-10 sm:py-10"
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 lg:divide-x divide-border"
         >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-border/60">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                className="text-center lg:px-6"
-              >
-                <div className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-primary-700 leading-none tracking-tight">
-                  <AnimatedNumber
-                    value={stat.value}
-                    suffix={stat.suffix}
-                    prefix={stat.prefix}
-                    inView={inView}
-                  />
-                </div>
-                <div className="mt-2 text-sm font-medium text-text-secondary">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="text-center lg:px-8"
+            >
+              <div className="text-3xl sm:text-4xl font-semibold text-text tracking-tight">
+                <AnimatedNumber value={stat.value} suffix={stat.suffix} prefix={stat.prefix} active={inView} />
+              </div>
+              <div className="mt-1.5 text-sm text-text-muted">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

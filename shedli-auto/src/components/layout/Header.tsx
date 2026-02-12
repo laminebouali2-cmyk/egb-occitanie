@@ -140,7 +140,7 @@ export function Header() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="fixed inset-0 z-40 flex flex-col bg-primary-700 lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-[#09090b] lg:hidden"
           >
             {/* Nav links centered */}
             <nav
