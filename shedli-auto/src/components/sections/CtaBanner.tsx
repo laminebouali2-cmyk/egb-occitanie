@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, PhoneIncoming } from "lucide-react";
 
 export function CtaBanner() {
   const ref = useRef<HTMLElement>(null);
@@ -12,20 +12,28 @@ export function CtaBanner() {
 
   return (
     <section ref={ref} className="relative overflow-hidden bg-[#09090b]">
-      {/* Gradient accent */}
+      {/* Gradient accent line */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[1px]"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)" }}
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)",
+        }}
       />
 
-      <div className="mx-auto w-full max-w-3xl px-6 sm:px-8 py-24 lg:py-32 text-center">
+      <div className="mx-auto w-full max-w-3xl px-5 lg:px-8 py-24 lg:py-32 text-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
+          <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/30 mb-4">
+            Prêt à régler ça ?
+          </p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight leading-snug">
-            Un impact ? Une fissure ?
+            Pare-brise fissuré ?
+            <br />
+            <span className="text-white/40">Réglez ça maintenant.</span>
           </h2>
           <p className="mt-4 text-base text-white/40 leading-relaxed max-w-md mx-auto">
             Un seul appel et on s&apos;occupe de tout.
@@ -40,17 +48,17 @@ export function CtaBanner() {
           >
             <a
               href={SITE.phoneHref}
-              className="inline-flex items-center gap-2.5 rounded-lg bg-white px-6 py-3 text-sm font-medium text-[#09090b] transition-all duration-200 hover:bg-white/90"
+              className="inline-flex items-center gap-2.5 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-[#09090b] transition-all duration-200 hover:bg-white/90 active:scale-[0.98]"
             >
-              <Phone size={16} />
+              <Phone size={16} strokeWidth={2.2} />
               {SITE.phone}
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/[0.1] px-6 py-3 text-sm font-medium text-white/70 transition-all duration-200 hover:text-white hover:border-white/20"
+              className="inline-flex items-center gap-2.5 rounded-xl border border-white/[0.1] px-6 py-3.5 text-sm font-semibold text-white/70 transition-all duration-200 hover:text-white hover:border-white/20 active:scale-[0.98]"
             >
-              Demander un devis
-              <ArrowRight size={14} />
+              <PhoneIncoming size={16} strokeWidth={2.2} />
+              Être rappelé
             </Link>
           </motion.div>
         </motion.div>
