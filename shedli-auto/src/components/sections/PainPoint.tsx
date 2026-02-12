@@ -41,10 +41,10 @@ export function PainPoint() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-500 mb-4">
+            <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-4">
               Pourquoi agir vite
             </p>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2.25rem] font-semibold text-text tracking-tight leading-[1.15]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-text tracking-tight leading-[1.1]">
               Chaque fissure
               <br />
               est un risque.

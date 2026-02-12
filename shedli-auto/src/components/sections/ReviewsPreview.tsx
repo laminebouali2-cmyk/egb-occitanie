@@ -35,7 +35,7 @@ export function ReviewsPreview() {
           transition={{ duration: 0.5 }}
         >
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-500 mb-4">
+            <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-4">
               Avis clients
             </p>
             <h2 className="text-2xl sm:text-3xl lg:text-[2.25rem] font-semibold text-text tracking-tight leading-[1.15]">

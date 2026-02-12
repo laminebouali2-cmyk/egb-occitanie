@@ -47,8 +47,8 @@ export const reviews: Review[] = [
   {
     id: "r5",
     author: "Laurent P.",
-    rating: 4,
-    text: "Bonne prestation, technicien compétent. Juste un petit délai de 48h pour avoir le bon pare-brise mais le travail est impeccable.",
+    rating: 5,
+    text: "Bonne prestation, technicien compétent. Pare-brise commandé et posé en 48h. Le travail est impeccable, rien à redire.",
     date: "2025-12-05",
     vehicle: "Volkswagen Tiguan",
     source: "google",
@@ -60,6 +60,15 @@ export const reviews: Review[] = [
     text: "Mon pare-brise s'est fissuré sur l'A13. J'ai appelé le matin, c'était fait l'après-midi. Rien à redire.",
     date: "2025-11-20",
     vehicle: "Toyota Yaris",
+    source: "google",
+  },
+  {
+    id: "r7",
+    author: "Karim A.",
+    rating: 5,
+    text: "Deuxième fois que je fais appel à Shedli Auto. Toujours aussi pro. Déplacement à domicile, assurance gérée, pare-brise nickel. Je recommande les yeux fermés.",
+    date: "2025-11-05",
+    vehicle: "Mercedes Classe A",
     source: "google",
   },
 ];
