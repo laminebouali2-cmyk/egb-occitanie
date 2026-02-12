@@ -10,15 +10,23 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
     default:
-      "Shedli Auto | Remplacement Pare-Brise Yvelines — Intervention Mobile",
-    template: "%s | Shedli Auto",
+      "Shedli Auto | Remplacement Pare-Brise Yvelines (78) — Intervention Mobile",
+    template: "%s | Shedli Auto — Pare-Brise Yvelines",
   },
   description:
-    "Pare-brise fissuré dans les Yvelines ? Shedli Auto intervient chez vous sous 24-48h. Prise en charge assurance, devis gratuit. Appelez le 06 28 43 88 44.",
+    "Pare-brise fissuré dans les Yvelines (78) ? Shedli Auto intervient chez vous sous 24-48h. Agréé toutes assurances, 0 € d'avance, garantie 2 ans. Appelez le 06 28 43 88 44.",
   openGraph: {
     type: "website",
     locale: "fr_FR",
     siteName: SITE.name,
+    images: [
+      {
+        url: "/images/hero-mechanic.jpg",
+        width: 1920,
+        height: 2880,
+        alt: "Shedli Auto — Remplacement de pare-brise à domicile dans les Yvelines",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -26,6 +34,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
