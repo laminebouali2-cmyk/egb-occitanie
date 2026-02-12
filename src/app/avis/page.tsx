@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Avis Clients Construction & Rénovation Toulouse - Note 4.8/5",
   description: "Lisez les avis de nos clients sur nos projets construction villa, rénovation maison, extension Toulouse. Note moyenne 4.8/5 basée sur 9 avis vérifiés. Témoignages réels détaillés.",
   keywords: ["avis egb occitanie", "avis constructeur toulouse", "témoignages clients construction", "avis rénovation toulouse"],
+  alternates: {
+    canonical: "https://egb-occitanie.fr/avis",
+  },
 };
 
 const reviews = [
@@ -108,7 +111,7 @@ const reviewSchema = {
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.8",
-    "reviewCount": "47",
+    "reviewCount": reviews.length.toString(),
     "bestRating": "5",
     "worstRating": "1"
   },
@@ -150,7 +153,7 @@ export default function AvisPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
       />
 
-      <main className="min-h-screen bg-stone-50">
+      <div className="min-h-screen bg-stone-50">
         <section className="bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 text-white py-20">
           <div className="max-w-6xl mx-auto px-6">
             <div className="inline-block px-4 py-2 bg-amber-600/20 border border-amber-600/40 rounded-full mb-6">
@@ -169,7 +172,7 @@ export default function AvisPage() {
                 <div className="text-sm text-stone-300">Note moyenne</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-                <div className="text-5xl font-bold text-amber-400 mb-2">47</div>
+                <div className="text-5xl font-bold text-amber-400 mb-2">{reviews.length}</div>
                 <div className="text-sm text-stone-300">Avis clients</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
@@ -286,8 +289,8 @@ export default function AvisPage() {
               <a href="/contact" className="inline-block px-10 py-5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-lg rounded-lg transition-colors shadow-xl">
                 Demander Devis Gratuit
               </a>
-              <a href="tel:+33582950495" className="inline-block px-10 py-5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg rounded-lg transition-colors">
-                📱 05 82 95 04 95
+              <a href="tel:+33665015882" className="inline-block px-10 py-5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white font-bold text-lg rounded-lg transition-colors">
+                06 65 01 58 82
               </a>
             </div>
           </div>
@@ -303,7 +306,7 @@ export default function AvisPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

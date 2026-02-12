@@ -1,0 +1,64 @@
+Rang,Nom Agence,Quartier/Commune,Telephone,Site Web,Type,Tier ICP,Specialite Probable,Score ICP,Raison du Score,Action Recommandee
+1,Cabinet Rivet & Vigreux,Cote Pavee / Busca / Capitole,05 61 54 71 65,rivet-vigreux-immobilier.com,Independant,1,Maisons prestige quartiers premium,95,"Independant historique Cote Pavee. Specialise maisons. Zone premium EGB. Decision rapide.",LinkedIn du gerant + message personnalise
+2,Maison Soler de Lastelle,Cote Pavee (Est Toulouse),05 61 74 91 48,maisonsolerdelastelle.com,Independant,1,Immobilier prestige Est Toulouse,93,"Nom 'Maison' = focus maisons. Cote Pavee = clientele CSP++. Independant = flexible.",LinkedIn + cafe en personne
+3,Cardinal Immobilier,Carmes / Capitole / Saint-Etienne,05 34 31 54 00,cardinalimmobilier.com,Independant,1,Biens de caractere centre Toulouse,92,"Independant centre historique. Biens a renover = besoin EGB direct.",Email personnalise + appel
+4,Collection Immobiliere,Saint-Etienne (Toulouse centre),06 52 02 75 45,collection-immobiliere.com,Independant,1,Biens atypiques et prestige,91,"Independant premium. Numero mobile = contact direct decideur.",Appel direct mobile
+5,Alteria Immobilier,Castanet-Tolosan,05 34 66 67 00,alteria-immobilier.fr,Independant,1,Immobilier Castanet general,90,"Independant zone EGB (meme commune). Proximite geographique ideale.",Visite en agence directe
+6,Passion Immo,Castanet-Tolosan,05 61 36 00 04,passionimmo.com,Independant,1,Immobilier Castanet,89,"Independant local Castanet. Petite structure = relation directe.",Visite en agence
+7,EST HABITAT,Cote Pavee / Guilhemery / Busca,09 82 45 25 15,esthabitat.com,Independant,1,Maisons quartiers Est Toulouse,88,"Focus est toulousain = zone EGB. Independant specialise.",LinkedIn du gerant
+8,Booster Immobilier,Cote Pavee / Guilhemery,05 61 83 93 35,booster-immobilier.com,Independant,1,Immobilier Cote Pavee,87,"Independant zone premium. Nom dynamique = agence active.",Email + appel
+9,Agence VIA,Les Carmes,05 61 53 20 83,agencevia.com,Independant,1,Immobilier Carmes,86,"Independant quartier historique. Biens anciens = potentiel renovation.",LinkedIn + email
+10,Habitat Communication,Saint-Etienne / Carmes / Ozenne,05 61 53 70 29,habitat-communication.com,Independant,1,Immobilier prestige centre,85,"Independant multi-quartiers premium. Anciennete probable.",Email personnalise
+11,Rive Gauche Immobilier,Saint-Cyprien,05 32 66 44 44,rivegaucheimmobiliertoulouse.com,Independant,1,Immobilier Saint-Cyprien,84,"Independant rive gauche. Quartier en gentrification = projets reno.",LinkedIn + email
+12,KB Immo 31,Castanet-Tolosan,05 61 204 152,kbimmo31.fr,Independant,1,Immobilier Castanet local,83,"Independant ultra-local Castanet. Meme zone qu EGB.",Visite en agence
+13,Prada Prestige Immo,Toulouse et environs,06 77 85 95 48,prada-prestige-immo.fr,Independant,1,Immobilier prestige Toulouse,82,"Prestige dans le nom. Mobile = contact direct. Independant.",Appel direct mobile
+14,IMMO-B,Ramonville-Saint-Agne,05 61 28 61 28,immo-b.com,Independant,1,Immobilier Ramonville,81,"Independant Ramonville. Metro 2027 = forte activite attendue.",Email + appel
+15,Contact Immobilier 31,Ramonville-Saint-Agne,05 62 88 39 94,ramonville.contactimmo31.com,Independant,1,Immobilier Ramonville,80,"Independant local. Zone en croissance.",Email + appel
+16,Darnault Immobilier,Balma,05 31 61 51 10,darnault-immo.fr,Independant,1,Immobilier Balma,79,"Independant Balma. Zone familles CSP+. Maisons individuelles.",LinkedIn + email
+17,Immobilier du Palais,Les Carmes / Palais de Justice,05 61 53 70 29,immobilier-palais-toulouse.fr,Independant,1,Biens centre historique,78,"Independant coeur historique. Biens a fort potentiel renovation.",Email personnalise
+18,Groupe Tolosan Immobilier,Escalquens / Belberaud,05 34 66 62 50,groupe-tolosan-immobilier.com,Independant,1,Immobilier sud-est Toulouse,77,"Independant zone Castanet elargie. 'Tolosan' = ancrage local fort.",Email + appel
+19,Dufour Immobilier,Colomiers,--,dufourimmobilier.fr,Independant,2,Immobilier Colomiers,75,"Independant Colomiers. Zone Airbus. Maisons pour cadres.",LinkedIn du gerant
+20,Agence Palomar,Blagnac,--,agence-palomar.fr,Independant,2,Immobilier Blagnac,74,"Independant Blagnac. Zone Airbus premium.",LinkedIn + site web contact
+21,S&F Immobilier Associes,Colomiers,--,sf-immobilier.fr,Independant,2,Immobilier Colomiers,73,"Independant local. 'Associes' = structure etablie.",LinkedIn
+22,Alain Piboul Immobilier,Tournefeuille,06 23 14 16 47,alainpiboul-immobilier.com,Independant,2,Immobilier Tournefeuille,72,"Independant nom propre = gerant identifie. Mobile direct.",Appel direct mobile
+23,Novilis Immobilier,Tournefeuille / Ramonville,05 34 51 70 71,novilis.fr,Reseau local,2,Multi-agences sud Toulouse,71,"Reseau local (pas national). Multi-implantations = volume.",Email siege + LinkedIn directeur
+24,L Union Immobilier,L Union,--,lunionimmo.com,Independant,2,Immobilier L Union,70,"Independant ultra-local. Zone construction neuve.",LinkedIn + site web contact
+25,Empeiria,L Union,07 89 09 53 41,fnaim.fr (fiche),Independant,2,Immobilier L Union,69,"FNAIM member = serieux. Mobile = contact direct.",Appel direct
+26,Integral Immobilier,Cugnaux,--,integral-immobilier.net,Independant,2,Immobilier Cugnaux,68,"Independant local. Zone prix competitifs.",Email via site
+27,D.SY.D Immobilier,Cugnaux,06 70 00 68 60,dsyd-immobilier.com,Independant,2,Immobilier Cugnaux,67,"Independant. Mobile = decideur direct.",Appel direct
+28,Pole Immobilier,Labege,05 61 00 24 24,pole-immobilier.com,Independant,2,Immobilier Labege,66,"Independant zone tech/innovation. Cadres Labege Innopole.",Email + appel
+29,Immo Concept,Escalquens,05 61 34 23 55,immoconcept31.fr,Independant,2,Immobilier Escalquens,65,"Independant local sud-est.",Email + appel
+30,Agence du Touch,Plaisance-du-Touch,05 61 86 23 33,fnaim.fr (fiche),Independant,2,Immobilier Plaisance,64,"FNAIM member. Independant local.",Email + appel
+31,BARNES Toulouse,Carmes / Capitole / Cote Pavee,via site,barnes-toulouse.com,Franchise premium,1,Immobilier luxe Toulouse,76,"Franchise mais ultra-premium. Clients >500k. Fort potentiel volume. Approche directeur agence local.",LinkedIn directeur agence Toulouse
+32,Espaces Atypiques Toulouse,Carmes / Capitole / Chalets,06 71 39 13 83,espaces-atypiques.com/toulouse,Franchise premium,1,Biens atypiques et architecturaux,74,"Biens atypiques = renovation = EGB. Mobile direct.",Appel mobile + email
+33,Sothebys Midi-Pyrenees,Toulouse centre / region,via site,midipyrenees-sothebysrealty.com,Franchise premium,1,Immobilier ultra-prestige,73,"Ultra-premium. Gros budgets. Approche longue mais haut potentiel.",LinkedIn directeur + invitation evenement
+34,Stephane Plaza Toulouse Centre,Carmes / Cote Pavee,via site,toulousecentre.stephaneplazaimmobilier.com,Franchise,1,Immobilier centre Toulouse,68,"Franchise connue mais geree localement. Volume important.",LinkedIn gerant local
+35,Une Villa et des Vignes,Capitole / metropole,05 34 26 10 10,unevillaetdesvignes.fr,Franchise,1,Maisons et proprietes,70,"'Villa' dans le nom = focus maisons. Pertinent pour EGB.",Email + appel
+36,Cabinet Bedin Balma,Balma,05 32 26 15 15,cabinet-bedin.com,Reseau regional,1,Immobilier general Balma,67,"Reseau regional (pas national). Decision locale possible.",LinkedIn directeur agence
+37,Cabinet Bedin Saint-Orens,Saint-Orens,05 32 26 39 39,cabinet-bedin.com,Reseau regional,2,Immobilier general Saint-Orens,65,"Meme reseau que ci-dessus. Contacter le directeur regional.",Via contact Bedin Balma
+38,Nestenn Castanet-Tolosan,Castanet-Tolosan,05 61 24 75 36,nestenn.com (castanet),Franchise,1,Immobilier Castanet,66,"Franchise mais gerant local autonome. Meme commune EGB.",Email gerant local
+39,Laforet Balma,Balma,05 61 81 88 18,laforet.com/balma,Franchise,1,Immobilier Balma,64,"Franchise connue. Volume maisons Balma important.",Email directeur agence
+40,Laforet Saint-Orens,Saint-Orens,05 82 95 84 51,laforet.com/saint-orens,Franchise,2,Immobilier Saint-Orens,62,"Franchise locale. Zone premium familles.",Email directeur agence
+41,HUMAN Immobilier Castanet,Castanet-Tolosan,05 34 66 11 11,human-immobilier.fr/castanet,Franchise,1,Immobilier Castanet,63,"Franchise locale. Volume Castanet.",Email agence
+42,HUMAN Immobilier Balma,Balma,05 62 80 02 01,human-immobilier.fr/balma,Franchise,1,Immobilier Balma,61,"Idem HUMAN reseau. Contact local.",Email agence
+43,HUMAN Immobilier Ramonville,Ramonville,05 61 75 00 60,human-immobilier.fr/ramonville,Franchise,2,Immobilier Ramonville,60,"HUMAN reseau local.",Email agence
+44,HUMAN Immobilier Saint-Orens,Saint-Orens,05 34 31 50 50,human-immobilier.fr/st-orens,Franchise,2,Immobilier Saint-Orens,59,"HUMAN reseau.",Email agence
+45,HUMAN Immobilier Blagnac,Blagnac,via site,human-immobilier.fr/blagnac,Franchise,2,Immobilier Blagnac,58,"HUMAN reseau.",Email agence
+46,Guy Hoquet Balma,Balma,05 62 57 04 07,balma.guy-hoquet.com,Franchise,2,Immobilier general Balma,57,"Franchise nationale. Decision centralisee mais gerant local.",Email gerant
+47,Guy Hoquet Cote Pavee,Cote Pavee Toulouse,via site,toulouse-cote-pavee.guy-hoquet.com,Franchise,1,Immobilier Cote Pavee,60,"Guy Hoquet zone premium. Gerant local a identifier.",LinkedIn gerant
+48,Century 21 Cote Pavee,Cote Pavee Toulouse,via site,century21-cote-pavee-toulouse.com,Franchise,1,Immobilier Cote Pavee,58,"Franchise zone premium. Process plus lourd.",Email agence
+49,Orpi BO Immobilier,Balma,05 62 80 08 00,orpi.com/boimmobilier,Franchise,2,Immobilier general Balma,56,"Franchise nationale classique.",Email standard
+50,Orpi Les Carmes,Les Carmes Toulouse,via site,orpi.com/orpilescarmes,Franchise,1,Immobilier Carmes,57,"Franchise mais zone renovation premium.",Email standard
+51,L Adresse BH Immobilier,Castanet-Tolosan,05 34 43 42 03,ladresse.com,Franchise,1,Immobilier Castanet,60,"Franchise mais locale Castanet.",Email gerant
+52,Square Habitat Saint-Orens,Saint-Orens,05 61 46 46 45,squarehabitat.fr,Franchise (Credit Agricole),2,Immobilier Saint-Orens,55,"Adosse Credit Agricole. Process bancaire.",Email standard
+53,Orpi Colombier Immobilier,Ramonville,05 32 09 97 01,orpi.com/colombier.immobilier,Franchise,2,Immobilier Ramonville,54,"Franchise standard.",Email standard
+54,SGL Immobilier,Castanet/Toulouse,05 31 61 70 60,sgl-immo.com,Franchise,2,Immobilier general,53,"Franchise. Coverage Castanet mais base Toulouse.",Email standard
+55,Immo de France Balma,Balma,05 61 00 60 80,idftoulouse.fr,Franchise,2,Immobilier Balma,52,"Franchise nationale.",Email standard
+56,Laforet Colomiers,Colomiers,via site,laforet.com/colomiers,Franchise,2,Immobilier Colomiers,51,"Franchise. Zone Airbus.",Email directeur
+57,Century 21 Oustal,Colomiers,via site,oustalimmo.fr,Franchise,2,Immobilier Colomiers,50,"Franchise.",Email standard
+58,Guy Hoquet Tournefeuille,Tournefeuille,via site,tournefeuille.guy-hoquet.com,Franchise,2,Immobilier Tournefeuille,49,"Franchise.",Email standard
+59,Nestenn Portet-sur-Garonne,Portet-sur-Garonne,05 61 72 06 49,nestenn.com (portet),Franchise,2,Immobilier Portet,48,"Franchise zone secondaire.",Email gerant
+60,Nestenn Sud Ouest Toulouse,Plaisance-du-Touch,05 61 51 06 58,nestenn.com,Franchise,2,Immobilier Plaisance,47,"Franchise zone secondaire.",Email gerant
+61,Portet Immobilier,Portet-sur-Garonne,--,immobiliereplus.fr,Independant,2,Immobilier Portet,46,"Independant mais zone secondaire.",Email via site
+62,YS Immo,Saint-Orens,--,Expertimo network,Mandataire,2,Immobilier Saint-Orens,40,"Mandataire = moins de poids de recommandation.",Basse priorite
+63,Immobilier du Palais (doublon potentiel Habitat Communication),Carmes,05 61 53 70 29,immobilier-palais-toulouse.fr,Independant,1,Centre historique,78,"Meme telephone que Habitat Communication - verifier si meme structure.",A verifier avant contact

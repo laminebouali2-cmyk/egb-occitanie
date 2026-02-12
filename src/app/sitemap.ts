@@ -90,6 +90,60 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.92,
     },
     {
+      url: `${baseUrl}/renovation-arnaud-bernard-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/renovation-busca-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/renovation-capitole-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/renovation-compans-caffarelli-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/renovation-minimes-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/renovation-rangueil-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/renovation-saint-aubin-dupuy-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/renovation-saint-cyprien-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
+      url: `${baseUrl}/renovation-saint-etienne-toulouse`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
       url: `${baseUrl}/expertise`,
       lastModified: currentDate,
       changeFrequency: "monthly",
@@ -99,6 +153,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/projets`,
       lastModified: currentDate,
       changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/professionnels`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
       priority: 0.85,
     },
     {
