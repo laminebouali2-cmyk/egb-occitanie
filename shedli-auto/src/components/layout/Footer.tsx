@@ -7,14 +7,13 @@ const NAV_LINKS = [
   { label: "Remplacement pare-brise", href: "/remplacement-pare-brise" },
   { label: "Intervention mobile", href: "/intervention-mobile" },
   { label: "Prise en charge assurance", href: "/prise-en-charge-assurance" },
-  { label: "Avis clients", href: "/avis" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export function Footer() {
   return (
-    <footer className="bg-[#09090b] text-white" role="contentinfo">
+    <footer className="bg-[#09090b] text-white pb-16 lg:pb-0" role="contentinfo">
       <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-20">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Brand */}
@@ -107,8 +106,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-8 sm:flex-row">
           <p className="text-xs text-white/25">
-            &copy; {new Date().getFullYear()} {SITE.name} &mdash;{" "}
-            {SITE.legalForm} &mdash; SIRET&nbsp;: {SITE.siret}
+            &copy; {new Date().getFullYear()} {SITE.name} &mdash; SASU &mdash; SIRET&nbsp;: {SITE.siret}
           </p>
           <div className="flex items-center gap-6">
             <Link
@@ -118,7 +116,7 @@ export function Footer() {
               Mentions l&eacute;gales
             </Link>
             <Link
-              href="/politique-de-confidentialite"
+              href="/politique-confidentialite"
               className="text-xs text-white/25 transition-colors hover:text-white/50"
             >
               Politique de confidentialit&eacute;

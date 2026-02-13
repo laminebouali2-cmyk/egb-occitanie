@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone } from "lucide-react";
 import { SITE } from "@/lib/constants";
@@ -10,13 +11,13 @@ const NAV_LINKS = [
   { label: "Accueil", href: "/" },
   { label: "Services", href: "/remplacement-pare-brise" },
   { label: "Assurance", href: "/prise-en-charge-assurance" },
-  { label: "Avis", href: "/avis" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 16);
@@ -35,9 +36,15 @@ export function Header() {
     };
   }, [isMobileOpen]);
 
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
   return (
     <>
-      <header
+      <motion.header
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-white/95 backdrop-blur-md shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
@@ -45,7 +52,6 @@ export function Header() {
         }`}
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:h-[72px] lg:px-8">
-          {/* Logo */}
           <Link
             href="/"
             className="text-lg font-semibold tracking-tight text-text transition-colors duration-300"
@@ -53,7 +59,6 @@ export function Header() {
             Shedli Auto
           </Link>
 
-          {/* Desktop nav */}
           <nav
             className="hidden items-center gap-8 lg:flex"
             aria-label="Navigation principale"
@@ -62,14 +67,24 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text"
+                className={`group relative text-[13px] font-medium transition-colors duration-200 pb-1 ${
+                  isActive(link.href)
+                    ? "text-text"
+                    : "text-text-secondary hover:text-text"
+                }`}
               >
                 {link.label}
+                <span
+                  className={`absolute bottom-0 left-0 right-0 h-[2px] rounded-full bg-primary-500 transition-transform duration-300 ease-out origin-left ${
+                    isActive(link.href)
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </Link>
             ))}
           </nav>
 
-          {/* Desktop phone CTA */}
           <a
             href={SITE.phoneHref}
             className="hidden items-center gap-2 rounded-lg bg-primary-500 px-4 py-2 text-[13px] font-semibold text-white transition-colors duration-200 hover:bg-primary-600 lg:inline-flex"
@@ -78,7 +93,6 @@ export function Header() {
             {SITE.phone}
           </a>
 
-          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -111,9 +125,8 @@ export function Header() {
             </div>
           </button>
         </div>
-      </header>
+      </motion.header>
 
-      {/* Mobile menu overlay */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
@@ -137,9 +150,16 @@ export function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileOpen(false)}
-                    className="block py-3 text-center text-xl font-semibold text-white transition-colors hover:text-white/80"
+                    className={`block py-3 text-center text-xl font-semibold transition-colors ${
+                      isActive(link.href)
+                        ? "text-primary-400"
+                        : "text-white hover:text-white/80"
+                    }`}
                   >
                     {link.label}
+                    {isActive(link.href) && (
+                      <span className="block mx-auto mt-1 w-6 h-[2px] rounded-full bg-primary-400" />
+                    )}
                   </Link>
                 </motion.div>
               ))}
@@ -148,7 +168,7 @@ export function Header() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.3 }}
+              transition={{ delay: 0.3, duration: 0.3 }}
               className="px-6 pb-10"
             >
               <a

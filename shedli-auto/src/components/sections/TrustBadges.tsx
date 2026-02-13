@@ -1,90 +1,74 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { Zap, CreditCard, ShieldCheck, Star } from "lucide-react";
 
 const stats = [
-  { value: 2000, suffix: "+", prefix: "", label: "Interventions réalisées" },
-  { value: 48, suffix: "h", prefix: "<", label: "Délai moyen" },
-  { value: 0, suffix: "€", prefix: "", label: "Avance de frais" },
-  { value: 2, suffix: " ans", prefix: "", label: "De garantie" },
+  { icon: Zap, value: "<\u200948h", label: "Intervention", labelFull: "Délai d'intervention" },
+  { icon: CreditCard, value: "0 €", label: "À payer", labelFull: "À votre charge" },
+  { icon: ShieldCheck, value: "2 ans", label: "Garantie", labelFull: "De garantie" },
+  { icon: Star, value: "5/5", label: "Google", labelFull: "Sur Google (7 avis)" },
 ];
-
-function AnimatedNumber({
-  value,
-  suffix,
-  prefix,
-  active,
-}: {
-  value: number;
-  suffix: string;
-  prefix: string;
-  active: boolean;
-}) {
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!active) return;
-    if (value === 0) {
-      setDisplay(0);
-      return;
-    }
-    const duration = 1200;
-    const steps = 50;
-    const increment = value / steps;
-    let current = 0;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= value) {
-        setDisplay(value);
-        clearInterval(timer);
-      } else {
-        setDisplay(Math.floor(current));
-      }
-    }, duration / steps);
-    return () => clearInterval(timer);
-  }, [active, value]);
-
-  return (
-    <span>
-      {prefix}
-      {display.toLocaleString("fr-FR")}
-      {suffix}
-    </span>
-  );
-}
 
 export function TrustBadges() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <section className="border-y border-border bg-white">
-      <div className="mx-auto w-full max-w-6xl px-5 lg:px-8 py-14 lg:py-16">
+    <section ref={ref} className="bg-surface-soft">
+      <div className="mx-auto w-full max-w-6xl lg:px-8 py-5 lg:py-12">
+        {/* Mobile: horizontal scroll pills */}
+        <div className="flex lg:hidden gap-2.5 overflow-x-auto px-5 pb-1 snap-x snap-mandatory scrollbar-hide">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 12 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.05 + i * 0.07, ease: [0.25, 0.1, 0.25, 1] as const }}
+              className="flex shrink-0 snap-start items-center gap-2.5 rounded-xl border border-border bg-white px-3.5 py-2.5"
+            >
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
+                <stat.icon size={15} strokeWidth={1.8} />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-text tracking-tight leading-tight whitespace-nowrap">
+                  {stat.value}
+                </div>
+                <div className="text-[10px] text-text-muted leading-tight whitespace-nowrap">
+                  {stat.label}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop: grid */}
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-border"
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }}
+          className="hidden lg:grid grid-cols-4 gap-8"
         >
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="text-center lg:px-8"
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] as const }}
+              className="flex items-center gap-3.5"
             >
-              <div className="text-2xl sm:text-3xl font-semibold text-text tracking-tight">
-                <AnimatedNumber
-                  value={stat.value}
-                  suffix={stat.suffix}
-                  prefix={stat.prefix}
-                  active={inView}
-                />
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
+                <stat.icon size={18} strokeWidth={1.8} />
               </div>
-              <div className="mt-1 text-[13px] text-text-muted">{stat.label}</div>
+              <div>
+                <div className="text-lg font-semibold text-text tracking-tight leading-tight">
+                  {stat.value}
+                </div>
+                <div className="text-[12px] text-text-muted leading-tight mt-0.5">
+                  {stat.labelFull}
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>

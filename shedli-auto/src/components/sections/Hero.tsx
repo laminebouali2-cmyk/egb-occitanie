@@ -3,34 +3,31 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, PhoneIncoming } from "lucide-react";
+import { Phone, PhoneIncoming, CheckCircle2 } from "lucide-react";
 import { SITE } from "@/lib/constants";
 import { averageRating, reviewCount } from "@/lib/reviews";
 
 const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 14 },
+  initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, delay, ease: [0.25, 0.1, 0.25, 1] as const },
+  transition: { duration: 0.7, delay: delay + 0.1, ease: [0.25, 0.1, 0.25, 1] as const },
 });
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      {/* Subtle top gradient accent */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-300/40 to-transparent" />
-
+    <section className="relative z-0 overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid min-h-[calc(100svh-72px)] grid-cols-1 items-center gap-12 pt-28 pb-16 lg:grid-cols-2 lg:gap-16 lg:pt-0 lg:pb-0">
-          {/* ——— Text ——— */}
-          <div className="max-w-xl">
-            {/* Rating badge */}
-            <motion.div {...fade(0.1)}>
-              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-soft px-3.5 py-1.5 mb-8">
+        <div className="grid grid-cols-1 items-center gap-6 pt-20 pb-4 lg:min-h-[calc(100svh-72px)] lg:grid-cols-2 lg:gap-20 lg:pt-0 lg:pb-0">
+          {/* ——— Text — PAS: Problem → Agitate → Solve ——— */}
+          <div className="max-w-xl lg:py-20">
+            {/* Social proof badge */}
+            <motion.div {...fade(0.05)}>
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-soft px-3 py-1.5 mb-5 lg:mb-7">
                 <div className="flex items-center gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg
                       key={i}
-                      className={`w-3 h-3 ${i < Math.round(averageRating) ? "text-star" : "text-border-strong"}`}
+                      className={`w-2.5 h-2.5 lg:w-3 lg:h-3 ${i < Math.round(averageRating) ? "text-star" : "text-border-strong"}`}
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -38,32 +35,47 @@ export function Hero() {
                     </svg>
                   ))}
                 </div>
-                <span className="text-xs font-medium text-text-secondary">
+                <span className="text-[11px] lg:text-xs font-medium text-text-secondary">
                   {averageRating}/5 · {reviewCount} avis Google
                 </span>
               </div>
             </motion.div>
 
-            {/* Headline */}
+            {/* Problem — name it directly */}
             <motion.h1
-              {...fade(0.2)}
-              className="text-[2.5rem] leading-[1.1] sm:text-5xl lg:text-[3.25rem] font-semibold text-text tracking-[-0.025em]"
+              {...fade(0.15)}
+              className="text-[1.75rem] leading-[1.12] sm:text-[2.25rem] lg:text-[3rem] font-semibold text-text tracking-[-0.025em]"
             >
-              Votre pare-brise,{" "}
-              <span className="text-primary-500">réparé chez vous.</span>
+              Pare-brise fissuré&nbsp;?
+              <br />
+              <span className="text-primary-500">C&apos;est réglé demain.</span>
             </motion.h1>
 
-            {/* Sub */}
+            {/* Agitate + Solve */}
             <motion.p
-              {...fade(0.3)}
-              className="mt-5 text-base sm:text-lg text-text-secondary leading-relaxed max-w-md"
+              {...fade(0.25)}
+              className="mt-4 text-[15px] lg:text-[17px] text-text-secondary leading-relaxed max-w-[420px]"
             >
-              Intervention mobile dans les Yvelines sous 24&#8209;48h.
-              Prise en charge assurance directe. Devis gratuit en 2&nbsp;minutes.
+              On se déplace chez vous dans les Yvelines sous 24&#8209;48h.
+              Votre assurance prend tout en charge&nbsp;— <strong className="text-text font-medium">0&nbsp;€ à payer</strong>.
             </motion.p>
 
+            {/* Proof points — desktop only */}
+            <motion.div {...fade(0.35)} className="mt-5 hidden sm:flex flex-col gap-2">
+              {[
+                "Intervention mobile — vous ne bougez pas",
+                "Agréé toutes assurances",
+                "Garanti 2 ans",
+              ].map((point) => (
+                <div key={point} className="flex items-center gap-2.5">
+                  <CheckCircle2 size={14} className="text-primary-500 shrink-0" />
+                  <span className="text-sm text-text-secondary">{point}</span>
+                </div>
+              ))}
+            </motion.div>
+
             {/* CTAs */}
-            <motion.div {...fade(0.4)} className="mt-8 flex flex-col sm:flex-row gap-3">
+            <motion.div {...fade(0.4)} className="mt-6 lg:mt-8 flex flex-col sm:flex-row gap-3">
               <a
                 href={SITE.phoneHref}
                 className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-primary-500 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-primary-500/20 transition-all duration-200 hover:bg-primary-600 hover:shadow-md hover:shadow-primary-500/25 active:scale-[0.98]"
@@ -79,42 +91,16 @@ export function Hero() {
                 Être rappelé
               </Link>
             </motion.div>
-
-            {/* Trust markers */}
-            <motion.div
-              {...fade(0.55)}
-              className="mt-10 flex flex-wrap gap-x-5 gap-y-2"
-            >
-              {[
-                "Agréé toutes assurances",
-                "Intervention sous 48h",
-                "Garantie 2 ans",
-              ].map((label) => (
-                <span
-                  key={label}
-                  className="inline-flex items-center gap-1.5 text-[13px] text-text-muted"
-                >
-                  <svg className="w-3.5 h-3.5 text-success" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  {label}
-                </span>
-              ))}
-            </motion.div>
           </div>
 
-          {/* ——— Image ——— */}
+          {/* ——— Desktop Image ——— */}
           <motion.div
             className="relative hidden lg:block"
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
-            <div className="relative aspect-[3/4] max-h-[640px] w-full overflow-hidden rounded-2xl">
+            <div className="relative aspect-[3/4] max-h-[560px] w-full overflow-hidden rounded-2xl">
               <Image
                 src="/images/hero-mechanic.jpg"
                 alt="Technicien Shedli Auto remplaçant un pare-brise sur un véhicule"
@@ -124,29 +110,23 @@ export function Hero() {
                 sizes="(max-width: 1024px) 0px, 50vw"
                 quality={85}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-white/5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
             </div>
 
             {/* Floating badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="absolute -bottom-4 -left-4 rounded-xl border border-border bg-white px-4 py-3 shadow-lg shadow-black/5"
+              transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.1, 0.25, 1] as const }}
+              className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-white/95 backdrop-blur-sm px-4 py-3 shadow-lg shadow-black/5"
             >
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-success/10">
-                  <svg className="w-4 h-4 text-success" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
+                  <CheckCircle2 size={18} strokeWidth={2} />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-text">+2 000 interventions</p>
-                  <p className="text-[11px] text-text-muted">dans les Yvelines</p>
+                  <p className="text-xs font-semibold text-text">+200 pare-brise remplacés</p>
+                  <p className="text-[11px] text-text-muted">dans les Yvelines (78)</p>
                 </div>
               </div>
             </motion.div>
@@ -154,14 +134,14 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Mobile image */}
+      {/* Mobile image — compact, impactful */}
       <motion.div
-        className="relative mx-5 mb-8 overflow-hidden rounded-2xl lg:hidden"
-        initial={{ opacity: 0, y: 16 }}
+        className="relative mx-5 mb-4 overflow-hidden rounded-2xl lg:hidden"
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] as const }}
       >
-        <div className="relative aspect-[4/3] w-full">
+        <div className="relative aspect-[16/9] w-full">
           <Image
             src="/images/hero-mechanic.jpg"
             alt="Technicien Shedli Auto remplaçant un pare-brise"
@@ -169,8 +149,19 @@ export function Hero() {
             priority
             className="object-cover object-top"
             sizes="100vw"
-            quality={80}
+            quality={75}
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+        </div>
+        {/* Mobile floating badge */}
+        <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2.5 rounded-lg bg-white/95 backdrop-blur-sm px-3 py-2.5">
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary-50 text-primary-500">
+            <CheckCircle2 size={14} strokeWidth={2} />
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold text-text leading-tight">+200 pare-brise remplacés</p>
+            <p className="text-[10px] text-text-muted">Yvelines (78)</p>
+          </div>
         </div>
       </motion.div>
     </section>
