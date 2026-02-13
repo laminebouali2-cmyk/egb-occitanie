@@ -40,8 +40,11 @@ export function WhyUs() {
           </p>
         </motion.div>
 
+        {/* Sentinel for useInView — always visible */}
+        <div ref={ref} />
+
         {/* ——— MOBILE LAYOUT — clean editorial, no bento ——— */}
-        <div ref={ref} className="sm:hidden">
+        <div className="sm:hidden">
           {/* Photo */}
           <motion.div
             {...card(0)}
