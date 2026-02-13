@@ -1,316 +1,282 @@
-import type { Metadata } from "next";
-import { SITE } from "@/lib/constants";
-import { Phone, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { CtaBanner } from "@/components/sections/CtaBanner";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Pare-Brise Prise en Charge Assurance | 0\u20AC d\u2019Avance",
-  description:
-    "Votre pare-brise pris en charge par votre assurance, sans avance de frais. On g\u00E8re tout le dossier bris de glace. Yvelines.",
-  alternates: {
-    canonical: "/prise-en-charge-assurance",
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { SITE } from "@/lib/constants";
+import { Phone, ShieldCheck, FileText, Clock, CreditCard, CheckCircle2, ChevronDown } from "lucide-react";
+import { useState } from "react";
+
+const fade = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-40px" as const },
+  transition: { duration: 0.7, delay, ease: [0.25, 0.1, 0.25, 1] as const },
+});
+
+const steps = [
+  {
+    icon: Phone,
+    number: "01",
+    title: "Vous nous appelez",
+    time: "2 min",
+    description: "Munissez-vous de votre carte grise et numéro de contrat. On fait le point ensemble.",
   },
-};
+  {
+    icon: FileText,
+    number: "02",
+    title: "On contacte votre assureur",
+    time: "24h",
+    description: "Ouverture du dossier bris de glace et accord de prise en charge — on gère tout.",
+  },
+  {
+    icon: Clock,
+    number: "03",
+    title: "Intervention à domicile",
+    time: "<48h",
+    description: "Notre technicien se déplace chez vous avec tout le matériel nécessaire.",
+  },
+  {
+    icon: CreditCard,
+    number: "04",
+    title: "Vous ne payez rien",
+    time: "0 €",
+    description: "La facture va directement à votre assurance. Aucune avance de frais.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Est-ce que je dois déclarer le sinistre moi-même ?",
+    answer: `Non, ${SITE.name} s'en occupe. Nous contactons directement votre assureur pour ouvrir le dossier bris de glace et obtenir l'accord de prise en charge.`,
+  },
+  {
+    question: "Mon bonus/malus est-il impacté ?",
+    answer: "Non. Un sinistre bris de glace n'affecte pas votre coefficient bonus-malus. C'est un sinistre sans responsabilité qui n'entraîne aucune majoration de votre prime.",
+  },
+  {
+    question: "Combien ça coûte sans garantie bris de glace ?",
+    answer: "Sans garantie, le coût dépend de votre véhicule (capteurs ADAS, pare-brise chauffant, etc.). Comptez entre 250 € et 600 €. On vous donne un devis précis et gratuit avant toute intervention.",
+  },
+  {
+    question: "Puis-je choisir librement mon réparateur ?",
+    answer: `Oui. La loi française garantit le libre choix du réparateur. Même si votre assureur propose un réseau partenaire, vous êtes libre de faire appel à ${SITE.name}. La prise en charge est identique.`,
+  },
+  {
+    question: "Quels documents sont nécessaires ?",
+    answer: "Carte grise (certificat d'immatriculation), numéro de contrat d'assurance, et nom de votre compagnie. Pas de panique si vous n'avez pas tout sous la main — on vous guide par téléphone.",
+  },
+];
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-border">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="flex w-full items-center justify-between py-5 text-left"
+      >
+        <span className="text-sm font-semibold text-text pr-4">{question}</span>
+        <ChevronDown
+          size={16}
+          className={`shrink-0 text-text-muted transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      <div
+        className={`overflow-hidden transition-all duration-300 ${open ? "max-h-60 pb-5" : "max-h-0"}`}
+      >
+        <p className="text-sm text-text-secondary leading-relaxed">{answer}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function PriseEnChargeAssurancePage() {
   return (
     <>
-      {/* ——— Breadcrumb + Hero ——— */}
-      <section className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-16 pt-8 pb-16 lg:pb-24">
-        <nav aria-label="Fil d'Ariane" className="mb-10">
-          <ol className="flex items-center gap-2 text-sm text-text-muted">
-            <li>
-              <Link
-                href="/"
-                className="hover:text-primary-500 transition-colors"
-              >
-                Accueil
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li className="text-text font-medium">
-              Prise en charge assurance
-            </li>
-          </ol>
-        </nav>
+      {/* ——— Hero ——— */}
+      <section className="pt-28 pb-16 lg:pt-36 lg:pb-24">
+        <div className="mx-auto w-full max-w-5xl px-5 lg:px-8">
+          <nav aria-label="Fil d'Ariane" className="mb-10">
+            <ol className="flex items-center gap-2 text-sm text-text-muted">
+              <li>
+                <Link href="/" className="hover:text-primary-500 transition-colors">Accueil</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="text-text font-medium">Prise en charge assurance</li>
+            </ol>
+          </nav>
 
-        <div className="max-w-3xl">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text tracking-tight leading-tight">
-            Prise en charge assurance — Zéro avance, on gère tout
-          </h1>
-          <p className="mt-6 text-lg text-text-secondary leading-relaxed">
-            Pare-brise fissuré ou éclaté ? Votre assurance prend en charge le
-            remplacement. {SITE.name} s&apos;occupe de l&apos;intégralité des
-            démarches administratives : vous n&apos;avez rien à avancer.
-          </p>
+          <motion.div {...fade(0)} className="max-w-2xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-text tracking-tight leading-[1.1]">
+              Votre assurance prend tout en charge.
+              <br />
+              <span className="text-primary-500">Vous ne payez rien.</span>
+            </h1>
+            <p className="mt-5 text-base sm:text-lg text-text-secondary leading-relaxed max-w-lg">
+              On gère votre dossier bris de glace de A à Z. Aucune démarche,
+              aucune avance de frais, aucune paperasse.
+            </p>
+          </motion.div>
+
+          {/* Reassurance banner */}
+          <motion.div
+            {...fade(0.15)}
+            className="mt-10 rounded-xl border border-success/20 bg-success/[0.04] p-6 flex items-start gap-4 max-w-2xl"
+          >
+            <ShieldCheck size={22} className="text-success shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-semibold text-text">
+                Garantie bris de glace = 0 € à payer
+              </p>
+              <p className="mt-1 text-sm text-text-secondary leading-relaxed">
+                Dans la majorité des contrats auto (tiers étendu ou tous risques),
+                le remplacement de votre pare-brise est intégralement couvert.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ——— Big reassurance banner ——— */}
-      <section className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-16 pb-20">
-        <div className="rounded-2xl bg-success/10 p-8 sm:p-10 flex flex-col sm:flex-row items-start gap-5">
-          {/* Shield icon */}
-          <div className="shrink-0 w-14 h-14 rounded-xl bg-success/20 flex items-center justify-center">
-            <svg
-              className="w-7 h-7 text-success"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
-              />
-            </svg>
-          </div>
-          <div>
-            <p className="text-lg font-semibold text-text leading-relaxed">
-              Dans la majorité des cas, le remplacement de votre pare-brise est
-              intégralement pris en charge par votre assurance via la garantie
-              bris de glace.
+      {/* ——— 4 étapes — vertical timeline ——— */}
+      <section className="py-20 lg:py-28 bg-surface-soft">
+        <div className="mx-auto w-full max-w-4xl px-5 lg:px-8">
+          <motion.div {...fade(0)} className="text-center mb-14">
+            <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-4">
+              Comment ça marche
             </p>
-            <p className="mt-3 text-text-secondary leading-relaxed">
-              Vous n&apos;avez aucune démarche à faire. Nous contactons
-              directement votre assureur, obtenons l&apos;accord de prise en
-              charge et intervenons chez vous. Aucune avance de frais.
-            </p>
-          </div>
-        </div>
-      </section>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-text tracking-tight">
+              4 étapes, 0 paperasse.
+            </h2>
+          </motion.div>
 
-      {/* ——— Comment ça marche — 4 steps ——— */}
-      <section className="bg-surface-soft py-20 lg:py-28">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text tracking-tight text-center">
-            Comment ça marche
-          </h2>
-          <p className="mt-4 text-text-secondary text-center max-w-2xl mx-auto">
-            En 4&nbsp;étapes simples, votre pare-brise est remplacé sans que
-            vous n&apos;ayez à avancer un euro.
-          </p>
-
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                step: 1,
-                title: "Vous nous appelez",
-                description:
-                  "Munissez-vous de votre numéro de contrat d\u2019assurance et de votre carte grise. On fait le point ensemble en 5 minutes.",
-              },
-              {
-                step: 2,
-                title: "On contacte votre assureur",
-                description:
-                  "Nous prenons en charge l\u2019ouverture du dossier bris de glace et obtenons l\u2019accord de prise en charge directement.",
-              },
-              {
-                step: 3,
-                title: "On intervient chez vous",
-                description:
-                  "Un technicien se déplace à domicile, à votre bureau ou sur votre parking pour remplacer le pare-brise.",
-              },
-              {
-                step: 4,
-                title: "Vous ne payez rien",
-                description:
-                  "La facture est envoyée directement à votre assurance. Au maximum, vous réglez la franchise (souvent 50\u00A0\u20AC).",
-              },
-            ].map((item) => (
-              <div
-                key={item.step}
-                className="rounded-2xl bg-white p-8 shadow-sm border border-border text-center"
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.number}
+                {...fade(0.1 + i * 0.1)}
+                className="rounded-xl border border-border bg-white p-6 group"
               >
-                <div className="w-12 h-12 mx-auto rounded-full bg-primary-500 text-white flex items-center justify-center text-lg font-bold mb-5">
-                  {item.step}
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500 transition-colors group-hover:bg-primary-100">
+                    <step.icon size={18} strokeWidth={1.8} />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-medium text-text-muted uppercase tracking-wider">
+                      Étape {step.number}
+                    </span>
+                    <span className="ml-2 inline-flex items-center rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-medium text-primary-600">
+                      {step.time}
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-text">{item.title}</h3>
-                <p className="mt-3 text-text-secondary leading-relaxed">
-                  {item.description}
+                <h3 className="text-base font-semibold text-text">{step.title}</h3>
+                <p className="mt-1.5 text-sm text-text-secondary leading-relaxed">
+                  {step.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <motion.div {...fade(0.4)} className="mt-10 text-center">
             <a
               href={SITE.phoneHref}
-              className="inline-flex items-center gap-3 rounded-xl bg-primary-500 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-primary-500/25 transition-all duration-200 hover:bg-primary-600 hover:shadow-xl hover:shadow-primary-500/30 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2.5 rounded-xl bg-primary-500 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-primary-500/20 transition-all duration-200 hover:bg-primary-600 hover:shadow-md active:scale-[0.98]"
             >
-              <Phone size={20} />
-              Appelez-nous : {SITE.phone}
+              <Phone size={16} strokeWidth={2.2} />
+              Appeler — {SITE.phone}
             </a>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ——— SEO Content — Tout comprendre ——— */}
+      {/* ——— Key info cards ——— */}
       <section className="py-20 lg:py-28">
-        <div className="max-w-3xl mx-auto px-4 sm:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text tracking-tight">
-            Tout comprendre sur la prise en charge
-          </h2>
+        <div className="mx-auto w-full max-w-4xl px-5 lg:px-8">
+          <motion.div {...fade(0)} className="mb-12">
+            <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-4">
+              Tout comprendre
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-text tracking-tight">
+              Ce qu&apos;il faut savoir.
+            </h2>
+          </motion.div>
 
-          <div className="mt-12 space-y-10">
-            {/* La garantie bris de glace */}
-            <div>
-              <h3 className="text-xl font-semibold text-text">
-                La garantie bris de glace
-              </h3>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                La garantie bris de glace fait partie de la plupart des contrats
-                d&apos;assurance auto, y compris les formules intermédiaires
-                (tiers étendu). Elle couvre le remplacement ou la réparation de
-                tous les vitrages du véhicule : pare-brise, lunette arrière,
-                vitres latérales, toit panoramique et rétroviseurs.
-              </p>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                Si votre contrat inclut cette garantie, le remplacement de votre
-                pare-brise est pris en charge, quel que soit le prestataire
-                choisi. Vous n&apos;êtes pas obligé de passer par le réseau
-                imposé par votre assureur.
-              </p>
-            </div>
-
-            {/* La franchise */}
-            <div>
-              <h3 className="text-xl font-semibold text-text">
-                La franchise bris de glace
-              </h3>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                La franchise est le montant qui reste à votre charge après
-                intervention de l&apos;assurance. Pour un remplacement de
-                pare-brise, elle varie généralement entre 0&nbsp;&euro; et
-                100&nbsp;&euro; selon votre contrat. Certains assureurs la
-                suppriment si vous faites appel à un réparateur agréé ; d&apos;autres
-                la suppriment systématiquement pour les réparations d&apos;impact
-                (sans remplacement).
-              </p>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                Nous vous indiquons le montant exact de votre franchise avant
-                toute intervention, sans surprise.
-              </p>
-            </div>
-
-            {/* Quelles assurances */}
-            <div>
-              <h3 className="text-xl font-semibold text-text">
-                Quelles assurances sont acceptées ?
-              </h3>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                Nous travaillons avec toutes les compagnies d&apos;assurance du
-                marché français : Macif, MAIF, Matmut, Groupama, AXA, Allianz,
-                GMF, MAAF, MMA, Generali, Direct Assurance, L&apos;Olivier,
-                et bien d&apos;autres. Que vous soyez assuré au tiers étendu
-                ou tous risques, nous gérons votre dossier.
-              </p>
-            </div>
-
-            {/* Documents nécessaires */}
-            <div>
-              <h3 className="text-xl font-semibold text-text">
-                Documents nécessaires
-              </h3>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                Pour constituer votre dossier, munissez-vous de :
-              </p>
-              <ul className="mt-4 space-y-2">
-                {[
-                  "Votre carte grise (certificat d\u2019immatriculation)",
-                  "Votre numéro de contrat d\u2019assurance",
-                  "Le nom de votre compagnie d\u2019assurance",
-                  "Votre permis de conduire (parfois demandé)",
-                ].map((doc) => (
-                  <li key={doc} className="flex items-start gap-3">
-                    <svg
-                      className="h-5 w-5 text-primary-500 shrink-0 mt-0.5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="text-text-secondary">{doc}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 text-text-secondary leading-relaxed">
-                Pas de panique si vous n&apos;avez pas tout sous la main : notre
-                équipe vous guide par téléphone.
-              </p>
-            </div>
+          <div className="space-y-6">
+            {[
+              {
+                title: "La garantie bris de glace",
+                text: "Elle fait partie de la plupart des contrats auto (tiers étendu). Elle couvre tous les vitrages : pare-brise, lunette arrière, vitres latérales, toit panoramique. Vous êtes libre de choisir votre réparateur.",
+              },
+              {
+                title: "La franchise",
+                text: "Montant restant à votre charge : entre 0 € et 100 € selon votre contrat. Certains assureurs la suppriment chez un réparateur agréé. On vous indique le montant exact avant toute intervention.",
+              },
+              {
+                title: "Assurances acceptées",
+                text: "Toutes les compagnies : AXA, Macif, MAIF, Matmut, Groupama, MMA, Allianz, GMF, MAAF, Generali, Direct Assurance, L'Olivier — et toutes les autres.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                {...fade(0.1 + i * 0.1)}
+                className="flex items-start gap-4"
+              >
+                <CheckCircle2 size={18} className="text-primary-500 shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-sm font-semibold text-text">{item.title}</h3>
+                  <p className="mt-1 text-sm text-text-secondary leading-relaxed">{item.text}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ——— FAQ inline ——— */}
-      <section className="bg-surface-soft py-20 lg:py-28">
-        <div className="max-w-3xl mx-auto px-4 sm:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text tracking-tight">
-            Questions fréquentes
-          </h2>
+      {/* ——— FAQ — accordion ——— */}
+      <section className="py-20 lg:py-28 bg-surface-soft">
+        <div className="mx-auto w-full max-w-3xl px-5 lg:px-8">
+          <motion.div {...fade(0)} className="mb-10">
+            <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-4">
+              Questions fréquentes
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-text tracking-tight">
+              On répond à tout.
+            </h2>
+          </motion.div>
 
-          <div className="mt-12 space-y-10">
-            <div>
-              <h3 className="text-lg font-semibold text-text">
-                Est-ce que je dois déclarer le sinistre moi-même ?
-              </h3>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                Non, {SITE.name} s&apos;en occupe. Nous contactons directement
-                votre assureur pour ouvrir le dossier bris de glace et obtenir
-                l&apos;accord de prise en charge. Vous n&apos;avez qu&apos;un
-                seul appel à passer : celui que vous nous faites.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-text">
-                Est-ce que mon bonus/malus est impacté ?
-              </h3>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                Non. Un sinistre bris de glace n&apos;affecte pas votre
-                coefficient bonus-malus. C&apos;est un sinistre dit « sans
-                responsabilité » qui n&apos;entraîne aucune majoration de votre
-                prime d&apos;assurance.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-text">
-                Combien coûte le remplacement si je n&apos;ai pas la garantie
-                bris de glace ?
-              </h3>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                Sans garantie bris de glace, le coût dépend du modèle de votre
-                véhicule et du type de pare-brise (avec ou sans capteurs,
-                caméra ADAS, chauffant, etc.). Comptez en moyenne entre
-                250&nbsp;&euro; et 600&nbsp;&euro;. Nous vous communiquons un
-                devis gratuit et précis avant toute intervention.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-text">
-                Puis-je choisir librement mon réparateur ?
-              </h3>
-              <p className="mt-3 text-text-secondary leading-relaxed">
-                Oui, absolument. La loi française vous garantit le libre choix
-                du réparateur. Même si votre assureur vous propose un réseau
-                partenaire, vous êtes libre de faire appel à {SITE.name}. La
-                prise en charge est identique.
-              </p>
-            </div>
-          </div>
+          <motion.div {...fade(0.1)}>
+            {faqs.map((faq) => (
+              <FaqItem key={faq.question} {...faq} />
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* ——— CTA Banner ——— */}
-      <CtaBanner />
+      {/* ——— Bottom CTA ——— */}
+      <section className="bg-[#09090b] py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-3xl px-5 lg:px-8 text-center">
+          <motion.div {...fade(0)}>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug">
+              Pare-brise fissuré ?
+              <br />
+              <span className="text-white/40">On s&apos;occupe de tout.</span>
+            </h2>
+            <p className="mt-4 text-base text-white/40 leading-relaxed max-w-md mx-auto">
+              Un seul appel suffit. Intervention, assurance, garantie.
+            </p>
+            <div className="mt-8">
+              <a
+                href={SITE.phoneHref}
+                className="inline-flex items-center gap-2.5 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-[#09090b] transition-all duration-200 hover:bg-white/90 active:scale-[0.98]"
+              >
+                <Phone size={16} strokeWidth={2.2} />
+                {SITE.phone}
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </>
   );
 }

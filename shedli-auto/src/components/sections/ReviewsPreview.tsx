@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { reviews, averageRating, reviewCount } from "@/lib/reviews";
 import { Star } from "lucide-react";
-import Link from "next/link";
+import { SITE } from "@/lib/constants";
 
 function timeAgo(dateStr: string): string {
   const date = new Date(dateStr);
@@ -124,12 +124,12 @@ export function ReviewsPreview() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
-          <Link
-            href="/avis"
+          <a
+            href={SITE.phoneHref}
             className="text-sm font-medium text-text-muted hover:text-text transition-colors"
           >
-            Voir tous les avis &rarr;
-          </Link>
+            Vous aussi, faites confiance &rarr;
+          </a>
         </motion.div>
       </div>
     </section>

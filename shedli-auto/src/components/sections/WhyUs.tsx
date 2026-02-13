@@ -86,17 +86,17 @@ export function WhyUs() {
             className="row-span-2 rounded-2xl overflow-hidden relative min-h-[320px] lg:min-h-0"
           >
             <Image
-              src="/images/hero-mechanic.jpg"
-              alt="Technicien certifié Shedli Auto au travail"
+              src="/images/windshield-crack.jpg"
+              alt="Remplacement de pare-brise fissuré — intervention Shedli Auto"
               fill
               className="object-cover"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               quality={80}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5">
               <p className="text-white text-sm font-semibold">Techniciens certifiés</p>
-              <p className="text-white/60 text-xs mt-0.5">+2 000 interventions dans les Yvelines</p>
+              <p className="text-white/60 text-xs mt-0.5">+200 interventions dans les Yvelines</p>
             </div>
           </motion.div>
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone } from "lucide-react";
 import { SITE } from "@/lib/constants";
@@ -10,13 +11,13 @@ const NAV_LINKS = [
   { label: "Accueil", href: "/" },
   { label: "Services", href: "/remplacement-pare-brise" },
   { label: "Assurance", href: "/prise-en-charge-assurance" },
-  { label: "Avis", href: "/avis" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 16);
@@ -35,9 +36,15 @@ export function Header() {
     };
   }, [isMobileOpen]);
 
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
   return (
     <>
-      <header
+      <motion.header
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.05, ease: [0.25, 0.1, 0.25, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-white/95 backdrop-blur-md shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
@@ -62,9 +69,20 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text"
+                className={`relative text-[13px] font-medium transition-colors duration-200 ${
+                  isActive(link.href)
+                    ? "text-text"
+                    : "text-text-secondary hover:text-text"
+                }`}
               >
                 {link.label}
+                {isActive(link.href) && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute -bottom-1.5 left-0 right-0 h-[2px] rounded-full bg-primary-500"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </Link>
             ))}
           </nav>
@@ -111,7 +129,7 @@ export function Header() {
             </div>
           </button>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile menu overlay */}
       <AnimatePresence>
@@ -137,9 +155,16 @@ export function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileOpen(false)}
-                    className="block py-3 text-center text-xl font-semibold text-white transition-colors hover:text-white/80"
+                    className={`block py-3 text-center text-xl font-semibold transition-colors ${
+                      isActive(link.href)
+                        ? "text-primary-400"
+                        : "text-white hover:text-white/80"
+                    }`}
                   >
                     {link.label}
+                    {isActive(link.href) && (
+                      <span className="block mx-auto mt-1 w-6 h-[2px] rounded-full bg-primary-400" />
+                    )}
                   </Link>
                 </motion.div>
               ))}
@@ -148,7 +173,7 @@ export function Header() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.3 }}
+              transition={{ delay: 0.3, duration: 0.3 }}
               className="px-6 pb-10"
             >
               <a
