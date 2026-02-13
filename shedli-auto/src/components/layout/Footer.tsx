@@ -13,7 +13,7 @@ const NAV_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#09090b] text-white" role="contentinfo">
+    <footer className="bg-[#09090b] text-white pb-16 lg:pb-0" role="contentinfo">
       <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-20">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Brand */}

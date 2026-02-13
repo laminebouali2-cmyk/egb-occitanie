@@ -1,161 +1,343 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { SITE } from "@/lib/constants";
-import { Phone, Clock, Mail, MapPin, MessageCircle } from "lucide-react";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Contact — Shedli Auto | Remplacement Pare-Brise Yvelines",
-  description:
-    "Contactez Shedli Auto pour un remplacement ou une réparation de pare-brise dans les Yvelines. Devis gratuit, intervention rapide à domicile. Appelez le 06 28 43 88 44.",
-  alternates: {
-    canonical: "/contact",
-  },
-};
+import { useState, useTransition } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Phone, Clock, Mail, MapPin, MessageCircle, CheckCircle2, Send, ChevronDown } from "lucide-react";
+import { SITE } from "@/lib/constants";
+import { submitContactForm } from "@/app/actions/contact";
+
+type FormState = "idle" | "success" | "error";
 
 export default function ContactPage() {
+  const [isPending, startTransition] = useTransition();
+  const [state, setState] = useState<FormState>("idle");
+  const [error, setError] = useState("");
+  const [showOptional, setShowOptional] = useState(false);
+
+  function handleSubmit(formData: FormData) {
+    startTransition(async () => {
+      const result = await submitContactForm(formData);
+      if (result.success) {
+        setState("success");
+      } else {
+        setState("error");
+        setError(result.error || "Une erreur est survenue.");
+      }
+    });
+  }
+
   return (
-    <section className="py-20">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-16">
+    <section className="pt-20 pb-8 lg:pt-28 lg:pb-16">
+      <div className="mx-auto w-full max-w-6xl px-5 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-text sm:text-5xl">
-            Contactez-nous
-          </h1>
-          <p className="mt-4 text-lg text-text-secondary max-w-2xl mx-auto">
-            Un appel suffit. On s&apos;occupe de tout.
+        <motion.div
+          className="mb-8 lg:mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
+        >
+          <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-3">
+            Contact
           </p>
-        </div>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-text tracking-tight leading-tight">
+            Un appel suffit.
+          </h1>
+          <p className="mt-3 text-sm lg:text-base text-text-secondary max-w-md">
+            Choisissez votre mode de contact préféré. On vous répond en moins de 2 heures.
+          </p>
+        </motion.div>
 
-        {/* Grid: Form + Contact Info */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left — Form placeholder */}
-          <div className="lg:col-span-7">
-            <div className="rounded-2xl bg-white border border-border p-8 shadow-sm">
-              <p className="text-lg font-semibold text-text">
-                Formulaire de contact à venir
-              </p>
-              <p className="mt-3 text-sm text-text-secondary">
-                En attendant, appelez-nous directement au{" "}
-                <a
-                  href={SITE.phoneHref}
-                  className="font-bold text-primary-500 hover:underline"
-                >
-                  {SITE.phone}
-                </a>
-              </p>
-            </div>
-          </div>
+        {/* Quick contact strip — mobile */}
+        <motion.div
+          className="flex gap-3 overflow-x-auto pb-1 mb-8 lg:hidden scrollbar-hide"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] as const }}
+        >
+          <a
+            href={SITE.phoneHref}
+            className="flex shrink-0 items-center gap-2.5 rounded-xl bg-primary-500 px-5 py-3 text-sm font-semibold text-white"
+          >
+            <Phone size={16} />
+            Appeler
+          </a>
+          <a
+            href={SITE.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex shrink-0 items-center gap-2.5 rounded-xl border border-border bg-white px-5 py-3 text-sm font-semibold text-text"
+          >
+            <MessageCircle size={16} />
+            WhatsApp
+          </a>
+          <a
+            href={`mailto:${SITE.email}`}
+            className="flex shrink-0 items-center gap-2.5 rounded-xl border border-border bg-white px-5 py-3 text-sm font-semibold text-text"
+          >
+            <Mail size={16} />
+            Email
+          </a>
+        </motion.div>
 
-          {/* Right — Contact info */}
-          <div className="lg:col-span-5">
-            <div className="rounded-2xl bg-white border border-border p-8 shadow-sm">
-              {/* Phone */}
-              <div className="border-b border-border/50 py-5 first:pt-0">
-                <div className="flex items-start gap-4">
-                  <Phone size={20} className="mt-1 text-primary-500 shrink-0" />
-                  <div>
-                    <p className="text-sm font-medium text-text-secondary">
-                      Téléphone
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Form */}
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] as const }}
+          >
+            <div className="rounded-2xl border border-border bg-white p-6 lg:p-8">
+              <AnimatePresence mode="wait">
+                {state === "success" ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center py-12 text-center"
+                  >
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary-50 text-primary-500 mb-5">
+                      <CheckCircle2 size={28} strokeWidth={1.8} />
+                    </div>
+                    <h2 className="text-xl font-semibold text-text">Message envoyé</h2>
+                    <p className="mt-2 text-sm text-text-secondary max-w-xs">
+                      On vous recontacte dans les 2 heures. Pour une urgence, appelez-nous directement.
                     </p>
                     <a
                       href={SITE.phoneHref}
-                      className="text-xl font-bold text-text hover:text-primary-500 transition"
+                      className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-500 px-6 py-3 text-sm font-semibold text-white"
                     >
+                      <Phone size={16} />
                       {SITE.phone}
                     </a>
-                  </div>
-                </div>
-              </div>
+                  </motion.div>
+                ) : (
+                  <motion.form
+                    key="form"
+                    action={handleSubmit}
+                    className="space-y-5"
+                  >
+                    <h2 className="text-lg font-semibold text-text mb-1">
+                      Demande de rappel
+                    </h2>
 
-              {/* Hours */}
-              <div className="border-b border-border/50 py-5">
-                <div className="flex items-start gap-4">
-                  <Clock size={20} className="mt-1 text-primary-500 shrink-0" />
-                  <div>
-                    <p className="text-sm font-medium text-text-secondary">
-                      Horaires
-                    </p>
-                    <p className="text-sm text-text mt-1">
-                      {SITE.hours.weekdays}
-                    </p>
-                    <p className="text-sm text-text">{SITE.hours.saturday}</p>
-                    <p className="text-sm text-text">{SITE.hours.sunday}</p>
-                  </div>
-                </div>
-              </div>
+                    {/* Type */}
+                    <div>
+                      <label htmlFor="type" className="block text-sm font-medium text-text mb-1.5">
+                        Type de demande
+                      </label>
+                      <select
+                        id="type"
+                        name="type"
+                        defaultValue="rappel"
+                        className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                      >
+                        <option value="rappel">Être rappelé</option>
+                        <option value="devis">Demande de devis</option>
+                        <option value="rdv">Prendre rendez-vous</option>
+                        <option value="question">Question</option>
+                      </select>
+                    </div>
 
-              {/* WhatsApp */}
-              <div className="border-b border-border/50 py-5">
-                <div className="flex items-start gap-4">
-                  <MessageCircle
-                    size={20}
-                    className="mt-1 text-primary-500 shrink-0"
-                  />
-                  <div>
-                    <p className="text-sm font-medium text-text-secondary">
-                      WhatsApp
-                    </p>
-                    <a
-                      href={SITE.whatsapp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-semibold text-primary-500 hover:underline"
+                    {/* Name */}
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-text mb-1.5">
+                        Nom complet
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        autoComplete="name"
+                        placeholder="Jean Dupont"
+                        className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                      />
+                    </div>
+
+                    {/* Phone */}
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-text mb-1.5">
+                        Téléphone
+                      </label>
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        required
+                        autoComplete="tel"
+                        placeholder="06 12 34 56 78"
+                        className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                      />
+                    </div>
+
+                    {/* Optional fields toggle */}
+                    <button
+                      type="button"
+                      onClick={() => setShowOptional(!showOptional)}
+                      className="flex items-center gap-1.5 text-sm font-medium text-primary-500 hover:text-primary-600 transition-colors"
                     >
-                      Envoyer un message
-                    </a>
-                  </div>
-                </div>
-              </div>
+                      <ChevronDown
+                        size={14}
+                        className={`transition-transform duration-200 ${showOptional ? "rotate-180" : ""}`}
+                      />
+                      {showOptional ? "Moins d\u2019options" : "Ajouter des détails"}
+                    </button>
 
-              {/* Email */}
-              <div className="border-b border-border/50 py-5">
-                <div className="flex items-start gap-4">
-                  <Mail size={20} className="mt-1 text-primary-500 shrink-0" />
-                  <div>
-                    <p className="text-sm font-medium text-text-secondary">
-                      Email
-                    </p>
-                    <a
-                      href={`mailto:${SITE.email}`}
-                      className="text-sm font-semibold text-primary-500 hover:underline"
+                    <AnimatePresence>
+                      {showOptional && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="space-y-5 overflow-hidden"
+                        >
+                          {/* Vehicle */}
+                          <div>
+                            <label htmlFor="vehicle" className="block text-sm font-medium text-text mb-1.5">
+                              Véhicule <span className="text-text-muted font-normal">(optionnel)</span>
+                            </label>
+                            <input
+                              id="vehicle"
+                              name="vehicle"
+                              type="text"
+                              placeholder="Ex: Peugeot 308, 2019"
+                              className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                            />
+                          </div>
+
+                          {/* Message */}
+                          <div>
+                            <label htmlFor="message" className="block text-sm font-medium text-text mb-1.5">
+                              Message <span className="text-text-muted font-normal">(optionnel)</span>
+                            </label>
+                            <textarea
+                              id="message"
+                              name="message"
+                              rows={3}
+                              placeholder="Décrivez votre besoin..."
+                              className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 resize-none"
+                            />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {/* Error */}
+                    {state === "error" && (
+                      <p className="text-sm text-error font-medium">{error}</p>
+                    )}
+
+                    {/* Submit */}
+                    <button
+                      type="submit"
+                      disabled={isPending}
+                      className="w-full flex items-center justify-center gap-2.5 rounded-xl bg-primary-500 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-primary-500/20 transition-all duration-200 hover:bg-primary-600 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98]"
                     >
-                      {SITE.email}
-                    </a>
+                      {isPending ? (
+                        <span className="flex items-center gap-2">
+                          <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                          </svg>
+                          Envoi en cours...
+                        </span>
+                      ) : (
+                        <>
+                          <Send size={16} />
+                          Envoyer ma demande
+                        </>
+                      )}
+                    </button>
+
+                    <p className="text-[11px] text-text-muted text-center">
+                      En envoyant ce formulaire, vous acceptez d&apos;être recontacté par Shedli Auto.
+                    </p>
+                  </motion.form>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+
+          {/* Contact info sidebar */}
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.25, 0.1, 0.25, 1] as const }}
+          >
+            <div className="space-y-3">
+              <a
+                href={SITE.phoneHref}
+                className="flex items-center gap-4 rounded-xl border border-border bg-white p-4 lg:p-5 transition-shadow hover:shadow-sm"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
+                  <Phone size={18} strokeWidth={1.8} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-text">{SITE.phone}</p>
+                  <p className="text-xs text-text-muted">Réponse immédiate</p>
+                </div>
+              </a>
+
+              <a
+                href={SITE.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 rounded-xl border border-border bg-white p-4 lg:p-5 transition-shadow hover:shadow-sm"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
+                  <MessageCircle size={18} strokeWidth={1.8} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-text">WhatsApp</p>
+                  <p className="text-xs text-text-muted">Envoyez-nous un message</p>
+                </div>
+              </a>
+
+              <a
+                href={`mailto:${SITE.email}`}
+                className="flex items-center gap-4 rounded-xl border border-border bg-white p-4 lg:p-5 transition-shadow hover:shadow-sm"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
+                  <Mail size={18} strokeWidth={1.8} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-text">{SITE.email}</p>
+                  <p className="text-xs text-text-muted">Réponse sous 24h</p>
+                </div>
+              </a>
+
+              <div className="rounded-xl border border-border bg-white p-4 lg:p-5">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
+                    <Clock size={18} strokeWidth={1.8} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-text">Horaires</p>
+                    <div className="mt-1 space-y-0.5">
+                      <p className="text-xs text-text-muted">{SITE.hours.weekdays}</p>
+                      <p className="text-xs text-text-muted">{SITE.hours.saturday}</p>
+                      <p className="text-xs text-text-muted">{SITE.hours.sunday}</p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Address */}
-              <div className="py-5">
-                <div className="flex items-start gap-4">
-                  <MapPin
-                    size={20}
-                    className="mt-1 text-primary-500 shrink-0"
-                  />
+              <div className="rounded-xl border border-border bg-white p-4 lg:p-5">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
+                    <MapPin size={18} strokeWidth={1.8} />
+                  </div>
                   <div>
-                    <p className="text-sm font-medium text-text-secondary">
-                      Adresse
-                    </p>
-                    <p className="text-sm text-text mt-1">
-                      {SITE.address.full}
-                    </p>
+                    <p className="text-sm font-semibold text-text">Adresse</p>
+                    <p className="text-xs text-text-muted mt-0.5">{SITE.address.full}</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Google Maps */}
-        <div className="mt-16">
-          <iframe
-            title="Shedli Auto — Plaisir, Yvelines"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41912.36!2d1.9280!3d48.8220!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6882d1e5f1b3b%3A0x40b82c3688c5540!2s78370%20Plaisir!5e0!3m2!1sfr!2sfr!4v1700000000000"
-            className="w-full rounded-2xl border border-border aspect-[21/9]"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
+          </motion.div>
         </div>
       </div>
     </section>
