@@ -69,7 +69,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-[13px] font-medium transition-colors duration-200 ${
+                className={`relative text-[13px] font-medium transition-colors duration-200 pb-1 ${
                   isActive(link.href)
                     ? "text-text"
                     : "text-text-secondary hover:text-text"
@@ -78,9 +78,10 @@ export function Header() {
                 {link.label}
                 {isActive(link.href) && (
                   <motion.span
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1.5 left-0 right-0 h-[2px] rounded-full bg-primary-500"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full bg-primary-500 origin-left"
+                    transition={{ duration: 0.4, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                   />
                 )}
               </Link>

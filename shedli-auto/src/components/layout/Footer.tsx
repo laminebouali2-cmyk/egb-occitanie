@@ -116,7 +116,7 @@ export function Footer() {
               Mentions l&eacute;gales
             </Link>
             <Link
-              href="/politique-de-confidentialite"
+              href="/politique-confidentialite"
               className="text-xs text-white/25 transition-colors hover:text-white/50"
             >
               Politique de confidentialit&eacute;
