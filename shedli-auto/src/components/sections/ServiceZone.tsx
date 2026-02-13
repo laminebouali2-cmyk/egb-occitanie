@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SITE } from "@/lib/constants";
-import { MapPin } from "lucide-react";
 
 const MOBILE_CITY_LIMIT = 10;
 
@@ -37,7 +36,7 @@ export function ServiceZone() {
               Rambouillet. On se déplace dans tout le 78.
             </p>
 
-            {/* Cities — mobile: limited, desktop: all */}
+            {/* Cities */}
             <div className="mt-6 lg:mt-8">
               {/* Mobile */}
               <div className="flex flex-wrap gap-1.5 lg:hidden">
@@ -47,14 +46,13 @@ export function ServiceZone() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 + i * 0.03, ease: [0.25, 0.1, 0.25, 1] as const }}
-                    className="inline-flex items-center gap-1 rounded-lg border border-border bg-white px-2 py-1.5 text-[11px] text-text-secondary"
+                    className="inline-flex items-center rounded-lg border border-border bg-white px-2 py-1.5 text-[11px] text-text-secondary"
                   >
-                    <MapPin size={9} className="text-text-muted" />
                     {city}
                   </motion.span>
                 ))}
                 {remaining > 0 && (
-                  <span className="inline-flex items-center rounded-lg border border-primary-100 bg-primary-50/50 px-2 py-1.5 text-[11px] font-medium text-primary-600">
+                  <span className="inline-flex items-center rounded-lg border border-border bg-white px-2 py-1.5 text-[11px] font-medium text-text-secondary">
                     +{remaining} villes
                   </span>
                 )}
@@ -68,9 +66,8 @@ export function ServiceZone() {
                     initial={{ opacity: 0, y: 8 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 + i * 0.03, ease: [0.25, 0.1, 0.25, 1] as const }}
-                    className="inline-flex items-center gap-1 rounded-lg border border-border bg-white px-2.5 py-1.5 text-xs text-text-secondary"
+                    className="inline-flex items-center rounded-lg border border-border bg-white px-2.5 py-1.5 text-xs text-text-secondary"
                   >
-                    <MapPin size={10} className="text-text-muted" />
                     {city}
                   </motion.span>
                 ))}
@@ -81,7 +78,7 @@ export function ServiceZone() {
               Votre commune n&apos;est pas listée ?{" "}
               <a
                 href={SITE.phoneHref}
-                className="text-primary-500 hover:text-primary-600 font-medium transition-colors"
+                className="text-text-secondary hover:text-text font-medium transition-colors"
               >
                 Appelez-nous
               </a>
@@ -89,7 +86,7 @@ export function ServiceZone() {
             </p>
           </motion.div>
 
-          {/* Map — hidden on mobile for performance */}
+          {/* Map — hidden on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}

@@ -92,7 +92,7 @@ export function ReviewsPreview() {
                 &ldquo;{review.text}&rdquo;
               </blockquote>
               <div className="mt-4 pt-3 border-t border-border flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-full bg-primary-50 flex items-center justify-center text-[11px] font-semibold text-primary-600">
+                <div className="w-7 h-7 rounded-full bg-surface-muted flex items-center justify-center text-[11px] font-semibold text-text-muted">
                   {review.author.charAt(0)}
                 </div>
                 <div>
@@ -124,7 +124,7 @@ export function ReviewsPreview() {
                 &ldquo;{review.text}&rdquo;
               </blockquote>
               <div className="mt-5 pt-4 border-t border-border flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center text-xs font-semibold text-primary-600">
+                <div className="w-8 h-8 rounded-full bg-surface-muted flex items-center justify-center text-xs font-semibold text-text-muted">
                   {review.author.charAt(0)}
                 </div>
                 <div>

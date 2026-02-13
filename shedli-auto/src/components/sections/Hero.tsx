@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, PhoneIncoming, CheckCircle2 } from "lucide-react";
+import { Phone, PhoneIncoming } from "lucide-react";
 import { SITE } from "@/lib/constants";
 import { averageRating, reviewCount } from "@/lib/reviews";
 
@@ -17,10 +17,10 @@ export function Hero() {
   return (
     <section className="relative z-0 overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-6 pt-20 pb-4 lg:min-h-[calc(100svh-72px)] lg:grid-cols-2 lg:gap-20 lg:pt-0 lg:pb-0">
-          {/* ——— Text — PAS: Problem → Agitate → Solve ——— */}
+        <div className="grid grid-cols-1 items-center gap-6 pt-20 pb-6 lg:min-h-[calc(100svh-72px)] lg:grid-cols-2 lg:gap-20 lg:pt-0 lg:pb-0">
+          {/* ——— Text ——— */}
           <div className="max-w-xl lg:py-20">
-            {/* Social proof badge */}
+            {/* Social proof */}
             <motion.div {...fade(0.05)}>
               <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-soft px-3 py-1.5 mb-5 lg:mb-7">
                 <div className="flex items-center gap-0.5">
@@ -41,7 +41,6 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* Problem — name it directly */}
             <motion.h1
               {...fade(0.15)}
               className="text-[1.75rem] leading-[1.12] sm:text-[2.25rem] lg:text-[3rem] font-semibold text-text tracking-[-0.025em]"
@@ -51,7 +50,6 @@ export function Hero() {
               <span className="text-primary-500">C&apos;est réglé demain.</span>
             </motion.h1>
 
-            {/* Agitate + Solve */}
             <motion.p
               {...fade(0.25)}
               className="mt-4 text-[15px] lg:text-[17px] text-text-secondary leading-relaxed max-w-[420px]"
@@ -67,8 +65,8 @@ export function Hero() {
                 "Agréé toutes assurances",
                 "Garanti 2 ans",
               ].map((point) => (
-                <div key={point} className="flex items-center gap-2.5">
-                  <CheckCircle2 size={14} className="text-primary-500 shrink-0" />
+                <div key={point} className="flex items-center gap-2">
+                  <div className="h-1 w-1 rounded-full bg-text-muted shrink-0" />
                   <span className="text-sm text-text-secondary">{point}</span>
                 </div>
               ))}
@@ -78,7 +76,7 @@ export function Hero() {
             <motion.div {...fade(0.4)} className="mt-6 lg:mt-8 flex flex-col sm:flex-row gap-3">
               <a
                 href={SITE.phoneHref}
-                className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-primary-500 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-primary-500/20 transition-all duration-200 hover:bg-primary-600 hover:shadow-md hover:shadow-primary-500/25 active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#09090b] px-6 py-3.5 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-80 active:scale-[0.98]"
               >
                 <Phone size={16} strokeWidth={2.2} />
                 Appeler — {SITE.phone}
@@ -120,48 +118,30 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.1, 0.25, 1] as const }}
               className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-white/95 backdrop-blur-sm px-4 py-3 shadow-lg shadow-black/5"
             >
-              <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
-                  <CheckCircle2 size={18} strokeWidth={2} />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-text">+200 pare-brise remplacés</p>
-                  <p className="text-[11px] text-text-muted">dans les Yvelines (78)</p>
-                </div>
-              </div>
+              <p className="text-xs font-semibold text-text">+200 pare-brise remplacés</p>
+              <p className="text-[11px] text-text-muted">dans les Yvelines (78)</p>
             </motion.div>
           </motion.div>
         </div>
       </div>
 
-      {/* Mobile image — compact, impactful */}
+      {/* Mobile image — taller ratio to show full image */}
       <motion.div
-        className="relative mx-5 mb-4 overflow-hidden rounded-2xl lg:hidden"
+        className="relative mx-5 mb-6 overflow-hidden rounded-2xl lg:hidden"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] as const }}
       >
-        <div className="relative aspect-[16/9] w-full">
+        <div className="relative aspect-[4/3] w-full">
           <Image
             src="/images/hero-mechanic.jpg"
             alt="Technicien Shedli Auto remplaçant un pare-brise"
             fill
             priority
-            className="object-cover object-top"
+            className="object-cover object-center"
             sizes="100vw"
             quality={75}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-        </div>
-        {/* Mobile floating badge */}
-        <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2.5 rounded-lg bg-white/95 backdrop-blur-sm px-3 py-2.5">
-          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary-50 text-primary-500">
-            <CheckCircle2 size={14} strokeWidth={2} />
-          </div>
-          <div>
-            <p className="text-[11px] font-semibold text-text leading-tight">+200 pare-brise remplacés</p>
-            <p className="text-[10px] text-text-muted">Yvelines (78)</p>
-          </div>
         </div>
       </motion.div>
     </section>

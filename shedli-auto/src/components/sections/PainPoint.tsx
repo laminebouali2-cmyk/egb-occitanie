@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { AlertTriangle, Clock, ShieldAlert, ShieldCheck } from "lucide-react";
+import { AlertTriangle, Clock, ShieldAlert } from "lucide-react";
 
 const dangers = [
   {
@@ -53,19 +53,14 @@ export function PainPoint() {
               coûteux et dangereux.
             </p>
 
-            {/* Relief block */}
-            <div className="mt-6 lg:mt-8 rounded-xl border border-success/20 bg-success/[0.04] p-4 lg:p-5">
-              <div className="flex items-start gap-3">
-                <ShieldCheck size={18} className="text-success shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm font-semibold text-text">
-                    La bonne nouvelle ?
-                  </p>
-                  <p className="mt-1 text-sm text-text-secondary leading-relaxed">
-                    Votre assurance couvre le remplacement à 100 %. On gère tout — 0 € d&apos;avance.
-                  </p>
-                </div>
-              </div>
+            {/* Relief — clean, no colored badge */}
+            <div className="mt-6 lg:mt-8 pt-6 border-t border-border">
+              <p className="text-sm font-semibold text-text">
+                Votre assurance couvre tout.
+              </p>
+              <p className="mt-1.5 text-sm text-text-secondary leading-relaxed">
+                Remplacement pris en charge à 100 %. On gère le dossier — 0&nbsp;€ d&apos;avance.
+              </p>
             </div>
           </motion.div>
 
@@ -77,13 +72,10 @@ export function PainPoint() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.15 + i * 0.12, ease: [0.25, 0.1, 0.25, 1] as const }}
-                className="group rounded-xl border border-border bg-white p-4 lg:p-6 transition-shadow duration-200 hover:shadow-sm"
+                className="rounded-xl border border-border bg-white p-4 lg:p-6"
               >
                 <div className="flex items-start gap-3 lg:gap-4">
-                  <div className="flex h-9 w-9 lg:h-10 lg:w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500 transition-colors duration-200 group-hover:bg-primary-100">
-                    <item.icon size={16} strokeWidth={1.8} className="lg:hidden" />
-                    <item.icon size={18} strokeWidth={1.8} className="hidden lg:block" />
-                  </div>
+                  <item.icon size={18} strokeWidth={1.5} className="text-text-muted shrink-0 mt-0.5" />
                   <div>
                     <h3 className="text-sm font-semibold text-text">
                       {item.title}
