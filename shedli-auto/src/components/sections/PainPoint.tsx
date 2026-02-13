@@ -37,9 +37,9 @@ export function PainPoint() {
           {/* ——— Left — Copy ——— */}
           <motion.div
             className="lg:col-span-5"
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
             <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-4">
               Pourquoi agir vite
@@ -77,9 +77,9 @@ export function PainPoint() {
             {dangers.map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: 0.15 + i * 0.1 }}
+                transition={{ duration: 0.7, delay: 0.15 + i * 0.12, ease: [0.25, 0.1, 0.25, 1] as const }}
                 className="group rounded-xl border border-border bg-white p-6 transition-shadow duration-200 hover:shadow-sm"
               >
                 <div className="flex items-start gap-4">

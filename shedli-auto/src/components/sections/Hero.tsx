@@ -8,9 +8,9 @@ import { SITE } from "@/lib/constants";
 import { averageRating, reviewCount } from "@/lib/reviews";
 
 const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 14 },
+  initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, delay, ease: [0.25, 0.1, 0.25, 1] as const },
+  transition: { duration: 0.7, delay, ease: [0.25, 0.1, 0.25, 1] as const },
 });
 
 export function Hero() {
@@ -96,9 +96,9 @@ export function Hero() {
           {/* ——— Image — contained, no overflow ——— */}
           <motion.div
             className="relative hidden lg:block"
-            initial={{ opacity: 0, scale: 0.97 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
+            transition={{ duration: 0.9, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
             <div className="relative aspect-[3/4] max-h-[580px] w-full overflow-hidden rounded-2xl">
               <Image
@@ -117,7 +117,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
+              transition={{ duration: 0.7, delay: 0.9, ease: [0.25, 0.1, 0.25, 1] as const }}
               className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-white/95 backdrop-blur-sm px-4 py-3 shadow-lg shadow-black/5"
             >
               <div className="flex items-center gap-3">
@@ -137,9 +137,9 @@ export function Hero() {
       {/* Mobile image */}
       <motion.div
         className="relative mx-5 mb-8 overflow-hidden rounded-2xl lg:hidden"
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] as const }}
       >
         <div className="relative aspect-[4/3] w-full">
           <Image

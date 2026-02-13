@@ -17,15 +17,15 @@ export function CtaBanner() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[1px]"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)",
+            "linear-gradient(90deg, transparent, rgba(13,148,136,0.4), transparent)",
         }}
       />
 
       <div className="mx-auto w-full max-w-3xl px-5 lg:px-8 py-24 lg:py-32 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/30 mb-4">
             Prêt à régler ça ?
@@ -42,9 +42,9 @@ export function CtaBanner() {
 
           <motion.div
             className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, delay: 0.15 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
             <a
               href={SITE.phoneHref}

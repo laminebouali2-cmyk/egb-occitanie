@@ -18,9 +18,9 @@ export function ServiceZone() {
         >
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
             <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-4">
               Zone d&apos;intervention
@@ -38,9 +38,9 @@ export function ServiceZone() {
               {SITE.zone.cities.map((city, i) => (
                 <motion.span
                   key={city}
-                  initial={{ opacity: 0 }}
-                  animate={inView ? { opacity: 1 } : {}}
-                  transition={{ duration: 0.3, delay: 0.15 + i * 0.02 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.03, ease: [0.25, 0.1, 0.25, 1] as const }}
                   className="inline-flex items-center gap-1 rounded-lg border border-border bg-white px-2.5 py-1.5 text-xs text-text-secondary"
                 >
                   <MapPin size={10} className="text-text-muted" />
@@ -63,9 +63,9 @@ export function ServiceZone() {
 
           {/* Map */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
             <div className="rounded-2xl overflow-hidden border border-border aspect-square bg-surface-muted">
               <iframe

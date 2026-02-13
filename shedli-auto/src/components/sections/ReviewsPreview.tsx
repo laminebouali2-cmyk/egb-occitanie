@@ -30,9 +30,9 @@ export function ReviewsPreview() {
         <motion.div
           ref={ref}
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-4">
@@ -77,9 +77,9 @@ export function ReviewsPreview() {
           {featured.map((review, i) => (
             <motion.div
               key={review.id}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+              transition={{ duration: 0.7, delay: 0.12 + i * 0.12, ease: [0.25, 0.1, 0.25, 1] as const }}
               className="rounded-xl border border-border bg-white p-6 transition-shadow duration-200 hover:shadow-sm"
             >
               <div className="flex items-center gap-0.5 mb-4">
@@ -120,9 +120,9 @@ export function ReviewsPreview() {
 
         <motion.div
           className="mt-10 text-center"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 0.5 }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
           <Link
             href="/avis"

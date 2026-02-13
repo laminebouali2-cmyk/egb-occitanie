@@ -36,17 +36,17 @@ export function TrustBadges() {
       <div className="mx-auto w-full max-w-6xl px-5 lg:px-8 py-10 lg:py-12">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
         >
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.07 }}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.1, ease: [0.25, 0.1, 0.25, 1] as const }}
               className="flex items-center gap-3.5"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">

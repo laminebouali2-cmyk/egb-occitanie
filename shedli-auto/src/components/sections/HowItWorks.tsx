@@ -40,10 +40,10 @@ export function HowItWorks() {
         {/* Header */}
         <motion.div
           className="mb-16 lg:mb-20"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-4">
             Comment ça marche
@@ -64,9 +64,9 @@ export function HowItWorks() {
             {steps.map((step, i) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
+                transition={{ duration: 0.7, delay: 0.1 + i * 0.15, ease: [0.25, 0.1, 0.25, 1] as const }}
                 className="flex gap-6 lg:gap-10"
               >
                 {/* Number circle */}
@@ -98,10 +98,10 @@ export function HowItWorks() {
         {/* CTAs */}
         <motion.div
           className="mt-14 flex flex-col sm:flex-row gap-3"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
           <a
             href={SITE.phoneHref}
