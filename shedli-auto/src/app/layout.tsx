@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | Shedli Auto — Pare-Brise Yvelines",
   },
   description:
-    "Pare-brise fissuré dans les Yvelines (78) ? Shedli Auto intervient chez vous sous 24-48h. Agréé toutes assurances, 0 € d'avance, garantie 2 ans. Appelez le 06 28 43 88 44.",
+    "Pare-brise fissuré dans les Yvelines (78) ? Shedli Auto intervient chez vous à domicile. Agréé toutes assurances, 0 € d'avance, collage garanti à vie. Appelez le 06 28 43 88 44.",
   openGraph: {
     type: "website",
     locale: "fr_FR",

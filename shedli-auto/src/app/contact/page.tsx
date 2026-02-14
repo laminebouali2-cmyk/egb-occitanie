@@ -40,10 +40,10 @@ export default function ContactPage() {
             Contact
           </p>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-text tracking-tight leading-tight">
-            Un appel suffit.
+            Prenons les choses en main.
           </h1>
           <p className="mt-3 text-sm lg:text-base text-text-secondary max-w-md">
-            Choisissez votre mode de contact préféré. On vous répond en moins de 2 heures.
+            Un appel ou un message — votre problème de pare-brise est entre de bonnes mains.
           </p>
         </motion.div>
 
@@ -56,7 +56,7 @@ export default function ContactPage() {
         >
           <a
             href={SITE.phoneHref}
-            className="flex shrink-0 items-center gap-2.5 rounded-xl bg-[#09090b] px-5 py-3 text-sm font-semibold text-white"
+            className="flex shrink-0 items-center gap-2.5 rounded-xl bg-primary-600 px-5 py-3 text-sm font-semibold text-white"
           >
             <Phone size={16} />
             Appeler
@@ -105,7 +105,7 @@ export default function ContactPage() {
                     </p>
                     <a
                       href={SITE.phoneHref}
-                      className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#09090b] px-6 py-3 text-sm font-semibold text-white"
+                      className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-600 px-6 py-3 text-sm font-semibold text-white"
                     >
                       <Phone size={16} />
                       {SITE.phone}
@@ -233,7 +233,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={isPending}
-                      className="w-full flex items-center justify-center gap-2.5 rounded-xl bg-[#09090b] px-6 py-3.5 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98]"
+                      className="w-full flex items-center justify-center gap-2.5 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98]"
                     >
                       {isPending ? (
                         <span className="flex items-center gap-2">

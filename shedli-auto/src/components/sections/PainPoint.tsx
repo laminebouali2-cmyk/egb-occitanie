@@ -7,21 +7,21 @@ import { AlertTriangle, Clock, ShieldAlert } from "lucide-react";
 const dangers = [
   {
     icon: AlertTriangle,
-    title: "Un impact se propage",
+    title: "Un impact se propage vite",
     description:
-      "Un simple éclat peut devenir une fissure de 30 cm en quelques jours. Vibrations et températures accélèrent la propagation.",
+      "Un simple éclat peut devenir une fissure de 30 cm en quelques jours. Nids-de-poule, vibrations, écarts de température — tout accélère la propagation.",
   },
   {
     icon: ShieldAlert,
-    title: "Contrôle technique refusé",
+    title: "Votre sécurité est compromise",
     description:
-      "Un pare-brise fissuré dans le champ de vision entraîne un refus au contrôle technique.",
+      "Le pare-brise assure 30 % de la rigidité structurelle du véhicule. Fissuré, il ne vous protège plus en cas de collision.",
   },
   {
     icon: Clock,
-    title: "Votre sécurité en jeu",
+    title: "Le contrôle technique sera refusé",
     description:
-      "Le pare-brise assure 30 % de la rigidité du véhicule. Une fissure compromet votre protection en cas de choc.",
+      "Toute fissure dans le champ de vision du conducteur entraîne un refus systématique. C\u2019est la réglementation.",
   },
 ];
 
@@ -41,25 +41,26 @@ export function PainPoint() {
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
             <p className="text-xs font-medium uppercase tracking-[0.15em] text-primary-700 mb-3 lg:mb-4">
-              Pourquoi agir vite
+              Ce que vous risquez
             </p>
             <h2 className="text-2xl sm:text-3xl lg:text-[2.75rem] font-semibold text-text tracking-tight leading-[1.1]">
-              Chaque fissure
+              Ne laissez pas un impact
               <br />
-              est un risque.
+              devenir un problème.
             </h2>
             <p className="mt-4 text-sm lg:text-base text-text-secondary leading-relaxed">
-              Ce qui ressemble à un simple impact peut vite devenir un problème
-              coûteux et dangereux.
+              Ce qui semble anodin peut avoir des conséquences graves.
+              Plus vous attendez, plus la situation se complique.
             </p>
 
-            {/* Relief — clean, no colored badge */}
+            {/* Relief — reassuring authority */}
             <div className="mt-6 lg:mt-8 pt-6 border-t border-border">
               <p className="text-sm font-semibold text-text">
-                Votre assurance couvre tout.
+                La bonne nouvelle : votre assurance couvre tout.
               </p>
               <p className="mt-1.5 text-sm text-text-secondary leading-relaxed">
-                Remplacement pris en charge à 100 %. On gère le dossier — 0&nbsp;€ d&apos;avance.
+                Remplacement intégral, aucune avance de frais.
+                On gère votre dossier de A à Z — vous ne déboursez pas un centime.
               </p>
             </div>
           </motion.div>

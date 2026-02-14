@@ -18,28 +18,24 @@ const steps = [
     icon: Phone,
     number: "01",
     title: "Vous nous appelez",
-    time: "2 min",
     description: "Munissez-vous de votre carte grise et numéro de contrat. On fait le point ensemble.",
   },
   {
     icon: FileText,
     number: "02",
     title: "On contacte votre assureur",
-    time: "24h",
     description: "Ouverture du dossier bris de glace et accord de prise en charge — on gère tout.",
   },
   {
     icon: Clock,
     number: "03",
     title: "Intervention à domicile",
-    time: "<48h",
-    description: "Notre technicien se déplace chez vous avec tout le matériel nécessaire.",
+    description: "Notre technicien certifié se déplace chez vous avec tout le matériel nécessaire.",
   },
   {
     icon: CreditCard,
     number: "04",
     title: "Vous ne payez rien",
-    time: "0 €",
     description: "La facture va directement à votre assurance. Aucune avance de frais.",
   },
 ];
@@ -164,9 +160,6 @@ export default function PriseEnChargeAssurancePage() {
                   <div>
                     <span className="text-[11px] font-medium text-text-muted uppercase tracking-wider">
                       Étape {step.number}
-                    </span>
-                    <span className="ml-2 inline-flex items-center rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-medium text-primary-600">
-                      {step.time}
                     </span>
                   </div>
                 </div>

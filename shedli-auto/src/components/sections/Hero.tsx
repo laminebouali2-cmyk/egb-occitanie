@@ -47,23 +47,23 @@ export function Hero() {
             >
               Pare-brise fissuré&nbsp;?
               <br />
-              <span className="text-primary-500">C&apos;est réglé demain.</span>
+              <span className="text-primary-500">Ne perdez pas de temps.</span>
             </motion.h1>
 
             <motion.p
               {...fade(0.25)}
               className="mt-4 text-[15px] lg:text-[17px] text-text-secondary leading-relaxed max-w-[420px]"
             >
-              On se déplace chez vous dans les Yvelines sous 24&#8209;48h.
-              Votre assurance prend tout en charge&nbsp;— <strong className="text-text font-medium">0&nbsp;€ à payer</strong>.
+              Contactez notre technicien. Il se déplace chez vous dans les Yvelines,
+              gère votre dossier d&apos;assurance — et <strong className="text-text font-medium">vous ne payez rien</strong>.
             </motion.p>
 
             {/* Proof points — desktop only */}
             <motion.div {...fade(0.35)} className="mt-5 hidden sm:flex flex-col gap-2">
               {[
-                "Intervention mobile — vous ne bougez pas",
+                "Intervention à domicile — vous ne bougez pas",
                 "Agréé toutes assurances",
-                "Garanti 2 ans",
+                "Collage garanti à vie",
               ].map((point) => (
                 <div key={point} className="flex items-center gap-2">
                   <div className="h-1 w-1 rounded-full bg-text-muted shrink-0" />
@@ -76,7 +76,7 @@ export function Hero() {
             <motion.div {...fade(0.4)} className="mt-6 lg:mt-8 flex flex-col sm:flex-row gap-3">
               <a
                 href={SITE.phoneHref}
-                className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#09090b] px-6 py-3.5 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-80 active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-primary-500/20 transition-all duration-200 hover:bg-primary-700 hover:shadow-md active:scale-[0.98]"
               >
                 <Phone size={16} strokeWidth={2.2} />
                 Appeler — {SITE.phone}

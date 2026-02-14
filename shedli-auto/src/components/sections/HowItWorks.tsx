@@ -9,24 +9,21 @@ import Link from "next/link";
 const steps = [
   {
     number: "01",
-    time: "2 min",
     title: "Vous nous appelez",
     description:
-      "On évalue votre besoin, devis immédiat, intervention planifiée. Gratuit, sans engagement.",
+      "Évaluation immédiate de votre situation, devis gratuit et planification de l\u2019intervention. Sans engagement.",
   },
   {
     number: "02",
-    time: "< 48h",
     title: "On vient à vous",
     description:
-      "Notre technicien certifié se déplace chez vous avec tout le matériel. Vous ne bougez pas.",
+      "Notre technicien certifié se déplace à votre domicile, bureau ou parking avec tout le matériel. Vous ne bougez pas.",
   },
   {
     number: "03",
-    time: "1h",
     title: "C'est réglé",
     description:
-      "Pare-brise neuf posé en 1 heure, garanti 2 ans. Dossier assurance géré — 0 € à payer.",
+      "Pare-brise neuf posé dans les règles de l\u2019art. Collage garanti à vie. Dossier assurance traité — 0 € à payer.",
   },
 ];
 
@@ -78,13 +75,10 @@ export function HowItWorks() {
 
                 {/* Content */}
                 <div className="flex-1">
-                  <div className="flex items-center gap-2.5 mb-1.5">
+                  <div className="mb-1.5">
                     <h3 className="text-base lg:text-lg font-semibold text-text">
                       {step.title}
                     </h3>
-                    <span className="inline-flex items-center rounded-full bg-primary-50 px-2 py-0.5 text-[10px] lg:text-[11px] font-medium text-primary-600">
-                      {step.time}
-                    </span>
                   </div>
                   <p className="text-[13px] lg:text-sm text-text-secondary leading-relaxed max-w-lg">
                     {step.description}
@@ -105,7 +99,7 @@ export function HowItWorks() {
         >
           <a
             href={SITE.phoneHref}
-            className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-text px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-80 active:scale-[0.98]"
+            className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-primary-500/20 transition-all duration-200 hover:bg-primary-700 hover:shadow-md active:scale-[0.98]"
           >
             <Phone size={16} strokeWidth={2.2} />
             Appeler maintenant

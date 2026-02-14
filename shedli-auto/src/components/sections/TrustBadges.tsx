@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const stats = [
-  { value: "<\u200948h", label: "Intervention" },
+  { value: "+200", label: "Interventions" },
   { value: "0 €", label: "À votre charge" },
-  { value: "2 ans", label: "Garantie" },
+  { value: "À vie", label: "Garantie collage" },
   { value: "5/5", label: "Google" },
 ];
 

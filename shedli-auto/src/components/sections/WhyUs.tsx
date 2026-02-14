@@ -35,8 +35,8 @@ export function WhyUs() {
             des pare-brise.
           </h2>
           <p className="mt-4 text-sm lg:text-base text-text-secondary leading-relaxed max-w-lg">
-            On simplifie une situation stressante. De l&apos;appel au dernier coup de
-            chiffon, chaque détail est pensé.
+            On prend en charge une situation stressante de A à Z.
+            De l&apos;appel au dernier coup de chiffon, chaque détail est pensé pour vous.
           </p>
         </motion.div>
 
@@ -74,9 +74,9 @@ export function WhyUs() {
           >
             <div className="rounded-xl border border-border bg-white p-4">
               <p className="text-2xl font-semibold text-text tracking-tight leading-none">
-                &lt;48<span className="text-sm text-text-muted ml-0.5">h</span>
+                +200
               </p>
-              <p className="text-[11px] text-text-secondary mt-1.5">Délai d&apos;intervention</p>
+              <p className="text-[11px] text-text-secondary mt-1.5">Interventions réalisées</p>
             </div>
             <div className="rounded-xl border border-border bg-white p-4">
               <p className="text-2xl font-semibold text-text tracking-tight leading-none">
@@ -129,9 +129,9 @@ export function WhyUs() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               className="border-t border-border py-5"
             >
-              <h3 className="text-sm font-semibold text-text">Garantie 2 ans</h3>
+              <h3 className="text-sm font-semibold text-text">Collage garanti à vie</h3>
               <p className="mt-1.5 text-[13px] text-text-secondary leading-relaxed">
-                Vitrages certifiés conformes ECE R43. Qualité constructeur.
+                Adhésifs de dernière génération, pose conforme ECE R43. Un collage qui tient.
               </p>
             </motion.div>
           </div>
@@ -188,7 +188,7 @@ export function WhyUs() {
             </div>
           </motion.div>
 
-          {/* Card 3 — Stat: <48h */}
+          {/* Card 3 — Stat: +200 */}
           <motion.div
             {...card(0.12)}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -196,10 +196,10 @@ export function WhyUs() {
           >
             <div className="mt-2 lg:mt-4">
               <p className="text-[2rem] lg:text-[2.5rem] font-semibold text-text tracking-tight leading-none">
-                &lt;48<span className="text-base lg:text-lg font-medium text-text-muted ml-0.5">h</span>
+                +200
               </p>
               <p className="text-[12px] lg:text-sm text-text-secondary mt-1.5">
-                Délai moyen d&apos;intervention.
+                Interventions réalisées dans les Yvelines.
               </p>
             </div>
           </motion.div>
@@ -235,17 +235,17 @@ export function WhyUs() {
             </p>
           </motion.div>
 
-          {/* Card 6 — Garantie */}
+          {/* Card 6 — Garantie collage */}
           <motion.div
             {...card(0.24)}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             className="rounded-2xl border border-border bg-white p-5 lg:p-7"
           >
             <h3 className="text-base lg:text-lg font-semibold text-text tracking-tight">
-              Garantie 2 ans
+              Collage garanti à vie
             </h3>
             <p className="mt-1.5 text-[12px] lg:text-sm text-text-secondary leading-relaxed">
-              Vitrages certifiés conformes ECE R43. Qualité constructeur.
+              Adhésifs de dernière génération, pose conforme ECE R43. Un collage qui tient, pour de bon.
             </p>
           </motion.div>
         </div>
@@ -260,7 +260,7 @@ export function WhyUs() {
         >
           <a
             href={SITE.phoneHref}
-            className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#09090b] px-6 py-3.5 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-80 active:scale-[0.98]"
+            className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-primary-500/20 transition-all duration-200 hover:bg-primary-700 hover:shadow-md active:scale-[0.98]"
           >
             <Phone size={16} strokeWidth={2.2} />
             Appeler — {SITE.phone}

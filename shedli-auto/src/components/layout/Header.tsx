@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone } from "lucide-react";
 import { SITE } from "@/lib/constants";
+import { ShedliLogo } from "@/components/ui/ShedliLogo";
 
 const NAV_LINKS = [
   { label: "Accueil", href: "/" },
@@ -52,12 +53,7 @@ export function Header() {
         }`}
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:h-[72px] lg:px-8">
-          <Link
-            href="/"
-            className="text-lg font-semibold tracking-tight text-text transition-colors duration-300"
-          >
-            Shedli Auto
-          </Link>
+          <ShedliLogo />
 
           <nav
             className="hidden items-center gap-8 lg:flex"
