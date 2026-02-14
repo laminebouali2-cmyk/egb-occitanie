@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" fill="none">
+  <!-- Outer rounded rectangle border -->
+  <rect x="2" y="2" width="276" height="96" rx="12" ry="12" fill="white" stroke="#1a1a2e" stroke-width="4"/>
+
+  <!-- Blue left half -->
+  <clipPath id="leftClip">
+    <rect x="4" y="4" width="136" height="92" rx="10" ry="10"/>
+  </clipPath>
+  <rect x="4" y="4" width="136" height="92" rx="10" ry="10" fill="#2456B2"/>
+
+  <!-- "Shedli" text - white on blue -->
+  <text x="72" y="62" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="36" fill="white" letter-spacing="0.5">Shedli</text>
+
+  <!-- "AUTO" text - dark on white -->
+  <text x="207" y="58" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="38" fill="#1a1a2e" letter-spacing="2">AUTO</text>
+
+  <!-- French flag -->
+  <rect x="190" y="68" width="11" height="14" rx="1" fill="#002395"/>
+  <rect x="201" y="68" width="11" height="14" fill="white"/>
+  <rect x="212" y="68" width="11" height="14" rx="1" fill="#ED2939"/>
+  <!-- Flag border -->
+  <rect x="190" y="68" width="33" height="14" rx="1" fill="none" stroke="#1a1a2e" stroke-width="0.5"/>
+</svg>

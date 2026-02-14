@@ -5,10 +5,10 @@ export function ShedliLogo() {
   return (
     <Link href="/" aria-label="Shedli Auto — Accueil">
       <Image
-        src="/images/logo-shedli-auto.png"
+        src="/images/logo-shedli-auto.svg"
         alt="Shedli Auto"
-        width={120}
-        height={38}
+        width={280}
+        height={100}
         className="h-[28px] lg:h-[32px] w-auto"
         priority
       />
