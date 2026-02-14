@@ -29,11 +29,11 @@ export function ServiceZone() {
               Zone d&apos;intervention
             </p>
             <h2 className="text-xl sm:text-2xl lg:text-[2.25rem] font-semibold text-text tracking-tight leading-[1.15]">
-              Partout dans les Yvelines.
+              Yvelines et Île-de-France.
             </h2>
             <p className="mt-3 text-sm lg:text-base text-text-secondary leading-relaxed max-w-md">
-              De Versailles à Mantes-la-Jolie, de Saint-Germain-en-Laye à
-              Rambouillet. On se déplace dans tout le 78.
+              De Versailles à Nanterre, de Saint-Germain-en-Laye à
+              Boulogne-Billancourt. On se déplace dans tout le 78 et au-delà.
             </p>
 
             {/* Cities */}
@@ -102,7 +102,7 @@ export function ServiceZone() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Zone d'intervention Shedli Auto — Yvelines (78)"
+                title="Zone d'intervention Shedli Auto — Yvelines (78) et Île-de-France"
                 className="w-full h-full"
               />
             </div>

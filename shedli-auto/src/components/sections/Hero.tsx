@@ -54,8 +54,8 @@ export function Hero() {
               {...fade(0.25)}
               className="mt-4 text-[15px] lg:text-[17px] text-text-secondary leading-relaxed max-w-[420px]"
             >
-              Contactez notre technicien. Il se déplace chez vous dans les Yvelines,
-              gère votre dossier d&apos;assurance — et <strong className="text-text font-medium">vous ne payez rien</strong>.
+              Contactez notre technicien. Il se déplace chez vous dans les Yvelines
+              et en Île-de-France, gère votre dossier d&apos;assurance — et <strong className="text-text font-medium">vous ne payez rien</strong>.
             </motion.p>
 
             {/* Proof points — desktop only */}
@@ -119,7 +119,7 @@ export function Hero() {
               className="absolute bottom-6 left-6 rounded-xl border border-white/20 bg-white/95 backdrop-blur-sm px-4 py-3 shadow-lg shadow-black/5"
             >
               <p className="text-xs font-semibold text-text">+200 pare-brise remplacés</p>
-              <p className="text-[11px] text-text-muted">dans les Yvelines (78)</p>
+              <p className="text-[11px] text-text-muted">en Île-de-France</p>
             </motion.div>
           </motion.div>
         </div>

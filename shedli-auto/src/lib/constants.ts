@@ -52,6 +52,13 @@ export const SITE = {
       "Bois-d'Arcy",
       "Fontenay-le-Fleury",
       "Villepreux",
+      "Nanterre",
+      "Boulogne-Billancourt",
+      "Argenteuil",
+      "Cergy",
+      "Saint-Denis",
+      "Créteil",
+      "Évry-Courcouronnes",
     ],
   },
   social: {

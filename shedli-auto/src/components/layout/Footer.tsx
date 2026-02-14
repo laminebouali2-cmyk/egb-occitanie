@@ -19,7 +19,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <ShedliLogo variant="dark" />
+            <ShedliLogo />
             <p className="mt-3 text-sm leading-relaxed text-white/40">
               Spécialiste du remplacement de pare-brise à domicile dans les
               Yvelines (78) et en Île-de-France.

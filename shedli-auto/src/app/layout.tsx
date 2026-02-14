@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
     default:
-      "Shedli Auto | Remplacement Pare-Brise Yvelines (78) — Intervention Mobile",
+      "Shedli Auto | Remplacement Pare-Brise Yvelines (78) & Île-de-France — Intervention Mobile",
     template: "%s | Shedli Auto — Pare-Brise Yvelines",
   },
   description:
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: "/images/hero-mechanic.jpg",
         width: 1920,
         height: 2880,
-        alt: "Shedli Auto — Remplacement de pare-brise à domicile dans les Yvelines",
+        alt: "Shedli Auto — Remplacement de pare-brise à domicile dans les Yvelines et en Île-de-France",
       },
     ],
   },
