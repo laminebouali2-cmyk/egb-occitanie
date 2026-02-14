@@ -7,7 +7,7 @@ export function StructuredData() {
     "@type": "AutoRepair",
     name: SITE.name,
     description:
-      "Spécialiste du remplacement et de la réparation de pare-brise à domicile dans les Yvelines (78) et en Île-de-France. Intervention mobile sous 24-48h, agréé toutes assurances.",
+      "Spécialiste du remplacement et de la réparation de pare-brise à domicile dans les Yvelines (78) et en Île-de-France. Agréé toutes assurances, collage garanti à vie.",
     url: SITE.url,
     telephone: SITE.phoneHref.replace("tel:", ""),
     email: SITE.email,
@@ -66,7 +66,7 @@ export function StructuredData() {
             "@type": "Service",
             name: "Remplacement de pare-brise à domicile",
             description:
-              "Remplacement complet de pare-brise avec intervention mobile. Vitrages certifiés, garantie 2 ans.",
+              "Remplacement complet de pare-brise avec intervention mobile. Vitrages certifiés, collage garanti à vie.",
           },
         },
         {
@@ -108,7 +108,7 @@ export function StructuredData() {
         name: "En combien de temps intervenez-vous ?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Nous intervenons sous 24 à 48h dans tout le département des Yvelines (78). Le remplacement du pare-brise prend environ 1 heure sur place.",
+          text: "Nous intervenons rapidement dans tout le département des Yvelines (78). Notre technicien se déplace à votre domicile avec tout le matériel nécessaire.",
         },
       },
       {

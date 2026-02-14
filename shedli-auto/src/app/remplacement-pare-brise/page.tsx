@@ -18,7 +18,7 @@ const services = [
   {
     icon: Wrench,
     title: "Remplacement complet",
-    description: "Pare-brise fissuré ou éclaté : dépose et pose d'un vitrage neuf certifié, en moins d'1 heure.",
+    description: "Pare-brise fissuré ou éclaté : dépose et pose d'un vitrage neuf certifié. Collage garanti à vie.",
   },
   {
     icon: Droplets,
@@ -99,7 +99,7 @@ export default function RemplacementPareBrisePage() {
                 <span className="text-primary-500">à domicile.</span>
               </h1>
               <p className="mt-5 text-base sm:text-lg text-text-secondary leading-relaxed">
-                Intervention en 1h, tous véhicules, prise en charge assurance directe.
+                Tous véhicules, prise en charge assurance directe.
                 Partout dans les Yvelines (78) et en Île-de-France.
               </p>
 
@@ -107,7 +107,7 @@ export default function RemplacementPareBrisePage() {
                 {[
                   "Tous véhicules (citadine, SUV, utilitaire)",
                   "Pare-brises certifiés normes européennes",
-                  "Garantie 2 ans pièce et pose",
+                  "Collage garanti à vie",
                   "Prise en charge assurance — 0 € d'avance",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2.5">
@@ -212,10 +212,10 @@ export default function RemplacementPareBrisePage() {
             <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight leading-snug">
               Pare-brise fissuré ?
               <br />
-              <span className="text-white/40">C&apos;est réglé demain.</span>
+              <span className="text-white/40">On s&apos;en occupe.</span>
             </h2>
             <p className="mt-4 text-base text-white/40 leading-relaxed max-w-md mx-auto">
-              Un seul appel. On se déplace, on remplace, on garantit.
+              Un seul appel. On se déplace, on remplace. Collage garanti à vie.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
               <a

@@ -17,7 +17,7 @@ export function CtaBanner() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[1px]"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(13,148,136,0.4), transparent)",
+            "linear-gradient(90deg, transparent, rgba(37,99,235,0.3), transparent)",
         }}
       />
 
@@ -28,16 +28,16 @@ export function CtaBanner() {
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as const }}
         >
           <p className="text-[10px] lg:text-xs font-medium uppercase tracking-[0.15em] text-white/30 mb-3 lg:mb-4">
-            Prêt à régler ça ?
+            Ne laissez pas traîner
           </p>
           <h2 className="text-xl sm:text-2xl lg:text-4xl font-semibold text-white tracking-tight leading-snug">
-            Pare-brise fissuré ?
+            Chaque jour qui passe,
             <br />
-            <span className="text-white/40">Réglez ça maintenant.</span>
+            <span className="text-white/40">la fissure avance.</span>
           </h2>
           <p className="mt-3 text-[13px] lg:text-base text-white/40 leading-relaxed max-w-md mx-auto">
-            Un seul appel et on s&apos;occupe de tout.
-            Intervention, assurance, garantie.
+            Ne laissez pas un simple impact devenir un problème coûteux.
+            Un appel maintenant — et on s&apos;occupe de tout.
           </p>
 
           <motion.div

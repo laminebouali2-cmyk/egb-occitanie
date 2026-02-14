@@ -37,6 +37,6 @@ export const faqItems: FaqItem[] = [
   {
     question: "Quelles marques de pare-brise utilisez-vous ?",
     answer:
-      "Nous posons exclusivement des pare-brises certifiés aux normes européennes (marquage E), de marques reconnues (Pilkington, Saint-Gobain Sekurit, AGC, Fuyao). Chaque vitrage est garanti 2 ans, pièce et pose.",
+      "Nous posons exclusivement des pare-brises certifiés aux normes européennes (marquage E), de marques reconnues (Pilkington, Saint-Gobain Sekurit, AGC, Fuyao). Collage garanti à vie, vitrages conformes ECE R43.",
   },
 ];
