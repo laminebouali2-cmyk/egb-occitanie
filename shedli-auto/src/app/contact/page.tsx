@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Clock, Mail, MapPin, MessageCircle, CheckCircle2, Send, ChevronDown } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, CheckCircle2, Send, ChevronDown, Clock } from "lucide-react";
 import { SITE } from "@/lib/constants";
 import { submitContactForm } from "@/app/actions/contact";
 
@@ -56,7 +56,7 @@ export default function ContactPage() {
         >
           <a
             href={SITE.phoneHref}
-            className="flex shrink-0 items-center gap-2.5 rounded-xl bg-primary-500 px-5 py-3 text-sm font-semibold text-white"
+            className="flex shrink-0 items-center gap-2.5 rounded-xl bg-[#09090b] px-5 py-3 text-sm font-semibold text-white"
           >
             <Phone size={16} />
             Appeler
@@ -96,8 +96,8 @@ export default function ContactPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center justify-center py-12 text-center"
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary-50 text-primary-500 mb-5">
-                      <CheckCircle2 size={28} strokeWidth={1.8} />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-soft text-text mb-5">
+                      <CheckCircle2 size={24} strokeWidth={1.5} />
                     </div>
                     <h2 className="text-xl font-semibold text-text">Message envoyé</h2>
                     <p className="mt-2 text-sm text-text-secondary max-w-xs">
@@ -105,7 +105,7 @@ export default function ContactPage() {
                     </p>
                     <a
                       href={SITE.phoneHref}
-                      className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-500 px-6 py-3 text-sm font-semibold text-white"
+                      className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#09090b] px-6 py-3 text-sm font-semibold text-white"
                     >
                       <Phone size={16} />
                       {SITE.phone}
@@ -130,7 +130,7 @@ export default function ContactPage() {
                         id="type"
                         name="type"
                         defaultValue="rappel"
-                        className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                        className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text transition-colors focus:border-border-strong focus:outline-none"
                       >
                         <option value="rappel">Être rappelé</option>
                         <option value="devis">Demande de devis</option>
@@ -151,7 +151,7 @@ export default function ContactPage() {
                         required
                         autoComplete="name"
                         placeholder="Jean Dupont"
-                        className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                        className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-border-strong focus:outline-none"
                       />
                     </div>
 
@@ -167,7 +167,7 @@ export default function ContactPage() {
                         required
                         autoComplete="tel"
                         placeholder="06 12 34 56 78"
-                        className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                        className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-border-strong focus:outline-none"
                       />
                     </div>
 
@@ -175,7 +175,7 @@ export default function ContactPage() {
                     <button
                       type="button"
                       onClick={() => setShowOptional(!showOptional)}
-                      className="flex items-center gap-1.5 text-sm font-medium text-primary-500 hover:text-primary-600 transition-colors"
+                      className="flex items-center gap-1.5 text-sm font-medium text-text-secondary hover:text-text transition-colors"
                     >
                       <ChevronDown
                         size={14}
@@ -203,7 +203,7 @@ export default function ContactPage() {
                               name="vehicle"
                               type="text"
                               placeholder="Ex: Peugeot 308, 2019"
-                              className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
+                              className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-border-strong focus:outline-none"
                             />
                           </div>
 
@@ -217,7 +217,7 @@ export default function ContactPage() {
                               name="message"
                               rows={3}
                               placeholder="Décrivez votre besoin..."
-                              className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 resize-none"
+                              className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-text placeholder:text-text-muted transition-colors focus:border-border-strong focus:outline-none resize-none"
                             />
                           </div>
                         </motion.div>
@@ -233,7 +233,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={isPending}
-                      className="w-full flex items-center justify-center gap-2.5 rounded-xl bg-primary-500 px-6 py-3.5 text-sm font-semibold text-white shadow-sm shadow-primary-500/20 transition-all duration-200 hover:bg-primary-600 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98]"
+                      className="w-full flex items-center justify-center gap-2.5 rounded-xl bg-[#09090b] px-6 py-3.5 text-sm font-semibold text-white transition-opacity duration-200 hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98]"
                     >
                       {isPending ? (
                         <span className="flex items-center gap-2">
@@ -272,9 +272,7 @@ export default function ContactPage() {
                 href={SITE.phoneHref}
                 className="flex items-center gap-4 rounded-xl border border-border bg-white p-4 lg:p-5 transition-shadow hover:shadow-sm"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
-                  <Phone size={18} strokeWidth={1.8} />
-                </div>
+                <Phone size={18} strokeWidth={1.5} className="text-text-muted shrink-0" />
                 <div>
                   <p className="text-sm font-semibold text-text">{SITE.phone}</p>
                   <p className="text-xs text-text-muted">Réponse immédiate</p>
@@ -287,9 +285,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 rounded-xl border border-border bg-white p-4 lg:p-5 transition-shadow hover:shadow-sm"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
-                  <MessageCircle size={18} strokeWidth={1.8} />
-                </div>
+                <MessageCircle size={18} strokeWidth={1.5} className="text-text-muted shrink-0" />
                 <div>
                   <p className="text-sm font-semibold text-text">WhatsApp</p>
                   <p className="text-xs text-text-muted">Envoyez-nous un message</p>
@@ -300,9 +296,7 @@ export default function ContactPage() {
                 href={`mailto:${SITE.email}`}
                 className="flex items-center gap-4 rounded-xl border border-border bg-white p-4 lg:p-5 transition-shadow hover:shadow-sm"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
-                  <Mail size={18} strokeWidth={1.8} />
-                </div>
+                <Mail size={18} strokeWidth={1.5} className="text-text-muted shrink-0" />
                 <div>
                   <p className="text-sm font-semibold text-text">{SITE.email}</p>
                   <p className="text-xs text-text-muted">Réponse sous 24h</p>
@@ -311,9 +305,7 @@ export default function ContactPage() {
 
               <div className="rounded-xl border border-border bg-white p-4 lg:p-5">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
-                    <Clock size={18} strokeWidth={1.8} />
-                  </div>
+                  <Clock size={18} strokeWidth={1.5} className="text-text-muted shrink-0" />
                   <div>
                     <p className="text-sm font-semibold text-text">Horaires</p>
                     <div className="mt-1 space-y-0.5">
@@ -327,9 +319,7 @@ export default function ContactPage() {
 
               <div className="rounded-xl border border-border bg-white p-4 lg:p-5">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-500">
-                    <MapPin size={18} strokeWidth={1.8} />
-                  </div>
+                  <MapPin size={18} strokeWidth={1.5} className="text-text-muted shrink-0" />
                   <div>
                     <p className="text-sm font-semibold text-text">Adresse</p>
                     <p className="text-xs text-text-muted mt-0.5">{SITE.address.full}</p>
