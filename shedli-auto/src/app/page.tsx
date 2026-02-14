@@ -10,11 +10,11 @@ import { CtaBanner } from "@/components/sections/CtaBanner";
 
 export const metadata: Metadata = {
   title:
-    "Remplacement Pare-Brise Yvelines (78) | Intervention Mobile à Domicile — Shedli Auto",
+    "Remplacement Pare-Brise Yvelines (78) & Île-de-France | Intervention Mobile — Shedli Auto",
   description:
     "Pare-brise fissuré dans les Yvelines (78) ? Shedli Auto intervient chez vous à domicile. Prise en charge assurance directe, 0 € d'avance, collage garanti à vie. Appelez le 06 28 43 88 44.",
   keywords:
-    "remplacement pare-brise Yvelines, pare-brise 78, réparation pare-brise Versailles, pare-brise à domicile, Shedli Auto, intervention mobile pare-brise, pare-brise Plaisir, pare-brise Saint-Germain-en-Laye",
+    "remplacement pare-brise Yvelines, pare-brise 78, pare-brise Île-de-France, réparation pare-brise Versailles, pare-brise à domicile, Shedli Auto, intervention mobile pare-brise, pare-brise Nanterre, pare-brise Boulogne-Billancourt, pare-brise Plaisir, pare-brise Saint-Germain-en-Laye",
   alternates: {
     canonical: "https://shedliauto.com",
   },

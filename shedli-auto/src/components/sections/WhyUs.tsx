@@ -62,7 +62,7 @@ export function WhyUs() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
             <div className="absolute bottom-4 left-4">
               <p className="text-white text-sm font-semibold">+200 interventions</p>
-              <p className="text-white/60 text-[11px] mt-0.5">dans les Yvelines</p>
+              <p className="text-white/60 text-[11px] mt-0.5">en Île-de-France</p>
             </div>
           </motion.div>
 
@@ -96,7 +96,7 @@ export function WhyUs() {
               <h3 className="text-sm font-semibold text-text">On vient à vous</h3>
               <p className="mt-1.5 text-[13px] text-text-secondary leading-relaxed">
                 Domicile, bureau, parking — vous ne bougez pas.
-                Intervention dans tout le 78.
+                Intervention dans les Yvelines et en Île-de-France.
               </p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {["Versailles", "Plaisir", "Saint-Germain", "Poissy", "Trappes"].map((city) => (
@@ -150,7 +150,7 @@ export function WhyUs() {
             </h3>
             <p className="mt-1.5 text-[13px] lg:text-sm text-text-secondary leading-relaxed max-w-sm">
               Domicile, bureau, parking — vous ne bougez pas.
-              Intervention dans tout le 78.
+              Intervention dans les Yvelines et en Île-de-France.
             </p>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {["Versailles", "Plaisir", "Saint-Germain", "Poissy", "Trappes"].map((city) => (
@@ -184,7 +184,7 @@ export function WhyUs() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5">
               <p className="text-white text-sm font-semibold">Techniciens certifiés</p>
-              <p className="text-white/60 text-xs mt-0.5">+200 interventions dans les Yvelines</p>
+              <p className="text-white/60 text-xs mt-0.5">+200 interventions en Île-de-France</p>
             </div>
           </motion.div>
 
@@ -199,7 +199,7 @@ export function WhyUs() {
                 +200
               </p>
               <p className="text-[12px] lg:text-sm text-text-secondary mt-1.5">
-                Interventions réalisées dans les Yvelines.
+                Interventions réalisées en Île-de-France.
               </p>
             </div>
           </motion.div>
